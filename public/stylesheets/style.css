@@ -6,3 +6,30 @@ body {
 a {
   color: #00B7FF;
 }
+.login-container .input-group {
+  padding: 10px;
+  border: 1px solid black;
+  margin: 40px auto 40px auto;
+}
+.search-container{
+  text-align: center;
+  margin: 0 auto 0 auto;
+  float: center;
+}
+table {
+  width: 90%;
+  margin: 0 auto;
+}
+th {
+  background-color: lightblue;
+}
+td {
+  border: 1px solid black;
+}
+.table {
+  position: relative;
+  top: 40px;
+}
+#close{
+  float: right;
+}
