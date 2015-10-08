@@ -1,24 +1,22 @@
 <!doctype html>
-	<html lang="en">
+	<html lang="en" ng-app="leo">
+
 		<head>
 			<meta charset="utf-8" />
 			<title></title>
 			<link rel="stylesheet" href="/stylesheets/style.css" />
 			<link rel="stylesheet" href="/stylesheets/bootstrap-theme.min.css">
 			<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+			<base href="/">
 		</head>
 		<body>
- 		
- 		<div class="login-container">
-	 		<div class="input-group">
-	 			<legend>Leonardo's Basement Login</legend>
-	  			<input type="text" class="form-control" placeholder="Username">
-	  			<input type="password" class="form-control" placeholder="Password">
-	  			<input type="submit" class="form-control btn-primary" placehoder="login">
-			</div>
-		</div>
-		<a href="search.html">search</a>
+ 		<ng-view></ng-view>
+		<a ng-href="#/search">search</a>
+		<a ng-href="#/register">register</a>
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script type="text/javascript" src="/js/angular.min.js"></script>
+		<script type="text/javascript" src="/js/angular-route.min.js"></script>
+		<script type="text/javascript" src="/js/app.js"></script>
 		<script type="text/javascript" src="/js/bootstrap.min.js"></script>
 		</body>
 	</html>

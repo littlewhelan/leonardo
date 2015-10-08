@@ -1,0 +1,7 @@
+
+<form ng-submit="submit()" ng-controller="registerCtrl" name="user-register">
+    <input type="text" ng-model="form.username" ng-trim="false" name="username" placeholder="Username" ng-pattern="/^[a-zA-Z0-9_ ]*$/" required>
+    <input type="password" ng-model="form.password" name="password" placeholder="Password" ng-minlength="6" ng-maxlength="15" required>
+    <input type="password" ng-model="form.confirm" name="confirm" placeholder="Confirm Password" ng-minlength="6" ng-maxlength="15" required>
+    <input type="submit" class="btn-danger" value="Register User">
+</form>

@@ -4,9 +4,14 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var expressJwt = require('express-jwt');
+var jwt = expressJwt({secret: 'supersecret'});
+var mongoose = require('mongoose');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var user = require('./routes/user');
+var login = require('./routes/login');
+var register = require('./routes/register');
 
 var app = express();
 
@@ -22,9 +27,43 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public/static')));
+app.use('/private', express.static( path.join(__dirname, 'private')));
 
+app.use('/private/*', jwt);
 app.use('/', routes);
-app.use('/users', users);
+app.use('/user', user);
+app.use('/login', login);
+app.use('/register', register);
+
+app.use(function (err, req, res, next) {
+  if (err.name === 'UnauthorizedError') {
+    res.send(401, 'invalid token...');
+  }
+});
+
+
+
+// Build the connection string
+var dbURI = 'mongodb://localhost:27017/leo';
+
+// Create the database connection
+mongoose.connect(dbURI);
+
+mongoose.connection.on('connected', function () {
+  console.log('Mongoose default connection open to ' + dbURI);
+});
+
+// If the connection throws an error
+mongoose.connection.on('error',function (err) {
+  console.log('Mongoose default connection error: ' + err);
+});
+
+// When the connection is disconnected
+mongoose.connection.on('disconnected', function () {
+  console.log('Mongoose default connection disconnected');
+});
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -39,6 +78,7 @@ app.use(function(req, res, next) {
 // will print stacktrace
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
+    console.log(err);
     res.status(err.status || 500);
     res.render('error', {
       message: err.message,
@@ -50,6 +90,7 @@ if (app.get('env') === 'development') {
 // production error handler
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
+  console.log(err);
   res.status(err.status || 500);
   res.render('error', {
     message: err.message,
