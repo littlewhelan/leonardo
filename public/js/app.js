@@ -13,6 +13,17 @@ app.config(['$routeProvider',
             when('/register', {
                 templateUrl: 'static/register.html'
             }).
+            when('/tab2', {
+                templateUrl: 'tab2.html'
+            }).
+            when('/tab1', {
+                templateUrl: 'tab1.html'
+            }).when('/tab3', {
+                templateUrl: 'tab3.html'
+            }).
+            when('/tab4', {
+                templateUrl: 'tab4.html'
+            }).
             otherwise({
                 redirectTo: '/'
             });
