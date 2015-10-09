@@ -20,7 +20,7 @@ router.get('/', function(req, res, next) {
         }
         console.log('Connection established');
 
-        con.query('SELECT * FROM children',function(err,rows,fields){
+        con.query('SELECT children.firstName FROM children',function(err,rows,fields){
             console.log('You are in the query!');
             if(err) throw err;
             console.log('Data received from Db:\n');
