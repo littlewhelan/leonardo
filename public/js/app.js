@@ -24,6 +24,18 @@ app.config(['$routeProvider',
             when('/tab4', {
                 templateUrl: 'tab4.html'
             }).
+            when('/add5', {
+                templateUrl: 'add5.html'
+            }).
+            when('/add6', {
+                templateUrl: 'add6.html'
+            }).
+            when('/add7', {
+                templateUrl: 'add7.html'
+            }).
+            when('/add8', {
+                templateUrl: 'add8.html'
+            }).
             otherwise({
                 redirectTo: '/'
             });
