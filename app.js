@@ -8,12 +8,21 @@ var expressJwt = require('express-jwt');
 var jwt = expressJwt({secret: 'supersecret'});
 var mongoose = require('mongoose');
 
+
+var index = require('./routes/index');
+var users = require('./routes/users');
+var createAdmin = require('./routes/createAdmin');
+var search = require('./routes/search');
+var createMailList = require ('./routes/createMailList');
+
 var routes = require('./routes/index');
 var user = require('./routes/user');
 var login = require('./routes/login');
 var register = require('./routes/register');
 
+
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,6 +38,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public/static')));
 app.use('/private', express.static( path.join(__dirname, 'private')));
 
+
+app.use('/users', users);
+app.use('/createAdmin', createAdmin);
+app.use('/createMailList', createMailList);
+app.use('/search', search );
+
 app.use('/private/*', jwt);
 app.use('/', routes);
 app.use('/user', user);
@@ -40,8 +55,6 @@ app.use(function (err, req, res, next) {
     res.send(401, 'invalid token...');
   }
 });
-
-
 
 // Build the connection string
 var dbURI = 'mongodb://localhost:27017/leo';
@@ -62,7 +75,6 @@ mongoose.connection.on('error',function (err) {
 mongoose.connection.on('disconnected', function () {
   console.log('Mongoose default connection disconnected');
 });
-
 
 
 // catch 404 and forward to error handler

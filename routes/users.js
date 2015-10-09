@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/user');
 
-/* GET home page. */
+/* GET users listing. */
 router.get('/', function(req, res, next) {
-
-  res.send('This is the index route');
+  res.send('this is the users route');
 });
 
+router.get('/*', function(req, res, next) {
+  res.render('index');
+});
 
 module.exports = router;
