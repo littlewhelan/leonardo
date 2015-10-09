@@ -1,8 +1,11 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
 
+}
+span {
+  border: 1px outset black;
+}
 a {
   color: #00B7FF;
 }
@@ -32,4 +35,14 @@ td {
 }
 #close{
   float: right;
+}
+#edit{
+  float: left;
+}
+.tab-content{
+  padding: 30px;
+  background-color: lightblue;
+}
+.tab-content button {
+  margin: 20px;
 }
