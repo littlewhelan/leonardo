@@ -10,9 +10,35 @@
 			<base href="/">
 		</head>
 		<body>
+		<header>
+			<div class="header-logo">
+				<img src="http://wp.leonardosbasement.org/wp-content/uploads/2014/09/Leonardo-Logo-300x163.jpg">
+			</div>
+			<nav class="navbar navbar-default" ng-show="user.username">
+				<div class="container">
+					<div class="navbar-header">
+						<a class="navbar-brand" href="/"></a>
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a ng-href="#/search">Main Search</a>
+							</li>
+							<li>
+								<a href="#/contactList">Create Contact List</a>
+							</li>
+							<li>
+								<a href="#/addfamily">Add Family</a>
+							</li>
+							<li>
+								<a ng-href="#/register">Create Admin</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+		</header>
  		<ng-view></ng-view>
-		<a ng-href="#/search">search</a>
-		<a ng-href="#/register">register</a>
+
+
 		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
 		<script type="text/javascript" src="/js/angular.min.js"></script>
 		<script type="text/javascript" src="/js/angular-route.min.js"></script>

@@ -41,8 +41,10 @@ td {
 }
 .tab-content{
   padding: 30px;
-  background-color: lightblue;
 }
 .tab-content button {
   margin: 20px;
+}
+.header-logo{
+  text-align: center;
 }

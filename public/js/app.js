@@ -36,6 +36,9 @@ app.config(['$routeProvider',
             when('/add8', {
                 templateUrl: 'add8.html'
             }).
+            when('/addfamily', {
+                templateUrl: 'private/addfamily.html'
+            }).
             otherwise({
                 redirectTo: '/'
             });

@@ -1,5 +1,4 @@
 <div class="search-container fluid-container">
-    <legend><img src="http://wp.leonardosbasement.org/wp-content/uploads/2014/09/Leonardo-Logo-300x163.jpg"></legend>
     <div class="col-md-offset-3 col-md-9">
 
         <div class="row">
@@ -25,8 +24,7 @@
         </div>
     </div>
 </div>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg">Edit Family
-</button>
+
 
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
@@ -208,32 +206,33 @@
     </div>
 </div>
 <div class="table">
-    <table class="well well-sm">
+
+    <table class="table-hover table table-bordered">
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
             <th>Phone</th>
             <th>Email</th>
         </tr>
-        <tr>
+        <tr type="button"  data-toggle="modal" data-target=".bs-example-modal-lg">
             <td>Bart</td>
             <td>Simpson</td>
             <td>218-383-2847</td>
             <td>Bart@gmail.com</td>
         </tr>
-        <tr>
+        <tr type="button"  data-toggle="modal" data-target=".bs-example-modal-lg">
             <td>Bart</td>
             <td>Simpson</td>
             <td>218-383-2847</td>
             <td>Bart@gmail.com</td>
         </tr>
-        <tr>
+        <tr type="button"  data-toggle="modal" data-target=".bs-example-modal-lg">
             <td>Bart</td>
             <td>Simpson</td>
             <td>218-383-2847</td>
             <td>Bart@gmail.com</td>
         </tr>
-        <tr>
+        <tr type="button"  data-toggle="modal" data-target=".bs-example-modal-lg">
             <td>Bart</td>
             <td>Simpson</td>
             <td>218-383-2847</td>
@@ -241,119 +240,12 @@
         </tr>
     </table>
 </div>
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".add">Add Family
-</button>
+
 
 <div class="modal fade add" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
-            <ul class="nav nav-tabs nav-justified">
-                <li class="active">
-                    <a href="#add5" data-toggle="tab">Contact Info</a>
-                </li>
-                <li>
-                    <a href="#add6" data-toggle="tab">Emergency Contact</a>
-                </li>
-                <li>
-                    <a href="#add7" data-toggle="tab">Additional Members</a>
-                </li>
-                <li>
-                    <a href="#add8" data-toggle="tab">Donations</a>
-                </li>
-            </ul>
-            <div class="tab-content">
 
-                <div class="tab-pane active" id="add5">
-                    <div class="well well-sm">
-
-                        <form>
-                            <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                            <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                            <input class="form-control" type="text" placeholder="Address 1">
-                            <input class="form-control" type="text" placeholder="Address 2">
-                            <input class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
-                            <input class="col-xs-6 col-sm-4" type="text" placeholder="City">
-                            <input class="col-xs-6 col-sm-4" type="text" placeholder="State">
-                            <input class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">
-                            <input class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">
-                            <input class="col-xs-6 col-sm-4" type="text" placeholder="Email">
-                            <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
-                            <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                            <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                            <input class="form-control" type="text" placeholder="Address 1">
-                            <input class="form-control" type="text" placeholder="Address 2">
-                            <input class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
-                            <input class="col-xs-6 col-sm-4" type="text" placeholder="City">
-                            <input class="col-xs-6 col-sm-4" type="text" placeholder="State">
-                            <input class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">
-                            <input class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">
-                            <input class="col-xs-6 col-sm-4" type="text" placeholder="Email">
-                            <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
-                            <button id="edit" type="button" class="btn btn-danger">Add</button>
-                            <button id="close" type="button" class="btn btn-danger">Close</button>
-                        </form>
-
-                    </div>
-                </div>
-
-                <div class="tab-pane" id="add6">
-                    <div class="well well-sm">
-                        <form>
-                            <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                            <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                            <input class="form-control" type="text" placeholder="Address 1">
-                            <input class="form-control" type="text" placeholder="Address 2">
-                            <input class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Zip Code">
-                            <input class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="City">
-                            <input class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="State">
-                            <input class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Phone Number">
-                            <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
-                            <button id="edit" type="button" class="btn btn-danger">Add</button>
-                            <button id="close" type="button" class="btn btn-danger">Close</button>
-                        </form>
-
-                    </div>
-                </div>
-                <div class="tab-pane" id="add7">
-                    <div class="well well-sm">
-                        <form>
-
-                            <button id="addKid" type="button" class="btn btn-danger">+</button>
-                            <hr/>
-
-                            <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                            <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                            <input class="form-control" type="date" placeholder="Birthday">
-                            <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
-
-                        </form>
-                        <button id="edit" type="button" class="btn btn-danger">Edit</button>
-                        <button id="close" type="button" class="btn btn-danger">Close</button>
-                    </div>
-                </div>
-                <div class="tab-pane" id="add8">
-                    <div class="well well-sm">
-                        <table>
-                            <tr>
-                                <th>Date</th>
-                                <th>Amount</th>
-                                <th>Notes</th>
-                            </tr>
-                            <tr>
-                                <td>today</td>
-                                <td>$100</td>
-                                <td>something interesting</td>
-                            </tr>
-                        </table>
-                        <label for="donation">Add Donation</label>
-                        <button id="addDonation" type="button" class="btn btn-danger">+</button>
-                        <input class="form-control" type="date" placeholder="Date">
-                        <input class="form-control" type="text" placeholder="Amount">
-                        <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
-                        <button id="close" type="button" class="btn btn-danger">Close</button>
-                    </div>
-                </div>
-            </div>
 
 
         </div>
