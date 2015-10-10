@@ -1,3 +1,4 @@
+<!--Search Bar-->
 <div class="search-container fluid-container">
     <div class="col-md-offset-3 col-md-9">
 
@@ -15,20 +16,18 @@
                             <li><a href="#">Corporation</a></li>
                         </ul>
                     </div>
-                    <!-- /btn-group -->
                     <input type="text" class="form-control" aria-label="...">
                 </div>
-                <!-- /input-group -->
             </div>
-            <!-- /.col-lg-6 -->
         </div>
     </div>
 </div>
 
-
+<!--edit person information modal -->
 <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
+            <!--tab navigation-->
             <ul class="nav nav-tabs nav-justified">
                 <li class="active">
                     <a href="#tab1" data-toggle="tab">Contact Info</a>
@@ -44,10 +43,12 @@
                 </li>
             </ul>
             <div class="tab-content">
-
+                <!--tab 1 contact info for 2 adults-->
                 <div class="tab-pane active" id="tab1">
+                    <!--well-->
                     <div class="well well-sm">
-
+                        <!--span is information retrieved from DB-->
+                        <!--inputs are editable after click-->
                         <form>
                             <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">-->
                             <span class="col-md-6 col-sm-6 col-xs-6">Mike</span>
@@ -93,6 +94,7 @@
                             <span class="col-xs-6 col-sm-4">Carol@gmail.com</span>
                             <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
                             <span style="display:block;">This area is reserved for lots of information as needed.</span>
+                            <!--edit / close buttons -->
                             <button id="edit" type="button" class="btn btn-danger">Edit</button>
                             <button id="close" type="button" class="btn btn-danger">Close</button>
                         </form>
@@ -101,6 +103,7 @@
                 </div>
 
                 <div class="tab-pane" id="tab2">
+                    <!--well-->
                     <div class="well well-sm">
                         <form>
                             <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">-->
@@ -121,13 +124,16 @@
                             <span class="col-xs-6 col-sm-3">555-555-5555</span>
                             <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
                             <span style="display:block;">This area is reserved for lots of information as needed.</span>
+                            <!--edit / close buttons -->
                             <button id="edit" type="button" class="btn btn-danger">Edit</button>
                             <button id="close" type="button" class="btn btn-danger">Close</button>
                         </form>
 
                     </div>
                 </div>
+                <!--emergency contact data-->
                 <div class="tab-pane" id="tab3">
+                    <!--well -->
                     <div class="well well-sm">
                         <form>
                             <span class="col-md-4 col-sm-4 col-xs-4">Greg</span>
@@ -154,19 +160,24 @@
                             <span class="col-md-4 col-sm-4 col-xs-4">Brady</span>
                             <span class="col-md-4 col-sm-4 col-xs-4">05/09/1989</span>
                             <span style="display:block;">This is some more information about this person</span>
-                            <button id="addKid" type="button" class="btn btn-danger">+</button>
-                            <hr/>
 
-                            <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                            <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                            <input class="form-control" type="date" placeholder="Birthday">
-                            <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
+                            <!--shows upon editing\/\/\/-->
+
+                            <!--<button id="addKid" type="button" class="btn btn-danger">+</button>-->
+                            <!--<hr/>-->
+
+                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">-->
+                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">-->
+                            <!--<input class="form-control" type="date" placeholder="Birthday">-->
+                            <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
 
                         </form>
+                        <!--edit / close buttons -->
                         <button id="edit" type="button" class="btn btn-danger">Edit</button>
                         <button id="close" type="button" class="btn btn-danger">Close</button>
                     </div>
                 </div>
+                <!--donation tab-->
                 <div class="tab-pane" id="tab4">
                     <div class="well well-sm">
                         <table>
@@ -191,11 +202,16 @@
                                 <td>something to note about</td>
                             </tr>
                         </table>
-                        <label for="donation">Add Donation</label>
-                        <button id="addDonation" type="button" class="btn btn-danger">+</button>
-                        <input class="form-control" type="date" placeholder="Date">
-                        <input class="form-control" type="text" placeholder="Amount">
-                        <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
+                        <!--edit / close buttons -->
+                        <button id="edit" type="button" class="btn btn-danger">Edit</button>
+
+                        <!--shows when editable\/\/\/ -->
+
+                        <!--<label for="donation">Add Donation</label>-->
+                        <!--<button id="addDonation" type="button" class="btn btn-danger">+</button>-->
+                        <!--<input class="form-control" type="date" placeholder="Date">-->
+                        <!--<input class="form-control" type="text" placeholder="Amount">-->
+                        <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
                         <button id="close" type="button" class="btn btn-danger">Close</button>
                     </div>
                 </div>
@@ -207,6 +223,7 @@
 </div>
 <div class="table">
 
+    <!--hover class search results-->
     <table class="table-hover table table-bordered">
         <tr>
             <th>First Name</th>
@@ -214,6 +231,7 @@
             <th>Phone</th>
             <th>Email</th>
         </tr>
+        <!--hyperlink buttons-->
         <tr type="button"  data-toggle="modal" data-target=".bs-example-modal-lg">
             <td>Bart</td>
             <td>Simpson</td>
@@ -240,16 +258,3 @@
         </tr>
     </table>
 </div>
-
-
-<div class="modal fade add" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-
-
-
-        </div>
-    </div>
-</div>
-
-<!-- Large modal -->

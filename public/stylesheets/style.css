@@ -6,6 +6,9 @@ body {
 span {
   border: 1px outset black;
 }
+header{
+  text-align: center;
+}
 a {
   color: #00B7FF;
 }

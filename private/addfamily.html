@@ -1,3 +1,5 @@
+
+<!--tab navigation-->
 <ul class="nav nav-tabs nav-justified">
     <li class="active">
         <a href="#add5" data-toggle="tab">Contact Info</a>
@@ -13,43 +15,52 @@
     </li>
 </ul>
 <div class="tab-content">
-
+    <!--tab 1 Adult contact information-->
     <div class="tab-pane active" id="add5">
+        <!--well-->
         <div class="well well-sm">
 
             <form>
-                <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                <input class="form-control" type="text" placeholder="Address 1">
-                <input class="form-control" type="text" placeholder="Address 2">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="City">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="State">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="Email">
+                <legend>Adult 1</legend>
+                <input name="firstName" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                <input name="lastName" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                <input name="address1" class="form-control" type="text" placeholder="Address 1">
+                <input name="address2"class="form-control" type="text" placeholder="Address 2">
+                <input name="zip"class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
+                <input name="city"class="col-xs-6 col-sm-4" type="text" placeholder="City">
+                <input name="state"class="col-xs-6 col-sm-4" type="text" placeholder="State">
+                <input name="mainPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">
+                <input name="cellPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">
+                <input name="email"class="col-xs-6 col-sm-4" type="text" placeholder="Email">
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
-                <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                <input class="form-control" type="text" placeholder="Address 1">
-                <input class="form-control" type="text" placeholder="Address 2">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="City">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="State">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="Email">
+            </form>
+
+            <form>
+                <legend>Adult 2</legend>
+                <input name="firstName"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                <input name="lastName"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                <input name="address1"class="form-control" type="text" placeholder="Address 1">
+                <input name="address2"class="form-control" type="text" placeholder="Address 2">
+                <input name="zip"class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
+                <input name="city"class="col-xs-6 col-sm-4" type="text" placeholder="City">
+                <input name="state"class="col-xs-6 col-sm-4" type="text" placeholder="State">
+                <input name="mainPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">
+                <input name="cellPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">
+                <input name="email"class="col-xs-6 col-sm-4" type="text" placeholder="Email">
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
+                <!--next button -->
                 <button id="edit" type="button" class="btn btn-danger">Next</button>
-                <button id="close" type="button" class="btn btn-danger">Close</button>
+
             </form>
 
         </div>
     </div>
-
+    <!--emergencty contact tab-->
     <div class="tab-pane" id="add6">
+        <!--well-->
         <div class="well well-sm">
             <form>
+                <legend>Emergency Contact Information</legend>
                 <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
                 <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
                 <input class="form-control" type="text" placeholder="Address 1">
@@ -59,16 +70,18 @@
                 <input class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="State">
                 <input class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Phone Number">
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
+                <!--next buttons -->
                 <button id="edit" type="button" class="btn btn-danger">Next</button>
-                <button id="close" type="button" class="btn btn-danger">Close</button>
             </form>
 
         </div>
     </div>
     <div class="tab-pane" id="add7">
+        <!--well-->
         <div class="well well-sm">
+            <!--addition members tab-->
             <form>
-
+                <legend>Add Children</legend>
                 <button id="addKid" type="button" class="btn btn-danger">+</button>
                 <hr/>
 
@@ -78,29 +91,33 @@
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
 
             </form>
+            <!--edit / close buttons -->
             <button id="edit" type="button" class="btn btn-danger">Next</button>
             <button id="close" type="button" class="btn btn-danger">Close</button>
         </div>
     </div>
     <div class="tab-pane" id="add8">
+        <!--well-->
         <div class="well well-sm">
-            <table>
-                <tr>
-                    <th>Date</th>
-                    <th>Amount</th>
-                    <th>Notes</th>
-                </tr>
-                <tr>
-                    <td>today</td>
-                    <td>$100</td>
-                    <td>something interesting</td>
-                </tr>
-            </table>
+            <!--dummy donation data-->
+            <!--<table>-->
+                <!--<tr>-->
+                    <!--<th>Date</th>-->
+                    <!--<th>Amount</th>-->
+                    <!--<th>Notes</th>-->
+                <!--</tr>-->
+                <!--<tr>-->
+                    <!--<td>today</td>-->
+                    <!--<td>$100</td>-->
+                    <!--<td>something interesting</td>-->
+                <!--</tr>-->
+            <!--</table>-->
             <label for="donation">Add Donation</label>
             <button id="addDonation" type="button" class="btn btn-danger">+</button>
             <input class="form-control" type="date" placeholder="Date">
             <input class="form-control" type="text" placeholder="Amount">
             <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
+            <!--save / close buttons -->
             <button id="edit" type="button" class="btn btn-danger">Save</button>
             <button id="close" type="button" class="btn btn-danger">Close</button>
         </div>
