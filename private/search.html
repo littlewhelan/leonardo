@@ -221,40 +221,126 @@
         </div>
     </div>
 </div>
+<div class="modal fade bs-corp-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <!--tab navigation-->
+            <ul class="nav nav-tabs nav-justified">
+                <li class="active">
+                    <a href="#add5" data-toggle="tab">Corporate Information</a>
+                </li>
+                <li>
+                    <a href="#add6" data-toggle="tab">Contact Information</a>
+                </li>
+                <li>
+                    <a href="#add8" data-toggle="tab">Donations</a>
+                </li>
+            </ul>
+            <div class="tab-content">
+                <!--tab 1 corporate contact information-->
+                <div class="tab-pane active" id="add5">
+                    <!--well-->
+                    <div class="well well-sm">
+
+                        <form>
+                            <legend>Corporate Information</legend>
+                            <!--<input name="corpName" class="form-control" type="text" placeholder="Corporation Name">-->
+                            <span style="display:block;">3M</span>
+                            <!--<input name="address1" class="form-control" type="text" placeholder="Address 1">-->
+                            <span style="display:block;">345 Pleasant Dr</span>
+                            <!--<input name="address2"class="form-control" type="text" placeholder="Address 2">-->
+                            <span style="display:block;">Ste 4</span>
+                            <!--<input name="zip"class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">-->
+                            <span class="col-xs-6 col-sm-4">55323</span>
+                            <!--<input name="city"class="col-xs-6 col-sm-4" type="text" placeholder="City">-->
+                            <span class="col-xs-6 col-sm-4">St Paul</span>
+                            <!--<input name="state"class="col-xs-6 col-sm-4" type="text" placeholder="State">-->
+                            <span class="col-xs-6 col-sm-4">MN</span>
+                            <!--<input name="phone"class="col-xs-6 col-sm-4" type="text" placeholder="Phone">-->
+                            <span class="col-xs-6 col-sm-4">651-495-4928</span>
+                            <!--<input name="extPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Ext">-->
+                            <span class="col-xs-6 col-sm-4">352</span>
+                            <!--<input name="email"class="col-xs-6 col-sm-4" type="text" placeholder="Email">-->
+                            <span class="col-xs-6 col-sm-4">3M@gmail.com</span>
+                            <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
+                            <span style="display:block;">This is some more information about this person</span>
+
+                        </form>
+                        <!--edit button -->
+                        <button id="edit" type="button" class="btn btn-danger">Edit</button>
+                    </div>
+                </div>
+                <!--emergencty contact tab-->
+                <div class="tab-pane" id="add6">
+                    <!--well-->
+                    <div class="well well-sm">
+                        <form>
+                            <legend>Contact Information</legend>
+                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">-->
+                            <span class="col-md-6 col-sm-6 col-xs-6">Frank</span>
+                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">-->
+                            <span class="col-md-6 col-sm-6 col-xs-6">Bigs</span>
+                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone Number">-->
+                            <span class="col-md-6 col-sm-6 col-xs-6">651-385-4958</span>
+                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">-->
+                            <span class="col-md-6 col-sm-6 col-xs-6">Frankbigs@gmail.com</span>
+                            <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
+                            <span style="display:block;">This is some more information about this person</span>
+                            <!--next buttons -->
+                            <button id="edit" type="button" class="btn btn-danger">Edit</button>
+                        </form>
+
+                    </div>
+                </div>
+                <div class="tab-pane" id="add8">
+                    <!--well-->
+                    <div class="well well-sm">
+                        <!--dummy donation data-->
+                        <table>
+                        <tr>
+                        <th>Date</th>
+                        <th>Amount</th>
+                        <th>Notes</th>
+                        </tr>
+                        <tr>
+                        <td>today</td>
+                        <td>$100</td>
+                        <td>something interesting</td>
+                        </tr>
+                        </table>
+                        <!--<label for="donation">Add Donation</label>-->
+                        <!--<button id="addDonation" type="button" class="btn btn-danger">+</button>-->
+                        <!--<input class="form-control" type="date" placeholder="Date">-->
+                        <!--<input class="form-control" type="text" placeholder="Amount">-->
+                        <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
+                        <!--save / close buttons -->
+                        <button id="edit" type="button" class="btn btn-danger">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="table">
 
     <!--hover class search results-->
     <table class="table-hover table table-bordered">
         <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
+            <th>Name</th>
             <th>Phone</th>
             <th>Email</th>
         </tr>
         <!--hyperlink buttons-->
         <tr type="button"  data-toggle="modal" data-target=".bs-example-modal-lg">
-            <td>Bart</td>
-            <td>Simpson</td>
+            <td>Bart Simpson</td>
             <td>218-383-2847</td>
             <td>Bart@gmail.com</td>
         </tr>
-        <tr type="button"  data-toggle="modal" data-target=".bs-example-modal-lg">
-            <td>Bart</td>
-            <td>Simpson</td>
+        <tr type="button"  data-toggle="modal" data-target=".bs-corp-modal-lg">
+            <td>3m</td>
             <td>218-383-2847</td>
-            <td>Bart@gmail.com</td>
-        </tr>
-        <tr type="button"  data-toggle="modal" data-target=".bs-example-modal-lg">
-            <td>Bart</td>
-            <td>Simpson</td>
-            <td>218-383-2847</td>
-            <td>Bart@gmail.com</td>
-        </tr>
-        <tr type="button"  data-toggle="modal" data-target=".bs-example-modal-lg">
-            <td>Bart</td>
-            <td>Simpson</td>
-            <td>218-383-2847</td>
-            <td>Bart@gmail.com</td>
+            <td>3m@gmail.com</td>
         </tr>
     </table>
 </div>

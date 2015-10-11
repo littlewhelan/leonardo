@@ -39,8 +39,11 @@ app.config(['$routeProvider',
             when('/addfamily', {
                 templateUrl: 'private/addfamily.html'
             }).
+            when('/addcorp', {
+                templateUrl: 'private/addcorp.html'
+            }).
             otherwise({
-                redirectTo: '/'
+                redirectTo: '/search'
             });
     }]);
 

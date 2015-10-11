@@ -1,0 +1,77 @@
+<ul class="nav nav-tabs nav-justified">
+    <li class="active">
+        <a href="#add5" data-toggle="tab">Corporate Information</a>
+    </li>
+    <li>
+        <a href="#add6" data-toggle="tab">Contact Information</a>
+    </li>
+    <li>
+        <a href="#add8" data-toggle="tab">Donations</a>
+    </li>
+</ul>
+<div class="tab-content">
+    <!--tab 1 corporate contact information-->
+    <div class="tab-pane active" id="add5">
+        <!--well-->
+        <div class="well well-sm">
+
+            <form>
+                <legend>Corporate Information</legend>
+                <input name="corpName" class="form-control" type="text" placeholder="Corporation Name">
+                <input name="address1" class="form-control" type="text" placeholder="Address 1">
+                <input name="address2"class="form-control" type="text" placeholder="Address 2">
+                <input name="zip"class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
+                <input name="city"class="col-xs-6 col-sm-4" type="text" placeholder="City">
+                <input name="state"class="col-xs-6 col-sm-4" type="text" placeholder="State">
+                <input name="phone"class="col-xs-6 col-sm-4" type="text" placeholder="Phone">
+                <input name="extPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Ext">
+                <input name="email"class="col-xs-6 col-sm-4" type="text" placeholder="Email">
+                <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
+            </form>
+                <!--edit button -->
+                <button id="edit" type="button" class="btn btn-danger">Next</button>
+        </div>
+    </div>
+    <!--emergencty contact tab-->
+    <div class="tab-pane" id="add6">
+        <!--well-->
+        <div class="well well-sm">
+            <form>
+                <legend>Contact Information</legend>
+                <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone Number">
+                <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">
+                <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
+                <!--next buttons -->
+                <button id="edit" type="button" class="btn btn-danger">Next</button>
+            </form>
+
+        </div>
+    </div>
+    <div class="tab-pane" id="add8">
+        <!--well-->
+        <div class="well well-sm">
+            <!--dummy donation data-->
+            <!--<table>-->
+            <!--<tr>-->
+            <!--<th>Date</th>-->
+            <!--<th>Amount</th>-->
+            <!--<th>Notes</th>-->
+            <!--</tr>-->
+            <!--<tr>-->
+            <!--<td>today</td>-->
+            <!--<td>$100</td>-->
+            <!--<td>something interesting</td>-->
+            <!--</tr>-->
+            <!--</table>-->
+            <label for="donation">Add Donation</label>
+            <button id="addDonation" type="button" class="btn btn-danger">+</button>
+            <input class="form-control" type="date" placeholder="Date">
+            <input class="form-control" type="text" placeholder="Amount">
+            <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
+            <!--save / close buttons -->
+            <button id="edit" type="button" class="btn btn-danger">Save</button>
+        </div>
+    </div>
+</div>
