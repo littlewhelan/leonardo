@@ -8,7 +8,8 @@ app.config(['$routeProvider',
                 templateUrl: 'static/login.html'
             }).
             when('/search', {
-                templateUrl: 'private/search.html'
+                templateUrl: 'private/search.html',
+                controller:'toggleEdit'
             }).
             when('/register', {
                 templateUrl: 'static/register.html'
@@ -46,6 +47,14 @@ app.config(['$routeProvider',
                 redirectTo: '/search'
             });
     }]);
+
+app.controller('toggleEdit', ['$scope', function($scope){
+    $scope.toggle = function(){
+     $scope.edit=true;
+
+
+    };
+}]);
 
 app.controller('loginCtrl', ['$scope', '$http', 'authService', '$location', '$rootScope', function($scope, $http, authService, $location, $rootScope){
     $scope.submit = function(){

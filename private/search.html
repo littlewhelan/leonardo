@@ -1,9 +1,6 @@
 <!--Search Bar-->
 <div class="search-container fluid-container">
-    <div class="col-md-offset-3 col-md-9">
-
         <div class="row">
-            <div class="col-lg-6">
                 <div class="input-group">
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
@@ -18,9 +15,7 @@
                     </div>
                     <input type="text" class="form-control" aria-label="...">
                 </div>
-            </div>
         </div>
-    </div>
 </div>
 
 <!--edit person information modal -->
@@ -50,53 +45,52 @@
                         <!--span is information retrieved from DB-->
                         <!--inputs are editable after click-->
                         <form>
-                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">-->
-                            <span class="col-md-6 col-sm-6 col-xs-6">Mike</span>
-                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">-->
-                            <span class="col-md-6 col-sm-6 col-xs-6">Brady</span>
-                            <!--<input class="form-control" type="text" placeholder="Address 1">-->
-                            <span style="display:block;">4222 clinton Way</span>
-                            <!--<input class="form-control" type="text" placeholder="Address 2">-->
-                            <span style="display:block;">4222 clinton Way</span>
-                            <!--<input class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">-->
-                            <span class="col-xs-6 col-sm-4">55555</span>
-                            <!--<input class="col-xs-6 col-sm-4" type="text" placeholder="City">-->
-                            <span class="col-xs-6 col-sm-4">Los Angeles</span>
-                            <!--<input class="col-xs-6 col-sm-4" type="text" placeholder="State">-->
-                            <span class="col-xs-6 col-sm-4">CA</span>
-                            <!--<input class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">-->
-                            <span class="col-xs-6 col-sm-4">555-555-5555</span>
-                            <!--<input class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">-->
-                            <span class="col-xs-6 col-sm-4">555-555-5555</span>
-                            <!--<input class="col-xs-6 col-sm-4" type="text" placeholder="Email">-->
-                            <span class="col-xs-6 col-sm-4">Mike@gmail.com</span>
-                            <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
-                            <span style="display:block;">This area is reserved for lots of information as needed.</span>
-                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">-->
-                            <span class="col-md-6 col-sm-6 col-xs-6">Carol</span>
-                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">-->
-                            <span class="col-md-6 col-sm-6 col-xs-6">Brady</span>
-                            <!--<input class="form-control" type="text" placeholder="Address 1">-->
-                            <span style="display:block;">4222 clinton Way</span>
-                            <!--<input class="form-control" type="text" placeholder="Address 2">-->
-                            <span style="display:block;">4222 clinton Way</span>
-                            <!--<input class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">-->
-                            <span class="col-xs-6 col-sm-4">55555</span>
-                            <!--<input class="col-xs-6 col-sm-4" type="text" placeholder="City">-->
-                            <span class="col-xs-6 col-sm-4">Los Angeles</span>
-                            <!--<input class="col-xs-6 col-sm-4" type="text" placeholder="State">-->
-                            <span class="col-xs-6 col-sm-4">CA</span>
-                            <!--<input class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">-->
-                            <span class="col-xs-6 col-sm-4">555-555-5555</span>
-                            <!--<input class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">-->
-                            <span class="col-xs-6 col-sm-4">555-555-5555</span>
-                            <!--<input class="col-xs-6 col-sm-4" type="text" placeholder="Email">-->
-                            <span class="col-xs-6 col-sm-4">Carol@gmail.com</span>
-                            <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
-                            <span style="display:block;">This area is reserved for lots of information as needed.</span>
+                            <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                            <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Mike</span>
+                            <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                            <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Brady</span>
+                            <input ng-show="edit" class="form-control" type="text" placeholder="Address 1">
+                            <span ng-hide="edit" style="display:block;">4222 clinton Way</span>
+                            <input ng-show="edit" class="form-control" type="text" placeholder="Address 2">
+                            <span ng-hide="edit" style="display:block;">4222 clinton Way</span>
+                            <input ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">55555</span>
+                            <input ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="City">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">Los Angeles</span>
+                            <input ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="State">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">CA</span>
+                            <input ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">555-555-5555</span>
+                            <input ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">555-555-5555</span>
+                            <input ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Email">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">Mike@gmail.com</span>
+                            <textarea ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
+                            <span ng-hide="edit" style="display:block;">This area is reserved for lots of information as needed.</span>
+                            <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                            <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Carol</span>
+                            <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                            <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Brady</span>
+                            <input ng-show="edit" class="form-control" type="text" placeholder="Address 1">
+                            <span ng-hide="edit" style="display:block;">4222 clinton Way</span>
+                            <input ng-show="edit" class="form-control" type="text" placeholder="Address 2">
+                            <span ng-hide="edit" style="display:block;">4222 clinton Way</span>
+                            <input ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">55555</span>
+                            <input ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="City">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">Los Angeles</span>
+                            <input ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="State">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">CA</span>
+                            <input ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">555-555-5555</span>
+                            <input ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">555-555-5555</span>
+                            <input ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Email">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">Carol@gmail.com</span>
+                            <textarea ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
+                            <span ng-hide="edit" style="display:block;">This area is reserved for lots of information as needed.</span>
                             <!--edit / close buttons -->
-                            <button id="edit" type="button" class="btn btn-danger">Edit</button>
-                            <button id="close" type="button" class="btn btn-danger">Close</button>
+                            <button ng-click="edit = !edit" id="edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
                         </form>
 
                     </div>
@@ -106,27 +100,26 @@
                     <!--well-->
                     <div class="well well-sm">
                         <form>
-                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">-->
-                            <span class="col-md-6 col-sm-6 col-xs-6">Mike</span>
-                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">-->
-                            <span class="col-md-6 col-sm-6 col-xs-6">Brady</span>
-                            <!--<input class="form-control" type="text" placeholder="Address 1">-->
-                            <span style="display:block;">4222 clinton Way</span>
-                            <!--<input class="form-control" type="text" placeholder="Address 2">-->
-                            <span style="display:block;">4222 clinton Way</span>
-                            <!--<input class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Zip Code">-->
-                            <span class="col-xs-6 col-sm-3">55555</span>
-                            <!--<input class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="City">-->
-                            <span class="col-xs-6 col-sm-3">Los Angeles</span>
-                            <!--<input class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="State">-->
-                            <span class="col-xs-6 col-sm-3">CA</span>
-                            <!--<input class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Phone Number">-->
-                            <span class="col-xs-6 col-sm-3">555-555-5555</span>
-                            <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
-                            <span style="display:block;">This area is reserved for lots of information as needed.</span>
+                            <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                            <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Mike</span>
+                            <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                            <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Brady</span>
+                            <input ng-show="edit" class="form-control" type="text" placeholder="Address 1">
+                            <span ng-hide="edit" style="display:block;">4222 clinton Way</span>
+                            <input ng-show="edit" class="form-control" type="text" placeholder="Address 2">
+                            <span ng-hide="edit" style="display:block;">4222 clinton Way</span>
+                            <input ng-show="edit" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Zip Code">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-3">55555</span>
+                            <input ng-show="edit" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="City">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-3">Los Angeles</span>
+                            <input ng-show="edit" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="State">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-3">CA</span>
+                            <input ng-show="edit" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Phone Number">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-3">555-555-5555</span>
+                            <textarea ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
+                            <span ng-hide="edit" style="display:block;">This area is reserved for lots of information as needed.</span>
                             <!--edit / close buttons -->
-                            <button id="edit" type="button" class="btn btn-danger">Edit</button>
-                            <button id="close" type="button" class="btn btn-danger">Close</button>
+                            <button ng-click="edit = !edit" id="edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
                         </form>
 
                     </div>
@@ -136,45 +129,68 @@
                     <!--well -->
                     <div class="well well-sm">
                         <form>
-                            <span class="col-md-4 col-sm-4 col-xs-4">Greg</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">Brady</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">04/08/1988</span>
-                            <span style="display:block;">This is some more information about this person</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">Marcia</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">Brady</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">05/09/1989</span>
-                            <span style="display:block;">This is some more information about this person</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">Peter</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">Brady</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">05/09/1989</span>
-                            <span style="display:block;">This is some more information about this person</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">Jan</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">Brady</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">05/09/1989</span>
-                            <span style="display:block;">This is some more information about this person</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">Bobby</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">Brady</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">05/09/1989</span>
-                            <span style="display:block;">This is some more information about this person</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">Cindy</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">Brady</span>
-                            <span class="col-md-4 col-sm-4 col-xs-4">05/09/1989</span>
-                            <span style="display:block;">This is some more information about this person</span>
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">Greg</span>
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">Brady</span>
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">04/08/1988</span>
+                            <input ng-show="edit"  class="form-control" type="date" placeholder="Birthday">
+                            <span ng-hide="edit" style="display:block;">This is some more information about this person</span>
+                            <textarea ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">Marcia</span>
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">Brady</span>
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">05/09/1989</span>
+                            <input ng-show="edit"  class="form-control" type="date" placeholder="Birthday">
+                            <span ng-hide="edit" style="display:block;">This is some more information about this person</span>
+                            <textarea ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">Peter</span>
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">Brady</span>
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">05/09/1989</span>
+                            <input ng-show="edit"  class="form-control" type="date" placeholder="Birthday">
+                            <span ng-hide="edit" tyle="display:block;">This is some more information about this person</span>
+                            <textarea ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">Jan</span>
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">Brady</span>
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">05/09/1989</span>
+                            <input ng-show="edit"  class="form-control" type="date" placeholder="Birthday">
+                            <span ng-hide="edit" style="display:block;">This is some more information about this person</span>
+                            <textarea ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">Bobby</span>
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">Brady</span>
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">05/09/1989</span>
+                            <input ng-show="edit"  class="form-control" type="date" placeholder="Birthday">
+                            <span ng-hide="edit" style="display:block;">This is some more information about this person</span>
+                            <textarea ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">Cindy</span>
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">Brady</span>
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                            <span ng-hide="edit" class="col-md-4 col-sm-4 col-xs-4">05/09/1989</span>
+                            <input ng-show="edit"  class="form-control" type="date" placeholder="Birthday">
+                            <span ng-hide="edit" style="display:block;">This is some more information about this person</span>
+                            <textarea ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
 
                             <!--shows upon editing\/\/\/-->
 
-                            <!--<button id="addKid" type="button" class="btn btn-danger">+</button>-->
-                            <!--<hr/>-->
+                            <button ng-show="edit" id="addKid" type="button" class="btn btn-danger">+</button>
+                            <hr/>
 
-                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">-->
-                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">-->
-                            <!--<input class="form-control" type="date" placeholder="Birthday">-->
-                            <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                            <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                            <input ng-show="edit"  class="form-control" type="date" placeholder="Birthday">
+                            <textarea ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
 
                         </form>
                         <!--edit / close buttons -->
-                        <button id="edit" type="button" class="btn btn-danger">Edit</button>
-                        <button id="close" type="button" class="btn btn-danger">Close</button>
+                        <button ng-click="edit = !edit" id="edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
                     </div>
                 </div>
                 <!--donation tab-->
@@ -203,16 +219,15 @@
                             </tr>
                         </table>
                         <!--edit / close buttons -->
-                        <button id="edit" type="button" class="btn btn-danger">Edit</button>
+                        <button ng-click="edit = !edit" id="edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
 
                         <!--shows when editable\/\/\/ -->
 
-                        <!--<label for="donation">Add Donation</label>-->
-                        <!--<button id="addDonation" type="button" class="btn btn-danger">+</button>-->
-                        <!--<input class="form-control" type="date" placeholder="Date">-->
-                        <!--<input class="form-control" type="text" placeholder="Amount">-->
-                        <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
-                        <button id="close" type="button" class="btn btn-danger">Close</button>
+                        <label ng-show="edit" for="donation">Add Donation</label>
+                        <button ng-show="edit" id="addDonation" type="button" class="btn btn-danger">+</button>
+                        <input ng-show="edit" class="form-control" type="date" placeholder="Date">
+                        <input ng-show="edit" class="form-control" type="text" placeholder="Amount">
+                        <textarea ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
                     </div>
                 </div>
             </div>
@@ -244,30 +259,30 @@
 
                         <form>
                             <legend>Corporate Information</legend>
-                            <!--<input name="corpName" class="form-control" type="text" placeholder="Corporation Name">-->
-                            <span style="display:block;">3M</span>
-                            <!--<input name="address1" class="form-control" type="text" placeholder="Address 1">-->
-                            <span style="display:block;">345 Pleasant Dr</span>
-                            <!--<input name="address2"class="form-control" type="text" placeholder="Address 2">-->
-                            <span style="display:block;">Ste 4</span>
-                            <!--<input name="zip"class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">-->
-                            <span class="col-xs-6 col-sm-4">55323</span>
-                            <!--<input name="city"class="col-xs-6 col-sm-4" type="text" placeholder="City">-->
-                            <span class="col-xs-6 col-sm-4">St Paul</span>
-                            <!--<input name="state"class="col-xs-6 col-sm-4" type="text" placeholder="State">-->
-                            <span class="col-xs-6 col-sm-4">MN</span>
-                            <!--<input name="phone"class="col-xs-6 col-sm-4" type="text" placeholder="Phone">-->
-                            <span class="col-xs-6 col-sm-4">651-495-4928</span>
-                            <!--<input name="extPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Ext">-->
-                            <span class="col-xs-6 col-sm-4">352</span>
-                            <!--<input name="email"class="col-xs-6 col-sm-4" type="text" placeholder="Email">-->
-                            <span class="col-xs-6 col-sm-4">3M@gmail.com</span>
-                            <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
-                            <span style="display:block;">This is some more information about this person</span>
+                            <input ng-show="edit" name="corpName" class="form-control" type="text" placeholder="Corporation Name">
+                            <span ng-hide="edit" style="display:block;">3M</span>
+                            <input ng-show="edit" name="address1" class="form-control" type="text" placeholder="Address 1">
+                            <span ng-hide="edit" style="display:block;">345 Pleasant Dr</span>
+                            <input ng-show="edit" name="address2"class="form-control" type="text" placeholder="Address 2">
+                            <span ng-hide="edit" style="display:block;">Ste 4</span>
+                            <input ng-show="edit" name="zip"class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">55323</span>
+                            <input ng-show="edit" name="city"class="col-xs-6 col-sm-4" type="text" placeholder="City">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">St Paul</span>
+                            <input ng-show="edit" name="state"class="col-xs-6 col-sm-4" type="text" placeholder="State">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">MN</span>
+                            <input ng-show="edit" ng-show="edit" name="phone"class="col-xs-6 col-sm-4" type="text" placeholder="Phone">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">651-495-4928</span>
+                            <input ng-show="edit" name="extPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Ext">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">352</span>
+                            <input ng-show="edit" name="email"class="col-xs-6 col-sm-4" type="text" placeholder="Email">
+                            <span ng-hide="edit" class="col-xs-6 col-sm-4">3M@gmail.com</span>
+                            <textarea ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
+                            <span ng-hide="edit" style="display:block;">This is some more information about this person</span>
 
                         </form>
                         <!--edit button -->
-                        <button id="edit" type="button" class="btn btn-danger">Edit</button>
+                        <button ng-click="edit = !edit" id="edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
                     </div>
                 </div>
                 <!--emergencty contact tab-->
@@ -276,18 +291,18 @@
                     <div class="well well-sm">
                         <form>
                             <legend>Contact Information</legend>
-                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">-->
-                            <span class="col-md-6 col-sm-6 col-xs-6">Frank</span>
-                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">-->
-                            <span class="col-md-6 col-sm-6 col-xs-6">Bigs</span>
-                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone Number">-->
-                            <span class="col-md-6 col-sm-6 col-xs-6">651-385-4958</span>
-                            <!--<input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">-->
-                            <span class="col-md-6 col-sm-6 col-xs-6">Frankbigs@gmail.com</span>
-                            <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
-                            <span style="display:block;">This is some more information about this person</span>
+                            <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                            <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Frank</span>
+                            <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                            <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Bigs</span>
+                            <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone Number">
+                            <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">651-385-4958</span>
+                            <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">
+                            <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Frankbigs@gmail.com</span>
+                            <textarea ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
+                            <span ng-hide="edit" style="display:block;">This is some more information about this person</span>
                             <!--next buttons -->
-                            <button id="edit" type="button" class="btn btn-danger">Edit</button>
+                            <button ng-click="edit = !edit" id="edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
                         </form>
 
                     </div>
@@ -308,13 +323,13 @@
                         <td>something interesting</td>
                         </tr>
                         </table>
-                        <!--<label for="donation">Add Donation</label>-->
-                        <!--<button id="addDonation" type="button" class="btn btn-danger">+</button>-->
-                        <!--<input class="form-control" type="date" placeholder="Date">-->
-                        <!--<input class="form-control" type="text" placeholder="Amount">-->
-                        <!--<textarea rows="4" class="form-control" placeholder="Notes"></textarea>-->
+                        <label ng-show="edit" for="donation">Add Donation</label>
+                        <button ng-show="edit" id="addDonation" type="button" class="btn btn-danger">+</button>
+                        <input ng-show="edit" class="form-control" type="date" placeholder="Date">
+                        <input ng-show="edit" class="form-control" type="text" placeholder="Amount">
+                        <textarea ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
                         <!--save / close buttons -->
-                        <button id="edit" type="button" class="btn btn-danger">Edit</button>
+                        <button ng-click="edit = !edit" id="edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
                     </div>
                 </div>
             </div>
