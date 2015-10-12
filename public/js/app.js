@@ -1,5 +1,5 @@
 
-var app = angular.module('leo', ['ngRoute']);
+var app = angular.module('leo', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
 
 app.config(['$routeProvider',
     function($routeProvider) {
@@ -13,22 +13,193 @@ app.config(['$routeProvider',
             when('/register', {
                 templateUrl: 'static/register.html'
             }).
-            when('/tab2', {
-                templateUrl: 'tab2.html'
+            when('/addfamily', {
+                templateUrl: 'private/addfamily.html'
             }).
-            when('/tab1', {
-                templateUrl: 'tab1.html'
-            }).when('/tab3', {
-                templateUrl: 'tab3.html'
-            }).
-            when('/tab4', {
-                templateUrl: 'tab4.html'
+            when('/addcorp', {
+                templateUrl: 'private/addcorp.html'
             }).
             otherwise({
-                redirectTo: '/'
+                redirectTo: '/search'
             });
+
     }]);
 
+
+//edit corporation modal template
+app.controller('editCorpCtrl', function ($scope, $uibModal, $log) {
+
+    $scope.animationsEnabled = true;
+
+    $scope.openCorp = function (size) {
+
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'private/editcorp.html',
+            controller: 'ModalInstanceCtrl',
+            size: size,
+            resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+
+    $scope.toggleAnimation = function () {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+
+});
+
+//edit family modal template
+app.controller('editFamilyCtrl', function ($scope, $uibModal, $log) {
+
+    $scope.animationsEnabled = true;
+
+    $scope.open = function (size) {
+
+        var modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'private/editfamily.html',
+            controller: 'ModalInstanceCtrl',
+            size: size,
+            resolve: {
+                items: function () {
+                    return $scope.items;
+                }
+            }
+        });
+
+        modalInstance.result.then(function (selectedItem) {
+            $scope.selected = selectedItem;
+        }, function () {
+            $log.info('Modal dismissed at: ' + new Date());
+        });
+    };
+
+    $scope.toggleAnimation = function () {
+        $scope.animationsEnabled = !$scope.animationsEnabled;
+    };
+
+});
+
+// Please note that $modalInstance represents a modal window (instance) dependency.
+// It is not the same as the $uibModal service used above.
+
+//needed for modal?? pretty sure
+app.controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
+
+    $scope.ok = function () {
+        $modalInstance.close($scope.selected.item);
+    };
+
+    $scope.cancel = function () {
+        $modalInstance.dismiss('cancel');
+    };
+});
+
+//dummy data edit family additional members
+app.controller('additionalCtrl', [ '$scope', function($scope){
+    $scope.additional = {
+        fName: 'Greg',
+        lName: 'Brady',
+        //bDay: '1983-03-05',
+        notes: 'This area is reserved for information as needed'
+    };
+    $scope.set = function(edit_info) {
+        this.contact.fName = edit_info,
+        this.contact.lName = edit_info,
+        this.contact.bDay = edit_info,
+        this.contact.notes = edit_info
+    };
+}]);
+
+//dummy data for family contact information
+app.controller('contactCtrl', ['$scope', function($scope){
+    $scope.contact = {
+        fName: 'Mike',
+        lName: 'Brady',
+        address1: '4222 Clinton Way',
+        address2: '4222 Clinton Way',
+        zip: '55555',
+        city: 'Los Angeles',
+        state: 'CA',
+        phone: '555-555-5555',
+        cell: '555-555-5555',
+        email: 'mike@gmail.com',
+        notes: 'This area is reserved for information as needed',
+        yfName: 'Carol',
+        ylName: 'Brady',
+        yaddress1: '4222 Clinton Way',
+        yaddress2: '4222 Clinton Way',
+        yzip: '55555',
+        ycity: 'Los Angeles',
+        ystate: 'CA',
+        yphone: '555-555-5555',
+        ycell: '555-555-5555',
+        yemail: 'carol@gmail.com',
+        ynotes: 'This are is reserved for information as needed'
+    };
+    $scope.set = function(edit_info) {
+        this.contact.fName = edit_info,
+        this.contact.lName = edit_info,
+        this.contact.address1 = edit_info,
+        this.contact.address2 = edit_info,
+        this.contact.zip = edit_info,
+        this.contact.city = edit_info,
+        this.contact.state = edit_info,
+        this.contact.phone = edit_info,
+        this.contact.email = edit_info,
+        this.contact.notes = edit_info,
+        this.contact.yfName = edit_info,
+        this.contact.ylName = edit_info,
+        this.contact.yaddress1 = edit_info,
+        this.contact.yaddress2 = edit_info,
+        this.contact.yzip = edit_info,
+        this.contact.ycity = edit_info,
+        this.contact.ystate = edit_info,
+        this.contact.yphone = edit_info,
+        this.contact.ynotes = edit_info
+    };
+
+}]);
+
+//dummy data for family emergency contact information
+app.controller('emergencyCtrl',['$scope', function($scope){
+    $scope.emergency = {
+                        fName: 'Mike',
+                        lName: 'Brady',
+                        address1: '4222 Clinton Way',
+                        address2: '4222 Clinton Way',
+                        zip: '55555',
+                        city: 'Los Angeles',
+                        state: 'CA',
+                        phone: '555-555-5555',
+                        notes: 'This are is reserved for information as needed'
+                        };
+    $scope.set = function(edit_info){
+        this.emergency.fName = edit_info,
+        this.emergency.lName = edit_info,
+        this.emergency.address1 = edit_info,
+        this.emergency.address2 = edit_info,
+        this.emergency.zip = edit_info,
+        this.emergency.city = edit_info,
+        this.emergency.state = edit_info,
+        this.emergency.phone = edit_info,
+        this.emergency.notes = edit_info
+
+    };
+}]);
+
+
+//controllers for login
 app.controller('loginCtrl', ['$scope', '$http', 'authService', '$location', '$rootScope', function($scope, $http, authService, $location, $rootScope){
     $scope.submit = function(){
         $http.post('/login', $scope.form)
@@ -113,6 +284,7 @@ app.factory('authInterceptor', ['$q', '$location', 'authService', function ($q, 
     };
 }]);
 
+//register controller
 app.controller('registerCtrl', [ '$scope', '$http', '$location',  function ($scope, $http, $location) {
     $scope.submit = function () {
         console.log("registerCtrl");
