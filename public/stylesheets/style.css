@@ -6,19 +6,19 @@ body {
 span {
   border: 1px outset black;
 }
+header{
+  text-align: center;
+}
 a {
   color: #00B7FF;
 }
+
 .login-container .input-group {
   padding: 10px;
   border: 1px solid black;
   margin: 40px auto 40px auto;
 }
-.search-container{
-  text-align: center;
-  margin: 0 auto 0 auto;
-  float: center;
-}
+
 table {
   width: 90%;
   margin: 0 auto;
@@ -41,8 +41,14 @@ td {
 }
 .tab-content{
   padding: 30px;
-  background-color: lightblue;
 }
 .tab-content button {
   margin: 20px;
+}
+.header-logo{
+  text-align: center;
+}
+.header-logo img{
+  height: 100px;
+  width: auto;
 }

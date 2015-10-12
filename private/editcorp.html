@@ -1,0 +1,74 @@
+<uib-tabset justified="true">
+    <uib-tab heading="Corporate Information">
+        <div class="well well-sm">
+            <form>
+                <legend>Corporate Information</legend>
+                <input ng-show="edit" name="corpName" class="form-control" type="text" placeholder="Corporation Name">
+                <span ng-hide="edit" style="display:block;">3M</span>
+                <input ng-show="edit" name="address1" class="form-control" type="text" placeholder="Address 1">
+                <span ng-hide="edit" style="display:block;">345 Pleasant Dr</span>
+                <input ng-show="edit" name="address2"class="form-control" type="text" placeholder="Address 2">
+                <span ng-hide="edit" style="display:block;">Ste 4</span>
+                <input ng-show="edit" name="zip"class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">55323</span>
+                <input ng-show="edit" name="city"class="col-xs-6 col-sm-4" type="text" placeholder="City">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">St Paul</span>
+                <input ng-show="edit" name="state"class="col-xs-6 col-sm-4" type="text" placeholder="State">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">MN</span>
+                <input ng-show="edit" ng-show="edit" name="phone"class="col-xs-6 col-sm-4" type="text" placeholder="Phone">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">651-495-4928</span>
+                <input ng-show="edit" name="extPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Ext">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">352</span>
+                <input ng-show="edit" name="email"class="col-xs-6 col-sm-4" type="text" placeholder="Email">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">3M@gmail.com</span>
+                <textarea ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
+                <span ng-hide="edit" style="display:block;">This is some more information about this person</span>
+            </form>
+            <!--edit button -->
+            <button ng-click="edit = !edit" id="edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
+        </div>
+    </uib-tab>
+    <uib-tab heading="Contact Information">
+        <div class="well well-sm">
+            <form>
+                <legend>Contact Information</legend>
+                <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Frank</span>
+                <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Bigs</span>
+                <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone Number">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">651-385-4958</span>
+                <input ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Frankbigs@gmail.com</span>
+                <textarea ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
+                <span ng-hide="edit" style="display:block;">This is some more information about this person</span>
+                <!--next buttons -->
+                <button ng-click="edit = !edit" id="edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
+            </form>
+        </div>
+    </uib-tab>
+    <uib-tab heading="Donations">
+        <div class="well well-sm">
+            <!--dummy donation data-->
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Amount</th>
+                    <th>Notes</th>
+                </tr>
+                <tr>
+                    <td>today</td>
+                    <td>$100</td>
+                    <td>something interesting</td>
+                </tr>
+            </table>
+            <label ng-show="edit" for="donation">Add Donation</label>
+            <button ng-show="edit" id="addDonation" type="button" class="btn btn-danger">+</button>
+            <input ng-show="edit" class="form-control" type="date" placeholder="Date">
+            <input ng-show="edit" class="form-control" type="text" placeholder="Amount">
+            <textarea ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
+            <!--save / close buttons -->
+            <button ng-click="edit = !edit" id="edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
+        </div>
+    </uib-tab>
+</uib-tabset>
