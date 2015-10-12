@@ -1,20 +1,6 @@
-<ul class="nav nav-tabs nav-justified">
-    <li class="active">
-        <a href="#add5" data-toggle="tab">Corporate Information</a>
-    </li>
-    <li>
-        <a href="#add6" data-toggle="tab">Contact Information</a>
-    </li>
-    <li>
-        <a href="#add8" data-toggle="tab">Donations</a>
-    </li>
-</ul>
-<div class="tab-content">
-    <!--tab 1 corporate contact information-->
-    <div class="tab-pane active" id="add5">
-        <!--well-->
+<uib-tabset justified="true">
+    <uib-tab heading="Corporate Information">
         <div class="well well-sm">
-
             <form>
                 <legend>Corporate Information</legend>
                 <input name="corpName" class="form-control" type="text" placeholder="Corporation Name">
@@ -28,13 +14,11 @@
                 <input name="email"class="col-xs-6 col-sm-4" type="text" placeholder="Email">
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
             </form>
-                <!--edit button -->
-                <button id="edit" type="button" class="btn btn-danger">Next</button>
+            <!--edit button -->
+            <button id="edit" type="button" class="btn btn-danger">Next</button>
         </div>
-    </div>
-    <!--emergencty contact tab-->
-    <div class="tab-pane" id="add6">
-        <!--well-->
+    </uib-tab>
+    <uib-tab heading="Contact Information">
         <div class="well well-sm">
             <form>
                 <legend>Contact Information</legend>
@@ -46,25 +30,10 @@
                 <!--next buttons -->
                 <button id="edit" type="button" class="btn btn-danger">Next</button>
             </form>
-
         </div>
-    </div>
-    <div class="tab-pane" id="add8">
-        <!--well-->
+    </uib-tab>
+    <uib-tab heading="Donations">
         <div class="well well-sm">
-            <!--dummy donation data-->
-            <!--<table>-->
-            <!--<tr>-->
-            <!--<th>Date</th>-->
-            <!--<th>Amount</th>-->
-            <!--<th>Notes</th>-->
-            <!--</tr>-->
-            <!--<tr>-->
-            <!--<td>today</td>-->
-            <!--<td>$100</td>-->
-            <!--<td>something interesting</td>-->
-            <!--</tr>-->
-            <!--</table>-->
             <label for="donation">Add Donation</label>
             <button id="addDonation" type="button" class="btn btn-danger">+</button>
             <input class="form-control" type="date" placeholder="Date">
@@ -73,5 +42,5 @@
             <!--save / close buttons -->
             <button id="edit" type="button" class="btn btn-danger">Save</button>
         </div>
-    </div>
-</div>
+    </uib-tab>
+</uib-tabset>

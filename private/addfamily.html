@@ -1,25 +1,6 @@
-
-<!--tab navigation-->
-<ul class="nav nav-tabs nav-justified">
-    <li class="active">
-        <a href="#add5" data-toggle="tab">Contact Information</a>
-    </li>
-    <li>
-        <a href="#add6" data-toggle="tab">Emergency Contact</a>
-    </li>
-    <li>
-        <a href="#add7" data-toggle="tab">Additional Members</a>
-    </li>
-    <li>
-        <a href="#add8" data-toggle="tab">Donations</a>
-    </li>
-</ul>
-<div class="tab-content">
-    <!--tab 1 Adult contact information-->
-    <div class="tab-pane active" id="add5">
-        <!--well-->
+<uib-tabset justified="true">
+    <uib-tab heading="Contact Info">
         <div class="well well-sm">
-
             <form>
                 <legend>Adult 1</legend>
                 <input name="firstName" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
@@ -34,7 +15,6 @@
                 <input name="email"class="col-xs-6 col-sm-4" type="text" placeholder="Email">
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
             </form>
-
             <form>
                 <legend>Adult 2</legend>
                 <input name="firstName"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
@@ -50,14 +30,10 @@
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
                 <!--next button -->
                 <button id="edit" type="button" class="btn btn-danger">Next</button>
-
             </form>
-
         </div>
-    </div>
-    <!--emergencty contact tab-->
-    <div class="tab-pane" id="add6">
-        <!--well-->
+    </uib-tab>
+    <uib-tab heading="Emergency Contact">
         <div class="well well-sm">
             <form>
                 <legend>Emergency Contact Information</legend>
@@ -73,45 +49,27 @@
                 <!--next buttons -->
                 <button id="edit" type="button" class="btn btn-danger">Next</button>
             </form>
-
         </div>
-    </div>
-    <div class="tab-pane" id="add7">
-        <!--well-->
+    </uib-tab>
+    <uib-tab heading="Additional Members">
         <div class="well well-sm">
             <!--addition members tab-->
             <form>
                 <legend>Add Children</legend>
                 <button id="addKid" type="button" class="btn btn-danger">+</button>
                 <hr/>
-
                 <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
                 <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
                 <input class="form-control" type="date" placeholder="Birthday">
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
-
             </form>
-            <!--edit / close buttons -->
+            <!--next / close buttons -->
             <button id="edit" type="button" class="btn btn-danger">Next</button>
             <button id="close" type="button" class="btn btn-danger">Close</button>
         </div>
-    </div>
-    <div class="tab-pane" id="add8">
-        <!--well-->
+    </uib-tab>
+    <uib-tab heading="Donations">
         <div class="well well-sm">
-            <!--dummy donation data-->
-            <!--<table>-->
-                <!--<tr>-->
-                    <!--<th>Date</th>-->
-                    <!--<th>Amount</th>-->
-                    <!--<th>Notes</th>-->
-                <!--</tr>-->
-                <!--<tr>-->
-                    <!--<td>today</td>-->
-                    <!--<td>$100</td>-->
-                    <!--<td>something interesting</td>-->
-                <!--</tr>-->
-            <!--</table>-->
             <label for="donation">Add Donation</label>
             <button id="addDonation" type="button" class="btn btn-danger">+</button>
             <input class="form-control" type="date" placeholder="Date">
@@ -121,5 +79,5 @@
             <button id="edit" type="button" class="btn btn-danger">Save</button>
             <button id="close" type="button" class="btn btn-danger">Close</button>
         </div>
-    </div>
-</div>
+    </uib-tab>
+</uib-tabset>
