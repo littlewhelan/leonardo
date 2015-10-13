@@ -13,6 +13,9 @@ app.config(['$routeProvider',
             when('/register', {
                 templateUrl: 'static/register.html'
             }).
+            when('/contactList', {
+                templateUrl: 'private/contactList.html'
+            }).
             when('/addfamily', {
                 templateUrl: 'private/addfamily.html'
             }).
@@ -296,3 +299,72 @@ app.controller('registerCtrl', [ '$scope', '$http', '$location',  function ($sco
             });
     }
 }]);
+//service for sharing search data across controllers
+app.service('searchSharedData', function () {
+    var results = {
+        //search results
+    };
+    return results;
+});
+
+//controller for handling the search results
+app.controller('SearchResultController', function('SharedDataService',$scope, $http)
+{
+    //search happens hereish
+    {
+        $http.get('').
+            success(function (data, status, headers, config) {
+                $scope.results = data;
+            }).
+            error(function (data, status, headers, config) {
+                // log error
+            });
+    }
+})
+
+.service('contactListData', function(){
+var includedEmails = [],
+var newContactList = []
+
+    //push the included info to the email list
+    $scope.toggleChecked = function (id) {
+        $scope.checked.push([id]);
+    };
+})
+.controller('newContactList', function($scope, $http)
+    {
+        $http.post('https://api.constantcontact.com/v2/activities/addcontacts?api_key=u8w59ztxe3294adczfvn7k9e').
+        success(function (data, status, headers, config) {
+
+            $scope.id = data.id;
+        }).
+            error(function (data, status, headers, config) {
+                // log error
+            });
+    });
+
+
+app.controller('contactListController', function($scope, $http)
+{
+    var importDataArray =[];
+    var listEnd = JSON.stringify(list: [currentList],column_names:["EMAIL","FIRST NAME", "LAST NAME", "CITY","COMPANY NAME"]);
+
+
+    //Post Data to Constant Contact
+    $scope.sendPost = function() {
+        var data = $.param({
+            json: {importData: importDataArray,
+                listEnd}
+        })
+    });
+
+
+    $http.post('https://api.constantcontact.com/v2/lists?api_key=u8w59ztxe3294adczfvn7k9e').
+        success(function (data, status, headers, config) {
+            $scope.id = data.id;
+        }).
+        error(function (data, status, headers, config) {
+            // log error
+        });
+
+});

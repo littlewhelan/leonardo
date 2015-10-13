@@ -19,6 +19,18 @@
 </div>
 
 <div class="table">
+    <div class="table" ng-controller="SearchResultController as results">
+        <table class="well well-sm">
+            <tr>
+                <th>Name/Main Contact</th>
+                <th>Phone</th>
+                <th>Email</th>
+            </tr>
+            <tr ng-repeat="result in results" ng-class="result.id">
+            <td>{{result.firstName + " " + result.lastName}}</td>
+            <td>{{result.phone}}</td>
+            <td>{{result.email}}</td>
+            </tr>
 
     <!--hover class search results-->
     <table ng-controller="editCorpCtrl" class="table-hover table table-bordered">

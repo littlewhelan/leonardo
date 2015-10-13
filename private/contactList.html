@@ -1,0 +1,41 @@
+<div class="newContactList container-fluid">
+    <div id="simple" ng-controller="newContactListController">
+        <p>create a new contact list</p>
+        <input ng-init="message='Create new contact list'" ng-model="message" >
+        <button ng-click="postList(message);">Create</button>
+    </div>
+</div>
+<div class="search-container fluid-container">
+    <div class="row">
+        <div class="input-group">
+            <div class="input-group-btn">
+                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Search By<span class="caret"></span></button>
+                <ul class="dropdown-menu">
+                    <li><a href="#">Name</a></li>
+                    <li><a href="#">Zip Code</a></li>
+                    <li><a href="#">Phone</a></li>
+                    <li><a href="#">Age</a></li>
+                    <li><a href="#">Corporation</a></li>
+                </ul>
+            </div>
+            <input type="text" class="form-control" aria-label="...">
+        </div>
+    </div>
+</div>
+
+<div class="table">
+    <div class="table" ng-controller="contactListController as results">
+        <table class="well well-sm">
+            <tr>
+                <th>Name/Main Contact</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>add to contact list</th>
+            </tr>
+            <tr ng-repeat="result in results" ng-class="result.id">
+                <td>{{result.firstName + " " + result.lastName}}</td>
+                <td>{{result.phone}}</td>
+                <td>{{result.email}}</td>
+               <td><input type="checkbox" id="result.id"></td>
+            </tr>
