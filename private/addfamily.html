@@ -13,6 +13,7 @@
                 <input name="mainPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">
                 <input name="cellPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">
                 <input name="email"class="col-xs-6 col-sm-4" type="text" placeholder="Email">
+                <input name="company" class="form-control" type="text" placeholder="Company">
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
             </form>
             <form>
@@ -27,9 +28,11 @@
                 <input name="mainPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">
                 <input name="cellPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">
                 <input name="email"class="col-xs-6 col-sm-4" type="text" placeholder="Email">
+                <input name="company" class="form-control" type="text" placeholder="Company">
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
                 <!--next button -->
-                <button id="edit" type="button" class="btn btn-danger">Next</button>
+                <button class="btn btn-primary">Save</button>
+                <button class="btn btn-danger">Cancle</button>
             </form>
         </div>
     </uib-tab>
@@ -47,7 +50,8 @@
                 <input class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Phone Number">
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
                 <!--next buttons -->
-                <button id="edit" type="button" class="btn btn-danger">Next</button>
+                <button class="btn btn-primary">Save</button>
+                <button class="btn btn-danger">Cancle</button>
             </form>
         </div>
     </uib-tab>
@@ -60,12 +64,14 @@
                 <hr/>
                 <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
                 <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                <input class="form-control" type="date" placeholder="Birthday">
+                <input class="col-md-6 col-sm-6 col-xs-6" type="date" placeholder="Birthday">
+                <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School">
+
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
             </form>
             <!--next / close buttons -->
-            <button id="edit" type="button" class="btn btn-danger">Next</button>
-            <button id="close" type="button" class="btn btn-danger">Close</button>
+            <button class="btn btn-primary">Save</button>
+            <button class="btn btn-danger">Cancle</button>
         </div>
     </uib-tab>
     <uib-tab heading="Donations">
@@ -76,8 +82,8 @@
             <input class="form-control" type="text" placeholder="Amount">
             <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
             <!--save / close buttons -->
-            <button id="edit" type="button" class="btn btn-danger">Save</button>
-            <button id="close" type="button" class="btn btn-danger">Close</button>
+            <button class="btn btn-primary">Save</button>
+            <button class="btn btn-danger">Cancle</button>
         </div>
     </uib-tab>
 </uib-tabset>
