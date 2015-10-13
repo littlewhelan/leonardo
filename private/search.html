@@ -1,11 +1,11 @@
 <!--Search Bar-->
 <div class="search-container fluid-container">
         <div class="row">
-                <div class="input-group">
+                <div class="input-group" ng-controller="searchFunction">
                     <div class="input-group-btn">
                         <button type="button" class="btn btn-default" >Search</button>
                     </div>
-                    <input type="text" class="form-control" aria-label="...">
+                    <input type="text" ng-model="formInput.data" id="search" class="form-control" aria-label="...">
                 </div>
         </div>
 </div>

@@ -29,6 +29,25 @@ app.config(['$routeProvider',
     }]);
 
 
+//This should get the search item
+app.controller('searchFunction',function ($scope, $http) {
+    $scope.formInput={};
+
+    $scope.searchBtn = function () {
+        console.log($scope.formInput);
+        $http({
+            method: 'GET',
+            url: '../search',
+            params:{search:$scope.formInput.data}
+        }).then(function (response) {
+            alert('you clicked the search button');
+            $scope.search = $scope.formInput;
+            console.log($scope.formInput)
+        });
+    };
+
+});
+
 //edit corporation modal template
 app.controller('editCorpCtrl', function ($scope, $uibModal, $log) {
 
