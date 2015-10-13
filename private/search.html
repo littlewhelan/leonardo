@@ -3,48 +3,35 @@
         <div class="row">
                 <div class="input-group">
                     <div class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Search By<span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Name</a></li>
-                            <li><a href="#">Zip Code</a></li>
-                            <li><a href="#">Phone</a></li>
-                            <li><a href="#">Age</a></li>
-                            <li><a href="#">Corporation</a></li>
-                        </ul>
+                        <button type="button" class="btn btn-default" >Search</button>
                     </div>
                     <input type="text" class="form-control" aria-label="...">
                 </div>
         </div>
 </div>
-
-<div class="table">
-
     <!--hover class search results-->
-    <table ng-controller="editCorpCtrl" class="table-hover table table-bordered">
+<div class="table">
+    <table class="table-hover table table-bordered">
         <tr>
             <th>Name</th>
+            <th>Company</th>
             <th>Phone</th>
             <th>Email</th>
         </tr>
         <!--hyperlink buttons-->
-        <tr ng-click="openCorp('lg')">
+        <tr ng-controller="editCorpCtrl" ng-click="openCorp('lg')">
+            <td></td>
             <td>3m</td>
             <td>218-383-2847</td>
             <td>3m@gmail.com</td>
         </tr>
-    </table>
-    <table ng-controller="editFamilyCtrl" class="table-hover table table-bordered">
-        <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-        </tr>
         <!--hyperlink buttons-->
-        <tr ng-click="open('lg')">
+        <tr ng-controller="editFamilyCtrl" ng-click="open('lg')">
             <td>Bart Simpson</td>
+            <td></td>
             <td>218-383-2847</td>
             <td>Bart@gmail.com</td>
         </tr>
     </table>
 </div>
+
