@@ -1,22 +1,15 @@
 <!--Search Bar-->
 <div class="search-container fluid-container">
         <div class="row">
-                <div class="input-group">
+                <div class="input-group" ng-controller="searchFunction">
                     <div class="input-group-btn">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">Search By<span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Name</a></li>
-                            <li><a href="#">Zip Code</a></li>
-                            <li><a href="#">Phone</a></li>
-                            <li><a href="#">Age</a></li>
-                            <li><a href="#">Corporation</a></li>
-                        </ul>
+                        <button type="button" ng-click="searchBtn()" class="btn btn-default" >Search</button>
                     </div>
-                    <input type="text" class="form-control" aria-label="...">
+                    <input type="text" ng-model="formInput.data" id="search" class="form-control" aria-label="...">
                 </div>
         </div>
 </div>
+
 
 <div class="table">
     <div class="table" ng-controller="SearchResultController as results">
@@ -32,31 +25,30 @@
             <td>{{result.email}}</td>
             </tr>
 
+
     <!--hover class search results-->
-    <table ng-controller="editCorpCtrl" class="table-hover table table-bordered">
-        <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-        </tr>
-        <!--hyperlink buttons-->
-        <tr ng-click="openCorp('lg')">
-            <td>3m</td>
-            <td>218-383-2847</td>
-            <td>3m@gmail.com</td>
-        </tr>
-    </table>
-    <table ng-controller="editFamilyCtrl" class="table-hover table table-bordered">
-        <tr>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Email</th>
-        </tr>
-        <!--hyperlink buttons-->
-        <tr ng-click="open('lg')">
-            <td>Bart Simpson</td>
-            <td>218-383-2847</td>
-            <td>Bart@gmail.com</td>
-        </tr>
-    </table>
-</div>
+<!--<div class="table">-->
+    <!--<table class="table-hover table table-bordered">-->
+        <!--<tr>-->
+            <!--<th>Name</th>-->
+            <!--<th>Company</th>-->
+            <!--<th>Phone</th>-->
+            <!--<th>Email</th>-->
+        <!--</tr>-->
+        <!--&lt;!&ndash;hyperlink buttons&ndash;&gt;-->
+        <!--<tr ng-controller="editCorpCtrl" ng-click="openCorp('lg')">-->
+            <!--<td></td>-->
+            <!--<td>3m</td>-->
+            <!--<td>218-383-2847</td>-->
+            <!--<td>3m@gmail.com</td>-->
+        <!--</tr>-->
+        <!--&lt;!&ndash;hyperlink buttons&ndash;&gt;-->
+        <!--<tr ng-controller="editFamilyCtrl" ng-click="open('lg')">-->
+            <!--<td>Bart Simpson</td>-->
+            <!--<td></td>-->
+            <!--<td>218-383-2847</td>-->
+            <!--<td>Bart@gmail.com</td>-->
+        <!--</tr>-->
+    <!--</table>-->
+<!--</div>-->
+

@@ -9,13 +9,13 @@
                 <input name="zip"class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
                 <input name="city"class="col-xs-6 col-sm-4" type="text" placeholder="City">
                 <input name="state"class="col-xs-6 col-sm-4" type="text" placeholder="State">
-                <input name="phone"class="col-xs-6 col-sm-4" type="text" placeholder="Phone">
-                <input name="extPhone"class="col-xs-6 col-sm-4" type="text" placeholder="Ext">
-                <input name="email"class="col-xs-6 col-sm-4" type="text" placeholder="Email">
+                <input name="phone"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone">
+                <input name="email"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
             </form>
             <!--edit button -->
-            <button id="edit" type="button" class="btn btn-danger">Next</button>
+            <button class="btn btn-primary">Save</button>
+            <button class="btn btn-danger">Cancle</button>
         </div>
     </uib-tab>
     <uib-tab heading="Contact Information">
@@ -24,11 +24,13 @@
                 <legend>Contact Information</legend>
                 <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
                 <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone Number">
-                <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">
+                <input class="col-xs-6 col-sm-4" type="text" placeholder="Phone Number">
+                <input class="col-xs-6 col-sm-4" type="text" placeholder="Ext">
+                <input class="col-xs-6 col-sm-4" type="text" placeholder="Email">
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
                 <!--next buttons -->
-                <button id="edit" type="button" class="btn btn-danger">Next</button>
+                <button class="btn btn-primary">Save</button>
+                <button class="btn btn-danger">Cancle</button>
             </form>
         </div>
     </uib-tab>
@@ -40,7 +42,8 @@
             <input class="form-control" type="text" placeholder="Amount">
             <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
             <!--save / close buttons -->
-            <button id="edit" type="button" class="btn btn-danger">Save</button>
+            <button class="btn btn-primary">Save</button>
+            <button class="btn btn-danger">Cancle</button>
         </div>
     </uib-tab>
 </uib-tabset>

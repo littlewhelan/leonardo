@@ -1,16 +1,24 @@
+
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
 }
-span {
-  border: 1px outset black;
+label {
+  font-size: 16px;
+  text-decoration: underline;
 }
+
 header{
   text-align: center;
 }
 a {
   color: #00B7FF;
+}
+td {
+  border: 1px solid black;
+  padding: 5px;
 }
 
 .login-container .input-group {
@@ -26,13 +34,7 @@ table {
 th {
   background-color: lightblue;
 }
-td {
-  border: 1px solid black;
-}
-.table {
-  position: relative;
-  top: 40px;
-}
+
 #close{
   float: right;
 }
@@ -49,6 +51,28 @@ td {
   text-align: center;
 }
 .header-logo img{
-  height: 100px;
   width: auto;
+}
+.table{
+  margin: 20px;
+  width: 90%;
+  position: relative;
+  right: 20px;
+}
+
+.register-container{
+  display: inline-block;
+  text-align: center;
+  margin: 0 auto 0 auto;
+}
+.register-container input{
+  margin: 0 auto 0 auto;
+}
+.block-input {
+  display: block;
+  position: relative;
+  left: 15px;
+}
+.modal{
+  position: absolute;
 }

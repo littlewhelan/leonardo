@@ -22,12 +22,34 @@ app.config(['$routeProvider',
             when('/addcorp', {
                 templateUrl: 'private/addcorp.html'
             }).
+            when('/contactlist', {
+                templateUrl: 'private/contactlist.html'
+            }).
             otherwise({
                 redirectTo: '/search'
             });
 
     }]);
 
+
+//This should get the search item
+app.controller('searchFunction',function ($scope, $http) {
+    $scope.formInput={};
+
+    $scope.searchBtn = function () {
+        console.log($scope.formInput);
+        $http({
+            method: 'GET',
+            url: '../search',
+            params:{search:$scope.formInput.data}
+        }).then(function (response) {
+            alert('you clicked the search button');
+            $scope.search = $scope.formInput;
+            console.log($scope.formInput)
+        });
+    };
+
+});
 
 //edit corporation modal template
 app.controller('editCorpCtrl', function ($scope, $uibModal, $log) {
@@ -137,6 +159,7 @@ app.controller('contactCtrl', ['$scope', function($scope){
         phone: '555-555-5555',
         cell: '555-555-5555',
         email: 'mike@gmail.com',
+        company: '3m',
         notes: 'This area is reserved for information as needed',
         yfName: 'Carol',
         ylName: 'Brady',
@@ -148,6 +171,7 @@ app.controller('contactCtrl', ['$scope', function($scope){
         yphone: '555-555-5555',
         ycell: '555-555-5555',
         yemail: 'carol@gmail.com',
+        ycompany: '3m',
         ynotes: 'This are is reserved for information as needed'
     };
     $scope.set = function(edit_info) {
@@ -160,6 +184,7 @@ app.controller('contactCtrl', ['$scope', function($scope){
         this.contact.state = edit_info,
         this.contact.phone = edit_info,
         this.contact.email = edit_info,
+        this.contact.company = edit_info,
         this.contact.notes = edit_info,
         this.contact.yfName = edit_info,
         this.contact.ylName = edit_info,
@@ -169,6 +194,7 @@ app.controller('contactCtrl', ['$scope', function($scope){
         this.contact.ycity = edit_info,
         this.contact.ystate = edit_info,
         this.contact.yphone = edit_info,
+        this.contact.ycompany = edit_info,
         this.contact.ynotes = edit_info
     };
 
