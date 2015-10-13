@@ -28,18 +28,18 @@ app.config(['$routeProvider',
 
 //This should get the search item
 app.controller('searchFunction',function ($scope, $http) {
-    console.log('this is the search route');
-    $scope.searchBtn = function () {
-        console.log('this is the search route');
+    $scope.formInput={};
 
+    $scope.searchBtn = function () {
+        console.log($scope.formInput);
         $http({
             method: 'GET',
-            url: '../search'
+            url: '../search',
+            params:{search:$scope.formInput.data}
         }).then(function (response) {
             alert('you clicked the search button');
-            $scope.search = response.data;
-            console.log(response.data);
-
+            $scope.search = $scope.formInput;
+            console.log($scope.formInput)
         });
     };
 
