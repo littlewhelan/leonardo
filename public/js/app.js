@@ -31,12 +31,12 @@ app.controller('searchFunction',function ($scope, $http) {
     console.log('this is the search route');
     $scope.searchBtn = function () {
         console.log('this is the search route');
+
         $http({
             method: 'GET',
-            url: '/private/search.html'
+            url: '../search'
         }).then(function (response) {
             alert('you clicked the search button');
-            console.log('this is the search route');
             $scope.search = response.data;
             console.log(response.data);
 
