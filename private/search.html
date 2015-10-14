@@ -19,32 +19,32 @@
             <th>Email</th>
         </tr>
         <!--hyperlink buttons-->
-        <tr ng-controller="editCorpCtrl" ng-click="openCorp('lg')">
-            <td>{{results.CFN}} +{{results.CLN}}</td>
-            <td>{{results.COMPANY}}</td>
-            <td>{{results.CP}}</td>
-            <td>{{results.CE}}</td>
+        <tr ng-controller="editCorpCtrl" ng-click="openCorp('lg')" ng-repeat="result in results">
+            <td>{{result.CFN}} + {{result.CLN}}</td>
+            <td>{{result.COMPANY}}</td>
+            <td>{{result.CP}}</td>
+            <td>{{result.CE}}</td>
+        </tr>
+        <!--hyperlink buttons-->
+        <tr ng-controller="editFamilyCtrl" ng-click="open('lg')" >
+            <td>{{result.A1FN}} + {{result.A1LN}}</td>
+            <td></td>
+            <td>{{result.A1CP}}</td>
+            <td>{{result.A1E}}</td>
+        </tr>
+        <!--hyperlink buttons-->
+        <tr ng-controller="editFamilyCtrl" ng-click="open('lg')" >
+            <td>{{result.A2FN}} + {{result.A2LN}}</td>
+            <td></td>
+            <td>{{result.A2P}}</td>
+            <td>{{result.A2E}}</td>
         </tr>
         <!--hyperlink buttons-->
         <tr ng-controller="editFamilyCtrl" ng-click="open('lg')">
-            <td>{{results.A1FN}} + {{results.A1LN}}</td>
+            <td>{{result.CFN}} + {{result.CLN}}</td>
             <td></td>
-            <td>{{results.A1P}}</td>
-            <td>{{results.A1E}}</td>
-        </tr>
-        <!--hyperlink buttons-->
-        <tr ng-controller="editFamilyCtrl" ng-click="open('lg')">
-            <td>{{results.A2FN}} + {{results.A2LN}}</td>
-            <td></td>
-            <td>{{results.A2P}}</td>
-            <td>{{results.A2E}}</td>
-        </tr>
-        <!--hyperlink buttons-->
-        <tr ng-controller="editFamilyCtrl" ng-click="open('lg')">
-            <td>{{results.CFN}} + {{results.CLN}}</td>
-            <td></td>
-            <td>{{results.CA1P}}</td>
-            <td>{{results.CA1E}}</td>
+            <td>{{result.CA1P}}</td>
+            <td>{{result.CA1E}}</td>
         </tr>
 
     </table>

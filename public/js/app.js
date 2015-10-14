@@ -27,9 +27,24 @@ app.config(['$routeProvider',
             });
 
     }]);
+//This service should pass data between controllers
+app.service('resultService', function() {
+    //var searchResults = results;
+    var searchResults = [{A1FN:'Katie',A1LN:'Whelan', A1E:"kajfakd;fj;akl", A1C:"11-111-111"}];
+    //var getResults = function() {
+    //    console.log('this is from the service', searchResults);
+    //    return searchResults;
+    //};
+
+    return {
+        getResults: function(){
+            return searchResults;}
+    };
+
+});
 
 //This should get the search item
-app.controller('searchFunction',function ($scope, $http) {
+app.controller('searchFunction',function ($scope, $http, resultService) {
     $scope.formInput={};
 
     $scope.searchBtn = function () {
@@ -39,17 +54,21 @@ app.controller('searchFunction',function ($scope, $http) {
             url: '../search',
             params:{search:$scope.formInput.data}
         }).then(function (response) {
-            $scope.results = response.data;
-            console.log($scope.results);
-
+            //$scope.results = response.data;
+            //console.log($scope.results);
+            resultService.searchResults = response.data;
+            console.log(resultService.searchResults);
         });
     };
 
 });
 
 //edit corporation modal template
-app.controller('editCorpCtrl', function ($scope, $uibModal, $log) {
+app.controller('editCorpCtrl', function ($scope, $uibModal, $log, resultService) {
 
+    //$scope.results = resultService.getResults;
+    $scope.results = [{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"11-111-111", COMPANY:"costco"}];
+    console.log("default info", $scope.result);
     $scope.animationsEnabled = true;
 
     $scope.openCorp = function (size) {
@@ -80,9 +99,12 @@ app.controller('editCorpCtrl', function ($scope, $uibModal, $log) {
 });
 
 //edit family modal template
-app.controller('editFamilyCtrl', function ($scope, $uibModal, $log) {
+app.controller('editFamilyCtrl', function ($scope, $uibModal, $log, resultService) {
 
-    $scope.animationsEnabled = true;
+    $scope.callResults = function(){
+        resultService.getResults();
+
+    };    $scope.animationsEnabled = true;
 
     $scope.open = function (size) {
 
