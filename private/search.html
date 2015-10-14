@@ -20,18 +20,33 @@
         </tr>
         <!--hyperlink buttons-->
         <tr ng-controller="editCorpCtrl" ng-click="openCorp('lg')">
-            <td></td>
-            <td>3m</td>
-            <td>218-383-2847</td>
-            <td>3m@gmail.com</td>
+            <td>{{results.CFN}} +{{results.CLN}}</td>
+            <td>{{results.COMPANY}}</td>
+            <td>{{results.CP}}</td>
+            <td>{{results.CE}}</td>
         </tr>
         <!--hyperlink buttons-->
         <tr ng-controller="editFamilyCtrl" ng-click="open('lg')">
-            <td>Bart Simpson</td>
+            <td>{{results.A1FN}} + {{results.A1LN}}</td>
             <td></td>
-            <td>218-383-2847</td>
-            <td>Bart@gmail.com</td>
+            <td>{{results.A1P}}</td>
+            <td>{{results.A1E}}</td>
         </tr>
+        <!--hyperlink buttons-->
+        <tr ng-controller="editFamilyCtrl" ng-click="open('lg')">
+            <td>{{results.A2FN}} + {{results.A2LN}}</td>
+            <td></td>
+            <td>{{results.A2P}}</td>
+            <td>{{results.A2E}}</td>
+        </tr>
+        <!--hyperlink buttons-->
+        <tr ng-controller="editFamilyCtrl" ng-click="open('lg')">
+            <td>{{results.CFN}} + {{results.CLN}}</td>
+            <td></td>
+            <td>{{results.CA1P}}</td>
+            <td>{{results.CA1E}}</td>
+        </tr>
+
     </table>
 </div>
 
