@@ -41,6 +41,7 @@ app.controller('searchFunction',function ($scope, $http) {
         }).then(function (response) {
             $scope.results = response.data;
             console.log($scope.results);
+
         });
     };
 

@@ -33,27 +33,31 @@ router.get('/', function(req, res, next) {
         }
         console.log('Connection established');
 
+        checkArray = function(elem){
+            searchResults.push(elem);
+        };
+
         runSearch = function () {
 
             con.query(searchA1, function (err, rows, fields) {
                 if (err) throw err;
-                searchResults.push(rows);
+                   rows.forEach(checkArray);
                 console.log('rowsA1', rows);
 
                 con.query(searchA2, function (err, rows, fields) {
                     if (err) throw err;
-                    searchResults.push(rows);
+                    rows.forEach(checkArray);
                     console.log('rowsA2', rows);
 
 
                     con.query(searchComp, function (err, rows, fields) {
                         if (err) throw err;
-                        searchResults.push(rows);
+                        rows.forEach(checkArray);
                         console.log('rowsComp', rows);
 
                         con.query(searchChild, function (err, rows, fields) {
                             if (err) throw err;
-                            searchResults.push(rows);
+                            rows.forEach(checkArray);
                             console.log('final results', searchResults);
                             con.end();
                             res.send(searchResults);
