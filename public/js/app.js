@@ -30,7 +30,7 @@ app.config(['$routeProvider',
 //This service should pass data between controllers
 app.service('resultService', function() {
     //var searchResults = results;
-    var searchResults = [{A1FN:'Katie',A1LN:'Whelan', A1E:"kajfakd;fj;akl", A1C:"11-111-111"}];
+    var searchResults = [{FN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"11-111-111", COMPANY:"costco"}];
     //var getResults = function() {
     //    console.log('this is from the service', searchResults);
     //    return searchResults;
@@ -56,8 +56,8 @@ app.controller('searchFunction',function ($scope, $http, resultService) {
         }).then(function (response) {
             //$scope.results = response.data;
             //console.log($scope.results);
-            resultService.searchResults = response.data;
-            console.log(resultService.searchResults);
+            resultService.getResults = response.data;
+            console.log(resultService.getResults);
         });
     };
 
@@ -67,7 +67,7 @@ app.controller('searchFunction',function ($scope, $http, resultService) {
 app.controller('editCorpCtrl', function ($scope, $uibModal, $log, resultService) {
 
     //$scope.results = resultService.getResults;
-    $scope.results = [{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"11-111-111", COMPANY:"costco"}];
+    $scope.results = [{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"11-111-111", COMPANY:"costco"},{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"11-111-111", COMPANY:"costco"},{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"11-111-111", COMPANY:"costco"}];
     console.log("default info", $scope.result);
     $scope.animationsEnabled = true;
 
@@ -101,10 +101,7 @@ app.controller('editCorpCtrl', function ($scope, $uibModal, $log, resultService)
 //edit family modal template
 app.controller('editFamilyCtrl', function ($scope, $uibModal, $log, resultService) {
 
-    $scope.callResults = function(){
-        resultService.getResults();
-
-    };    $scope.animationsEnabled = true;
+    $scope.animationsEnabled = true;
 
     $scope.open = function (size) {
 
@@ -149,101 +146,101 @@ app.controller('ModalInstanceCtrl', function ($scope, $modalInstance) {
 });
 
 //dummy data edit family additional members
-app.controller('additionalCtrl', [ '$scope', function($scope){
-    $scope.additional = {
-        fName: 'Greg',
-        lName: 'Brady',
-        //bDay: '1983-03-05',
-        notes: 'This area is reserved for information as needed'
-    };
-    $scope.set = function(edit_info) {
-        this.contact.fName = edit_info,
-        this.contact.lName = edit_info,
-        this.contact.bDay = edit_info,
-        this.contact.notes = edit_info
-    };
-}]);
+//app.controller('additionalCtrl', [ '$scope', function($scope){
+//    $scope.additional = {
+//        fName: 'Greg',
+//        lName: 'Brady',
+//        //bDay: '1983-03-05',
+//        notes: 'This area is reserved for information as needed'
+//    };
+//    $scope.set = function(edit_info) {
+//        this.contact.fName = edit_info,
+//        this.contact.lName = edit_info,
+//        this.contact.bDay = edit_info,
+//        this.contact.notes = edit_info
+//    };
+//}]);
 
 //dummy data for family contact information
-app.controller('contactCtrl', ['$scope', function($scope){
-    $scope.contact = {
-        fName: 'Mike',
-        lName: 'Brady',
-        address1: '4222 Clinton Way',
-        address2: '4222 Clinton Way',
-        zip: '55555',
-        city: 'Los Angeles',
-        state: 'CA',
-        phone: '555-555-5555',
-        cell: '555-555-5555',
-        email: 'mike@gmail.com',
-        company: '3m',
-        notes: 'This area is reserved for information as needed',
-        yfName: 'Carol',
-        ylName: 'Brady',
-        yaddress1: '4222 Clinton Way',
-        yaddress2: '4222 Clinton Way',
-        yzip: '55555',
-        ycity: 'Los Angeles',
-        ystate: 'CA',
-        yphone: '555-555-5555',
-        ycell: '555-555-5555',
-        yemail: 'carol@gmail.com',
-        ycompany: '3m',
-        ynotes: 'This are is reserved for information as needed'
-    };
-    $scope.set = function(edit_info) {
-        this.contact.fName = edit_info,
-        this.contact.lName = edit_info,
-        this.contact.address1 = edit_info,
-        this.contact.address2 = edit_info,
-        this.contact.zip = edit_info,
-        this.contact.city = edit_info,
-        this.contact.state = edit_info,
-        this.contact.phone = edit_info,
-        this.contact.email = edit_info,
-        this.contact.company = edit_info,
-        this.contact.notes = edit_info,
-        this.contact.yfName = edit_info,
-        this.contact.ylName = edit_info,
-        this.contact.yaddress1 = edit_info,
-        this.contact.yaddress2 = edit_info,
-        this.contact.yzip = edit_info,
-        this.contact.ycity = edit_info,
-        this.contact.ystate = edit_info,
-        this.contact.yphone = edit_info,
-        this.contact.ycompany = edit_info,
-        this.contact.ynotes = edit_info
-    };
+//app.controller('contactCtrl', ['$scope', function($scope){
+    //$scope.contact = {
+    //    fName: 'Mike',
+    //    lName: 'Brady',
+    //    address1: '4222 Clinton Way',
+    //    address2: '4222 Clinton Way',
+    //    zip: '55555',
+    //    city: 'Los Angeles',
+    //    state: 'CA',
+    //    phone: '555-555-5555',
+    //    cell: '555-555-5555',
+    //    email: 'mike@gmail.com',
+    //    company: '3m',
+    //    notes: 'This area is reserved for information as needed',
+    //    yfName: 'Carol',
+    //    ylName: 'Brady',
+    //    yaddress1: '4222 Clinton Way',
+    //    yaddress2: '4222 Clinton Way',
+    //    yzip: '55555',
+    //    ycity: 'Los Angeles',
+    //    ystate: 'CA',
+    //    yphone: '555-555-5555',
+    //    ycell: '555-555-5555',
+    //    yemail: 'carol@gmail.com',
+    //    ycompany: '3m',
+    //    ynotes: 'This are is reserved for information as needed'
+    //};
+    //$scope.set = function(edit_info) {
+    //    this.contact.fName = edit_info,
+    //    this.contact.lName = edit_info,
+    //    this.contact.address1 = edit_info,
+    //    this.contact.address2 = edit_info,
+    //    this.contact.zip = edit_info,
+    //    this.contact.city = edit_info,
+    //    this.contact.state = edit_info,
+    //    this.contact.phone = edit_info,
+    //    this.contact.email = edit_info,
+    //    this.contact.company = edit_info,
+    //    this.contact.notes = edit_info,
+    //    this.contact.yfName = edit_info,
+    //    this.contact.ylName = edit_info,
+    //    this.contact.yaddress1 = edit_info,
+    //    this.contact.yaddress2 = edit_info,
+    //    this.contact.yzip = edit_info,
+    //    this.contact.ycity = edit_info,
+    //    this.contact.ystate = edit_info,
+    //    this.contact.yphone = edit_info,
+    //    this.contact.ycompany = edit_info,
+    //    this.contact.ynotes = edit_info
+    //};
 
-}]);
+//}]);
 
 //dummy data for family emergency contact information
-app.controller('emergencyCtrl',['$scope', function($scope){
-    $scope.emergency = {
-                        fName: 'Mike',
-                        lName: 'Brady',
-                        address1: '4222 Clinton Way',
-                        address2: '4222 Clinton Way',
-                        zip: '55555',
-                        city: 'Los Angeles',
-                        state: 'CA',
-                        phone: '555-555-5555',
-                        notes: 'This are is reserved for information as needed'
-                        };
-    $scope.set = function(edit_info){
-        this.emergency.fName = edit_info,
-        this.emergency.lName = edit_info,
-        this.emergency.address1 = edit_info,
-        this.emergency.address2 = edit_info,
-        this.emergency.zip = edit_info,
-        this.emergency.city = edit_info,
-        this.emergency.state = edit_info,
-        this.emergency.phone = edit_info,
-        this.emergency.notes = edit_info
-
-    };
-}]);
+//app.controller('emergencyCtrl',['$scope', function($scope){
+    //$scope.emergency = {
+    //                    fName: 'Mike',
+    //                    lName: 'Brady',
+    //                    address1: '4222 Clinton Way',
+    //                    address2: '4222 Clinton Way',
+    //                    zip: '55555',
+    //                    city: 'Los Angeles',
+    //                    state: 'CA',
+    //                    phone: '555-555-5555',
+    //                    notes: 'This are is reserved for information as needed'
+    //                    };
+    //$scope.set = function(edit_info) {
+    //    this.emergency.fName = edit_info,
+    //    this.emergency.lName = edit_info,
+    //    this.emergency.address1 = edit_info,
+    //    this.emergency.address2 = edit_info,
+    //    this.emergency.zip = edit_info,
+    //    this.emergency.city = edit_info,
+    //    this.emergency.state = edit_info,
+    //    this.emergency.phone = edit_info,
+    //    this.emergency.notes = edit_info
+    //
+    //};
+//}]);
 
 
 //controllers for login
