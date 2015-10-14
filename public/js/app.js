@@ -28,6 +28,18 @@ app.config(['$routeProvider',
 
     }]);
 
+app.controller('resetCtrl', [ '$scope', '$http', '$location',  function ($scope, $http, $location) {
+    $scope.submit = function () {
+        console.log("registerCtrl");
+        console.log('registerController submit:', $scope.form);
+        $http.put('/admin', $scope.form)
+            .then(function (response) {
+                console.log(response);
+                $location.path("/index")
+            });
+    }
+}]);
+
 
 //This should get the search item
 app.controller('searchFunction',function ($scope, $http) {
@@ -248,7 +260,7 @@ app.service('authService', ['$window', function ($window) {
 
     this.saveToken = function (token) {
         $window.localStorage.jwtToken = token;
-        console.log('Saved token:',$window.localStorage.jwtToken);
+        //console.log('Saved token:',$window.localStorage.jwtToken);
     };
 
     this.getToken = function () {
@@ -320,5 +332,19 @@ app.controller('registerCtrl', [ '$scope', '$http', '$location',  function ($sco
                 console.log(response);
                 $location.path("/index")
             });
+    }
+}]);
+
+app.controller('navCtrl', ['authService','$scope','$rootScope','$location', function(authService, $scope,$rootScope, $location){
+    $rootScope.user = authService.getUser();
+
+    if($rootScope.user && $rootScope.user.username){
+        $location.path('/home');
+    }
+
+    $scope.logout = function(){
+        authService.logout();
+        $rootScope.user = authService.getUser();
+        $location.path("/");
     }
 }]);

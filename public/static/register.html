@@ -9,7 +9,7 @@
         </form>
     </div>
     <div class="col-lg-6 register-container">
-        <form ng-submit="submit()" ng-controller="registerCtrl" name="user-register">
+        <form ng-submit="submit()" ng-controller="resetCtrl" name="user-register">
             <legend>Change Password</legend>
             <input class="form-control" type="password" ng-model="form.change" name="password" placeholder="Password" ng-minlength="6" ng-maxlength="15" required>
             <input class="form-control" type="password" ng-model="form.confirmChange" name="confirm" placeholder="Confirm Password" ng-minlength="6" ng-maxlength="15" required>

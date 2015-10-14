@@ -34,18 +34,18 @@
 
                 <input ng-show="edit" ng-show="edit" name="phone"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone">
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">651-495-4928</span>
-
                 <input ng-show="edit" name="email"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">3M@gmail.com</span>
 
                 <label for="notes" class="block-input">Notes</label>
                 <textarea ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
-                <span ng-hide="edit" class="block-input"">This is some more information about this person</span>
+                <span ng-hide="edit" class="block-input">This is some more information about this person</span>
             </form>
             <!--edit button -->
             <button ng-hide="edit" ng-click="edit = !edit" id="edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
             <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
-            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancle</button>        </div>
+            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancle</button>
+        </div>
     </uib-tab>
     <uib-tab heading="Contact Information">
         <div class="well well-sm">
