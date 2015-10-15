@@ -8,5 +8,4 @@ router.get('/', function(req, res, next) {
   res.send('This is the index route');
 });
 
-
 module.exports = router;

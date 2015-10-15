@@ -325,69 +325,84 @@ app.controller('registerCtrl', [ '$scope', '$http', '$location',  function ($sco
             });
     }
 }]);
-//service for sharing search data across controllers
-app.service('searchSharedData', function () {
-    var results = {
-        //search results
-    };
-    return results;
-});
+////service for sharing search data across controllers
+//app.service('searchSharedData', function () {
+//    var results = {
+//        //search results
+//    };
+//    return results;
+//});
+//
+////controller for handling the search results
+//app.controller('SearchResultController', function('SharedDataService',$scope, $http)
+//{
+//
+//})
 
-//controller for handling the search results
-app.controller('SearchResultController', function('SharedDataService',$scope, $http)
-{
-    //search happens hereish
-    {
-        $http.get('').
-            success(function (data, status, headers, config) {
-                $scope.results = data;
-            }).
-            error(function (data, status, headers, config) {
-                // log error
-            });
-    }
-})
-
-.service('contactListData', function(){
-var includedEmails = [],
-var newContactList = []
+app.service('contactListData', function(){
+var includedEmails = [];
+var newContactList = [];
+var listNum = 0;
 
     //push the included info to the email list
-    $scope.toggleChecked = function (id) {
+    $scope.contactChecked = function (id) {
         $scope.checked.push([id]);
     };
-})
-.controller('newContactList', function($scope, $http)
-    {
-        $http.post('https://api.constantcontact.com/v2/activities/addcontacts?api_key=u8w59ztxe3294adczfvn7k9e').
-        success(function (data, status, headers, config) {
-
-            $scope.id = data.id;
-        }).
-            error(function (data, status, headers, config) {
-                // log error
-            });
-    });
 
 
-app.controller('contactListController', function($scope, $http)
+    return {
+        newContactList: newContactList,
+        listNum: listNum
+    };
+});
+
+app.controller('newContactListController', function(contactListData, $scope, $http) {
+
+    $scope.listReq = {"Name": $scope.form, "Status": "ACTIVE"};
+
+    $scope.config = {headers: {"Authorization": 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9'}};
+
+
+    $scope.postList = function () {
+        console.log('posting list . . . ');
+
+        //$http.post('https://api.constantcontact.com/v2/lists?api_key=u8w59ztxe3294adczfvn7k9e', listReq, config).
+        //    then(function (res) {
+        //        console.log("res" + res);
+        //
+        //        res.id = listNum;
+        //
+        //    }).
+        //    error(function (data, status, headers, config) {
+        //        // log error
+        //    });
+
+    };
+
+});
+
+app.controller('contactListController', function(contactListData, $scope, $http)
 {
-    var importDataArray =[];
-    var listEnd = JSON.stringify(list: [currentList],column_names:["EMAIL","FIRST NAME", "LAST NAME", "CITY","COMPANY NAME"]);
+    var importDataArray = [];
+    var listEnd = JSON.stringify("list: ["+ listNum + "],column_names:[\"EMAIL\",\"FIRST NAME\", \"LAST NAME\", \"CITY\",\"COMPANY NAME\"]");
 
 
     //Post Data to Constant Contact
     $scope.sendPost = function() {
         var data = $.param({
-            json: {importData: importDataArray,
-                listEnd}
+            //json: JSON.stringify({
+            //    "importData:" + importDataArray + ", "+ listEnd
+            //})
         })
-    });
+    };
 
+    var config = {headers: {
+        'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9'
+    }};
 
-    $http.post('https://api.constantcontact.com/v2/lists?api_key=u8w59ztxe3294adczfvn7k9e').
+    $http.post('https://api.constantcontact.com/v2/activities/addcontacts?api_key=u8w59ztxe3294adczfvn7k9e', data, config).
         success(function (data, status, headers, config) {
-            $scope.id = data.id;
+            res.id = listNum;
         }).
         error(function (data, status, headers, config) {
             // log error
