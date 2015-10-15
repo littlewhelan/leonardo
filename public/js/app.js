@@ -27,24 +27,27 @@ app.config(['$routeProvider',
             });
 
     }]);
+
 //This service should pass data between controllers
 app.service('resultService', function() {
-    //var searchResults = results;
-    var searchResults = [{FN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"11-111-111", COMPANY:"costco"}];
-    //var getResults = function() {
-    //    console.log('this is from the service', searchResults);
-    //    return searchResults;
-    //};
+    var allResults = [];
+    var addAllResults = function(nObj){
+        allResults.push(nObj);
+    };
+    var getAllResults = function(){
+        return allResults;
+    };
+
 
     return {
-        getResults: function(){
-            return searchResults;}
+        addAllResults: addAllResults,
+        getAllResults: getAllResults
     };
 
 });
 
 //This should get the search item
-app.controller('searchFunction',function ($scope, $http, resultService) {
+app.controller('searchFunction',function ($scope, $http) {
     $scope.formInput={};
 
     $scope.searchBtn = function () {
@@ -54,20 +57,23 @@ app.controller('searchFunction',function ($scope, $http, resultService) {
             url: '../search',
             params:{search:$scope.formInput.data}
         }).then(function (response) {
-            //$scope.results = response.data;
-            //console.log($scope.results);
-            resultService.getResults = response.data;
-            console.log(resultService.getResults);
+            $scope.results = response.data;
+            console.log($scope.results);
+            //resultService.getResults = response.data;
+            //console.log(resultService.getResults);
         });
     };
 
 });
 
+
+
 //edit corporation modal template
 app.controller('editCorpCtrl', function ($scope, $uibModal, $log, resultService) {
 
-    //$scope.results = resultService.getResults;
-    $scope.results = [{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"11-111-111", COMPANY:"costco"},{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"11-111-111", COMPANY:"costco"},{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"11-111-111", COMPANY:"costco"}];
+    $scope.results = resultService.getResults;
+    //$scope.results = [{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"111-111-111", COMPANY:"costco"},{FN:'Katie',LN:'Whelan', CAFN:"katie", CMP:"111-111-111", CALN:"doe"},{AFN:'Katie',ALN:'Whelan', AE:"klwhelan@gmail.com", AMP:"11-111-111", ACP:"111-111-1111"}];
+
     console.log("default info", $scope.result);
     $scope.animationsEnabled = true;
 
@@ -100,6 +106,9 @@ app.controller('editCorpCtrl', function ($scope, $uibModal, $log, resultService)
 
 //edit family modal template
 app.controller('editFamilyCtrl', function ($scope, $uibModal, $log, resultService) {
+
+    $scope.results = resultService.getResults;
+    //$scope.results = [{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"111-111-111", COMPANY:"costco"},{FN:'Katie',LN:'Whelan', CAFN:"katie", CMP:"111-111-111", CALN:"doe"},{AFN:'Katie',ALN:'Whelan', AE:"klwhelan@gmail.com", AMP:"11-111-111", ACP:"111-111-1111"}];
 
     $scope.animationsEnabled = true;
 

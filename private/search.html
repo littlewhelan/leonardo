@@ -16,32 +16,32 @@
         <table class="table-hover table table-bordered" ng-controller="editFamilyCtrl" >
             <tr>
                 <th>Name</th>
-                <th>Phone</th>
+                <th>Home Phone</th>
+                <th>Cell Phone</th>
                 <th>Email</th>
             </tr>
 
             <tr ng-click="open('lg')" ng-repeat ="result in results" >
-                <td>{{result.AFN}} {{result.A2LN}}</td>
-                <td>{{result.ACP}}</td>
-                <td>{{result.AWP}}</td>
+                <td>{{result.AFN}} {{result.ALN}}</td>
+                <td>{{result.MP}}</td>
+                <td>{{result.AC}}</td>
                 <td>{{result.AE}}</td>
             </tr>
             </table>
         </div>
 
         <div id ="childNameSearch" class="table">
-            <table class="table-hover table table-bordered">
+            <table class="table-hover table table-bordered" ng-controller="editFamilyCtrl">
                 <tr>
                     <th>Name</th>
                     <th>Parent Name</th>
-                    <th>Phone</th>
-                    <th>Email</th>
+                    <th>Home Phone</th>
                 </tr>
 
                 <tr ng-click="open('lg')"  ng-repeat ="result in results">
-                    <td>{{result.CFN}} {{result.CLN}}</td>
+                    <td>{{result.FN}} {{result.LN}}</td>
                     <td>{{result.CAFN}} {{result.CALN}} </td>
-                    <td>{{result.CACP}}</td>
+                    <td>{{result.CMP}}</td>
                 </tr>
             </table>
         </div>
@@ -57,7 +57,7 @@
 
         <tr ng-click="openCorp('lg')"  ng-repeat ="result in results" >
             <td>{{result.CFN}} {{result.CLN}}</td>
-            <td>{{result.COMPANY}}</td>
+            <td>{{result.COMP}}</td>
             <td>{{result.CP}}</td>
             <td >{{result.CE}}</td>
         </tr>
