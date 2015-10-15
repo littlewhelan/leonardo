@@ -34,42 +34,42 @@ app.factory('ResultService', function() {
     //this will hopefully be response.data
     var data = [
         {type:'company',CFN: 'Katie', CLN: 'Whelan', CE: "kajfakd;fj;akl", CP: "111-111-111", COMP: "costco"},
-        {type:'adult',FN: 'Katie', LN: 'Whelan', CAFN: "katie", CMP: "111-111-111", CALN: "doe"},
-        {type:'child',AFN: 'Katie', ALN: 'Whelan', AE: "klwhelan@gmail.com", MP: "11-111-111", AC: "111-111-1111"}];
+        {type:'child',FN: 'Katie', LN: 'Whelan', CAFN: "katie", CMP: "111-111-111", CALN: "doe"},
+        {type:'adult',AFN: 'Katie', ALN: 'Whelan', AE: "klwhelan@gmail.com", MP: "11-111-111", AC: "111-111-1111"}];
 
     var getCompanies = function (array) {
         var companies =[];
-        var getElement = function(array) {
+        var getElement1 = function(array) {
             array.forEach(function(element){
                 if (element.type == 'company')
                     companies.push(element);
             })
         };
-        getElement(array);
+        getElement1(array);
         return companies
     };
 
     var getAdults = function (array) {
         var adults =[];
-        var getElement = function(array) {
+        var getElement2 = function(array) {
             array.forEach(function(element){
                 if (element.type == 'adult')
                     adults.push(element);
             })
         };
-        getElement(array);
+        getElement2(array);
         return adults
     };
 
     var getChildren = function (array) {
         var children =[];
-        var getElement = function(array) {
+        var getElement3 = function(array) {
             array.forEach(function(element){
                 if (element.type == 'child')
                     children.push(element);
             })
         };
-        getElement(array);
+        getElement3(array);
         return children
     };
 
