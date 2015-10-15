@@ -30,19 +30,8 @@ app.config(['$routeProvider',
 
 //This service should pass data between controllers
 app.service('resultService', function() {
-    var allResults = [];
-    var addAllResults = function(nObj){
-        allResults.push(nObj);
-    };
-    var getAllResults = function(){
-        return allResults;
-    };
-
-
-    return {
-        addAllResults: addAllResults,
-        getAllResults: getAllResults
-    };
+    var allResults = response.data;
+    return allResults;
 
 });
 
@@ -59,8 +48,6 @@ app.controller('searchFunction',function ($scope, $http) {
         }).then(function (response) {
             $scope.results = response.data;
             console.log($scope.results);
-            //resultService.getResults = response.data;
-            //console.log(resultService.getResults);
         });
     };
 
@@ -69,12 +56,12 @@ app.controller('searchFunction',function ($scope, $http) {
 
 
 //edit corporation modal template
-app.controller('editCorpCtrl', function ($scope, $uibModal, $log, resultService) {
+app.controller('editCorpCtrl', function ($scope, $uibModal, $log) {
 
-    $scope.results = resultService.getResults;
-    //$scope.results = [{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"111-111-111", COMPANY:"costco"},{FN:'Katie',LN:'Whelan', CAFN:"katie", CMP:"111-111-111", CALN:"doe"},{AFN:'Katie',ALN:'Whelan', AE:"klwhelan@gmail.com", AMP:"11-111-111", ACP:"111-111-1111"}];
+    $scope.results = [{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"111-111-111", COMP:"costco"},
+        {FN:'Katie',LN:'Whelan', CAFN:"katie", CMP:"111-111-111", CALN:"doe"},
+        {AFN:'Katie',ALN:'Whelan', AE:"klwhelan@gmail.com", MP:"11-111-111", AC:"111-111-1111"}];
 
-    console.log("default info", $scope.result);
     $scope.animationsEnabled = true;
 
     $scope.openCorp = function (size) {
@@ -105,10 +92,10 @@ app.controller('editCorpCtrl', function ($scope, $uibModal, $log, resultService)
 });
 
 //edit family modal template
-app.controller('editFamilyCtrl', function ($scope, $uibModal, $log, resultService) {
-
-    $scope.results = resultService.getResults;
-    //$scope.results = [{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"111-111-111", COMPANY:"costco"},{FN:'Katie',LN:'Whelan', CAFN:"katie", CMP:"111-111-111", CALN:"doe"},{AFN:'Katie',ALN:'Whelan', AE:"klwhelan@gmail.com", AMP:"11-111-111", ACP:"111-111-1111"}];
+app.controller('editFamilyCtrl', function ($scope, $uibModal, $log) {
+    $scope.results = [{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"111-111-111", COMP:"costco"},
+        {FN:'Katie',LN:'Whelan', CAFN:"katie", CMP:"111-111-111", CALN:"doe"},
+        {AFN:'Katie',ALN:'Whelan', AE:"klwhelan@gmail.com", MP:"11-111-111", AC:"111-111-1111"}];
 
     $scope.animationsEnabled = true;
 
