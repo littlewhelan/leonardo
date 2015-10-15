@@ -29,16 +29,33 @@ app.config(['$routeProvider',
     }]);
 
 //This service should pass data between controllers
-app.service('resultService', function() {
-    var allResults = response.data;
-    return allResults;
+app.factory('ResultService', function() {
 
+    var getAllResults = function () {
+
+        //private
+        var fakeData = [{CFN: 'Katie', CLN: 'Whelan', CE: "kajfakd;fj;akl", CP: "111-111-111", COMP: "costco"},
+            {FN: 'Katie', LN: 'Whelan', CAFN: "katie", CMP: "111-111-111", CALN: "doe"},
+            {AFN: 'Katie', ALN: 'Whelan', AE: "klwhelan@gmail.com", MP: "11-111-111", AC: "111-111-1111"}];
+        return fakeData
+
+    };
+
+    //public
+    var publicApi = {
+        allResults: getAllResults()
+    };
+
+return publicApi;
 });
 
 //This should get the search item
-app.controller('searchFunction',function ($scope, $http) {
-    $scope.formInput={};
+app.controller('searchFunction',function ($scope, $http, ResultService) {
 
+    $scope.results = ResultService.allResults;
+    console.log('searchFunction', $scope.results);
+
+    $scope.formInput={};
     $scope.searchBtn = function () {
         console.log('this is the input text', $scope.formInput);
         $http({
@@ -56,11 +73,10 @@ app.controller('searchFunction',function ($scope, $http) {
 
 
 //edit corporation modal template
-app.controller('editCorpCtrl', function ($scope, $uibModal, $log) {
+app.controller('editCorpCtrl', function ($scope, $uibModal, $log, ResultService) {
 
-    $scope.results = [{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"111-111-111", COMP:"costco"},
-        {FN:'Katie',LN:'Whelan', CAFN:"katie", CMP:"111-111-111", CALN:"doe"},
-        {AFN:'Katie',ALN:'Whelan', AE:"klwhelan@gmail.com", MP:"11-111-111", AC:"111-111-1111"}];
+    $scope.results = ResultService.allResults;
+    console.log('editCorp',$scope.results );
 
     $scope.animationsEnabled = true;
 
@@ -92,10 +108,10 @@ app.controller('editCorpCtrl', function ($scope, $uibModal, $log) {
 });
 
 //edit family modal template
-app.controller('editFamilyCtrl', function ($scope, $uibModal, $log) {
-    $scope.results = [{CFN:'Katie',CLN:'Whelan', CE:"kajfakd;fj;akl", CP:"111-111-111", COMP:"costco"},
-        {FN:'Katie',LN:'Whelan', CAFN:"katie", CMP:"111-111-111", CALN:"doe"},
-        {AFN:'Katie',ALN:'Whelan', AE:"klwhelan@gmail.com", MP:"11-111-111", AC:"111-111-1111"}];
+app.controller('editFamilyCtrl', function ($scope, $uibModal, $log, ResultService) {
+
+    $scope.results = ResultService.allResults;
+    console.log('editFamily',$scope.results);
 
     $scope.animationsEnabled = true;
 
