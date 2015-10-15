@@ -31,30 +31,63 @@ app.config(['$routeProvider',
 //This service should pass data between controllers
 app.factory('ResultService', function() {
 
-    var getAllResults = function () {
+    //this will hopefully be response.data
+    var data = [
+        {type:'company',CFN: 'Katie', CLN: 'Whelan', CE: "kajfakd;fj;akl", CP: "111-111-111", COMP: "costco"},
+        {type:'adult',FN: 'Katie', LN: 'Whelan', CAFN: "katie", CMP: "111-111-111", CALN: "doe"},
+        {type:'child',AFN: 'Katie', ALN: 'Whelan', AE: "klwhelan@gmail.com", MP: "11-111-111", AC: "111-111-1111"}];
 
-        //private
-        var fakeData = [{CFN: 'Katie', CLN: 'Whelan', CE: "kajfakd;fj;akl", CP: "111-111-111", COMP: "costco"},
-            {FN: 'Katie', LN: 'Whelan', CAFN: "katie", CMP: "111-111-111", CALN: "doe"},
-            {AFN: 'Katie', ALN: 'Whelan', AE: "klwhelan@gmail.com", MP: "11-111-111", AC: "111-111-1111"}];
-        return fakeData
-
+    var getCompanies = function (array) {
+        var companies =[];
+        var getElement = function(array) {
+            array.forEach(function(element){
+                if (element.type == 'company')
+                    companies.push(element);
+            })
+        };
+        getElement(array);
+        return companies
     };
+
+    var getAdults = function (array) {
+        var adults =[];
+        var getElement = function(array) {
+            array.forEach(function(element){
+                if (element.type == 'adult')
+                    adults.push(element);
+            })
+        };
+        getElement(array);
+        return adults
+    };
+
+    var getChildren = function (array) {
+        var children =[];
+        var getElement = function(array) {
+            array.forEach(function(element){
+                if (element.type == 'child')
+                    children.push(element);
+            })
+        };
+        getElement(array);
+        return children
+    };
+
+
 
     //public
     var publicApi = {
-        allResults: getAllResults()
+        companies: getCompanies(data),
+        adults: getAdults(data),
+        child: getChildren(data)
+
     };
 
 return publicApi;
 });
 
 //This should get the search item
-app.controller('searchFunction',function ($scope, $http, ResultService) {
-
-    $scope.results = ResultService.allResults;
-    console.log('searchFunction', $scope.results);
-
+app.controller('searchFunction',function ($scope, $http) {
     $scope.formInput={};
     $scope.searchBtn = function () {
         console.log('this is the input text', $scope.formInput);
@@ -75,8 +108,8 @@ app.controller('searchFunction',function ($scope, $http, ResultService) {
 //edit corporation modal template
 app.controller('editCorpCtrl', function ($scope, $uibModal, $log, ResultService) {
 
-    $scope.results = ResultService.allResults;
-    console.log('editCorp',$scope.results );
+    $scope.companies = ResultService.companies;
+    console.log('editCorp',$scope.companies);
 
     $scope.animationsEnabled = true;
 
@@ -110,8 +143,10 @@ app.controller('editCorpCtrl', function ($scope, $uibModal, $log, ResultService)
 //edit family modal template
 app.controller('editFamilyCtrl', function ($scope, $uibModal, $log, ResultService) {
 
-    $scope.results = ResultService.allResults;
-    console.log('editFamily',$scope.results);
+    $scope.adults = ResultService.adults;
+    $scope.child = ResultService.child;
+
+    console.log('editFamily',$scope.adults, $scope.child);
 
     $scope.animationsEnabled = true;
 
