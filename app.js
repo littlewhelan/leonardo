@@ -7,7 +7,7 @@ var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
 var jwt = expressJwt({secret: 'supersecret'});
 var mongoose = require('mongoose');
-
+var dbURI = require('./config/mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
@@ -57,14 +57,12 @@ app.use(function (err, req, res, next) {
   }
 });
 
-// Build the connection string
-var dbURI = 'mongodb://localhost:27017/leo';
 
 // Create the database connection
 mongoose.connect(dbURI);
 
 mongoose.connection.on('connected', function () {
-  console.log('Mongoose default connection open to ' + dbURI);
+  console.log('Mongoose default connection open');
 });
 
 // If the connection throws an error
