@@ -1,12 +1,15 @@
 <!--Search Bar-->
 <div class="search-container fluid-container">
         <div class="row">
-                <div class="input-group" ng-controller="searchFunction">
+            <form ng-controller="searchFunction" ng-submit="searchBtn()">
+                <div class="input-group" >
                     <div class="input-group-btn">
-                        <button type="button" ng-click="searchBtn()" class="btn btn-default" >Search</button>
+                        <button type="submit" ng-submit="searchBtn()" class="btn btn-default" >Search</button>
                     </div>
                     <input type="text" ng-model="formInput.data" id="search" class="form-control" aria-label="...">
+
                 </div>
+                </form>
         </div>
 </div>
 
