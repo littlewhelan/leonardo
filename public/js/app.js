@@ -452,24 +452,32 @@ var listNum = 0;
 
 app.controller('newContactListController', function(contactListData, $scope, $http) {
     //data to create a new contact list
-    $scope.listReq = {"Name": $scope.form, "Status": "ACTIVE"};
+    $scope.listname = {};
+
+
     //headers
-    $scope.config = {headers: {"Authorization": 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9'}};
+    $scope.config = {
+        headers: {'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9',
+        'Content-Type': 'application/json',
+        }
+    };
 
     //function to creats the new contact list
     $scope.postList = function () {
+        $scope.listReq = {"name": $scope.listname.input, "status": "ACTIVE"};
         console.log('posting list . . . ');
-
+        console.log($scope.listReq);
+        console.log($scope.config);
         $http.post('https://api.constantcontact.com/v2/lists?api_key=yg5p2qf549qacmbqayk5rn23', $scope.listReq, $scope.config).
             then(function (res) {
                 console.log("res" + res);
 
                 res.id = contactListData.listNum;
 
-            }).
-            error(function (data, status, headers, config) {
-                // log error
             });
+            //error(function (data, status, headers, config) {
+            //    // log error
+            //});
 
     };
 
