@@ -1,18 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
-var searchResults = [];
+var db = require('../config/db.js');
 
 // First you need to create a connection to the db
 
 router.get('/', function(req, res, next) {
 
-    var con = mysql.createConnection({
-        host: "localhost",
-        user: "littlewhelan",
-        password: "DragonTattoo",
-        database:"leo"
-    });
+    var con = mysql.createConnection(db);
 
     var searchString = req.query.search;
     console.log("received", searchString);
@@ -27,6 +22,7 @@ router.get('/', function(req, res, next) {
 
 
     con.connect(function(err) {
+       var searchResults =[];
         if(err){
             console.log('Error connecting to Db');
             return;

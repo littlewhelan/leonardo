@@ -1,25 +1,27 @@
 <!--Search Bar-->
 <div class="search-container fluid-container">
         <div class="row">
-                <div class="input-group" ng-controller="searchFunction">
+            <form ng-controller="searchFunction" ng-submit="searchBtn()">
+                <div class="input-group" >
                     <div class="input-group-btn">
-                        <button type="button" ng-click="searchBtn()" class="btn btn-default" >Search</button>
+                        <button type="submit" ng-submit="searchBtn()" class="btn btn-default" >Search</button>
                     </div>
                     <input type="text" ng-model="formInput.data" id="search" class="form-control" aria-label="...">
+
                 </div>
+                </form>
         </div>
 </div>
 
 <div id ="childNameSearch" class="table">
     <table class="table-hover table table-bordered" ng-controller="editFamilyCtrl">
-        <div>Children</div>
         <tr>
             <th>Name</th>
             <th>Parent Name</th>
             <th>Home Phone</th>
         </tr>
 
-        <tr ng-click="open('lg')"  ng-repeat ="result in child">
+        <tr ng-click="open('lg')"  ng-repeat ="result in kids">
             <td>{{result.FN}} {{result.LN}}</td>
             <td>{{result.CAFN}} {{result.CALN}} </td>
             <td>{{result.CMP}}</td>
@@ -30,7 +32,6 @@
 
     <div id="adultSearchName" class="table">
         <table class="table-hover table table-bordered" ng-controller="editFamilyCtrl" >
-            <div>Adults</div>
             <tr>
                 <th>Name</th>
                 <th>Home Phone</th>
@@ -51,8 +52,6 @@
 
 <div id="corpNameSearch" class="table">
     <table class="table-hover table table-bordered" ng-controller="editCorpCtrl" >
-            <div>Companies</div>
-
         <tr>
             <th>Name</th>
             <th>Company</th>

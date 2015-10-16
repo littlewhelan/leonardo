@@ -2,6 +2,7 @@ var mongoose = require('mongoose')
     , bcrypt = require('bcrypt')
     , jsonwebtoken = require('jsonwebtoken')
     , SALT_WORK_FACTOR = 12;
+var secret = require('../config/user');
 
 var UserSchema = new mongoose.Schema({
     username: { type: String, required: true, unique: true},
@@ -64,7 +65,7 @@ UserSchema.statics.getAuthenticated = function (user, callback) {
                     };
 
                     // return the jwt
-                    var token = jsonwebtoken.sign(user, 'supersecret', {
+                    var token = jsonwebtoken.sign(user, secret, {
                         expiresIn: 86400 // expires in 24 hours
                     });
                     return callback(null, token, user);

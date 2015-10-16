@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
+var db = require('../config/db.js');
+
 
 
 
@@ -18,12 +20,7 @@ router.post('/*', function(req, res, next) {
     /*GET for DB search*/
 router.get('/', function(req, res, next) {
 
-    var con = mysql.createConnection({
-        host: "localhost",
-        user: "KamieK",
-        password: "password",
-        database: "leo"
-    });
+    var con = mysql.createConnection(db);
 
     var searchString = req.query.search;
     console.log("received", searchString);
