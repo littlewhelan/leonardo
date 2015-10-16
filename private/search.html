@@ -12,14 +12,13 @@
 
 <div id ="childNameSearch" class="table">
     <table class="table-hover table table-bordered" ng-controller="editFamilyCtrl">
-        <div>Children</div>
         <tr>
             <th>Name</th>
             <th>Parent Name</th>
             <th>Home Phone</th>
         </tr>
 
-        <tr ng-click="open('lg')"  ng-repeat ="result in child">
+        <tr ng-click="open('lg')"  ng-repeat ="result in kids">
             <td>{{result.FN}} {{result.LN}}</td>
             <td>{{result.CAFN}} {{result.CALN}} </td>
             <td>{{result.CMP}}</td>
@@ -30,7 +29,6 @@
 
     <div id="adultSearchName" class="table">
         <table class="table-hover table table-bordered" ng-controller="editFamilyCtrl" >
-            <div>Adults</div>
             <tr>
                 <th>Name</th>
                 <th>Home Phone</th>
@@ -51,8 +49,6 @@
 
 <div id="corpNameSearch" class="table">
     <table class="table-hover table table-bordered" ng-controller="editCorpCtrl" >
-            <div>Companies</div>
-
         <tr>
             <th>Name</th>
             <th>Company</th>

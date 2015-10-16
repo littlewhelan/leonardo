@@ -31,16 +31,16 @@ app.config(['$routeProvider',
 
     }]);
 
-app.controller('resetCtrl', [ '$scope', '$http', '$location',  function ($scope, $http, $location) {
-    $scope.submit = function () {
-        console.log('edit password:', $scope.form);
-        $http.put('/admin', $scope.form)
-            .then(function (response) {
-                console.log(response);
-                $location.path("/index")
-            });
-    }
-}]);
+//app.controller('resetCtrl', [ '$scope', '$http', '$location',  function ($scope, $http, $location) {
+//    $scope.submit = function () {
+//        console.log('edit password:', $scope.form);
+//        $http.put('/admin', $scope.form)
+//            .then(function (response) {
+//                console.log(response);
+//                $location.path("/index")
+//            });
+//    }
+//}]);
 
 
 
@@ -50,7 +50,43 @@ app.factory('ResultService', function($http) {
     var results = [];
     var adults = [];
     var companies = [];
-    var child = [];
+    var kids = [];
+
+    var getCompanies = function(array) {
+        var getElement1 = function(array) {
+            array.forEach(function(element){
+                if (element.type == 'company')
+                    companies.push(element);
+            })
+        };
+        getElement1(array);
+        console.log('this is getElement1',companies);
+        return companies
+    };
+
+    var getAdults = function(array) {
+        var getElement2 = function(array) {
+            array.forEach(function(element){
+                if (element.type == 'adult')
+                    adults.push(element);
+            })
+        };
+        getElement2(array);
+        console.log('this is in getElement2', adults);
+        return adults
+    };
+
+    var getKids = function(array) {
+        var getElement3 = function(array) {
+            array.forEach(function(element){
+                if (element.type == 'child')
+                    kids.push(element);
+            })
+        };
+        getElement3(array);
+        console.log('this is getElements3', kids);
+        return kids
+    };
 
     var makeDataCall = function(passedData) {
         return $http({
@@ -60,56 +96,22 @@ app.factory('ResultService', function($http) {
         }).then(function (response) {
             console.log('this should be the response data', response.data);
             results = response.data;
-            console.log(results);
+            getCompanies(results);
+            getKids(results);
+            getAdults(results);
         });
-    };
-
-    var getCompanies = function(array) {
-        var companies =[];
-        var getElement1 = function(array) {
-            array.forEach(function(element){
-                if (element.type == 'company')
-                    companies.push(element);
-            })
-        };
-        getElement1(array);
-        return companies
-    };
-
-    var getAdults = function(array) {
-        var adults =[];
-        var getElement2 = function(array) {
-            array.forEach(function(element){
-                if (element.type == 'adult')
-                    adults.push(element);
-            })
-        };
-        getElement2(array);
-        return adults
-    };
-
-    var getChildren = function(array) {
-        var children =[];
-        var getElement3 = function(array) {
-            array.forEach(function(element){
-                if (element.type == 'child')
-                    children.push(element);
-            })
-        };
-        getElement3(array);
-        return children
     };
 
     //public
     var publicApi = {
-        getChildren: getChildren(results),
-        getAdults: getAdults(results),
-        getCompanies: getCompanies(results),
+        getKids: getKids,
+        getAdults: getAdults,
+        getCompanies: getCompanies,
         makeDataCall: makeDataCall,
         results: results,
         companies: companies,
         adults: adults,
-        child: child
+        kids: kids
     };
     return publicApi;
 });
@@ -119,7 +121,6 @@ app.controller('searchFunction', ['$scope', '$http', 'ResultService', function (
     $scope.formInput={};
 
     $scope.searchBtn = function () {
-        console.log(ResultService.results);
        ResultService.makeDataCall($scope.formInput.data);
         console.log('this is the input text', $scope.formInput);
     };
@@ -130,7 +131,6 @@ app.controller('searchFunction', ['$scope', '$http', 'ResultService', function (
 app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', function ($scope, $uibModal, $log, ResultService) {
 
     $scope.companies = ResultService.companies;
-    console.log('editCorp',$scope.companies);
 
     $scope.animationsEnabled = true;
 
@@ -165,9 +165,8 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 app.controller('editFamilyCtrl',['$scope', '$uibModal', '$log','ResultService', function ($scope, $uibModal, $log, ResultService) {
 
     $scope.adults = ResultService.adults;
-    $scope.child = ResultService.child;
+    $scope.kids = ResultService.kids;
 
-    console.log('editFamily',$scope.adults, $scope.child);
 
     $scope.animationsEnabled = true;
 
@@ -475,39 +474,39 @@ app.controller('newContactListController', function(contactListData, $scope, $ht
 
 });
 
-app.controller('contactListController', function(contactListData, $scope, $http)
-{
-    var importDataArray = [];
-    var listEnd = JSON.stringify("list: ["+ listNum + "],column_names:[\"EMAIL\",\"FIRST NAME\", \"LAST NAME\", \"CITY\",\"COMPANY NAME\"]");
-
-    //push the included/checked info to the email list
-    $scope.contactChecked = function (id) {
-        $scope.checked.push([id]);
-    };
-
-
-    //Post Data to Constant Contact
-    $scope.sendPost = function() {
-        var data = $.param({
-            json: JSON.stringify({
-                "importData": importDataArray + ", " + listEnd
-            })
-        });
-
-
-        var config = {
-            headers: {
-                'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9'
-            }
-        };
-
-        $http.post('https://api.constantcontact.com/v2/activities/addcontacts?api_key=u8w59ztxe3294adczfvn7k9e', data, config).
-            success(function (data, status, headers, config) {
-                res.id = listNum;
-            }).
-            error(function (data, status, headers, config) {
-                // log error
-            });
-    };
-});
-
+//app.controller('contactListController', function(contactListData, $scope, $http)
+//{
+//    var importDataArray = [];
+//    var listEnd = JSON.stringify("list: ["+ listNum + "],column_names:[\"EMAIL\",\"FIRST NAME\", \"LAST NAME\", \"CITY\",\"COMPANY NAME\"]");
+//
+//    //push the included/checked info to the email list
+//    $scope.contactChecked = function (id) {
+//        $scope.checked.push([id]);
+//    };
+//
+//
+//    //Post Data to Constant Contact
+//    $scope.sendPost = function() {
+//        var data = $.param({
+//            json: JSON.stringify({
+//                "importData": importDataArray + ", " + listEnd
+//            })
+//        });
+//
+//
+//        var config = {
+//            headers: {
+//                'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9'
+//            }
+//        };
+//
+//        $http.post('https://api.constantcontact.com/v2/activities/addcontacts?api_key=u8w59ztxe3294adczfvn7k9e', data, config).
+//            success(function (data, status, headers, config) {
+//                res.id = listNum;
+//            }).
+//            error(function (data, status, headers, config) {
+//                // log error
+//            });
+//    };
+//});
+//
