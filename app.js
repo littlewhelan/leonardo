@@ -5,9 +5,9 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var expressJwt = require('express-jwt');
-var jwt = expressJwt({secret: 'supersecret'});
+var secret = require('./config/user');
+var jwt = expressJwt({secret: secret});
 var mongoose = require('mongoose');
-
 
 var index = require('./routes/index');
 var users = require('./routes/users');

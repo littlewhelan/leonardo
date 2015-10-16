@@ -122,6 +122,9 @@ app.controller('searchFunction', ['$scope', '$http', 'ResultService', function (
     $scope.formInput={};
 
     $scope.searchBtn = function () {
+        ResultService.kids =[];
+        ResultService.adults =[];
+        ResultService.companies =[];
         //passes in search text to service
        ResultService.makeDataCall($scope.formInput.data);
         console.log('this is the input text', $scope.formInput);
