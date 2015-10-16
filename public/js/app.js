@@ -344,11 +344,6 @@ var includedEmails = [];
 var newContactList = [];
 var listNum = 0;
 
-    //push the included info to the email list
-    $scope.contactChecked = function (id) {
-        $scope.checked.push([id]);
-    };
-
 
     return {
         newContactList: newContactList,
@@ -357,25 +352,25 @@ var listNum = 0;
 });
 
 app.controller('newContactListController', function(contactListData, $scope, $http) {
-
+    //data to create a new contact list
     $scope.listReq = {"Name": $scope.form, "Status": "ACTIVE"};
-
+    //headers
     $scope.config = {headers: {"Authorization": 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9'}};
 
-
+    //function to creats the new contact list
     $scope.postList = function () {
         console.log('posting list . . . ');
 
-        //$http.post('https://api.constantcontact.com/v2/lists?api_key=u8w59ztxe3294adczfvn7k9e', listReq, config).
-        //    then(function (res) {
-        //        console.log("res" + res);
-        //
-        //        res.id = listNum;
-        //
-        //    }).
-        //    error(function (data, status, headers, config) {
-        //        // log error
-        //    });
+        $http.post('https://api.constantcontact.com/v2/lists?api_key=u8w59ztxe3294adczfvn7k9e', listReq, config).
+            then(function (res) {
+                console.log("res" + res);
+
+                res.id = listNum;
+
+            }).
+            error(function (data, status, headers, config) {
+                // log error
+            });
 
     };
 
@@ -386,26 +381,33 @@ app.controller('contactListController', function(contactListData, $scope, $http)
     var importDataArray = [];
     var listEnd = JSON.stringify("list: ["+ listNum + "],column_names:[\"EMAIL\",\"FIRST NAME\", \"LAST NAME\", \"CITY\",\"COMPANY NAME\"]");
 
+    //push the included/checked info to the email list
+    $scope.contactChecked = function (id) {
+        $scope.checked.push([id]);
+    };
+
 
     //Post Data to Constant Contact
     $scope.sendPost = function() {
         var data = $.param({
-            //json: JSON.stringify({
-            //    "importData:" + importDataArray + ", "+ listEnd
-            //})
-        })
-    };
-
-    var config = {headers: {
-        'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9'
-    }};
-
-    $http.post('https://api.constantcontact.com/v2/activities/addcontacts?api_key=u8w59ztxe3294adczfvn7k9e', data, config).
-        success(function (data, status, headers, config) {
-            res.id = listNum;
-        }).
-        error(function (data, status, headers, config) {
-            // log error
+            json: JSON.stringify({
+                "importData": importDataArray + ", " + listEnd
+            })
         });
 
+
+        var config = {
+            headers: {
+                'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9'
+            }
+        };
+
+        $http.post('https://api.constantcontact.com/v2/activities/addcontacts?api_key=u8w59ztxe3294adczfvn7k9e', data, config).
+            success(function (data, status, headers, config) {
+                res.id = listNum;
+            }).
+            error(function (data, status, headers, config) {
+                // log error
+            });
+    };
 });
