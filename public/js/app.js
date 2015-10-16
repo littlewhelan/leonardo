@@ -58,13 +58,16 @@ app.factory('ResultService', function($http) {
             url: '../search',
             params:{search:passedData}
         }).then(function (response) {
-            console.log('this should be the response data', response.data);
+            //console.log('this should be the response data', response.data);
             results = response.data;
-            console.log(results);
+            console.log("Then results", results.length);
+			console.log("callback");
+			getCompanies(results);
         });
     };
 
     var getCompanies = function(array) {
+		console.log("ResultService->getCompanies", array.length);
         var companies =[];
         var getElement1 = function(array) {
             array.forEach(function(element){
@@ -122,6 +125,7 @@ app.controller('searchFunction', ['$scope', '$http', 'ResultService', function (
         console.log(ResultService.results);
        ResultService.makeDataCall($scope.formInput.data);
         console.log('this is the input text', $scope.formInput);
+		console.log(ResultService.results);
     };
 
 }]);
