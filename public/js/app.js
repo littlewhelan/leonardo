@@ -107,7 +107,7 @@ app.factory('ResultService', function($http) {
     var publicApi = {
         getKids: getKids,
         getAdults: getAdults,
-        getCompanies: getCompanies,
+        gi: getCompanies,
         makeDataCall: makeDataCall,
         results: results,
         companies: companies,
