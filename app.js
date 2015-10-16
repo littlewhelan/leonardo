@@ -57,9 +57,8 @@ app.use(function (err, req, res, next) {
   }
 });
 
-
 // Create the database connection
-mongoose.connect(dbURI);
+mongoose.connect(dbURI.conn);
 
 mongoose.connection.on('connected', function () {
   console.log('Mongoose default connection open');
