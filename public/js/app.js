@@ -29,13 +29,20 @@ app.config(['$routeProvider',
     }]);
 
 //This service should pass data between controllers
-app.factory('ResultService', function() {
+app.factory('ResultService', function($http) {
 
-    //this will hopefully be response.data
-    var data = [
-        {type:'company',CFN: 'Katie', CLN: 'Whelan', CE: "kajfakd;fj;akl", CP: "111-111-111", COMP: "costco"},
-        {type:'child',FN: 'Katie', LN: 'Whelan', CAFN: "katie", CMP: "111-111-111", CALN: "doe"},
-        {type:'adult',AFN: 'Katie', ALN: 'Whelan', AE: "klwhelan@gmail.com", MP: "11-111-111", AC: "111-111-1111"}];
+    var makeDataCall = function(passedData){
+        return $http({
+            method: 'GET',
+            url: '../search',
+            params:{search:passedData}
+        }).then(function (response) {
+            console.log('I think I get stuck here');
+            console.log('this is the data',response.data);
+            results = response.data;
+        });
+
+    };
 
     var getCompanies = function (array) {
         var companies =[];
@@ -74,39 +81,41 @@ app.factory('ResultService', function() {
     };
 
 
-
     //public
     var publicApi = {
-        companies: getCompanies(data),
-        adults: getAdults(data),
-        child: getChildren(data)
-
+        makeDataCall:makeDataCall(),
+        results: results,
+        companies: getCompanies(results),
+        adults: getAdults(results),
+        child: getChildren(results)
     };
 
 return publicApi;
 });
 
 //This should get the search item
-app.controller('searchFunction',function ($scope, $http) {
+app.controller('searchFunction',['ResultService', function ($scope, $http, ResultService) {
     $scope.formInput={};
     $scope.searchBtn = function () {
+       ResultService.makeDataCall($scope.formInput.data);
         console.log('this is the input text', $scope.formInput);
-        $http({
-            method: 'GET',
-            url: '../search',
-            params:{search:$scope.formInput.data}
-        }).then(function (response) {
-            $scope.results = response.data;
-            console.log($scope.results);
-        });
+
+    //    $http({
+    //        method: 'GET',
+    //        url: '../search',
+    //        params:{search:$scope.formInput.data}
+    //    }).then(function (response) {
+    //        $scope.results = response.data;
+    //        console.log($scope.results);
+    //    });
     };
 
-});
+}]);
 
 
 
 //edit corporation modal template
-app.controller('editCorpCtrl', function ($scope, $uibModal, $log, ResultService) {
+app.controller('editCorpCtrl'['ResultService', function ($scope, $uibModal, $log, ResultService) {
 
     $scope.companies = ResultService.companies;
     console.log('editCorp',$scope.companies);
@@ -138,10 +147,10 @@ app.controller('editCorpCtrl', function ($scope, $uibModal, $log, ResultService)
         $scope.animationsEnabled = !$scope.animationsEnabled;
     };
 
-});
+}]);
 
 //edit family modal template
-app.controller('editFamilyCtrl', function ($scope, $uibModal, $log, ResultService) {
+app.controller('editFamilyCtrl'['ResultService', function ($scope, $uibModal, $log, ResultService) {
 
     $scope.adults = ResultService.adults;
     $scope.child = ResultService.child;
@@ -175,7 +184,7 @@ app.controller('editFamilyCtrl', function ($scope, $uibModal, $log, ResultServic
         $scope.animationsEnabled = !$scope.animationsEnabled;
     };
 
-});
+}]);
 
 // Please note that $modalInstance represents a modal window (instance) dependency.
 // It is not the same as the $uibModal service used above.
