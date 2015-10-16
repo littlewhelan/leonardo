@@ -4,7 +4,6 @@ var mysql = require('mysql');
 var db = require('../config/db.js');
 
 
-
 /*POST new contact list */
 //router.post('/', function(req, res, next) {
 //    //res.sendFile(path.join(__dirname,'../index.html'));

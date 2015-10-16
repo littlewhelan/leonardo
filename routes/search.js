@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var db = require('../config/db.js');
-var searchResults = [];
 
 // First you need to create a connection to the db
 
@@ -23,6 +22,7 @@ router.get('/', function(req, res, next) {
 
 
     con.connect(function(err) {
+       var searchResults =[];
         if(err){
             console.log('Error connecting to Db');
             return;
