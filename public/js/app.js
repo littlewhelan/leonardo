@@ -30,21 +30,24 @@ app.config(['$routeProvider',
 
 //This service should pass data between controllers
 app.factory('ResultService', function($http) {
+    var results = [];
+    var adults = [];
+    var companies = [];
+    var child = [];
 
-    var makeDataCall = function(passedData){
+    var makeDataCall = function(passedData) {
         return $http({
             method: 'GET',
             url: '../search',
             params:{search:passedData}
         }).then(function (response) {
-            console.log('I think I get stuck here');
-            console.log('this is the data',response.data);
+            console.log('this should be the response data', response.data);
             results = response.data;
+            console.log(results);
         });
-
     };
 
-    var getCompanies = function (array) {
+    var getCompanies = function(array) {
         var companies =[];
         var getElement1 = function(array) {
             array.forEach(function(element){
@@ -56,7 +59,7 @@ app.factory('ResultService', function($http) {
         return companies
     };
 
-    var getAdults = function (array) {
+    var getAdults = function(array) {
         var adults =[];
         var getElement2 = function(array) {
             array.forEach(function(element){
@@ -68,7 +71,7 @@ app.factory('ResultService', function($http) {
         return adults
     };
 
-    var getChildren = function (array) {
+    var getChildren = function(array) {
         var children =[];
         var getElement3 = function(array) {
             array.forEach(function(element){
@@ -80,42 +83,34 @@ app.factory('ResultService', function($http) {
         return children
     };
 
-
     //public
     var publicApi = {
-        makeDataCall:makeDataCall(),
+        getChildren: getChildren(results),
+        getAdults: getAdults(results),
+        getCompanies: getCompanies(results),
+        makeDataCall: makeDataCall,
         results: results,
-        companies: getCompanies(results),
-        adults: getAdults(results),
-        child: getChildren(results)
+        companies: companies,
+        adults: adults,
+        child: child
     };
-
-return publicApi;
+    return publicApi;
 });
 
 //This should get the search item
-app.controller('searchFunction',['ResultService', function ($scope, $http, ResultService) {
+app.controller('searchFunction', ['$scope', '$http', 'ResultService', function ($scope, $http, ResultService) {
     $scope.formInput={};
+
     $scope.searchBtn = function () {
+        console.log(ResultService.results);
        ResultService.makeDataCall($scope.formInput.data);
         console.log('this is the input text', $scope.formInput);
-
-    //    $http({
-    //        method: 'GET',
-    //        url: '../search',
-    //        params:{search:$scope.formInput.data}
-    //    }).then(function (response) {
-    //        $scope.results = response.data;
-    //        console.log($scope.results);
-    //    });
     };
 
 }]);
 
-
-
 //edit corporation modal template
-app.controller('editCorpCtrl'['ResultService', function ($scope, $uibModal, $log, ResultService) {
+app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', function ($scope, $uibModal, $log, ResultService) {
 
     $scope.companies = ResultService.companies;
     console.log('editCorp',$scope.companies);
@@ -150,7 +145,7 @@ app.controller('editCorpCtrl'['ResultService', function ($scope, $uibModal, $log
 }]);
 
 //edit family modal template
-app.controller('editFamilyCtrl'['ResultService', function ($scope, $uibModal, $log, ResultService) {
+app.controller('editFamilyCtrl',['$scope', '$uibModal', '$log','ResultService', function ($scope, $uibModal, $log, ResultService) {
 
     $scope.adults = ResultService.adults;
     $scope.child = ResultService.child;

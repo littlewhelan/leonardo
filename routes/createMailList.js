@@ -22,7 +22,7 @@ router.get('/', function(req, res, next) {
         }
         console.log('Connection established');
 
-        con.query('SELECT contactFirstName,contactLastName, contactEmail FROM corpDonors',function(err,rows,fields) {
+        con.query('SELECT contactFirstName AS CFN, contactLastName, contactEmail FROM corpDonors',function(err,rows,fields) {
             console.log('You are in the query!');
 
             if(err) throw err;
