@@ -22,9 +22,6 @@ router.get('/', function(req, res, next) {
 
     var con = mysql.createConnection(db);
 
-
-
-
     var searchString = req.query.search;
     console.log("received", searchString);
 
