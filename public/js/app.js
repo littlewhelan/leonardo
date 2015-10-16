@@ -52,6 +52,20 @@ app.factory('ResultService', function($http) {
     var companies = [];
     var kids = [];
 
+    var makeDataCall = function(passedData) {
+        return $http({
+            method: 'GET',
+            url: '../search',
+            params:{search:passedData}
+        }).then(function (response) {
+            console.log('this should be the response data', response.data);
+            results = response.data;
+            getCompanies(results);
+            getKids(results);
+            getAdults(results);
+        });
+    };
+
     var getCompanies = function(array) {
         var getElement1 = function(array) {
             array.forEach(function(element){
@@ -59,6 +73,7 @@ app.factory('ResultService', function($http) {
                     companies.push(element);
             })
         };
+
         getElement1(array);
         console.log('this is getElement1',companies);
         return companies
@@ -88,20 +103,6 @@ app.factory('ResultService', function($http) {
         return kids
     };
 
-    var makeDataCall = function(passedData) {
-        return $http({
-            method: 'GET',
-            url: '../search',
-            params:{search:passedData}
-        }).then(function (response) {
-            console.log('this should be the response data', response.data);
-            results = response.data;
-            getCompanies(results);
-            getKids(results);
-            getAdults(results);
-        });
-    };
-
     //public
     var publicApi = {
         getKids: getKids,
@@ -121,15 +122,18 @@ app.controller('searchFunction', ['$scope', '$http', 'ResultService', function (
     $scope.formInput={};
 
     $scope.searchBtn = function () {
+        //passes in search text to service
        ResultService.makeDataCall($scope.formInput.data);
         console.log('this is the input text', $scope.formInput);
+        //emptys the search box
+        $scope.formInput={};
     };
 
 }]);
 
 //edit corporation modal template
 app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', function ($scope, $uibModal, $log, ResultService) {
-
+    //sends the companies after the results have been organized
     $scope.companies = ResultService.companies;
 
     $scope.animationsEnabled = true;
@@ -163,8 +167,9 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 
 //edit family modal template
 app.controller('editFamilyCtrl',['$scope', '$uibModal', '$log','ResultService', function ($scope, $uibModal, $log, ResultService) {
-
+    //sends the adults after the results have been organized
     $scope.adults = ResultService.adults;
+    //sends the kids after the results have been organized
     $scope.kids = ResultService.kids;
 
 
