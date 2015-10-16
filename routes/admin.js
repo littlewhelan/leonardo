@@ -2,20 +2,28 @@ var express = require('express');
 var router = express.Router();
 var User = require('../models/user');
 
-router.post('/:id', function(req, res){
-    User.findOne({ resetPasswordToken: req.params.token}, function(err, user){
-        if (!user){
-            req.message('error', 'password reset token is invalid.');
-            return res.redirect('/');
+/* POST /register/ */
+router.get('/admin', function(req,res,next){
+    console.log(req.body);
+    User.find({}, function(){
+        if(err){
+            res.status(400).send(err.message);
+        } else {
+            res.send(200);
+            res.render('users', {users: user, user: req.user.username})
         }
-        user.password = req.body.password;
-        user.resetPasswordToken = undefined;
+    });
+});
 
-        user.save(function(err){
-            req.logIn(user, function(err){
-                done(err, user);
-            });
-        });
+router.put('/', function(req, res, next) {
+
+    console.log("/admin req.body:", req.body);
+    User.findByIdAndUpdate(req.params.id, req.body, function(err, user){
+        if(err){
+            res.status(400).send(err.message);
+        } else{
+            res.send(200);
+        }
     });
 });
 

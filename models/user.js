@@ -110,7 +110,7 @@ UserSchema.statics.Create = function (user, callback) {
                     return callback(err);
                 }
                 // User Registration succesful
-                console.log('success!')
+                console.log('success!');
                 return callback(null, newUser);
             });
         }

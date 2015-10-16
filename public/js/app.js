@@ -30,8 +30,7 @@ app.config(['$routeProvider',
 
 app.controller('resetCtrl', [ '$scope', '$http', '$location',  function ($scope, $http, $location) {
     $scope.submit = function () {
-        console.log("registerCtrl");
-        console.log('registerController submit:', $scope.form);
+        console.log('edit password:', $scope.form);
         $http.put('/admin', $scope.form)
             .then(function (response) {
                 console.log(response);

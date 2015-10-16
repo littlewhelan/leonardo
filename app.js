@@ -19,7 +19,7 @@ var routes = require('./routes/index');
 var user = require('./routes/user');
 var login = require('./routes/login');
 var register = require('./routes/register');
-
+var admin = require('./routes/admin');
 
 var app = express();
 
@@ -43,6 +43,7 @@ app.use('/users', users);
 app.use('/createAdmin', createAdmin);
 app.use('/createMailList', createMailList);
 app.use('/search', search );
+app.use('/admin', admin);
 
 app.use('/private/*', jwt);
 app.use('/', routes);

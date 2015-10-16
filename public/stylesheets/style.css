@@ -70,9 +70,24 @@ th {
 }
 .block-input {
   display: block;
-  position: relative;
-  left: 15px;
+  /*position: relative;*/
+  /*left: 15px;*/
 }
 .modal{
   position: absolute;
+}
+
+.ng-show{
+  display: none !important;
+}
+.ng-hide{
+  display: none !important;
+}
+span{
+  padding: 5px;
+  background-color: white;
+  border-radius: 5px;
+}
+label{
+  padding: 5px;
 }
