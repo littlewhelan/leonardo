@@ -9,28 +9,62 @@
                 </div>
         </div>
 </div>
-    <!--hover class search results-->
-<div class="table">
-    <table class="table-hover table table-bordered">
+
+<div id ="childNameSearch" class="table">
+    <table class="table-hover table table-bordered" ng-controller="editFamilyCtrl">
+        <div>Children</div>
+        <tr>
+            <th>Name</th>
+            <th>Parent Name</th>
+            <th>Home Phone</th>
+        </tr>
+
+        <tr ng-click="open('lg')"  ng-repeat ="result in child">
+            <td>{{result.FN}} {{result.LN}}</td>
+            <td>{{result.CAFN}} {{result.CALN}} </td>
+            <td>{{result.CMP}}</td>
+        </tr>
+    </table>
+</div>
+
+
+    <div id="adultSearchName" class="table">
+        <table class="table-hover table table-bordered" ng-controller="editFamilyCtrl" >
+            <div>Adults</div>
+            <tr>
+                <th>Name</th>
+                <th>Home Phone</th>
+                <th>Cell Phone</th>
+                <th>Email</th>
+            </tr>
+
+            <tr ng-click="open('lg')" ng-repeat ="result in adults" >
+                <td>{{result.AFN}} {{result.ALN}}</td>
+                <td>{{result.MP}}</td>
+                <td>{{result.AC}}</td>
+                <td>{{result.AE}}</td>
+            </tr>
+            </table>
+        </div>
+
+
+
+<div id="corpNameSearch" class="table">
+    <table class="table-hover table table-bordered" ng-controller="editCorpCtrl" >
+            <div>Companies</div>
+
         <tr>
             <th>Name</th>
             <th>Company</th>
             <th>Phone</th>
             <th>Email</th>
         </tr>
-        <!--hyperlink buttons-->
-        <tr ng-controller="editCorpCtrl" ng-click="openCorp('lg')">
-            <td></td>
-            <td>3m</td>
-            <td>218-383-2847</td>
-            <td>3m@gmail.com</td>
-        </tr>
-        <!--hyperlink buttons-->
-        <tr ng-controller="editFamilyCtrl" ng-click="open('lg')">
-            <td>Bart Simpson</td>
-            <td></td>
-            <td>218-383-2847</td>
-            <td>Bart@gmail.com</td>
+
+        <tr ng-click="openCorp('lg')"  ng-repeat ="result in companies" >
+            <td>{{result.CFN}} {{result.CLN}}</td>
+            <td>{{result.COMP}}</td>
+            <td>{{result.CP}}</td>
+            <td >{{result.CE}}</td>
         </tr>
     </table>
 </div>
