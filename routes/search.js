@@ -9,8 +9,8 @@ router.get('/', function(req, res, next) {
 
     var con = mysql.createConnection({
         host: "localhost",
-        user: "littlewhelan",
-        password: "DragonTattoo",
+        user: "glajiness",
+        password: "abc123",
         database:"leo"
     });
 

@@ -460,11 +460,11 @@ app.controller('newContactListController', function(contactListData, $scope, $ht
     $scope.postList = function () {
         console.log('posting list . . . ');
 
-        $http.post('https://api.constantcontact.com/v2/lists?api_key=u8w59ztxe3294adczfvn7k9e', listReq, config).
+        $http.post('https://api.constantcontact.com/v2/lists?api_key=yg5p2qf549qacmbqayk5rn23', $scope.listReq, $scope.config).
             then(function (res) {
                 console.log("res" + res);
 
-                res.id = listNum;
+                res.id = contactListData.listNum;
 
             }).
             error(function (data, status, headers, config) {
@@ -478,7 +478,7 @@ app.controller('newContactListController', function(contactListData, $scope, $ht
 app.controller('contactListController', function(contactListData, $scope, $http)
 {
     var importDataArray = [];
-    var listEnd = JSON.stringify("list: ["+ listNum + "],column_names:[\"EMAIL\",\"FIRST NAME\", \"LAST NAME\", \"CITY\",\"COMPANY NAME\"]");
+    var listEnd = JSON.stringify("list: ["+ contactListData.listNum + "],column_names:[\"EMAIL\",\"FIRST NAME\", \"LAST NAME\", \"CITY\",\"COMPANY NAME\"]");
 
     //push the included/checked info to the email list
     $scope.contactChecked = function (id) {
@@ -503,7 +503,7 @@ app.controller('contactListController', function(contactListData, $scope, $http)
 
         $http.post('https://api.constantcontact.com/v2/activities/addcontacts?api_key=u8w59ztxe3294adczfvn7k9e', data, config).
             success(function (data, status, headers, config) {
-                res.id = listNum;
+                res.id = contactListData.listNum;
             }).
             error(function (data, status, headers, config) {
                 // log error
