@@ -68,9 +68,10 @@ app.factory('ResultService', function($http) {
 
     var getCompanies = function(array) {
         var getElement1 = function(array) {
+            companies.splice(0,companies.length);
             array.forEach(function(element){
                 if (element.type == 'company')
-                    companies.push(element);
+                companies.push(element);
             })
         };
 
@@ -81,6 +82,7 @@ app.factory('ResultService', function($http) {
 
     var getAdults = function(array) {
         var getElement2 = function(array) {
+            adults.splice(0,adults.length);
             array.forEach(function(element){
                 if (element.type == 'adult')
                     adults.push(element);
@@ -93,6 +95,7 @@ app.factory('ResultService', function($http) {
 
     var getKids = function(array) {
         var getElement3 = function(array) {
+            kids.splice(0,kids.length);
             array.forEach(function(element){
                 if (element.type == 'child')
                     kids.push(element);
