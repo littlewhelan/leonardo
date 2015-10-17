@@ -28,7 +28,6 @@ app.config(['$routeProvider',
             otherwise({
                 redirectTo: '/search'
             });
-
     }]);
 
 //app.controller('resetCtrl', [ '$scope', '$http', '$location',  function ($scope, $http, $location) {
@@ -46,20 +45,6 @@ app.config(['$routeProvider',
 
 
 
-
-//This should get the search item
-app.controller('searchFunction', ['$scope', '$http', 'ResultService', function ($scope, $http, ResultService) {
-    $scope.formInput={};
-
-    $scope.searchBtn = function () {
-        //passes in search text to service
-       ResultService.makeDataCall($scope.formInput.data);
-        console.log('this is the input text', $scope.formInput);
-        //emptys the search box
-        $scope.formInput={};
-    };
-
-}]);
 
 //edit corporation modal template
 app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', function ($scope, $uibModal, $log, ResultService) {
@@ -372,89 +357,8 @@ app.controller('navCtrl', ['authService','$scope','$rootScope','$location', func
 //
 //})
 
-app.factory('ContactListDataService', function($http) {
-
-    var results = [];
-    var allCompanies = [];
-    var allKids = [];
-    var allAdults = [];
-
-    var makeDataCall = function (passedData) {
-        return http({
-            method: 'GET',
-            URL: '../createMailList',
-            params: {search: passedData}
-        }).then(function (response) {
-            results = response.data;
-            getCompanies(results);
-            getAdults(results);
-            getKids(results);
-        });
-    };
 
 
-    var getAdults = function (array) {
-        var getElement3 = function (array) {
-            allAdults.splice(0, allAdults.length);
-            array.forEach(function (element) {
-                if (element.type == 'adult')
-                    allAdults.push(element);
-            })
-        };
-        getElement3(array);
-        return allAdults
-    };
-
-    var getCompanies = function (array) {
-        var getElement3 = function (array) {
-            allCompanies.splice(0, allCompanies.length);
-            array.forEach(function (element) {
-                if (element.type == 'company')
-                    allCompanies.push(element);
-            })
-        };
-        getElement3(array);
-        return allCompanies
-    };
-
-    var getKids = function (array) {
-        var getElement3 = function (array) {
-            allKids.splice(0, allKids.length);
-            array.forEach(function (element) {
-                if (element.type == 'child')
-                    kids.push(element);
-            })
-        };
-        getElement3(array);
-        return allKids
-    };
-
-    var dataApi = {
-        makeDataCall: makeDataCall,
-        getCompanies: getCompanies,
-        getKids: getKids,
-        getAdults: getAdults,
-        results: results,
-        allKids: allKids,
-        allAdults: allAdults,
-        allCompanies: allCompanies
-    };
-
-    return dataApi;
-
-});
-
-
-app.controller('createListSearch',['$scope','ContactListDataService', function($scope, ContactListDataService){
-    $scope.listForm={};
-
-    $scope.searchListBtn = function () {
-        //passes in search text to service
-        ContactListDataService.makeDataCall($scope.listForm.data);
-        //emptys the search box
-        $scope.listForm={};
-    };
-}]);
 
 //app.controller('newContactListController', function(contactListData, $scope, $http) {
 //    //data to create a new contact list
