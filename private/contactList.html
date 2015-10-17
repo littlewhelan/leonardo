@@ -8,9 +8,10 @@
 </div>
 <div class="search-container fluid-container">
     <div class="row">
+        <form ng-controller="createListSearch" ng-submit="searchListBtn">
         <div class="input-group">
             <div class="input-group-btn">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
+                <button ng-submit="searchListBtn" type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Search By<span class="caret"></span></button>
                 <ul class="dropdown-menu">
                     <li><a href="#">Individual</a></li>
@@ -19,8 +20,9 @@
                     <li><a href="#">Corporation</a></li>
                 </ul>
             </div>
-            <input type="text" class="form-control" aria-label="...">
+            <input type="text" ng-model="listFrom" class="form-control" aria-label="...">
         </div>
+            </form>
     </div>
 </div>
 
@@ -29,14 +31,18 @@
         <table class="well well-sm">
             <tr>
                 <th>Name/Main Contact</th>
-                <th>Phone</th>
                 <th>Email</th>
                 <th>add to contact list</th>
             </tr>
-            <tr ng-repeat="result in results" ng-class="result.id">
-                <td>{{result.firstName + " " + result.lastName}}</td>
-                <td>{{result.phone}}</td>
-                <td>{{result.email}}</td>
+            <tr ng-repeat="result in results">
+                <td>{{result.AFN}} {{result.ALN}}</td>
+                <td>{{result.AE}}</td>
+                <td><input type="checkbox" id={{result.id}}></td>
+            </tr>
+
+            <tr ng-repeat="result in results">
+                <td>{{result.CFN}} {{result.CLN}}</td>
+                <td>{{result.CE}}</td>
                 <td><input type="checkbox" id={{result.id}}></td>
             </tr>
 
