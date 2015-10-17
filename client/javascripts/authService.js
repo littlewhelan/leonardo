@@ -39,4 +39,4 @@ app.service('authService', ['$window', function ($window) {
     this.getUser = function () {
         return this.parseJwt(this.getToken())
     };
-}]);
+}])

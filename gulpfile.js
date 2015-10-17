@@ -7,7 +7,15 @@ var concat = require('gulp-concat');
 //shrink code to be smaller for compy
 var uglify = require('gulp-uglify');
 
-gulp.task('default', function() {
+gulp.task('default',['jsFiles'],
+  function() {
+  gutil.log('Gulp Complete!');
+
+});
+
+
+
+gulp.task('jsFiles', function() {
  return gulp.src('./client/javascripts/*.js')
  .pipe(sourcemaps.init())
  .pipe(concat('app.min.js'))
@@ -15,10 +23,8 @@ gulp.task('default', function() {
  .pipe(sourcemaps.write())
  .pipe(gulp.dest('./public/js'));
 
- function() {
-   gutil.log('gulped')
-   };
 });
+
 
 
 

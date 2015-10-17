@@ -27,4 +27,4 @@ app.factory('authInterceptor', ['$q', '$location', 'authService', function ($q, 
             return $q.reject(response);
         }
     };
-}]);
+}])
