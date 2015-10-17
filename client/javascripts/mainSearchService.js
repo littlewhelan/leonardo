@@ -1,5 +1,5 @@
 //This service should pass data between controllers
-app.factory('ResultService', function($http) {
+app.factory('ResultService', ['$http',function($http) {
     var results = [];
     var adults = [];
     var companies = [];
@@ -70,4 +70,4 @@ app.factory('ResultService', function($http) {
         kids: kids
     };
     return publicApi;
-});
+}]);

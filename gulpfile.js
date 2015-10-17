@@ -14,7 +14,7 @@ gulp.task(
  .pipe(concat('app.min.js'))
  .pipe(uglify())
  .pipe(sourcemaps.write())
- .pipe(gulp.dest('./public/javascripts'));
+ .pipe(gulp.dest('./public/js'));
  function() {
   gutil.log('gulp moved to production')
   });
