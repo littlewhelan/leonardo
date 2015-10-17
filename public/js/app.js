@@ -58,7 +58,6 @@ app.factory('ResultService', function($http) {
             url: '../search',
             params:{search:passedData}
         }).then(function (response) {
-            //console.log('this should be the response data', response.data);
             results = response.data;
             getCompanies(results);
             getKids(results);
@@ -125,9 +124,6 @@ app.controller('searchFunction', ['$scope', '$http', 'ResultService', function (
     $scope.formInput={};
 
     $scope.searchBtn = function () {
-        ResultService.kids =[];
-        ResultService.adults =[];
-        ResultService.companies =[];
         //passes in search text to service
        ResultService.makeDataCall($scope.formInput.data);
         console.log('this is the input text', $scope.formInput);
@@ -448,84 +444,156 @@ app.controller('navCtrl', ['authService','$scope','$rootScope','$location', func
 //
 //})
 
-app.service('contactListData', function(){
-var includedEmails = [];
-var newContactList = [];
-var listNum = 0;
+app.factory('ContactListDataService', function($http) {
 
+    var results = [];
+    var allCompanies = [];
+    var allKids = [];
+    var allAdults = [];
 
-    return {
-        newContactList: newContactList,
-        listNum: listNum
-    };
-});
-
-app.controller('newContactListController', function(contactListData, $scope, $http) {
-    //data to create a new contact list
-    $scope.listname = {};
-
-
-    //headers
-    $scope.config = {
-        headers: {'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9',
-        'Content-Type': 'application/json',
-        }
-    };
-
-    //function to creats the new contact list
-    $scope.postList = function () {
-        $scope.listReq = {"name": $scope.listname.input, "status": "ACTIVE"};
-        console.log('posting list . . . ');
-        console.log($scope.listReq);
-        console.log($scope.config);
-        $http.post('https://api.constantcontact.com/v2/lists?api_key=yg5p2qf549qacmbqayk5rn23', $scope.listReq, $scope.config).
-            then(function (res) {
-                console.log("res" + res);
-
-                res.id = contactListData.listNum;
-
-            });
-            //error(function (data, status, headers, config) {
-            //    // log error
-            //});
-
-    };
-
-});
-
-app.controller('contactListController', function(contactListData, $scope, $http)
-{
-    var importDataArray = [];
-    var listEnd = JSON.stringify("list: ["+ contactListData.listNum + "],column_names:[\"EMAIL\",\"FIRST NAME\", \"LAST NAME\", \"CITY\",\"COMPANY NAME\"]");
-
-    //push the included/checked info to the email list
-    $scope.contactChecked = function (id) {
-        $scope.checked.push([id]);
-    };
-
-
-    //Post Data to Constant Contact
-    $scope.sendPost = function() {
-        var data = $.param({
-            json: JSON.stringify({
-                "importData": importDataArray + ", " + listEnd
-            })
+    var makeDataCall = function (passedData) {
+        return http({
+            method: 'GET',
+            URL: '../createMailList',
+            params: {search: passedData}
+        }).then(function (response) {
+            results = response.data;
+            getCompanies(results);
+            getAdults(results);
+            getKids(results);
         });
-
-
-        var config = {
-            headers: {
-                'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9'
-            }
-        };
-
-        $http.post('https://api.constantcontact.com/v2/activities/addcontacts?api_key=u8w59ztxe3294adczfvn7k9e', data, config).
-            success(function (data, status, headers, config) {
-                res.id = contactListData.listNum;
-            }).
-            error(function (data, status, headers, config) {
-                // log error
-            });
     };
+
+
+    var getAdults = function (array) {
+        var getElement3 = function (array) {
+            allAdults.splice(0, allAdults.length);
+            array.forEach(function (element) {
+                if (element.type == 'adult')
+                    allAdults.push(element);
+            })
+        };
+        getElement3(array);
+        return allAdults
+    };
+
+    var getCompanies = function (array) {
+        var getElement3 = function (array) {
+            allCompanies.splice(0, allCompanies.length);
+            array.forEach(function (element) {
+                if (element.type == 'company')
+                    allCompanies.push(element);
+            })
+        };
+        getElement3(array);
+        return allCompanies
+    };
+
+    var getKids = function (array) {
+        var getElement3 = function (array) {
+            allKids.splice(0, allKids.length);
+            array.forEach(function (element) {
+                if (element.type == 'child')
+                    kids.push(element);
+            })
+        };
+        getElement3(array);
+        return allKids
+    };
+
+    var dataApi = {
+        makeDataCall: makeDataCall,
+        getCompanies: getCompanies,
+        getKids: getKids,
+        getAdults: getAdults,
+        results: results,
+        allKids: allKids,
+        allAdults: allAdults,
+        allCompanies: allCompanies
+    };
+
+    return dataApi;
+
 });
 
+
+app.controller('createListSearch',['$scope','ContactListDataService', function($scope, ContactListDataService){
+    $scope.listForm={};
+
+    $scope.searchListBtn = function () {
+        //passes in search text to service
+        ContactListDataService.makeDataCall($scope.listForm.data);
+        //emptys the search box
+        $scope.listForm={};
+    };
+}]);
+
+//app.controller('newContactListController', function(contactListData, $scope, $http) {
+//    //data to create a new contact list
+//    $scope.listname = {};
+//
+//
+//    //headers
+//    $scope.config = {
+//        headers: {'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9',
+//        'Content-Type': 'application/json',
+//        }
+//    };
+//
+//    //function to creats the new contact list
+//    $scope.postList = function () {
+//        $scope.listReq = {"name": $scope.listname.input, "status": "ACTIVE"};
+//        console.log('posting list . . . ');
+//        console.log($scope.listReq);
+//        console.log($scope.config);
+//        $http.post('https://api.constantcontact.com/v2/lists?api_key=yg5p2qf549qacmbqayk5rn23', $scope.listReq, $scope.config).
+//            then(function (res) {
+//                console.log("res" + res);
+//
+//                res.id = contactListData.listNum;
+//
+//            });
+//            //error(function (data, status, headers, config) {
+//            //    // log error
+//            //});
+//
+//    };
+//
+//});
+//
+//app.controller('contactListController', function(contactListData, $scope, $http)
+//{
+//    var importDataArray = [];
+//    var listEnd = JSON.stringify("list: ["+ contactListData.listNum + "],column_names:[\"EMAIL\",\"FIRST NAME\", \"LAST NAME\", \"CITY\",\"COMPANY NAME\"]");
+//
+//    //push the included/checked info to the email list
+//    $scope.contactChecked = function (id) {
+//        $scope.checked.push([id]);
+//    };
+//
+//
+//    //Post Data to Constant Contact
+//    $scope.sendPost = function() {
+//        var data = $.param({
+//            json: JSON.stringify({
+//                "importData": importDataArray + ", " + listEnd
+//            })
+//        });
+//
+//
+//        var config = {
+//            headers: {
+//                'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9'
+//            }
+//        };
+//
+//        $http.post('https://api.constantcontact.com/v2/activities/addcontacts?api_key=u8w59ztxe3294adczfvn7k9e', data, config).
+//            success(function (data, status, headers, config) {
+//                res.id = contactListData.listNum;
+//            }).
+//            error(function (data, status, headers, config) {
+//                // log error
+//            });
+//    };
+//});
+//
