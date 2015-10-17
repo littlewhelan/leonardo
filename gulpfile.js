@@ -6,15 +6,19 @@ var sourcemaps = require('gulp-sourcemaps');
 var concat = require('gulp-concat');
 //shrink code to be smaller for compy
 var uglify = require('gulp-uglify');
-var uglifyCss = require('gulp-minify-css');
 
-gulp.task(
+gulp.task('default', function() {
  return gulp.src('./client/javascripts/*.js')
  .pipe(sourcemaps.init())
  .pipe(concat('app.min.js'))
  .pipe(uglify())
  .pipe(sourcemaps.write())
  .pipe(gulp.dest('./public/js'));
+
  function() {
-  gutil.log('gulp moved to production')
-  });
+   gutil.log('gulped')
+   };
+});
+
+
+
