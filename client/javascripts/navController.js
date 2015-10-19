@@ -1,4 +1,4 @@
-app.controller('navCtrl', ['authService','$scope','$rootScope','$location', function(authService, $scope,$rootScope, $location){
+app.controller('navCtrl', ['authService','$scope','$rootScope','$location', function(authService, $scope, $rootScope, $location){
     $rootScope.user = authService.getUser();
 
     if($rootScope.user && $rootScope.user.username){
