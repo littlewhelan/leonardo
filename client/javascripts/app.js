@@ -44,10 +44,6 @@ app.config(['$routeProvider',
 //dummy data edit family additional members
 //app.controller('additionalCtrl', [ '$scope', function($scope) {
 //    $scope.additional = {
-//        fName: 'Greg',
-//        lName: 'Brady',
-//        bDay: '1983-03-05',
-//        notes: 'This area is reserved for information as needed'
 //    };
 //    $scope.set = function(edit_info) {
 //        this.contact.fName = edit_info,
@@ -60,8 +56,6 @@ app.config(['$routeProvider',
 //dummy data for family contact information
 //app.controller('contactCtrl', ['$scope', function($scope) {
     //$scope.contact = {
-    //    fName: 'Mike',
-    //     reserved for information as needed'
     //};
     //$scope.set = function(edit_info) {
     //    this.contact.fName = edit_info,
@@ -73,8 +67,6 @@ app.config(['$routeProvider',
 //dummy data for family emergency contact information
 //app.controller('emergencyCtrl',['$scope', function($scope){
     //$scope.emergency = {
-    //                    fName: 'Mike',
-
     //                    };
     //$scope.set = function(edit_info) {
     //    this.emergency.fName = edit_info,
