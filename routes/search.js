@@ -12,13 +12,13 @@ router.get('/', function(req, res, next) {
     var searchString = req.query.search;
     console.log("received", searchString);
 
-    var searchA1 = 'SELECT "adult" AS type, adultOneFirstName AS AFN, adultOneLastName AS ALN, mainPhone AS MP, adultOneCell AS AC, adultOneEmail AS AE FROM families WHERE adultOneFirstName REGEXP "' + searchString + '" UNION SELECT "adult" AS type, adultOneFirstName AS AFN, adultOneLastName AS ALN, mainPhone AS MP, adultOneCell AS AC, adultOneEmail AS AE FROM families WHERE adultOneLastName REGEXP "' + searchString + '" ';
+    var searchA1 = 'SELECT "adult" AS type, adultOneFirstName AS AFN, adultOneLastName AS ALN, mainPhone AS MP, adultOneCell AS AC, adultOneEmail AS AE FROM families WHERE adultOneFirstName REGEXP ? OR adultOneLastName REGEXP ?';
 
-    var searchA2 = 'SELECT "adult" AS type, adultTwoFirstName AS AFN, adultTwoLastName AS ALN, mainPhone AS MP, adultTwoCell AS AC, adultTwoEmail AS AE FROM families WHERE adultTwoFirstName REGEXP "' + searchString + '" UNION SELECT "adult" AS type, adultTwoFirstName AS AFN, adultTwoLastName AS ALN, mainPhone AS MP, adultTwoCell AS AC, adultTwoEmail AS AE FROM families WHERE adultTwoLastName REGEXP "' + searchString + '" ';
+    var searchA2 = 'SELECT "adult" AS type, adultTwoFirstName AS AFN, adultTwoLastName AS ALN, mainPhone AS MP, adultTwoCell AS AC, adultTwoEmail AS AE FROM families WHERE adultTwoFirstName REGEXP ? OR  adultTwoLastName REGEXP ?';
 
-    var searchComp = 'SELECT "company" AS type, contactFirstName AS CFN, contactLastName AS CLN, name AS COMP, contactPhone AS CP, contactEmail AS CE FROM corpDonors WHERE name REGEXP "' + searchString + '" UNION SELECT "company" AS type, contactFirstName AS CFN, contactLastName AS CLN, name AS COMP, contactPhone AS CP, contactEmail AS CE FROM corpDonors WHERE contactFirstName REGEXP "' + searchString + '" UNION SELECT "company" AS type, name AS COMP, contactFirstName AS CFN, contactLastName AS CLN, contactPhone AS CP, contactEmail AS CE FROM corpDonors WHERE contactLastName REGEXP "' + searchString + '" ';
+    var searchComp = 'SELECT "company" AS type, contactFirstName AS CFN, contactLastName AS CLN, name AS COMP, contactPhone AS CP, contactEmail AS CE FROM corpDonors WHERE name REGEXP ? OR contactFirstName REGEXP ? OR contactLastName REGEXP ?';
 
-    var searchChild ='SELECT "child" AS type, adultOneFirstName AS CAFN, adultOneLastName AS CALN, mainPhone AS CMP, firstName AS FN, lastName AS LN FROM families f, children c WHERE f.id = c.familyID AND lastName REGEXP "' + searchString + '" UNION SELECT "child" AS type, adultOneFirstName AS CAFN, adultOneLastName AS CALN, mainPhone AS CMP, firstName AS FN, lastName AS LN FROM families f, children c WHERE f.id = c.familyID AND firstName REGEXP "' + searchString + '" ';
+    var searchChild ='SELECT "child" AS type, adultOneFirstName AS CAFN, adultOneLastName AS CALN, mainPhone AS CMP, firstName AS FN, lastName AS LN FROM families f, children c WHERE f.id = c.familyID AND (lastName REGEXP ? OR firstName REGEXP ?)';
 
 
     con.connect(function(err) {
@@ -35,19 +35,19 @@ router.get('/', function(req, res, next) {
 
         runSearch = function () {
 
-            con.query(searchA1, function (err, rows) {
+            con.query(searchA1, [searchString, searchString], function (err, rows) {
                 if (err) throw err;
                    rows.forEach(checkArray);
 
-                con.query(searchA2, function (err, rows) {
+                con.query(searchA2, [searchString, searchString], function (err, rows) {
                     if (err) throw err;
                     rows.forEach(checkArray);
 
-                    con.query(searchComp, function (err, rows) {
+                    con.query(searchComp, [searchString, searchString, searchString], function (err, rows) {
                         if (err) throw err;
                         rows.forEach(checkArray);
 
-                        con.query(searchChild, function (err, rows) {
+                        con.query(searchChild, [searchString, searchString], function (err, rows) {
                             if (err) throw err;
                             rows.forEach(checkArray);
                             console.log('final results', searchResults);
