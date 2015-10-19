@@ -3,18 +3,6 @@ var router = express.Router();
 var mysql = require('mysql');
 var db = require('../config/db.js');
 
-
-/*POST new contact list */
-//router.post('/', function(req, res, next) {
-//    //res.sendFile(path.join(__dirname,'../index.html'));
-//    res.send('This is the create Mail List Route');
-//});
-
-/*POST*/
-router.post('/*', function(req, res, next) {
-    res.render('index');
-});
-
     /*GET for DB search*/
 router.get('/', function(req, res, next) {
 
