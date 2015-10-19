@@ -1,4 +1,4 @@
-app.factory('ContactListDataService',['Shttp', function($http) {
+app.factory('ContactListDataService',['$http', function($http) {
 
     var results = [];
     var allCompanies = [];
