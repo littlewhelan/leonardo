@@ -75,8 +75,17 @@ app.config(['$routeProvider',
 //}]);
 
 
+app.service('contactListData', function(){
+    var includedEmails = [];
+    var newContactList = [];
+    var listNum = 0;
 
 
+    return {
+        newContactList: newContactList,
+        listNum: listNum
+    };
+});
 
 
 app.controller('newContactListController',['contactListData','$scope','$http', function(contactListData, $scope, $http) {
@@ -87,7 +96,9 @@ app.controller('newContactListController',['contactListData','$scope','$http', f
     //headers
     $scope.config = {
         headers: {'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9',
+
         'Content-Type': 'application/json',
+
         }
     };
 
@@ -104,16 +115,21 @@ app.controller('newContactListController',['contactListData','$scope','$http', f
                 res.id = contactListData.listNum;
 
             });
+
             //error(function (data, status, headers, config) {
             //    // log error
             //});
+
 
     };
 
 }]);
 
+
 app.controller('contactListController',['contactListData','$scope','$http' function(contactListData, $scope, $http)
 {
+
+
     var importDataArray = [];
     var listEnd = JSON.stringify("list: ["+ contactListData.listNum + "],column_names:[\"EMAIL\",\"FIRST NAME\", \"LAST NAME\", \"CITY\",\"COMPANY NAME\"]");
 
@@ -145,6 +161,9 @@ app.controller('contactListController',['contactListData','$scope','$http' funct
             error(function (data, status, headers, config) {
                 // log error
             });
+
    };
 }])
+
+
 
