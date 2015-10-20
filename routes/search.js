@@ -43,7 +43,10 @@ router.get('/', function(req, res, next) {
                         con.query(ser.searchChild, [searchString, searchString], function (err, rows) {
                             if (err) throw err;
                             rows.forEach(checkArray);
+   console.log(rows);
                             con.end();
+
+                            console.log('final', searchResults);
                             res.send(searchResults);
                         })
                     })

@@ -11,89 +11,126 @@ router.get('/*', function(req, res, next) {
 
 	var con = mysql.createConnection(db);
 
-	// get id sent
 	var id = req.query.id;
 	console.log("received family id", id);
 
-	// connect, check if working
 	con.connect(function (err) {
+		var family = {};
+
 		if (err) {
 			console.log('Error connecting to Db');
 			return;
 		}
 		console.log('Connection established');
+
+
+runQuery = function() {
+
+			con.query(getPeeps.familyTab, [id], function (err, rows) {
+				if(err) throw err;
+
+					var adultOne = {
+						firstName:rows[0].adultOneFirstName,
+						lastName:rows[0].adultOneLastName,
+						addressOne:rows[0].adultOneAddressOne,
+						addressTwo:rows[0].adultOneAddressTwo,
+						zip:rows[0].adultOneZip,
+						city:rows[0].adultOneCity,
+						state:rows[0].adultOneState,
+						phone:rows[0].adultOneWork,
+						cellPhone:rows[0].adultOneCell,
+						email:rows[0].adultOneEmail,
+						notes:rows[0].adultOneNotes,
+					};
+
+					var adultTwo = {
+						firstName:rows[0].adultTwoFirstName,
+						lastName:rows[0].adultTwoLastName,
+						addressOne:rows[0].adultTwoAddressOne,
+						addressTwo:rows[0].adultTwoAddressTwo,
+						zip:rows[0].adultTwoZip,
+						city:rows[0].adultTwoCity,
+						state:rows[0].adultTwoState,
+						phone:rows[0].adultTwoWork,
+						cellPhone:rows[0].adultTwoCell,
+						email:rows[0].adultTwoEmail,
+						notes:rows[0].adultTwoNotes,
+					};
+
+					var emergency = {
+						firstName:rows[0].emerFirstName,
+						lastName:rows[0].emerLastName,
+						addressOne:rows[0].emerAddressOne,
+						addressTwo:rows[0].emerAddressTwo,
+						zip:rows[0].emerZip,
+						city:rows[0].emerCity,
+						state:rows[0].emerState,
+						phone:rows[0].emerWork,
+						email:rows[0].emerEmail,
+						notes:rows[0].emerNotes,
+					};
+
+						con.query(getPeeps.childTab, [id], function (err, rows) {
+							if(err) throw err;
+
+
+
+								con.query(getPeeps.donateTab, [id], function (err, rows) {
+									if(err) throw err;
+
+
+console.log(rows);
+											con.end();
+
+											//console.log('adultOne', adultOne);
+											//console.log('adultTwo', adultTwo);
+											//console.log('emergency', emergency)
+											res.send(family);
+
+								})
+						})
+				})
+		};
+
+		runQuery();
 	});
-
-	// run queries
-	var family = {};
-	// first get family main info
-	con.query(getPeeps.familyTab, [id], function (err, rows) {
-		if(err) {
-			throw err;
-		} else {
-			console.log('Data received from Db:\n');
-			console.log(rows);
-			// process the adult 1, adult 2, emergency contact into objects within the family object
-			var adultOne = {
-			firstName: rows.adultOneFirstName
-			};
-
-		}
-	});
-
-	// second get children info
-	con.query(getPeeps.childTab, [id], function (err, rows) {
-		if(err) {
-			throw err;
-		}else {
-			console.log('Data received from Db:\n');
-			console.log(rows);
-			// process the children, pushing children objects to an array
-		}
-	});
-
-	// third get family donation info
-	con.query(getPeeps.compTab, [id], function (err, rows) {
-		if(err) {
-			throw err;
-		}else {
-			console.log('Data received from Db:\n');
-			console.log(rows);
-			// process the donations, pushing donation objects to an array
-		}
-	});
-
-	// end the connection and send the combined family unit
-	con.end();
-
-	res.send(family);
-	console.log(adultOne);
-
-
 });
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // update family by id
-router.put('/', function (req, res, next) {
-	// get id sent
-	var id = req.query.id;
-	if(!id) {
-		res.status(400).send('Invalid family ID');
-	} else {
-
-	}
-	console.log("received family id", id);
-
-	var con = mysql.createConnection(db);
-
-
-	// connect, check if working
-	con.connect(function (err) {
-		if (err) {
-			console.log('Error connecting to Db');
-			return;
-		}
-		console.log('Connection established');
-	});
-});
+//router.put('/', function (req, res, next) {
+//	// get id sent
+//	var id = req.query.id;
+//	if(!id) {
+//		res.status(400).send('Invalid family ID');
+//	} else {
+//
+//	}
+//	console.log("received family id", id);
+//
+//	var con = mysql.createConnection(db);
+//
+//
+//	// connect, check if working
+//	con.connect(function (err) {
+//		if (err) {
+//			console.log('Error connecting to Db');
+//			return;
+//		}
+//		console.log('Connection established');
+//	});
+//});
 
 module.exports = router;
