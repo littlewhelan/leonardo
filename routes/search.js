@@ -14,9 +14,6 @@ router.get('/', function(req, res, next) {
     var searchString = req.query.search;
     console.log("received", searchString);
 
-
-
-
     con.connect(function(err) {
        var searchResults =[];
         if(err){
