@@ -34,7 +34,7 @@ router.get('/*', function(req, res, next) {
 			console.log('Data received from Db:\n');
 			console.log(rows);
 			// process the adult 1, adult 2, emergency contact into objects within the family object
-			var adult1 = {
+			var adultOne = {
 			firstName: rows.adultOneFirstName
 			};
 
@@ -67,7 +67,7 @@ router.get('/*', function(req, res, next) {
 	con.end();
 
 	res.send(family);
-	console.log(adult1);
+	console.log(adultOne);
 
 
 });
@@ -78,7 +78,7 @@ router.put('/', function (req, res, next) {
 	var id = req.query.id;
 	if(!id) {
 		res.status(400).send('Invalid family ID');
-	}else {
+	} else {
 
 	}
 	console.log("received family id", id);
