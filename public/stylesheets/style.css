@@ -94,3 +94,10 @@ label{
 #mailList{
 text-align: center;
 }
+.table th{
+  background-color: #337ab7 !important;
+  color: white;
+}
+legend{
+  text-align: center;
+}

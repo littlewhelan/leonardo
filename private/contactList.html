@@ -1,18 +1,21 @@
 <div id="mailList">
-    <div  class="newContactList container-fluid">
-        <form name="newListForm" ng-hide="add" ng-controller="newContactListController as newList"  novalidate>
-            <!--newListForm.$valid &&-->
-            <legend>Create Mailing List</legend>
-            <input type="text" ng-model="listname.input" placeholder="New Mailing List">
-            <input class="btn btn-default" type="submit" ng-click="hide()" value="Create">
-        </form>
+    <div class="row">
+        <div  class="newContactList container-fluid">
+
+            <form name="newListForm" ng-hide="add" ng-controller="newContactListController as newList"  novalidate>
+                <legend>Create Mailing List</legend>
+                <input class="form-control" type="text" ng-model="listname.input" placeholder="Mailing List Name">
+                <input class="form-control btn btn-success" type="submit" ng-click="hide()" value="Create">
+            </form>
+        </div>
     </div>
     <div  class="search-container fluid-container">
         <div class="row">
+
             <form ng-show="add" ng-controller="createListSearch" ng-submit="searchListBtn">
-                    <legend>Create Mailing List</legend>
-                    <input type="radio" ng-model="content"  value="Corporation"> Corporation
-                    <input type="radio" ng-model="content" value="Famlies"> Families
+                    <legend>List Name</legend>
+                    <input type="radio" id="Corporation" ng-model="content"  value="Corporation"> Corporation
+                    <input type="radio" id="Famlies" ng-model="content" value="Famlies"> Families
                     <input type="radio" value="zip" id="zip" ng-model="content"  value="Zip"> Zip
                     <input type="text"  ng-model="content" ng-show="content == 'zip'" placeholder="Zipcode">
                     <input type="radio" id="age" value="age" ng-model="content" value="Age"> Age
@@ -23,28 +26,13 @@
         </div>
     </div>
 </div>
-<div class="table">
-    <div class="table" ng-controller="contactListController as results">
-        <table class="well well-sm">
-            <tr>
-                <th>Name/Main Contact</th>
-                <th>Email</th>
-                <th>add to contact list</th>
-            </tr>
-            <tr ng-repeat="result in results">
-                <td>{{result.AFN}} {{result.ALN}}</td>
-                <td>{{result.AE}}</td>
-                <td><input type="checkbox" id={{result.id}}></td>
-            </tr>
 
-            <tr ng-repeat="result in results">
-                <td>{{result.CFN}} {{result.CLN}}</td>
-                <td>{{result.CE}}</td>
-                <td><input type="checkbox" id={{result.id}}></td>
-            </tr>
-
-        </table>
-    </div>
+<div id="adultSearchName" class="table">
+    <table class="table-hover table table-bordered" ng-controller="contactListController as results" >
+        <tr>
+            <th class="field-label col-xs-4 active">Name</th>
+            <th class="field-label col-xs-4 active">Email</th>
+            <th class="field-label col-xs-4 active">Company</th>
+        </tr>
+    </table>
 </div>
-
-

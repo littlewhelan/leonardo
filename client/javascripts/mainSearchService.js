@@ -17,7 +17,6 @@ app.factory('ResultService', ['$http',function($http) {
             getAdults(results);
         });
     };
-
     var getCompanies = function(array) {
         var getElement1 = function(array) {
             companies.splice(0,companies.length);
