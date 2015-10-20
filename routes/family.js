@@ -34,6 +34,10 @@ router.get('/*', function(req, res, next) {
 			console.log('Data received from Db:\n');
 			console.log(rows);
 			// process the adult 1, adult 2, emergency contact into objects within the family object
+			var adult1 = {
+			firstName: rows.adultOneFirstName
+			};
+
 		}
 	});
 
@@ -61,7 +65,10 @@ router.get('/*', function(req, res, next) {
 
 	// end the connection and send the combined family unit
 	con.end();
+
 	res.send(family);
+	console.log(adult1);
+
 
 });
 
