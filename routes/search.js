@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 
     con.connect(function(err) {
        var searchResults =[];
-        if(err){
+        if(err) {
             console.log('Error connecting to Db');
             return;
         }

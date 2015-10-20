@@ -30,7 +30,7 @@ router.get('/*', function(req, res, next) {
 	con.query(getPeeps.familyTab, [id], function (err, rows) {
 		if(err) {
 			throw err;
-		}else {
+		} else {
 			console.log('Data received from Db:\n');
 			console.log(rows);
 			// process the adult 1, adult 2, emergency contact into objects within the family object
