@@ -22,6 +22,7 @@ var user = require('./routes/user');
 var login = require('./routes/login');
 var register = require('./routes/register');
 var admin = require('./routes/admin');
+//var family = require('./routes/family');
 
 var app = express();
 
@@ -52,6 +53,8 @@ app.use('/', routes);
 app.use('/user', user);
 app.use('/login', login);
 app.use('/register', register);
+//app.use('/family', family);
+
 
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {

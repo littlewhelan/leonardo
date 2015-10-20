@@ -12,22 +12,22 @@
                 </form>
         </div>
 </div>
+<div>
+    <div id ="childNameSearch" class="table">
+        <table class="table-hover table table-bordered" ng-controller="editFamilyCtrl">
+            <tr>
+                <th>Name</th>
+                <th>Parent Name</th>
+                <th>Home Phone</th>
+            </tr>
 
-<div id ="childNameSearch" class="table">
-    <table class="table-hover table table-bordered" ng-controller="editFamilyCtrl">
-        <tr>
-            <th>Name</th>
-            <th>Parent Name</th>
-            <th>Home Phone</th>
-        </tr>
-
-        <tr ng-click="open('lg')"  ng-repeat ="result in kids">
-            <td>{{result.FN}} {{result.LN}}</td>
-            <td>{{result.CAFN}} {{result.CALN}} </td>
-            <td>{{result.CMP}}</td>
-        </tr>
-    </table>
-</div>
+            <tr ng-click="open('lg')"  ng-repeat ="result in kids">
+                <td>{{result.FN}} {{result.LN}}</td>
+                <td>{{result.CAFN}} {{result.CALN}} </td>
+                <td>{{result.CMP}}</td>
+            </tr>
+        </table>
+    </div>
 
 
     <div id="adultSearchName" class="table">
@@ -46,7 +46,9 @@
                 <td>{{result.AE}}</td>
             </tr>
             </table>
-        </div>
+    </div>
+</div>
+
 
 
 

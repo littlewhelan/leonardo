@@ -6,6 +6,13 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
     $scope.animationsEnabled = true;
 
     $scope.openCorp = function (size) {
+        console.log('corp call');
+        return $http({
+            method: 'GET',
+            url: '../search',
+            params:{id:passedData}
+        }).then(function (response) {
+            results = this.response.data;
 
         var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
@@ -24,7 +31,16 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
         }, function () {
             $log.info('Modal dismissed at: ' + new Date());
         });
+    });
+
     };
+    //get call for corporate modals
+
+    $scope.openCorp = function(passedData) {
+
+    };
+
+
 
     $scope.toggleAnimation = function () {
         $scope.animationsEnabled = !$scope.animationsEnabled;
