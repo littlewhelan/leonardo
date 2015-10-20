@@ -22,7 +22,7 @@ app.controller('editFamilyCtrl',['$scope', '$uibModal', '$log','ResultService', 
                 animation: $scope.animationsEnabled,
                 templateUrl: 'private/editfamily.html',
                 controller: 'ModalInstanceCtrl',
-                size: size,
+                size: size
               //  resolve: {
                 //    items: function () {
                   //      return $scope.items;
