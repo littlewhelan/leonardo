@@ -1,4 +1,5 @@
-app.controller('createListSearch',['$scope','ContactListDataService', function($scope, ContactListDataService){
+app.controller('createListSearch',['$scope', '$rootScope', 'ContactListDataService', function($scope, $rootScope, ContactListDataService){
+    $rootScope.add = false;
     $scope.listForm={};
 
     $scope.searchListBtn = function () {

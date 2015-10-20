@@ -34,7 +34,17 @@ app.config(['$routeProvider',
 
 
 
+app.service('contactListData', function(){
+    var includedEmails = [];
+    var newContactList = [];
+    var listNum = 0;
 
+
+    return {
+        newContactList: newContactList,
+        listNum: listNum
+    };
+});
 
 
 
@@ -75,23 +85,26 @@ app.config(['$routeProvider',
 //}]);
 
 
-app.service('contactListData', function(){
-    var includedEmails = [];
-    var newContactList = [];
-    var listNum = 0;
+//app.service('contactListData', function(){
+//    var includedEmails = [];
+//    var newContactList = [];
+//    var listNum = 0;
+//
+//
+//    return {
+//        newContactList: newContactList,
+//        listNum: listNum
+//    };
+//});
 
 
-    return {
-        newContactList: newContactList,
-        listNum: listNum
-    };
-});
-
-
-app.controller('newContactListController',['contactListData','$scope','$http', function(contactListData, $scope, $http) {
+app.controller('newContactListController',['contactListData','$rootScope','$scope','$http', function(contactListData,$rootScope, $scope, $http) {
     //data to create a new contact list
     $scope.listname = {};
 
+    $scope.hide = function(){
+        $rootScope.add = true;
+    };
 
     //headers
     $scope.config = {
@@ -126,8 +139,7 @@ app.controller('newContactListController',['contactListData','$scope','$http', f
 }]);
 
 
-app.controller('contactListController',['contactListData','$scope','$http' function(contactListData, $scope, $http)
-{
+app.controller('contactListController',['contactListData','$scope','$http', function(contactListData, $scope, $http) {
 
 
     var importDataArray = [];
@@ -163,7 +175,7 @@ app.controller('contactListController',['contactListData','$scope','$http' funct
             });
 
    };
-}])
+}]);
 
 
 
