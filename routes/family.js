@@ -6,7 +6,7 @@ var getPeeps = require('../models/modalQ');
 
 
 // get request for one family by id
-router.get('/*', function(req, res, next) {
+router.get('/', function(req, res, next) {
 	console.log("in get route");
 
 	var con = mysql.createConnection(db);
@@ -31,13 +31,13 @@ router.get('/*', function(req, res, next) {
 		if(err) {
 			throw err;
 		} else {
-			console.log('Data received from Db:\n');
-			console.log(rows);
+			//console.log('Data received from Db:\n');
+			//console.log(rows);
 			// process the adult 1, adult 2, emergency contact into objects within the family object
 			var adultOne = {
-			firstName: rows.adultOneFirstName
+				firstName: rows[0].adultOneFirstName
 			};
-
+			console.log("timely", adultOne);
 		}
 	});
 
@@ -46,8 +46,8 @@ router.get('/*', function(req, res, next) {
 		if(err) {
 			throw err;
 		}else {
-			console.log('Data received from Db:\n');
-			console.log(rows);
+			//console.log('Data received from Db:\n');
+			//console.log(rows);
 			// process the children, pushing children objects to an array
 		}
 	});
@@ -57,8 +57,8 @@ router.get('/*', function(req, res, next) {
 		if(err) {
 			throw err;
 		}else {
-			console.log('Data received from Db:\n');
-			console.log(rows);
+			//console.log('Data received from Db:\n');
+			//console.log(rows);
 			// process the donations, pushing donation objects to an array
 		}
 	});
@@ -66,8 +66,17 @@ router.get('/*', function(req, res, next) {
 	// end the connection and send the combined family unit
 	con.end();
 
+	//console.log("final", adultOne);
+	var family = {};
+	family.adultOne = {
+		firstName: "John",
+		lastName: "Doe",
+		address: "123 No Street",
+		city: "Nowhere",
+		state: "Anyone Wants To Be",
+		zip: "00000"
+	};
 	res.send(family);
-	console.log(adultOne);
 
 
 });
