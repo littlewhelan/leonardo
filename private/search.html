@@ -21,7 +21,7 @@
                 <th>Home Phone</th>
             </tr>
 
-            <tr ng-click="open('lg')"  ng-repeat ="result in kids">
+            <tr data-id="{{result.id}}" ng-click="open('lg')"  ng-repeat ="result in kids">
                 <td>{{result.FN}} {{result.LN}}</td>
                 <td>{{result.CAFN}} {{result.CALN}} </td>
                 <td>{{result.CMP}}</td>
@@ -39,7 +39,7 @@
                 <th>Email</th>
             </tr>
 
-            <tr ng-click="open('lg')" ng-repeat ="result in adults" >
+            <tr data-id="{{result.id}}" ng-click="open('lg', '{{result.id}}')" ng-repeat ="result in adults" >
                 <td>{{result.AFN}} {{result.ALN}}</td>
                 <td>{{result.MP}}</td>
                 <td>{{result.AC}}</td>
@@ -61,7 +61,7 @@
             <th>Email</th>
         </tr>
 
-        <tr ng-click="openCorp('lg')"  ng-repeat ="result in companies" >
+        <tr data-id="{{result.id}}" ng-click="openCorp('lg')"  ng-repeat ="result in companies" >
             <td>{{result.CFN}} {{result.CLN}}</td>
             <td>{{result.COMP}}</td>
             <td>{{result.CP}}</td>

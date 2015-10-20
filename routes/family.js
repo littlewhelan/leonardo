@@ -2,17 +2,17 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var db = require('../config/db.js');
-var getFam = require('../models/getFam');
-var getKids = require('../models/getKids');
-var getDon = require('../models/getDon');
+var getPeeps = require('../models/modalQ');
+
 
 // get request for one family by id
-router.get('/', function(req, res, next) {
+router.get('/*', function(req, res, next) {
+	console.log("in get route");
 
 	var con = mysql.createConnection(db);
 
 	// get id sent
-	var id = req.query.search;
+	var id = req.query.id;
 	console.log("received family id", id);
 
 	// connect, check if working
@@ -27,7 +27,7 @@ router.get('/', function(req, res, next) {
 	// run queries
 	var family = {};
 	// first get family main info
-	con.query(getFam, id, function (err, rows) {
+	con.query(getPeeps.familyTab, [id], function (err, rows) {
 		if(err) {
 			throw err;
 		}else {
@@ -38,7 +38,7 @@ router.get('/', function(req, res, next) {
 	});
 
 	// second get children info
-	con.query(getKids, id, function (err, rows) {
+	con.query(getPeeps.childTab, [id], function (err, rows) {
 		if(err) {
 			throw err;
 		}else {
@@ -49,7 +49,7 @@ router.get('/', function(req, res, next) {
 	});
 
 	// third get family donation info
-	con.query(getDon, id, function (err, rows) {
+	con.query(getPeeps.compTab, [id], function (err, rows) {
 		if(err) {
 			throw err;
 		}else {
@@ -68,7 +68,7 @@ router.get('/', function(req, res, next) {
 // update family by id
 router.put('/', function (req, res, next) {
 	// get id sent
-	var id = req.query.search;
+	var id = req.query.id;
 	if(!id) {
 		res.status(400).send('Invalid family ID');
 	}else {

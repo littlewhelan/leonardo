@@ -31,50 +31,6 @@ app.config(['$routeProvider',
     }]);
 
 
-
-
-
-
-
-
-
-
-
-
-//dummy data edit family additional members
-//app.controller('additionalCtrl', [ '$scope', function($scope) {
-//    $scope.additional = {
-//    };
-//    $scope.set = function(edit_info) {
-//        this.contact.fName = edit_info,
-//        this.contact.lName = edit_info,
-//        this.contact.bDay = edit_info,
-//        this.contact.notes = edit_info
-//    };
-//}]);
-
-//dummy data for family contact information
-//app.controller('contactCtrl', ['$scope', function($scope) {
-    //$scope.contact = {
-    //};
-    //$scope.set = function(edit_info) {
-    //    this.contact.fName = edit_info,
-    //    it_info
-    //};
-
-//}]);
-
-//dummy data for family emergency contact information
-//app.controller('emergencyCtrl',['$scope', function($scope){
-    //$scope.emergency = {
-    //                    };
-    //$scope.set = function(edit_info) {
-    //    this.emergency.fName = edit_info,
-
-    //};
-//}]);
-
-
 app.service('contactListData', function(){
     var includedEmails = [];
     var newContactList = [];
@@ -97,12 +53,12 @@ app.controller('newContactListController',['contactListData','$scope','$http', f
     $scope.config = {
         headers: {'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9',
 
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
 
         }
     };
 
-    //function to creats the new contact list
+    //function to creates the new contact list
     $scope.postList = function () {
         $scope.listReq = {"name": $scope.listname.input, "status": "ACTIVE"};
         console.log('posting list . . . ');
@@ -115,18 +71,12 @@ app.controller('newContactListController',['contactListData','$scope','$http', f
                 res.id = contactListData.listNum;
 
             });
-
-            //error(function (data, status, headers, config) {
-            //    // log error
-            //});
-
-
     };
 
 }]);
 
 
-app.controller('contactListController',['contactListData','$scope','$http' function(contactListData, $scope, $http)
+app.controller('contactListController',['contactListData','$scope','$http', function(contactListData, $scope, $http)
 {
 
 
