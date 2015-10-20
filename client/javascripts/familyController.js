@@ -9,8 +9,8 @@ app.controller('editFamilyCtrl',['$scope', '$uibModal', '$log','ResultService', 
     $scope.animationsEnabled = true;
 
     $scope.open = function (size, id) {
-        console.log('family call');
-        console.log(id);
+        console.log('family call',id);
+        console.log('size', size);
         //get call for family modals
         return $http({
             method: 'GET',
