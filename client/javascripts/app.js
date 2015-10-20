@@ -44,10 +44,6 @@ app.config(['$routeProvider',
 //dummy data edit family additional members
 //app.controller('additionalCtrl', [ '$scope', function($scope) {
 //    $scope.additional = {
-//        fName: 'Greg',
-//        lName: 'Brady',
-//        bDay: '1983-03-05',
-//        notes: 'This area is reserved for information as needed'
 //    };
 //    $scope.set = function(edit_info) {
 //        this.contact.fName = edit_info,
@@ -60,8 +56,6 @@ app.config(['$routeProvider',
 //dummy data for family contact information
 //app.controller('contactCtrl', ['$scope', function($scope) {
     //$scope.contact = {
-    //    fName: 'Mike',
-    //     reserved for information as needed'
     //};
     //$scope.set = function(edit_info) {
     //    this.contact.fName = edit_info,
@@ -73,8 +67,6 @@ app.config(['$routeProvider',
 //dummy data for family emergency contact information
 //app.controller('emergencyCtrl',['$scope', function($scope){
     //$scope.emergency = {
-    //                    fName: 'Mike',
-
     //                    };
     //$scope.set = function(edit_info) {
     //    this.emergency.fName = edit_info,
@@ -82,11 +74,6 @@ app.config(['$routeProvider',
     //};
 //}]);
 
-//controller for handling the search results
-//app.controller('SearchResultController',['SharedDataService','$scope','$http', function('SharedDataService',$scope, $http)
-//{
-//
-//}])
 
 app.service('contactListData', function(){
     var includedEmails = [];
@@ -101,7 +88,6 @@ app.service('contactListData', function(){
 });
 
 
-
 app.controller('newContactListController',['contactListData','$scope','$http', function(contactListData, $scope, $http) {
     //data to create a new contact list
     $scope.listname = {};
@@ -110,7 +96,9 @@ app.controller('newContactListController',['contactListData','$scope','$http', f
     //headers
     $scope.config = {
         headers: {'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9',
-        'Content-Type': 'application/json'
+
+        'Content-Type': 'application/json',
+
         }
     };
 
@@ -127,15 +115,21 @@ app.controller('newContactListController',['contactListData','$scope','$http', f
                 res.id = contactListData.listNum;
 
             });
-            error(function (data, status, headers, config) {
-                // log error
-            });
+
+            //error(function (data, status, headers, config) {
+            //    // log error
+            //});
+
 
     };
 
 }]);
 
-app.controller('contactListController',['contactListData','$scope','$http', function(contactListData, $scope, $http) {
+
+app.controller('contactListController',['contactListData','$scope','$http' function(contactListData, $scope, $http)
+{
+
+
     var importDataArray = [];
     var listEnd = JSON.stringify("list: ["+ contactListData.listNum + "],column_names:[\"EMAIL\",\"FIRST NAME\", \"LAST NAME\", \"CITY\",\"COMPANY NAME\"]");
 
@@ -167,6 +161,9 @@ app.controller('contactListController',['contactListData','$scope','$http', func
             error(function (data, status, headers, config) {
                 // log error
             });
-    };
-}]);
+
+   };
+}])
+
+
 
