@@ -4,7 +4,6 @@ var mysql = require('mysql');
 var db = require('../config/db.js');
 var getPeeps = require('../models/modalQ');
 
-
 // get request for one family by id
 router.get('/*', function(req, res, next) {
 	console.log("in get route");
@@ -16,63 +15,59 @@ router.get('/*', function(req, res, next) {
 
 	con.connect(function (err) {
 
-		var compDonations = [];
-
-		var company = {
-		companyInfo: companyInfo,
-		contact: contact
-		compDonations: compDonations;
-		};
-
 		if (err) {
 			console.log('Error connecting to Db');
 			return;
 		}
 		console.log('Connection established');
 
+runQuery = function() {
 
-
-        runQuery = function() {
-
-        var compDonations = [];
-
-        		var company = {
-        		companyInfo: companyInfo,
-        		contact: contact
-        		compDonations: compDonations;
-        		};
 
 			con.query(getPeeps.companyTab, [id], function (err, rows) {
 				if(err) throw err;
+ 				var compDonationsArray = [];
+
+				checkDonations = function(elem) {
+						 var donation = {
+						 amount:elem.amount,
+						 notes:elem.notes,
+						 date:elem.date
+						 };
+							companyDonationsArray.push(donation);
+					};
 
 					var companyInfo = {
+						name:rows[0].name,
 						addressOne:rows[0].addressOne,
-						addressTwo:rows[0].AddressTwo,
-						zip:rows[0].Zip,
-						city:rows[0].City,
-						state:rows[0].State,
-						phone:rows[0].Work,
-						notes:rows[0].adultOneNotes,
+						addressTwo:rows[0].addressTwo,
+						zip:rows[0].zip,
+						city:rows[0].city,
+						state:rows[0].state,
+						phone:rows[0].phone,
+						ext:rows[0].ext
 					};
 
 					var contact = {
 						firstName:rows[0].contactFirstName,
 						lastName:rows[0].contactLastName,
 						email:rows[0].contactEmail,
-						phone:rows[0].contactPhone,
+						phone:rows[0].contactPhone
 					};
 
 
-						con.query(getPeeps.compDonationsTab, [id], function (err, rows) {
+
+
+        		var company = {
+        		companyInfo: companyInfo,
+        		contact: contact,
+        		compDonations: compDonationsArray
+        		};
+
+						con.query(getPeeps.companyDonationsTab, [id], function (err, rows) {
 						    if(err) throw err;
 
-                                checkDonations = function(elem) {
-                                     var donation = {
-                                     year:elem.year,
-                                     amount:element.amount
-                                     };
-                                        companyDonations.push(donation);
-                                };
+
 
                                             rows.forEach(checkDonations);
                                                 con.end();
@@ -81,35 +76,13 @@ router.get('/*', function(req, res, next) {
 
                                             })
 						})
-				})
+				};
 
 		runQuery();
 
 	});
 });
 
-// update company by id
-//router.put('/', function (req, res, next) {
-//	// get id sent
-//	var id = req.query.id;
-//	if(!id) {
-//		res.status(400).send('Invalid family ID');
-//	} else {
-//
-//	}
-//	console.log("received family id", id);
-//
-//	var con = mysql.createConnection(db);
-//
-//
-//	// connect, check if working
-//	con.connect(function (err) {
-//		if (err) {
-//			console.log('Error connecting to Db');
-//			return;
-//		}
-//		console.log('Connection established');
-//	});
-//});
+
 
 module.exports = router;

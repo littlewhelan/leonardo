@@ -2,10 +2,7 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var db = require('../config/db.js');
-
 var getPeeps = require('../models/modalQ');
-
-
 
 // get request for one family by id
 router.get('/*', function(req, res, next) {
@@ -24,11 +21,10 @@ router.get('/*', function(req, res, next) {
 		}
 		console.log('Connection established');
 
-
-
 runQuery = function() {
 
 			con.query(getPeeps.familyTab, [id], function (err, rows) {
+				if(err) throw err;
 
 			 checkChild = function(elem) {
             		 var child = {
@@ -40,13 +36,14 @@ runQuery = function() {
             		 };
                             childrenArray.push(child);
                             };
-            		checkDonations = function(elem) {
-                    		 var donation = {
-                    		 year:elem.year,
-                    		 amount:element.amount
-                    		 };
-                                    donationsArray.push(donation);
-                                    };
+
+			checkDonations = function (elem) {
+					 var donation = {
+					 year:elem.year,
+					 amount:element.amount
+					 };
+							donationsArray.push(donation);
+							};
 
 
             		var childrenArray = [];
@@ -55,7 +52,7 @@ runQuery = function() {
 
 
 
-				if(err) throw err;
+
 
 					var adultOne = {
 						firstName:rows[0].adultOneFirstName,
@@ -139,7 +136,7 @@ runQuery = function() {
 
 
 
-
+module.exports = router;
 
 
 
@@ -173,4 +170,3 @@ runQuery = function() {
 //	});
 //});
 
-module.exports = router;
