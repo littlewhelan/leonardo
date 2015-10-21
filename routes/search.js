@@ -46,7 +46,7 @@ router.get('/', function(req, res, next) {
    console.log(rows);
                             con.end();
 
-                            console.log('final', searchResults);
+
                             res.send(searchResults);
                         })
                     })

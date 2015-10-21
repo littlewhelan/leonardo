@@ -15,7 +15,22 @@ router.get('/*', function(req, res, next) {
 	console.log("received family id", id);
 
 	con.connect(function (err) {
-		var family = {};
+
+		var adultOneObject =[];
+		var adultTwoObject= [];
+		var emergencyObject = [];
+		var childrenArray = [];
+		var donationsArray =[];
+
+		var family = {
+		adultOne:adultOneObject,
+		adultTwo:adultTwoObject,
+		emergency:emergencyObject,
+		children:childrenArray,
+		donations:donationsArray
+		};
+
+
 
 		if (err) {
 			console.log('Error connecting to Db');
@@ -23,6 +38,30 @@ router.get('/*', function(req, res, next) {
 		}
 		console.log('Connection established');
 
+		 checkChild = function(elem) {
+		 var child = {
+		 firstName:elem.firstName,
+		 lastName:elem.lastName,
+		 email:elem.email,
+		 cell:elem.cell,
+		 birthdate:elem.birthdate
+		 };
+
+                childrenArray.push(child);
+
+                };
+
+
+		checkDonations = function(elem) {
+        		 var donation = {
+        		 year:elem.year,
+        		 amount:element.amount
+        		 };
+
+                        donationsArray.push(donation);
+
+
+                        };
 
 runQuery = function() {
 
@@ -32,7 +71,7 @@ runQuery = function() {
 					var adultOne = {
 						firstName:rows[0].adultOneFirstName,
 						lastName:rows[0].adultOneLastName,
-						addressOne:rows[0].adultOneAddressOne,
+						addressOne:rows[0].adultOneaddressOne,
 						addressTwo:rows[0].adultOneAddressTwo,
 						zip:rows[0].adultOneZip,
 						city:rows[0].adultOneCity,
@@ -47,7 +86,7 @@ runQuery = function() {
 						firstName:rows[0].adultTwoFirstName,
 						lastName:rows[0].adultTwoLastName,
 						addressOne:rows[0].adultTwoAddressOne,
-						addressTwo:rows[0].adultTwoAddressTwo,
+						addressTwo:rows[0].adultTwoaddressTwo,
 						zip:rows[0].adultTwoZip,
 						city:rows[0].adultTwoCity,
 						state:rows[0].adultTwoState,
@@ -70,21 +109,29 @@ runQuery = function() {
 						notes:rows[0].emerNotes,
 					};
 
+					 adultTwoObject.push(adultTwo);
+					adultOneObject.push(adultOne);
+					emergencyObject.push(emergency);
+
+						console.log('adultOne',adultOne);
+
+
 						con.query(getPeeps.childTab, [id], function (err, rows) {
 							if(err) throw err;
 
+								rows.forEach(checkChild);
 
 
 								con.query(getPeeps.donateTab, [id], function (err, rows) {
 									if(err) throw err;
 
+										rows.forEach(checkDonations);
 
-console.log(rows);
+
 											con.end();
 
-											//console.log('adultOne', adultOne);
-											//console.log('adultTwo', adultTwo);
-											//console.log('emergency', emergency)
+
+											console.log('family object',family);
 											res.send(family);
 
 								})
@@ -93,6 +140,7 @@ console.log(rows);
 		};
 
 		runQuery();
+
 	});
 });
 
