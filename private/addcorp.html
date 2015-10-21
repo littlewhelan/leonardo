@@ -36,6 +36,20 @@
     </uib-tab>
     <uib-tab heading="Donations">
         <div class="well well-sm">
+            <legend>Donations</legend>
+            <table class="table-hover table table-bordered" ng-controller="editFamilyCtrl" >
+                <tr>
+                    <th class="field-label col-xs-3 active">Date</th>
+                    <th class="field-label col-xs-3 active">Amount</th>
+                    <th class="field-label col-xs-3 active">Notes</th>
+                </tr>
+
+                <tr>
+                    <td class="field-label col-xs-3 active">10/03/15</td>
+                    <td class="field-label col-xs-3 active">$1,000</td>
+                    <td class="field-label col-xs-3 active">Something cool to note about</td>
+                </tr>
+            </table>
             <label for="donation">Add Donation</label>
             <button id="addDonation" type="button" class="btn btn-danger">+</button>
             <input class="form-control" type="date" placeholder="Date">

@@ -24,9 +24,6 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
             }, function () {
                 $log.info('Modal dismissed at: ' + new Date());
             });
-        $scope.openCorp = function(passedData) {
-
-        };
 
 
 
@@ -34,7 +31,4 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
             $scope.animationsEnabled = !$scope.animationsEnabled;
         };
     };
-
-    //get call for corporate modals
-
 }]);
