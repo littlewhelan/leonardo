@@ -10,10 +10,10 @@ module.exports = {
     donateTab: 'SELECT * FROM individualDonations WHERE id = ? ',
 
     //select all info on a copration based on id
-    companyTab: 'SELECT * FROM corporateDonors WHERE id =?',
+    companyTab: 'SELECT * FROM corpDonors WHERE id =?',
 
     //select all info on past donations
-    companyDonationsTab:'SELECT * FROM corporateDonations WHERE id = ? '
+    companyDonationsTab:'SELECT * FROM corpDonations WHERE id = ? '
 
 
 }
