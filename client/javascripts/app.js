@@ -31,11 +31,6 @@ app.config(['$routeProvider',
     }]);
 
 
-
-
-
-
-
 //.controller('newContactListController',['contactListData','$rootScope','$scope','$http', function(contactListData,$rootScope, $scope, $http) {
 // //data to create a new contact list
 // $scope.listname = {};
@@ -52,11 +47,6 @@ app.config(['$routeProvider',
 //
 //     }
 // };
-
-
-
-
-
 
 
 //app.controller('contactListController',['contactListData','$scope','$http', function(contactListData, $scope, $http) {
@@ -96,7 +86,7 @@ app.config(['$routeProvider',
 //          });
 //
 // };
-}]);
+//}]);
 
 
 

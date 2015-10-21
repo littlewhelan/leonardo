@@ -6,56 +6,34 @@ app.controller('editFamilyCtrl',['$scope', '$uibModal', '$log','ResultService', 
         $scope.kids = ResultService.kids;
 
     $scope.animationsEnabled = true;
+        $scope.open = function (size, id) {
+            console.log('family call',id);
+            return $http({
+                method: 'GET',
+                url: '../family',
+                params:{id:id}
+            }).then(function (response) {
+                results = response.data;
 
-// THINK THIS CAN BE DELETED
-   //scope.open = function (size) {
-   //   var modalInstance = $uibModal.open({
-   //       animation: $scope.animationsEnabled,
-   //       templateUrl: 'private/editfamily.html',
-   //       controller: 'ModalInstanceCtrl',
-   //       size: size,
-   //       resolve: {
-   //           items: function () {
-   //               return $scope.items;
-   //           }
-   //       }
-   //   });
+                        var modalInstance = $uibModal.open({
+                            animation: $scope.animationsEnabled,
+                            templateUrl: 'private/editfamily.html',
+                            controller: 'ModalInstanceCtrl',
+                            size: size
 
-    $scope.open = function (size, id) {
-        console.log('family call',id);
-        return $http({
-            method: 'GET',
-            url: '../family',
-            params:{id:id}
-        }).then(function (response) {
-            results = response.data;
 
-                    var modalInstance = $uibModal.open({
-                        animation: $scope.animationsEnabled,
-                        templateUrl: 'private/editfamily.html',
-                        controller: 'ModalInstanceCtrl',
-                        size: size,
+                });
+            modalInstance.result.then(function (selectedItem) {
+                $scope.selected = selectedItem;
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
             });
-      // THINK THIS CAN BE DELETED
-   //         modalInstance.result.then(function (selectedItem) {
-   //             $scope.selected = selectedItem;
-   //         }, function () {
-   //             $log.info('Modal dismissed at: ' + new Date());
-   //         });
-   //     });
-   // };
+            });
+            };
+
+            $scope.toggleAnimation = function () {
+                $scope.animationsEnabled = !$scope.animationsEnabled;
+            };
 
 
-
-        modalInstance.result.then(function (selectedItem) {
-            $scope.selected = selectedItem;
-        }, function () {
-            $log.info('Modal dismissed at: ' + new Date());
-        });
-
-        $scope.toggleAnimation = function () {
-            $scope.animationsEnabled = !$scope.animationsEnabled;
-        };
-
-    };
 }]);
