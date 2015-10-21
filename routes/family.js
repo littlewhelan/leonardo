@@ -18,56 +18,43 @@ router.get('/*', function(req, res, next) {
 
 	con.connect(function (err) {
 
-		var adultOneObject =[];
-		var adultTwoObject= [];
-		var emergencyObject = [];
-		var childrenArray = [];
-		var donationsArray =[];
-
-		var family = {
-		adultOne:adultOneObject,
-		adultTwo:adultTwoObject,
-		emergency:emergencyObject,
-		children:childrenArray,
-		donations:donationsArray
-		};
-
-
-
 		if (err) {
 			console.log('Error connecting to Db');
 			return;
 		}
 		console.log('Connection established');
 
-		 checkChild = function(elem) {
-		 var child = {
-		 firstName:elem.firstName,
-		 lastName:elem.lastName,
-		 email:elem.email,
-		 cell:elem.cell,
-		 birthdate:elem.birthdate
-		 };
 
-                childrenArray.push(child);
-
-                };
-
-
-		checkDonations = function(elem) {
-        		 var donation = {
-        		 year:elem.year,
-        		 amount:element.amount
-        		 };
-
-                        donationsArray.push(donation);
-
-
-                        };
 
 runQuery = function() {
 
 			con.query(getPeeps.familyTab, [id], function (err, rows) {
+
+			 checkChild = function(elem) {
+            		 var child = {
+            		 firstName:elem.firstName,
+            		 lastName:elem.lastName,
+            		 email:elem.email,
+            		 cell:elem.cell,
+            		 birthdate:elem.birthdate
+            		 };
+                            childrenArray.push(child);
+                            };
+            		checkDonations = function(elem) {
+                    		 var donation = {
+                    		 year:elem.year,
+                    		 amount:element.amount
+                    		 };
+                                    donationsArray.push(donation);
+                                    };
+
+
+            		var childrenArray = [];
+            		var donationsArray =[];
+
+
+
+
 				if(err) throw err;
 
 					var adultOne = {
@@ -78,8 +65,9 @@ runQuery = function() {
 						zip:rows[0].adultOneZip,
 						city:rows[0].adultOneCity,
 						state:rows[0].adultOneState,
-						phone:rows[0].adultOneWork,
-						cellPhone:rows[0].adultOneCell,
+						company:rows[0].adultOneCompany,
+						work:rows[0].adultOneWork,
+						cell:rows[0].adultOneCell,
 						email:rows[0].adultOneEmail,
 						notes:rows[0].adultOneNotes,
 					};
@@ -92,8 +80,9 @@ runQuery = function() {
 						zip:rows[0].adultTwoZip,
 						city:rows[0].adultTwoCity,
 						state:rows[0].adultTwoState,
-						phone:rows[0].adultTwoWork,
-						cellPhone:rows[0].adultTwoCell,
+						company:rows[0].adultTwoCompany,
+						work:rows[0].adultTwoWork,
+						cell:rows[0].adultTwoCell,
 						email:rows[0].adultTwoEmail,
 						notes:rows[0].adultTwoNotes,
 					};
@@ -106,15 +95,16 @@ runQuery = function() {
 						zip:rows[0].emerZip,
 						city:rows[0].emerCity,
 						state:rows[0].emerState,
-						phone:rows[0].emerWork,
-						email:rows[0].emerEmail,
-						notes:rows[0].emerNotes,
+						phone:rows[0].emerPhone,
 					};
 
-					 adultTwoObject.push(adultTwo);
-					adultOneObject.push(adultOne);
-					emergencyObject.push(emergency);
-
+				var family = {
+            		adultOne:adultOne,
+            		adultTwo:adultTwo,
+            		emergency:emergency,
+            		children:childrenArray,
+            		donations:donationsArray
+            		};
 						console.log('adultOne',adultOne);
 
 

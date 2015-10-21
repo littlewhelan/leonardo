@@ -13,16 +13,20 @@ app.controller('editFamilyCtrl',['$scope', '$uibModal', '$log','ResultService', 
                 url: '../family',
                 params:{id:id}
             }).then(function (response) {
-                results = response.data;
-
-                        var modalInstance = $uibModal.open({
-                            animation: $scope.animationsEnabled,
-                            templateUrl: 'private/editfamily.html',
-                            controller: 'ModalInstanceCtrl',
-                            size: size
-
-
-                });
+                          //results = response.data;
+              			$scope.family = response.data;
+                          var modalInstance = $uibModal.open({
+                              animation: $scope.animationsEnabled,
+                              templateUrl: 'private/editfamily.html',
+                              controller: 'ModalInstanceCtrl',
+                              size: size,
+              				scope: $scope,
+                              resolve: {
+                                  items: function () {
+                                      return $scope.family;
+                                  }
+                              }
+                          });
             modalInstance.result.then(function (selectedItem) {
                 $scope.selected = selectedItem;
             }, function () {
