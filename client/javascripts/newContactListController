@@ -7,10 +7,10 @@ app.controller('newContactListController',['contactListData','$scope','$http', f
 
     $scope.createList  = function () {
         console.log("create list: " + scope.listname.input);
-        //passes in search text to service
-        contactListData.postList();
-        //emptys the search box
-        //$scope.listname={};
+        //passes list name service
+        contactListData.postList(scope.listname.input);
+
+        $scope.listname={};
     };
 }]);
 

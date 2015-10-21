@@ -1,42 +1,83 @@
 //service for ajax calls to constant contact
 
-app.service('contactListData', ['$scope','$http', function($scope, $http) {
-    var includedEmails = [];
+app.service('contactListData', ['contactListDataService','$scope','$http', function(contactListDataService, $scope, $http) {
+
     var newContactList = [];
-    var listNum = 0;
+    var listNum = "1499523610";
 
 
     $scope.postList = function () {
         $http.post('/newContactList').success(function(data, status, headers, config){
             console.log(data);
+            listNum = data.id
+
         });
         console.log(options)
     };
-    ////headers
-    //$scope.config = {
-    //    headers: {'Authorization': 'Bearer ef5d5df2-a808-4c70-a5d9-eb71163cbeb9',
-    //        'Content-Type': 'application/json',
-    //    }
-    //};
-    //
-    ////function to creats the new contact list
-    //$scope.postList = function () {
-    //    $scope.listReq = {"name": $scope.listname.input, "status": "ACTIVE"};
-    //    console.log('posting list . . . ');
-    //    console.log($scope.listReq);
-    //    console.log($scope.config);
-    //    $http.post('https://api.constantcontact.com/v2/lists?api_key=yg5p2qf549qacmbqayk5rn23', $scope.listReq, $scope.config).
-    //        then(function (res) {
-    //            console.log("res" + res);
-    //
-    //            res.id = contactListData.listNum;
-    //
-    //        });
-    //    //error(function (data, status, headers, config) {
-    //    //    // log error
-    //    //});
-    //
-    //};
+
+
+    var importDataArray =[
+        {
+            "email_addresses": [
+                "user1@example.com"
+            ],
+            "first_name": "John",
+            "last_name": "Smith",
+            "company_name": "Company X",
+            "addresses": [{
+                city: "anytown"
+            }]
+        },
+        {
+            "email_addresses": [
+                "user2@example.com"
+            ],
+            "first_name": "Jane",
+            "last_name": "Smithy",
+            "company_name": "Company Y",
+            "addresses": [{
+                city: "sometown"
+            }]
+        }
+    ];
+
+    //var contactListObject =({
+    //    "Import Data" : importDataArray,
+    //    "list": [listNum],
+    //    "column_names":["EMAIL","FIRST NAME", "LAST NAME", "CITY","COMPANY NAME"]});
+
+
+    $scope.popList = function (){
+        getChecked();
+        $http.post('/populateContactList.js', importDataArray,listNum).success(function(data, status, headers, config){
+            console.log(data);
+        });
+        console.log(options);
+
+    };
+    //get all the checked elements and stuff them in an array
+    function getChecked(){
+        $(":checked.type-element").each(
+            function() {
+                if (id = createListService.results.id) {
+                    var contactObject =
+                        {
+                            "email_addresses": [
+                                $(this).email
+                            ],
+                            "first_name": $(this).firstName,
+                            "last_name": $(this).lastName,
+                            "company_name": $(this).company,
+                            "addresses": [{
+                                city: $(this).city
+                            }]
+                        };
+                    importDataArray.push(contactObject);
+                }
+
+            }
+        );
+    };
 
 
     return {

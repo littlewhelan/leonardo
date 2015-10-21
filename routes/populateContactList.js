@@ -4,9 +4,13 @@ var request = require('request');
 
 router.post('/', function (req, res, next) {
 
-    console.log('/newContactList');
-    if (req.body.name) {
-        options.json.name = req.body.name;
+    console.log('/populateContactList');
+
+        options.json.import_data = req.body.importDataArray;
+        options.json.lists = [req.body.listNum];
+
+    console.log("json: " + options.json);
+
         request.post(options, function (error, response, body) {
             if (!error && response.statusCode == 200) {
                 console.log("Body:", body);
@@ -20,21 +24,27 @@ router.post('/', function (req, res, next) {
                 res.sendStatus(response.statusCode);
             }
         });
-    } else {
-        res.sendStatus(400);
-    }
+
 });
 
 
 var options = {
-    url: 'https://api.constantcontact.com/v2/lists?api_key=yg5p2qf549qacmbqayk5rn23',
+    url: 'https://api.constantcontact.com/v2/activities/addcontacts?api_key=u8w59ztxe3294adczfvn7k9e',
     'auth': {
         'bearer': 'ef5d5df2-a808-4c70-a5d9-eb71163cbeb9'
     },
-    //headers: {
-    //    'Content-Type': 'application/json'
-    //},
-    json: {name: "", status: "ACTIVE"}
+    json:
+    {
+        import_data: [],
+        lists: [],
+        column_names: [
+            "EMAIL",
+            "FIRST NAME",
+            "LAST NAME",
+            "CITY",
+            "COMPANY NAME"
+        ]
+    }
 };
 
 module.exports = router;

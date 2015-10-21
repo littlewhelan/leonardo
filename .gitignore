@@ -102,6 +102,8 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 /config
-
+newContactlist.js
+asapConnected.js
+populateContactList.js
 /config
 /config/*
