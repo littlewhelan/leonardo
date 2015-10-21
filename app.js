@@ -8,6 +8,7 @@ var expressJwt = require('express-jwt');
 var secret = require('./config/user');
 var jwt = expressJwt({secret: secret});
 var mongoose = require('mongoose');
+var request = require('request');
 
 var dbURI = require('./config/mongoose');
 
@@ -22,7 +23,13 @@ var user = require('./routes/user');
 var login = require('./routes/login');
 var register = require('./routes/register');
 var admin = require('./routes/admin');
-//var family = require('./routes/family');
+
+var family = require('./routes/family');
+
+var contactList = require('./routes/newContactList');
+var popList = require('./routes/populateContactList');
+var asap = require('./routes/asapConnected');
+
 
 var app = express();
 
@@ -53,7 +60,13 @@ app.use('/', routes);
 app.use('/user', user);
 app.use('/login', login);
 app.use('/register', register);
-//app.use('/family', family);
+
+app.use('/family', family);
+
+
+app.use('/newContactList',contactList);
+app.use('/populateContactList', popList);
+app.use('/asapConnected', asap);
 
 
 app.use(function (err, req, res, next) {

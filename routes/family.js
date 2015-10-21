@@ -2,9 +2,9 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var db = require('../config/db.js');
-var getFam = require('../models/getFam');
-var getKids = require('../models/getKids');
-var getDon = require('../models/getDon');
+//var getFam = require('../models/getFam');
+//var getKids = require('../models/getKids');
+//var getDon = require('../models/getDon');
 
 // get request for one family by id
 router.get('/', function(req, res, next) {
