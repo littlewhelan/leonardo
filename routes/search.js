@@ -16,7 +16,7 @@ router.get('/', function(req, res, next) {
 
     con.connect(function(err) {
        var searchResults =[];
-        if(err){
+        if(err) {
             console.log('Error connecting to Db');
             return;
         }
@@ -43,8 +43,10 @@ router.get('/', function(req, res, next) {
                         con.query(ser.searchChild, [searchString, searchString], function (err, rows) {
                             if (err) throw err;
                             rows.forEach(checkArray);
-                            console.log('final results', searchResults);
+   console.log(rows);
                             con.end();
+
+
                             res.send(searchResults);
                         })
                     })

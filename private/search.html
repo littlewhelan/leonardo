@@ -12,6 +12,7 @@
                 </form>
         </div>
 </div>
+
 <div>
     <div id ="childNameSearch" class="table">
         <legend>Kids</legend>
@@ -22,10 +23,15 @@
                 <th class="field-label col-xs-4 active">Home Phone</th>
             </tr>
 
-            <tr ng-click="open('lg')"  ng-repeat ="result in kids">
-                <td class="field-label col-xs-4 active">{{result.FN}} {{result.LN}}</td>
-                <td class="field-label col-xs-4 active">{{result.CAFN}} {{result.CALN}} </td>
-                <td class="field-label col-xs-4 active">{{result.CMP}}</td>
+//MERGE CONFLICT THINK THIS CAN BE DELETED
+           // <tr ng-click="open('lg')"  ng-repeat ="result in kids">
+           //     <td class="field-label col-xs-4 active">{{result.FN}} {{result.LN}}</td>
+           //     <td class="field-label col-xs-4 active">{{result.CAFN}} {{result.CALN}} </td>
+           //     <td> class="field-label col-xs-4 active">{{result.CMP}}</td>
+            <tr data-id='{{result.id}}' ng-click="open('lg', result.id)"  ng-repeat ="result in kids">
+                <td>{{result.FN}} {{result.LN}}</td>
+                <td>{{result.CAFN}} {{result.CALN}} </td>
+                <td>{{result.CMP}}</td>
             </tr>
         </table>
     </div>
@@ -41,11 +47,19 @@
                 <th class="field-label col-xs-3 active">Email</th>
             </tr>
 
-            <tr ng-click="open('lg')" ng-repeat ="result in adults" >
-                <td class="field-label col-xs-3 active">{{result.AFN}} {{result.ALN}}</td>
-                <td class="field-label col-xs-3 active">{{result.MP}}</td>
-                <td class="field-label col-xs-3 active">{{result.AC}}</td>
-                <td class="field-label col-xs-3 active">{{result.AE}}</td>
+//MERGE CONFLICT - THINK THIS CAN BE DELETED
+           // <tr ng-click="open('lg')" ng-repeat ="result in adults" >
+           //     <td class="field-label col-xs-3 active">{{result.AFN}} {{result.ALN}}</td>
+           //     <td class="field-label col-xs-3 active">{{result.MP}}</td>
+           //     <td class="field-label col-xs-3 active">{{result.AC}}</td>
+           //     <td class="field-label col-xs-3 active">{{result.AE}}</td>
+
+            <tr data-id="{{result.id}}" ng-click="open('lg', result.id)" ng-repeat ="result in adults" >
+                <td>{{result.AFN}} {{result.ALN}}</td>
+                <td>{{result.MP}}</td>
+                <td>{{result.AC}}</td>
+                <td>{{result.AE}}</td>
+
             </tr>
             </table>
     </div>
@@ -54,8 +68,13 @@
 
 
 
-<div id="corpNameSearch" class="table">
-    <legend>Companies</legend>
+
+
+
+
+<div data-id="corpNameSearch" class="table">
+     <legend>Companies</legend>
+
     <table class="table-hover table table-bordered" ng-controller="editCorpCtrl" >
         <tr>
             <th class="field-label col-xs-3 active">Name</th>
@@ -64,11 +83,19 @@
             <th class="field-label col-xs-3 active">Email</th>
         </tr>
 
-        <tr ng-click="openCorp('lg')"  ng-repeat ="result in companies" >
-            <td class="field-label col-xs-3 active">{{result.CFN}} {{result.CLN}}</td>
-            <td class="field-label col-xs-3 active">{{result.COMP}}</td>
-            <td class="field-label col-xs-3 active">{{result.CP}}</td>
-            <td class="field-label col-xs-3 active">{{result.CE}}</td>
+// MERGE CONFLICE THINK THIS CAN BE DELETED
+       //<tr ng-click="openCorp('lg')"  ng-repeat ="result in companies" >
+       //    <td class="field-label col-xs-3 active">{{result.CFN}} {{result.CLN}}</td>
+       //    <td class="field-label col-xs-3 active">{{result.COMP}}</td>
+       //    <td class="field-label col-xs-3 active">{{result.CP}}</td>
+       //    <td class="field-label col-xs-3 active">{{result.CE}}</td>
+
+        <tr data-id="{{result.id}}" ng-click="openCorp('lg', result.id)"  ng-repeat ="result in companies" >
+            <td>{{result.CFN}} {{result.CLN}}</td>
+            <td>{{result.COMP}}</td>
+            <td>{{result.CP}}</td>
+            <td >{{result.CE}}</td>
+
         </tr>
     </table>
 </div>

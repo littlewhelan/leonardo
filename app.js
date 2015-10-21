@@ -17,6 +17,7 @@ var users = require('./routes/users');
 var createAdmin = require('./routes/createAdmin');
 var search = require('./routes/search');
 var createMailList = require ('./routes/createMailList');
+var family = require ('./routes/family');
 
 var routes = require('./routes/index');
 var user = require('./routes/user');
@@ -54,6 +55,7 @@ app.use('/createAdmin', createAdmin);
 app.use('/createMailList', createMailList);
 app.use('/search', search );
 app.use('/admin', admin);
+app.use('/family',family);
 
 app.use('/private/*', jwt);
 app.use('/', routes);
