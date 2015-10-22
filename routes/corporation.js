@@ -61,7 +61,7 @@ runQuery = function() {
         		var company = {
         		companyInfo: companyInfo,
         		contact: contact,
-        		compDonations: compDonationsArray
+        		donations: compDonationsArray
         		};
 
 						con.query(getPeeps.companyDonationsTab, [id], function (err, rows) {

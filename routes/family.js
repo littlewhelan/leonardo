@@ -46,14 +46,8 @@ runQuery = function() {
 							donationsArray.push(donation);
 							};
 
-
             		var childrenArray = [];
             		var donationsArray =[];
-
-
-
-
-
 
 					var adultOne = {
 						firstName:rows[0].adultOneFirstName,

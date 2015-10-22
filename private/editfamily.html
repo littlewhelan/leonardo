@@ -155,26 +155,26 @@
     <uib-tab heading="Additional Members">
         <legend>Additional Members</legend>
         <div class="content-container">
-            <form>
+            <form ng-repeat="child in family.children">
                 <label for="KFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="KLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
                 ​
-                <span ng-repeat-start="child in childrenArray" ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.firstName}}</span>
+                <span  ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.firstName}}</span>
                 <input ng-model="child.firstName" id="KFN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.children.lastName}}</span>
-                <input ng-model = "family.children.lastName" id="KLN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.lastName}}</span>
+                <input ng-model = "child.lastName" id="KLN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
                 ​
                 <label for="KBD" class="col-md-6 col-sm-6 col-xs-6">Birthday</label>
                 <label for="KS" class="col-md-6 col-sm-6 col-xs-6">School</label>
                 ​
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.children.birthdate}}</span>
-                <input ng-model="family.children.birthdate" id="KBD" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="date" placeholder="Birthday">
-                <span ng-hide="edit"  class="col-md-6 col-sm-6 col-xs-6">{{family.children.school}}</span>
-                <input ng-model="family.children.school" id="KS" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.birthdate}}</span>
+                <input ng-model="child.birthdate" id="KBD" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="date" placeholder="Birthday">
+                <span ng-hide="edit"  class="col-md-6 col-sm-6 col-xs-6">{{child.school}}</span>
+                <input ng-model="child.school" id="KS" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School">
                 ​
                 <label for="KN" class="block-input">Notes</label>
-                <span ng-hide="edit" class="block-input">{{family.children.notes}}</span>
-                <textarea ng-repeat-end="" ng-model="family.children.notes" id="KN" ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
+                <span ng-hide="edit" class="block-input">{{child.notes}}</span>
+                <textarea ng-model="child.notes" id="KN" ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
                 ​
                 <!--shows upon editing\/\/\/-->
                 ​
@@ -204,10 +204,10 @@
                     <th class="field-label col-xs-3 active">Notes</th>
                 </tr>
                 ​
-                <tr ng-repeat="donate in donations">
+                <tr ng-repeat="donate in family.donations">
                     <td class="field-label col-xs-3 active">{{donate.date}}</td>
-                    <td class="field-label col-xs-3 active">{{family.donations.amount}}</td>
-                    <td class="field-label col-xs-3 active">{{family.donations.notes}}</td>
+                    <td class="field-label col-xs-3 active">{{donate.amount}}</td>
+                    <td class="field-label col-xs-3 active">{{donate.notes}}</td>
                 </tr>
 
             </table>

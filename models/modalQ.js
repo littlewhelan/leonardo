@@ -6,10 +6,10 @@ module.exports = {
     //select all info on children based on familyId -- this can not be limited to one as there may be more than 1 child per family
     childTab:'SELECT * FROM children WHERE familyID = ?',
 
-    //select all info on families based on id -- this can be limited to 1 company
+    //select all info on families based on id
     donateTab: 'SELECT * FROM individualDonations WHERE id = ? ',
 
-    //select all info on a copration based on id
+    //select all info on a corporation based on id
     companyTab: 'SELECT * FROM corpDonors WHERE id =?',
 
     //select all info on past donations of companies
