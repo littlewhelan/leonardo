@@ -29,6 +29,7 @@ var corporation = require('./routes/corporation');
 
 var contactList = require('./routes/newContactList');
 var popList = require('./routes/populateContactList');
+var moment = require('moment');
 
 
 
@@ -63,8 +64,6 @@ app.use('/user', user);
 app.use('/login', login);
 app.use('/register', register);
 app.use('/corporation', corporation);
-
-
 
 app.use('/newContactList',contactList);
 app.use('/populateContactList', popList);
