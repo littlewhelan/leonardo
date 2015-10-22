@@ -7,7 +7,6 @@ body {
 }
 label {
   font-size: 16px;
-  color: white;
 }
 
 header{
@@ -95,7 +94,7 @@ label{
 text-align: center;
 }
 .table th{
-  background-color: #337ab7 !important;
+  background-color: #23CBCC !important;
   color: white;
 }
 legend{
@@ -104,7 +103,7 @@ legend{
 .content-container{
   padding: 20px;
   border: 2px solid black;
-  background-color: #337ab7;
+  background-color: lightgrey;
 }
 .adult{
   margin-top: 20px;
@@ -123,7 +122,11 @@ span{
 }
 .ng-scope{
 border: none;
+  /*display: none;*/
 }
 #notes {
   height: 100px;
+}
+#A1EL{
+  margin: 0 0 0 auto;
 }
