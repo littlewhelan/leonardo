@@ -1,22 +1,23 @@
 //service for ajax calls to constant contact
 
-app.service('contactListData', ['ContactListDataService','$scope','$http', function(ContactListDataService, $scope, $http) {
+app.service('newContactListData', ['ContactListDataService', '$http',
+    function (ContactListDataService, $http) {
 
     var newContactList = [];
     var listNum = "1499523610";
 
-
-    $scope.postList = function () {
-        $http.post('/newContactList').success(function(data, status, headers, config){
+    this.postList = function () {
+        $http.post('/newContactList').then(function (data) {
             console.log(data);
             listNum = data.id
 
+        }, function(data){
+            console.log(data); //error
         });
         console.log(options)
     };
 
-
-    var importDataArray =[
+    var importDataArray = [
         {
             "email_addresses": [
                 "user1@example.com"
@@ -47,20 +48,21 @@ app.service('contactListData', ['ContactListDataService','$scope','$http', funct
     //    "column_names":["EMAIL","FIRST NAME", "LAST NAME", "CITY","COMPANY NAME"]});
 
 
-    $scope.popList = function (){
+    this.popList = function () {
         getChecked();
-        $http.post('/populateContactList.js', importDataArray,listNum).success(function(data, status, headers, config){
+        $http.post('/populateContactList.js', importDataArray, listNum).success(function (data, status, headers, config) {
             console.log(data);
         });
         console.log(options);
 
     };
+
     //get all the checked elements and stuff them in an array
-    function getChecked(){
-        $(":checked.type-element").each(
-            function() {
-                if (id = createListService.results.id) {
-                    var contactObject =
+    var getChecked = function () {
+            $(":checked.type-element").each(
+                function () {
+                    if (id == ContactListDataService.results.id) {
+                        var contactObject =
                         {
                             "email_addresses": [
                                 $(this).email
@@ -72,16 +74,10 @@ app.service('contactListData', ['ContactListDataService','$scope','$http', funct
                                 city: $(this).city
                             }]
                         };
-                    importDataArray.push(contactObject);
+                        importDataArray.push(contactObject);
+                    }
+
                 }
-
-            }
-        );
-    };
-
-
-    return {
-        newContactList: newContactList,
-        listNum: listNum
-    };
+            );
+        }
 }]);
