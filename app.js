@@ -25,7 +25,6 @@ var register = require('./routes/register');
 var admin = require('./routes/admin');
 var contactList = require('./routes/newContactList');
 var popList = require('./routes/populateContactList');
-var asap = require('./routes/asapConnected');
 
 var app = express();
 
@@ -58,7 +57,7 @@ app.use('/login', login);
 app.use('/register', register);
 app.use('/newContactList',contactList);
 app.use('/populateContactList', popList);
-app.use('/asapConnected', asap);
+
 
 app.use(function (err, req, res, next) {
   if (err.name === 'UnauthorizedError') {
