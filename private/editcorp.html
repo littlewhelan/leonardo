@@ -4,42 +4,42 @@
         <div class="content-container">
             <form>
                 <label for="CN" class="block-input">Company Name</label>
-                <input ng-show="edit" id="CN" name="corpName" ng-value="{{corporation.Company}}" class="form-control" type="text" placeholder="Company Name">
-                <span ng-hide="edit" class="block-input">{{corporation.Company}}</span>
+                <input ng-model="company.companyInfo.name" ng-show="edit" id="CN" name="corpName"  class="form-control" type="text" placeholder="Company Name">
+                <span ng-hide="edit" class="block-input">{{company.companyInfo.name}}</span>
 
                 <label for="CAR1" class="block-input">Address1</label>
-                <input ng-show="edit" id="CAR1"  name="address1" ng-value="{{corporation.Address1}}" class="form-control" type="text" placeholder="Address 1">
-                <span ng-hide="edit" class="block-input ">{{corporation.Address1}}</span>
+                <input ng-model="company.companyInfo.addressOne" ng-show="edit" id="CAR1"  name="address1"  class="form-control" type="text" placeholder="Address 1">
+                <span ng-hide="edit" class="block-input ">{{company.companyInfo.addressOne}}</span>
 
                 <label for="CAR2" class="block-input">Address 2</label>
-                <input ng-show="edit" id="CAR2" name="address2" class="form-control"ng-value="{{corporation.Address2}}" type="text" placeholder="Address 2">
-                <span ng-hide="edit" class="block-input">{{corporation.Address2}}</span>
+                <input ng-model="company.companyInfo.addressTwo" ng-show="edit" id="CAR2" name="address2" class="form-control" type="text" placeholder="Address 2">
+                <span ng-hide="edit" class="block-input">{{company.companyInfo.addressTwo}}</span>
 
                 <label for="CZ"  class="col-xs-6 col-sm-4">Zip</label>
                 <label for="CC" class="col-xs-6 col-sm-4">City</label>
                 <label for="CS" class="col-xs-6 col-sm-4">State</label>
 
 
-                <input ng-show="edit" id="CZ" name="zip" class="col-xs-6 col-sm-4" ng-value="{{corporation.Zip}}" type="text" placeholder="Zip Code">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{corporation.Zip}}</span>
+                <input ng-model="company.companyInfo.zip" ng-show="edit" id="CZ" name="zip" class="col-xs-6 col-sm-4"  type="text" placeholder="Zip Code">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{company.companyInfo.zip}}</span>
 
-                <input ng-show="edit" id="CC" name="city"class="col-xs-6 col-sm-4" ng-value="{{corporation.City}}" type="text" placeholder="City">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{corporation.City}}</span>
+                <input ng-model="company.companyInfo.city" ng-show="edit" id="CC" name="city"class="col-xs-6 col-sm-4"  type="text" placeholder="City">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{company.companyInfo.city}}</span>
 
-                <input ng-show="edit" id="CS" name="state"class="col-xs-6 col-sm-4" ng-value="{{corporation.State}}" type="text" placeholder="State">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{corporation.State}}</span>
+                <input ng-model="company.companyInfo.state" ng-show="edit" id="CS" name="state"class="col-xs-6 col-sm-4" type="text" placeholder="State">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{company.companyInfo.state}}</span>
 
                 <label for="CP" class="col-md-6 col-sm-6 col-xs-6">Phone</label>
                 <label for="CE" class="col-md-6 col-sm-6 col-xs-6">Email</label>
 
-                <input ng-show="edit" id="CP"  name="phone"class="col-md-6 col-sm-6 col-xs-6" ng-value="{{corporation.Phone}}" type="text" placeholder="Phone">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{corporation.Phone}}</span>
-                <input ng-show="edit" id="CE" name="email"class="col-md-6 col-sm-6 col-xs-6" type="text" ng-value="{{corporation.Email}}" placeholder="Email">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{corporation.Email}}</span>
+                <input ng-model="company.companyInfo.phone" ng-show="edit" id="CP"  name="phone"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{company.companyInfo.phone}}</span>
+                <input ng-model="company.companyInfo.email" ng-show="edit" id="CE" name="email"class="col-md-6 col-sm-6 col-xs-6" type="text"  placeholder="Email">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{company.companyInfo.email}}</span>
 
                 <label for="CNT" class="block-input">Notes</label>
-                <textarea ng-show="edit" id="CNT" rows="4" class="form-control" ng-value="{{corporation.Notes}}" placeholder="Notes"></textarea>
-                <span ng-hide="edit" class="block-input">{{corporation.Notes}}</span>
+                <textarea ng-model="company.companyInfo.notes" ng-show="edit" id="CNT" rows="4" class="form-control"  placeholder="Notes"></textarea>
+                <span ng-hide="edit" class="block-input">{{company.companyInfo.notes}}</span>
             </form>
             <!--edit button -->
             <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
@@ -55,25 +55,25 @@
                 <label for="CCFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="CCLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
 
-                <input ng-show="edit" id="CCFN" class="col-md-6 col-sm-6 col-xs-6" ng-value="{{contact.FirstName}}" type="text" placeholder="First Name">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6 ">{{contact.FirstName}}</span>
-                <input ng-show="edit" id="CCLN" class="col-md-6 col-sm-6 col-xs-6" ng-value="{{contact.LastName}}" type="text" placeholder="Last Name">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6 ">{{contact.LastName}}</span>
+                <input ng-model="company.contact.firstName" ng-show="edit" id="CCFN" class="col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="First Name">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6 ">{{company.contact.firstName}}</span>
+                <input ng-model="company.contact.lastName" ng-show="edit" id="CCLN" class="col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Last Name">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6 ">{{company.contact.lastName}}</span>
 
                 <label for="CCP" class="col-xs-6 col-sm-4">Phone</label>
                 <label for="CCEX" class="col-xs-6 col-sm-4">Extension</label>
                 <label for="CCE" class="col-xs-6 col-sm-4">Email</label>
 
-                <input ng-show="edit" id="CCP" class="col-xs-6 col-sm-4" ng-value="{{contact.Phone}}" type="text" placeholder="Phone Number">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{contact.Phone}}</span>
-                <input ng-show="edit" id="CCEX" name="extPhone"class="col-xs-6 col-sm-4" ng-value="{{contact.Ext}}" type="text" placeholder="Ext">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{contact.Ext}}</span>
-                <input ng-show="edit" id="CCE" class="col-xs-6 col-sm-4" type="text" ng-value="{{contact.Email}}" placeholder="Email">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{contact.Email}}</span>
+                <input ng-model="company.contact.phone" ng-show="edit" id="CCP" class="col-xs-6 col-sm-4"  type="text" placeholder="Phone Number">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{company.contact.phone}}</span>
+                <input ng-model="company.contact.ext" ng-show="edit" id="CCEX" name="extPhone"class="col-xs-6 col-sm-4"  type="text" placeholder="Ext">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{company.contact.ext}}</span>
+                <input ng-model="company.contact.email" ng-show="edit" id="CCE" class="col-xs-6 col-sm-4" type="text"  placeholder="Email">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{company.contact.email}}</span>
 
                 <label for="CCN" class="block-input">Notes</label>
-                <textarea ng-show="edit" id="CCN" rows="4" class="form-control" ng-value="{{contact.Notes}}" placeholder="Notes"></textarea>
-                <span ng-hide="edit" class="block-input">{{contact.Notes}}</span>
+                <textarea ng-model="company.contact.notes" ng-show="edit" id="CCN" rows="4" class="form-control"  placeholder="Notes"></textarea>
+                <span ng-hide="edit" class="block-input">{{company.contact.notes}}</span>
             </form>
         </div>
                 <!--next buttons -->
@@ -93,21 +93,12 @@
                     <th class="field-label col-xs-3 active">Notes</th>
                 </tr>
 
-                <tr>
-                    <td class="field-label col-xs-3 active">10/03/15</td>
-                    <td class="field-label col-xs-3 active">$1,000</td>
-                    <td class="field-label col-xs-3 active">Something cool to note about</td>
+                <tr ng-repeat="comp in compDonations">
+                    <td class="field-label col-xs-3 active">{{comp.date}}</td>
+                    <td class="field-label col-xs-3 active">{{comp.amount}}</td>
+                    <td class="field-label col-xs-3 active">{{comp.notes}}</td>
                 </tr>
-                <tr>
-                    <td class="field-label col-xs-3 active">10/03/15</td>
-                    <td class="field-label col-xs-3 active">$1,000</td>
-                    <td class="field-label col-xs-3 active">Something cool to note about</td>
-                </tr>
-                <tr>
-                    <td class="field-label col-xs-3 active">10/03/15</td>
-                    <td class="field-label col-xs-3 active">$1,000</td>
-                    <td class="field-label col-xs-3 active">Something cool to note about</td>
-                </tr>
+
             </table>
         </div>
             <label ng-show="edit">Add Donation</label>

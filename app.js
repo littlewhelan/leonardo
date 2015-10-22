@@ -25,7 +25,7 @@ var login = require('./routes/login');
 var register = require('./routes/register');
 var admin = require('./routes/admin');
 
-var family = require('./routes/family');
+var corporation = require('./routes/corporation');
 
 var contactList = require('./routes/newContactList');
 var popList = require('./routes/populateContactList');
@@ -62,8 +62,8 @@ app.use('/', routes);
 app.use('/user', user);
 app.use('/login', login);
 app.use('/register', register);
+app.use('/corporation', corporation);
 
-app.use('/family', family);
 
 
 app.use('/newContactList',contactList);

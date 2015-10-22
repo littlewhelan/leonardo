@@ -45,18 +45,18 @@ runQuery = function() {
 						city:rows[0].city,
 						state:rows[0].state,
 						phone:rows[0].phone,
-						ext:rows[0].ext
+						notes:rows[0].notes,
+						email:rows[0].email
 					};
 
 					var contact = {
 						firstName:rows[0].contactFirstName,
 						lastName:rows[0].contactLastName,
 						email:rows[0].contactEmail,
-						phone:rows[0].contactPhone
+						phone:rows[0].contactPhone,
+						ext:rows[0].ext,
+						notes:rows[0].contactNotes
 					};
-
-
-
 
         		var company = {
         		companyInfo: companyInfo,
