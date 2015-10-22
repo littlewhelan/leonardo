@@ -24,7 +24,6 @@ app.controller('editFamilyCtrl',['$scope', '$uibModal', '$log','ResultService', 
                               resolve: {
                                   items: function () {
                                       return $scope.family;
-                                      return $scope.family.children = children
                                   }
                               }
                           });
