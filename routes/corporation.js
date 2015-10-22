@@ -142,7 +142,7 @@ router.post('/*', function (req, res, next) {
 		console.log("In checkDonations", donations, length, index);
 		// if length is higher than index, then keep looping
 		if(length > index) {
-			insertDonations(donations[index], checkDonations, donations, length, ++index);
+			insertDonation(donations[index], checkDonations, donations, length, ++index);
 		}else {
 			// else done inserting donations
 			res.status(200).send("Ok");
@@ -207,7 +207,7 @@ router.put('/*', function (req, res, next) {
 		}
 	};
 
-	var insertDonations = function (donation, cb, donations, length, index) {
+	var insertDonation = function (donation, cb, donations, length, index) {
 		donation.donorID = corp.id;
 		con.query(insertCorp.donations, [donation], function (err, res) {
 			if(err) {

@@ -260,11 +260,11 @@ router.post('/*', function (req, res, next) {
 		if(length == index) {
 			res.status(200).send("Ok");
 		}else {
-			insertDonations(donations[index], checkDonations, donations, length, ++index);
+			insertDonation(donations[index], checkDonations, donations, length, ++index);
 		}
 	};
 
-	var insertDonations = function (donation, cb, donations, length, index) {
+	var insertDonation = function (donation, cb, donations, length, index) {
 		// set the familyID of the donation
 		donation.familyID = family.id;
 		con.query(insertFam.donations, [donation], function (err, res) {
@@ -402,12 +402,12 @@ router.put('/*', function (req, res, next) {
 			if(donations.id) {
 				checkDonations(donations, length, ++index);
 			}else {
-				insertDonations(donations[index], checkDonations, donations, length, ++index);
+				insertDonation(donations[index], checkDonations, donations, length, ++index);
 			}
 		}
 	};
 
-	var insertDonations = function (donation, cb, donations, length, index) {
+	var insertDonation = function (donation, cb, donations, length, index) {
 		// set the familyID of the donation
 		donation.familyID = family.id;
 		con.query(insertFam.donations, [donation], function (err, res) {
