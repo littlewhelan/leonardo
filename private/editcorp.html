@@ -39,7 +39,7 @@
 
                 <label for="CNT" class="block-input">Notes</label>
                 <textarea ng-model="company.companyInfo.notes" ng-show="edit" id="CNT" rows="4" class="form-control"  placeholder="Notes"></textarea>
-                <span ng-hide="edit" class="block-input">{{company.companyInfo.notes}}</span>
+                <span ng-hide="edit" id="notes" class="block-input">{{company.companyInfo.notes}}</span>
             </form>
             <!--edit button -->
             <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
@@ -73,7 +73,7 @@
 
                 <label for="CCN" class="block-input">Notes</label>
                 <textarea ng-model="company.contact.notes" ng-show="edit" id="CCN" rows="4" class="form-control"  placeholder="Notes"></textarea>
-                <span ng-hide="edit" class="block-input">{{company.contact.notes}}</span>
+                <span ng-hide="edit" id="notes" class="block-input">{{company.contact.notes}}</span>
             </form>
         </div>
                 <!--next buttons -->

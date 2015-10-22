@@ -44,13 +44,16 @@
                 <input ng-model="family.adultOne.email" id="A1E" ng-show="edit" class="col-xs-6 col-sm-4"  type="text" placeholder="Email">
                 <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultOne.email}}</span>
                 ​
-                <label for="A1C" class="block-input">Company</label>
-                <input ng-model="family.adultOne.company" id="A1C" ng-show="edit" class="form-control"  type="text" placeholder="Company">
-                <span ng-hide="edit" class="block-input">{{family.adultOne.company}}</span>
+                <label for="A1C" class="col-md-6 col-sm-6 col-xs-6">Main Phone</label>
+                <label for="A1C" class="col-md-6 col-sm-6 col-xs-6">Company</label>
+                <input ng-model="family.adultOne.company" id="A1C" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Main Phone">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultOne.main}}</span>
+                <input ng-model="family.adultOne.company" id="A1C" ng-show="edit" class="fcol-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Company">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultOne.company}}</span>
                 ​
                 <label for="A1N" class="block-input">Notes</label>
                 <textarea ng-model="family.adultOne.notes" id="A1N" ng-show="edit" rows="4" class="form-control"  placeholder="Notes"></textarea>
-                <span ng-hide="edit" class="block-input">{{family.adultOne.notes}}</span>
+                <span ng-hide="edit" id="notes" class="block-input">{{family.adultOne.notes}}</span>
             </div>
             <legend class="adult">Adult2</legend>
             <div class="content-container">
@@ -92,13 +95,16 @@
                 <input ng-model="family.adultTwo.email" id="A2E" ng-show="edit" class="col-xs-6 col-sm-4" type="text"  placeholder="Email">
                 <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultTwo.email}}</span>
                 ​
-                <label for="A2C" class="block-input">Company</label>
-                <input ng-model="family.adultTwo.company" id="A2C" ng-show="edit" class="form-control" type="text" placeholder="Company">
-                <span ng-hide="edit" class="block-input">{{family.adultTwo.company}}</span>
-                ​
+                <label for="A2C" class="col-md-6 col-sm-6 col-xs-6">Main Phone</label>
+                <label for="A2C" class="col-md-6 col-sm-6 col-xs-6">Company</label>
+                <input ng-model="family.adultTwo.company" id="A2C" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Main Phone">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultTwo.main}}</span>
+                <input ng-model="family.adultTwo.company" id="A2C" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Company">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultTwo.company}}</span>​
+
                 <label for="A2N" class="block-input">Notes</label>
                 <textarea ng-model="family.adultTwo.notes" id="A2N" ng-show="edit" rows="4" class="form-control"  placeholder="Notes"></textarea>
-                <span ng-hide="edit" class="block-input">{{family.adultTwo.notes}}</span>
+                <span ng-hide="edit" id="notes" class="block-input">{{family.adultTwo.notes}}</span>
                 <!--edit / close buttons -->
         </form>
         </div>
@@ -143,7 +149,7 @@
                 ​
                 <label for="EmN" class="block-input">Notes</label>
                 <textarea ng-model="family.emergency.notes" id="EmN" ng-show="edit" rows="4" class="form-control"  placeholder="Notes"></textarea>
-                <span ng-hide="edit" class="block-input">{{family.emergency.notes}}</span>
+                <span ng-hide="edit" id="notes" class="block-input">{{family.emergency.notes}}</span>
                 <!--edit / close buttons -->
             </form>
         </div>
@@ -172,10 +178,21 @@
                 <span ng-hide="edit"  class="col-md-6 col-sm-6 col-xs-6">{{child.school}}</span>
                 <input ng-model="child.school" id="KS" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School">
                 ​
+                <label for="KBD" class="col-md-6 col-sm-6 col-xs-6">Cell</label>
+                <label for="KS" class="col-md-6 col-sm-6 col-xs-6">Email</label>
+
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.cell}}</span>
+                <input ng-model="child.birthdate" id="KBD" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Cell">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.email}}</span>
+                <input ng-model="child.school" id="KS" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">
+
                 <label for="KN" class="block-input">Notes</label>
-                <span ng-hide="edit" class="block-input">{{child.notes}}</span>
+                <span ng-hide="edit" id="notes" class="block-input">{{child.notes}}</span>
                 <textarea ng-model="child.notes" id="KN" ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
-                ​
+
+            </form>
+        </div>
+            <form>​
                 <!--shows upon editing\/\/\/-->
                 ​
                 <button ng-show="edit" type="button" class="btn btn-danger">+</button>
@@ -185,9 +202,9 @@
                 <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
                 <input ng-show="edit"  class="form-control" type="date" placeholder="Birthday">
                 <textarea ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
-                ​
-            </form>
-        </div>
+            </form>​
+
+
         <!--edit / close buttons -->
         <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
         <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
