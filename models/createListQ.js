@@ -10,6 +10,8 @@ module.exports = {
  zipList: 'SELECT "adult" AS type, adultOneFirstName AS AFN, adultOneLastName AS ALN, adultOneEmail AS AE FROM families WHERE adultOneZip = ? UNION SELECT "adult" AS type, adultTwoFirstName AS AFN, adultTwoLastName AS ALN, adultTwoEmail AS AE FROM families WHERE adultTwoZip = ? UNION SELECT "company" AS type, contactFirstName AS CFN, contactLastName AS CLN, contactEmail AS CE FROM corpDonors WHERE Zip = ? ',
 
  //this should get all emails of families with kids that are a certain age
- ageList: 'SELECT * FROM children',
+ ageList: 'SELECT adultOneEmail FROM families AS f WHERE f.id IN ' +
+ '(SELECT familyID FROM children WHERE DATEDIFF(CURDATE(), birthdate) / 365.24 BETWEEN ? AND ?) ' +
+ 'GROUP BY f.id'
 
- }
+ };
