@@ -1,6 +1,8 @@
 //service for ajax calls to constant contact
 
-app.service('newContactListData', ['contactListDataService','$scope','$http', function(contactListDataService, $scope, $http) {
+
+app.service('contactListData', ['ContactListDataService','$scope','$http', function(ContactListDataService, $scope, $http) {
+
 
     var newContactList = [];
     var listNum = "1499523610";

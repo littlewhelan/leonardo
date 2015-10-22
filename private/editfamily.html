@@ -1,225 +1,245 @@
 <uib-tabset justified="true">
     <uib-tab heading="Contact Info">
-        <div class="well well-sm">
-            <!--span is information retrieved from DB-->
-            <!--inputs are editable after click-->
-            <form ng-controller="contactCtrl">
+        ​
+        <!--span is information retrieved from DB-->
+        <!--inputs are editable after click-->
+        <form>
+            <legend class="adult">Adult1</legend>
+            <div class="content-container">
                 <label for="A1FN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="A1LN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
-
-                <input ng-model="contact.fName" id="A1FN" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Mike</span>
-                <input ng-model="contact.lName" id="A1LN" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Brady</span>
-
+                ​
+                <input ng-model="family.adultOne.firstName"  id="A1FN" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultOne.firstName}}</span>
+                <input ng-model="family.adultOne.lastName" id="A1LN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultOne.lastName}}</span>
+                ​
                 <label for="A1AR1" class="block-input">Address 1</label>
-                <input ng-model="contact.address1" id="A1AR1" ng-show="edit" class="form-control" type="text" placeholder="Address 1">
-                <span ng-hide="edit" class="block-input">4222 clinton Way</span>
-
+                <input ng-model="family.adultOne.addressOne" id="A1AR1" ng-show="edit"  class="form-control" type="text" placeholder="Address 1">
+                <span ng-hide="edit" class="block-input">{{family.adultOne.addressOne}}</span>
+                ​
                 <label for="A1AR2" class="block-input">Address 2</label>
-                <input ng-model="contact.address2" id="A1AR2" ng-show="edit" class="form-control" type="text" placeholder="Address 2">
-                <span ng-hide="edit" class="block-input">4222 clinton Way</span>
-
+                <input ng-model="family.adultOne.addressTwo" id="A1AR2" ng-show="edit"  class="form-control" type="text" placeholder="Address 2">
+                <span ng-hide="edit" class="block-input">{{family.adultOne.addressTwo}}</span>
+                ​
                 <label for="A1Z" class="col-xs-6 col-sm-4">Zip</label>
                 <label for="A1Cty" class="col-xs-6 col-sm-4">City</label>
                 <label for="A1S" class="col-xs-6 col-sm-4">State</label>
-
-                <input ng-model="contact.zip" id="A1Z" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">55555</span>
-                <input ng-model="contact.city" id="A1Cty" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="City">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">Los Angeles</span>
-                <input ng-model="contact.state" id="A1S" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="State">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">CA</span>
-
+                ​
+                <input ng-model="family.adultOne.zip" id="A1Z" ng-show="edit"  class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultOne.zip}}</span>
+                <input ng-model="family.adultOne.city" id="A1Cty"  ng-show="edit"  class="col-xs-6 col-sm-4" type="text" placeholder="City">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultOne.city}}</span>
+                <input ng-model="family.adultOne.state" id="A1S" ng-show="edit"  class="col-xs-6 col-sm-4" type="text" placeholder="State">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultOne.state}}</span>
+                ​
                 <label for="A1P" class="col-xs-6 col-sm-4">Phone</label>
                 <label for="A1CP" class="col-xs-6 col-sm-4">Cell Phone</label>
                 <label for="A1E" class="col-xs-6 col-sm-4">Email</label>
-
-                <input ng-model="contact.phone" id="A1P" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">555-555-5555</span>
-                <input ng-model="contact.cell" id="A1CP" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">555-555-5555</span>
-                <input ng-model="contact.email" id="A1E" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Email">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">Mike@gmail.com</span>
-
-                <label for="A1C" class="block-input">Company</label>
-                <input ng-model="contact.company" id="A1C" ng-show="edit" class="form-control" type="text" placeholder="Company">
-                <span ng-hide="edit" class="block-input">3M</span>
-
+                ​
+                <input ng-model="family.adultOne.work" id="A1P" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Work Phone">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultOne.work}}</span>
+                <input ng-model="family.adultOne.cell" id="A1CP" ng-show="edit" class="col-xs-6 col-sm-4"  type="text" placeholder="Cell Phone">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultOne.cell}}</span>
+                <input ng-model="family.adultOne.email" id="A1E" ng-show="edit" class="col-xs-6 col-sm-4"  type="text" placeholder="Email">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultOne.email}}</span>
+                ​
+                <label for="A1C" class="col-md-6 col-sm-6 col-xs-6">Main Phone</label>
+                <label for="A1C" class="col-md-6 col-sm-6 col-xs-6">Company</label>
+                <input ng-model="family.adultOne.company" id="A1C" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Main Phone">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultOne.main}}</span>
+                <input ng-model="family.adultOne.company" id="A1C" ng-show="edit" class="fcol-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Company">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultOne.company}}</span>
+                ​
                 <label for="A1N" class="block-input">Notes</label>
-                <textarea ng-model="contact.notes" id="A1N" ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
-                <span ng-hide="edit" class="block-input">This area is reserved for lots of information as needed.</span>
-
+                <textarea ng-model="family.adultOne.notes" id="A1N" ng-show="edit" rows="4" class="form-control"  placeholder="Notes"></textarea>
+                <span ng-hide="edit" id="notes" class="block-input">{{family.adultOne.notes}}</span>
+            </div>
+            <legend class="adult">Adult2</legend>
+            <div class="content-container">
                 <label for="A2FN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="A2LN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
-
-                <input ng-model="contact.yfName" id="A2FN" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Carol</span>
-                <input ng-model="contact.ylName" id="A2LN" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Brady</span>
-
+                ​
+                <input ng-model="family.adultTwo.firstName" id="A2FN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultTwo.firstName}}</span>
+                <input ng-model="family.adultTwo.lastName" id="A2LN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultTwo.lastName}}</span>
+                ​
                 <label for="A2AR1" class="block-input">Address 1</label>
-                <input ng-model="contact.yaddress1" id="A2AR1" ng-show="edit" class="form-control" type="text" placeholder="Address 1">
-                <span ng-hide="edit" class="block-input">4222 clinton Way</span>
-
+                <input ng-model="family.adultTwo.addressOne" id="A2AR1" ng-show="edit"  class="form-control" type="text" placeholder="Address 1">
+                <span ng-hide="edit" class="block-input">{{family.adultTwo.addressOne}}</span>
+                ​
                 <label for="A2AR2" class="block-input">Address 2</label>
-                <input ng-model="contact.yaddress2" id="A2AR2" ng-show="edit" class="form-control" type="text" placeholder="Address 2">
-                <span ng-hide="edit" class="block-input">4222 clinton Way</span>
-
+                <input ng-model="family.adultTwo.addressTwo" id="A2AR2" ng-show="edit" class="form-control"  type="text" placeholder="Address 2">
+                <span ng-hide="edit" class="block-input">{{family.adultTwo.addressTwo}}</span>
+                ​
                 <label for="A2Z" class="col-xs-6 col-sm-4">Zip</label>
                 <label for="A2Cty" class="col-xs-6 col-sm-4">City</label>
                 <label for="A2S" class="col-xs-6 col-sm-4">State</label>
-
-                <input ng-model="contact.yzip" id="A2Z" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">55555</span>
-                <input ng-model="contact.ycity" id="A2Cty" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="City">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">Los Angeles</span>
-                <input ng-model="contact.ystate" id="A2S" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="State">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">CA</span>
-
+                ​
+                <input ng-model="family.adultTwo.zip" id="A2Z" ng-show="edit" class="col-xs-6 col-sm-4"  type="text" placeholder="Zip Code">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultTwo.zip}}</span>
+                <input ng-model="family.adultTwo.city" id="A2Cty" ng-show="edit" class="col-xs-6 col-sm-4"  type="text" placeholder="City">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultTwo.city}}</span>
+                <input ng-model="family.adultTwo.state" id="A2S" ng-show="edit" class="col-xs-6 col-sm-4"  type="text" placeholder="State">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultTwo.state}}</span>
+                ​
                 <label for="A2P" class="col-xs-6 col-sm-4">Phone</label>
                 <label for="A2CP" class="col-xs-6 col-sm-4">Cell Phone</label>
                 <label for="A2E" class="col-xs-6 col-sm-4">Email</label>
-
-                <input ng-model="contact.yphone" id="A2P" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Main Phone">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">555-555-5555</span>
-                <input ng-model="contact.ycell" id="A2CP" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Cell Phone">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">555-555-5555</span>
-                <input ng-model="contact.yemail" id="A2E" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Email">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">Carol@gmail.com</span>
-
-                <label for="A2C" class="block-input">Company</label>
-                <input ng-model="contact.ycompany" id="A2C" ng-show="edit" class="form-control" type="text" placeholder="Company">
-                <span ng-hide="edit" class="block-input">3M</span>
+                ​
+                <input ng-model="family.adultTwo.work" id="A2P" ng-show="edit" class="col-xs-6 col-sm-4" type="text" placeholder="Work Phone">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultTwo.work}}</span>
+                <input ng-model="family.adultTwo.cell" id="A2CP" ng-show="edit" class="col-xs-6 col-sm-4" type="text"  placeholder="Cell Phone">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultTwo.cell}}</span>
+                <input ng-model="family.adultTwo.email" id="A2E" ng-show="edit" class="col-xs-6 col-sm-4" type="text"  placeholder="Email">
+                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultTwo.email}}</span>
+                ​
+                <label for="A2C" class="col-md-6 col-sm-6 col-xs-6">Main Phone</label>
+                <label for="A2C" class="col-md-6 col-sm-6 col-xs-6">Company</label>
+                <input ng-model="family.adultTwo.company" id="A2C" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Main Phone">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultTwo.main}}</span>
+                <input ng-model="family.adultTwo.company" id="A2C" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Company">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultTwo.company}}</span>​
 
                 <label for="A2N" class="block-input">Notes</label>
-                <textarea ng-model="contact.ynotes" id="A2N" ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
-                <span ng-hide="edit" class="block-input">This area is reserved for lots of information as needed.</span>
+                <textarea ng-model="family.adultTwo.notes" id="A2N" ng-show="edit" rows="4" class="form-control"  placeholder="Notes"></textarea>
+                <span ng-hide="edit" id="notes" class="block-input">{{family.adultTwo.notes}}</span>
                 <!--edit / close buttons -->
-            </form>
-            <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
-            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancle</button>
+        </form>
         </div>
+        <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
+        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
+        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancel</button>
+        ​
     </uib-tab>
     <uib-tab heading="Emergency Contact">
-        <div class="well well-sm">
-            <form ng-controller="emergencyCtrl">
+        <legend>Emergency Contact</legend>
+        <div class="content-container">
+            <form>
                 <label for="EmFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="EmLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
-
-                <input ng-model="emergency.fName" id="EmFN" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Mike</span>
-                <input ng-model="emergency.lName" id="EmLN" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Brady</span>
-
+                ​
+                <input ng-model="family.emergency.firstName" id="EmFN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.emergency.firstName}}</span>
+                <input ng-model="family.emergency.lastName" id="EmLN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.emergency.lastName}}</span>
+                ​
                 <label for="EmAR1" class="block-input">Address 1</label>
-                <input ng-model="emergency.address1" id="EmAR1" ng-show="edit" class="form-control" type="text" placeholder="Address 1">
-                <span ng-hide="edit" class="block-input">4222 clinton Way</span>
-
+                <input ng-model="family.emergency.addressOne" id="EmAR1" ng-show="edit" class="form-control" type="text" placeholder="Address 1">
+                <span ng-hide="edit" class="block-input">{{family.emergency.addressOne}}</span>
+                ​
                 <label for="EmAR2" class="block-input">Address 2</label>
-                <input ng-model="emergency.address2" id="EmAR2" ng-show="edit" class="form-control" type="text" placeholder="Address 2">
-                <span ng-hide="edit" class="block-input">4222 clinton Way</span>
-
+                <input ng-model="family.emergency.addressTwo" id="EmAR2" ng-show="edit" class="form-control"  type="text" placeholder="Address 2">
+                <span ng-hide="edit" class="block-input">{{family.emergency.addressTwo}}</span>
+                ​
                 <label for="EmZ" class="col-xs-6 col-sm-3">Zip</label>
                 <label for="EmCty" class="col-xs-6 col-sm-3">City</label>
                 <label for="EmS" class="col-xs-6 col-sm-3">State</label>
                 <label for="EmP" class="col-xs-6 col-sm-3">Phone</label>
-
-                <input ng-model="emergency.zip" id="EmZ" ng-show="edit" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Zip Code">
-                <span ng-hide="edit" class="col-xs-6 col-sm-3">55555</span>
-                <input ng-model="emergency.city" id="EmCty" ng-show="edit" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="City">
-                <span ng-hide="edit" class="col-xs-6 col-sm-3">Los Angeles</span>
-                <input ng-model="emergency.state" id="EmS" ng-show="edit" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="State">
-                <span ng-hide="edit" class="col-xs-6 col-sm-3">CA</span>
-                <input ng-model="emergency.phone" id="EmP" ng-show="edit" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Phone Number">
-                <span ng-hide="edit" class="col-xs-6 col-sm-3">555-555-5555</span>
-
+                ​
+                <input ng-model="family.emergency.zip" id="EmZ" ng-show="edit" class="col-md-3 col-sm-4 col-xs-6"  type="text" placeholder="Zip Code">
+                <span ng-hide="edit" class="col-xs-6 col-sm-3">{{family.emergency.zip}}</span>
+                <input ng-model="family.emergency.city" id="EmCty" ng-show="edit" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="City">
+                <span ng-hide="edit" class="col-xs-6 col-sm-3">{{family.emergency.city}}</span>
+                <input ng-model="family.emergency.state" id="EmS" ng-show="edit" class="col-md-3 col-sm-4 col-xs-6" type="text"  placeholder="State">
+                <span ng-hide="edit" class="col-xs-6 col-sm-3">{{family.emergency.state}}</span>
+                <input ng-model="family.emergency.phone" id="EmP" ng-show="edit" class="col-md-3 col-sm-4 col-xs-6" type="text"  placeholder="Phone Number">
+                <span ng-hide="edit" class="col-xs-6 col-sm-3">{{family.emergency.phone}}</span>
+                ​
                 <label for="EmN" class="block-input">Notes</label>
-                <textarea ng-model="emergency.notes" id="EmN" ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
-                <span ng-hide="edit" class="block-input">This area is reserved for lots of information as needed.</span>
+                <textarea ng-model="family.emergency.notes" id="EmN" ng-show="edit" rows="4" class="form-control"  placeholder="Notes"></textarea>
+                <span ng-hide="edit" id="notes" class="block-input">{{family.emergency.notes}}</span>
                 <!--edit / close buttons -->
             </form>
-            <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
-            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancle</button>
         </div>
+        <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
+        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
+        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancel</button>
+        ​
     </uib-tab>
     <uib-tab heading="Additional Members">
-        <div class="well well-sm">
-            <form ng-controller="additionalCtrl">
-
+        <legend>Additional Members</legend>
+        <div class="content-container">
+            <form ng-repeat="child in family.children">
                 <label for="KFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="KLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
-
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Greg</span>
-                <input ng-model="additional.fName" id="KFN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Brady</span>
-                <input ng-model="additional.lName" id="KLN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-
+                ​
+                <span  ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.firstName}}</span>
+                <input ng-model="child.firstName" id="KFN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.lastName}}</span>
+                <input ng-model = "child.lastName" id="KLN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                ​
                 <label for="KBD" class="col-md-6 col-sm-6 col-xs-6">Birthday</label>
                 <label for="KS" class="col-md-6 col-sm-6 col-xs-6">School</label>
+                ​
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.birthdate}}</span>
+                <input ng-model="child.birthdate" id="KBD" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Birthday  mm/dd/yyyy">
+                <span ng-hide="edit"  class="col-md-6 col-sm-6 col-xs-6">{{child.school}}</span>
+                <input ng-model="child.school" id="KS" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School">
+                ​
+                <label for="KBD" class="col-md-6 col-sm-6 col-xs-6">Cell</label>
+                <label for="KS" class="col-md-6 col-sm-6 col-xs-6">Email</label>
 
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">04/08/1988</span>
-                <input ng-model="additional.bDay" id="KBD" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="date" placeholder="Birthday">
-                <span ng-hide="edit"  class="col-md-6 col-sm-6 col-xs-6">Cool School</span>
-                <input ng-model="additional.school" id="KS" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.cell}}</span>
+                <input ng-model="child.birthdate" id="KBD" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Cell">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.email}}</span>
+                <input ng-model="child.school" id="KS" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">
 
                 <label for="KN" class="block-input">Notes</label>
-                <span ng-hide="edit" class="block-input">This is some more information about this person</span>
-                <textarea ng-model="additional.notes" id="KN" ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
-
+                <span ng-hide="edit" id="notes" class="block-input">{{child.notes}}</span>
+                <textarea ng-model="child.notes" id="KN" ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
+                <hr>
+            </form>
+        </div>
+            <form>​
                 <!--shows upon editing\/\/\/-->
-
+                ​
                 <button ng-show="edit" type="button" class="btn btn-danger">+</button>
                 <hr/>
-
+                ​
                 <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
                 <input ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
                 <input ng-show="edit"  class="form-control" type="date" placeholder="Birthday">
                 <textarea ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
+            </form>​
 
-            </form>
-            <!--edit / close buttons -->
-            <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
-            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancle</button>        </div>
+
+        <!--edit / close buttons -->
+        <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
+        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
+        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancel</button>
+        ​
     </uib-tab>
     <uib-tab heading="Donations">
-            <div class="well well-sm">
-                <table>
-                    <tr>
-                        <th>Date</th>
-                        <th>Amount</th>
-                        <th>Notes</th>
-                    </tr>
-                    <tr>
-                        <td>10/3/15</td>
-                        <td>$1,000</td>
-                        <td>something to note about</td>
-                    </tr>
-                    <tr>
-                        <td>10/8/14</td>
-                        <td>$2,000</td>
-                        <td>something to note about</td>
-                    </tr>
-                    <tr>
-                        <td>9/25/13</td>
-                        <td>$1,500</td>
-                        <td>something to note about</td>
-                    </tr>
-                </table>
-            <!--edit / close buttons -->
-            <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
-            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancle</button>
-            <!--shows when editable\/\/\/ -->
+        <legend>Donations</legend>
+        <div class="content-container">
+            <table class="table-hover table table-bordered">
+                <tr>
+                    <th class="field-label col-xs-3 active">Date</th>
+                    <th class="field-label col-xs-3 active">Amount</th>
+                    <th class="field-label col-xs-3 active">Notes</th>
+                </tr>
+                ​
+                <tr ng-repeat="donate in family.donations">
+                    <td class="field-label col-xs-3 active">{{donate.date}}</td>
+                    <td class="field-label col-xs-3 active">{{donate.amount}}</td>
+                    <td class="field-label col-xs-3 active">{{donate.notes}}</td>
+                </tr>
 
-            <label ng-show="edit" for="donation">Add Donation</label>
-            <button ng-show="edit" type="button" class="btn btn-danger">+</button>
-            <input ng-show="edit" class="form-control" type="date" placeholder="Date">
-            <input ng-show="edit" class="form-control" type="text" placeholder="Amount">
-            <textarea ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
+            </table>
         </div>
+        <!--edit / close buttons -->
+        <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
+        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
+        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancel</button>
+        <!--shows when editable\/\/\/ -->
+        ​
+        <label ng-show="edit">Add Donation</label>
+        <button ng-show="edit" type="button" class="btn btn-danger">+</button>
+        <input ng-show="edit" class="form-control" type="date" placeholder="Date">
+        <input ng-show="edit" class="form-control" type="text" placeholder="Amount">
+        <textarea ng-show="edit" rows="4" class="form-control" placeholder="Notes"></textarea>
+        ​
     </uib-tab>
 </uib-tabset>

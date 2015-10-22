@@ -2,14 +2,17 @@ var express = require('express');
 var router = express.Router();
 var mysql = require('mysql');
 var db = require('../config/db.js');
+var ser = require('../models/createListQ');
+
 
     /*GET for DB search*/
 router.get('/', function(req, res, next) {
 
     var con = mysql.createConnection(db);
 
-    var searchString = req.query.search;
-    console.log("received", searchString);
+
+
+//making the connection to the database
 
     con.connect(function (err) {
         if (err) {
@@ -18,9 +21,11 @@ router.get('/', function(req, res, next) {
         }
         console.log('Connection established');
 
-        //this is to get all the contact emails
-        con.query('SELECT "company" AS type, contactFirstName AS CFN, contactLastName AS CLN, contactEmail AS CE FROM corpDonors',function(err,rows) {
+//choosing which situation is true for creating the mailing list
+//donors is selected from the list
 
+       if(donorList == true) {
+        con.query(donorList, function(err,rows) {
 
             if (err) throw err;
             console.log('Data received from Db:\n');
@@ -28,9 +33,13 @@ router.get('/', function(req, res, next) {
             con.end();
             res.send(rows);
         });
+
+//families is selected from the list
+
+        } else if (familyList == true) {
 
         //this will get all family adult emails
-        con.query('SELECT "adult" AS type, adultOneFirstName AS AFN, adultOneLastName AS ALN, adultOneEmail AS AE FROM families UNION SELECT "adult" AS type, adultTwoFirstName AS AFN, adultTwoLastName AS ALN, adultTwoEmail AE FROM families', function (err, rows) {
+        con.query(familyList, function (err, rows) {
             console.log('You are in the query!');
 
             if (err) throw err;
@@ -40,8 +49,29 @@ router.get('/', function(req, res, next) {
             res.send(rows);
         });
 
-//selects all adults email by zip code as well as company by zip
-        con.query('SELECT "adult" AS type, adultOneFirstName AS AFN, adultOneLastName AS ALN, adultOneEmail AS AE FROM families WHERE adultOneZip = "' + searchString + '" UNION SELECT "adult" AS type, adultTwoFirstName AS AFN, adultTwoLastName AS ALN, adultTwoEmail AS AE FROM families WHERE adultTwoZip = "' + searchString + '" UNION SELECT "company" AS type, contactFirstName AS CFN, contactLastName AS CLN, contactEmail AS CE FROM corpDonors WHERE Zip = "' + searchString + '"  ', function (err, rows) {
+//selecting all emails with the same zip code
+
+        } else if (zipList == true) {
+        //selects all adults email by zip code as well as company by zip
+
+       var searchString = req.query.search;
+       console.log("received", searchString);
+
+        con.query(zipList, [searchString], function (err, rows) {
+            console.log('You are in the query!');
+
+            if (err) throw err;
+            console.log('Data received from Db:\n');
+            console.log(rows);
+            con.end();
+            res.send(rows);
+        });
+        } else if (ageList == true) {
+
+//selects all emails based on age of the child
+
+
+        con.query(ageList,[searchString], function (err, rows) {
             console.log('You are in the query!');
 
             if (err) throw err;
@@ -51,6 +81,7 @@ router.get('/', function(req, res, next) {
             res.send(rows);
         });
 
+};
 
     });
 

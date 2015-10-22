@@ -1,30 +1,21 @@
-<div class="newContactList container-fluid">
-    <form name="newListForm" ng-controller="NewContactListController" ng-submit="createList()" novalidate>
-        <!--newListForm.$valid &&-->
-        <p>create a new contact list</p>
-        <input type="text" ng-model="listname.input" placeholder="New Contact List">
-        <input type="submit" value="Create">
-    </form>
-</div>
-<div class="search-container fluid-container">
+
     <div class="row">
-        <form ng-controller="createListSearch" ng-submit="searchListBtn">
-        <div class="input-group">
-            <div class="input-group-btn">
-                <button ng-submit="searchListBtn" type="submit" class="btn btn-default dropdown-toggle" data-toggle="dropdown"
-                        aria-haspopup="true" aria-expanded="false">Search By<span class="caret"></span></button>
-                <ul class="dropdown-menu">
-                    <li><a href="#">Individual</a></li>
-                    <li><a href="#">Zip Code</a></li>
-                    <li><a href="#">Age</a></li>
-                    <li><a href="#">Corporation</a></li>
-                </ul>
-            </div>
-            <input type="text" ng-model="listFrom" class="form-control" aria-label="...">
-        </div>
+        <div  class="newContactList container-fluid">
+
+            <form name="newListForm" ng-hide="add" ng-controller="newContactListController as newList"  ng-submit="createList()" novalidate>
+                <legend>Create New Contact List</legend>
+                <div class="row">
+                    <div class="input-group">
+                        <span class="input-group-btn"><input id="create"  class="btn btn-success" type="submit" ng-click="hide()" value="Create"></span>
+                        <input type="text" class="form-control" ng-model="listname.input" placeholder="New Contact List">
+                    </div>
+                </div>
             </form>
+        </div>
     </div>
-</div>
+    <div  class="search-container fluid-container">
+        <div class="row">
+
 
 <div class="table">
     <div class="table" ng-controller="createListSearch as results">
@@ -47,7 +38,37 @@
             </tr>
 
         </table>
+
+            <form ng-show="add" ng-controller="createListSearch" ng-submit="searchListBtn">
+                    <legend>List Name</legend>
+                    <input type="radio" id="Corporation" ng-model="content"  value="Corporation"> Corporation
+                    <input type="radio" id="Famlies" ng-model="content" value="Famlies"> Families
+                    <input type="radio" value="zip" id="zip" ng-model="content"  value="Zip"> Zip
+                    <input type="text"  ng-model="content" ng-show="content == 'zip'" placeholder="Zipcode">
+                    <input type="radio" id="age" value="age" ng-model="content" value="Age"> Age
+                    <input type="number" ng-model="content" ng-show="content == 'age'" placeholder="Age">
+    
+                <input class="btn btn-default" type="submit" value="Submit">
+            </form>
+        </div>
+
     </div>
 </div>
 
-
+<div id="adultSearchName" class="table">
+    <table class="table-hover table table-bordered" ng-controller="createListSearch as results" >
+        <tr>
+            <th class="field-label col-xs-3 active">Name</th>
+            <th class="field-label col-xs-4 active">Email</th>
+            <th class="field-label col-xs-2 active">City</th>
+            <th class="field-label col-xs-3 active">Company</th>
+        </tr>
+        <tr ng-repeat="result in results" ng-class="result.id">
+            <td>{{result.firstName + " " + result.lastName}}</td>
+            <td>{{result.email}}</td>
+            <td>{{result.city}}</td>
+            <td>{{result.company}}</td>
+            <td><input type="checkbox" id={{result.id}}></td>
+        </tr>
+    </table>
+</div>
