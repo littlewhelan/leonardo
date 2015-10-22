@@ -6,9 +6,9 @@ app.controller('newContactListController',['newContactListData','$scope','$http'
     $scope.listName = {};
 
     $scope.createList  = function () {
-        console.log("create list: " + scope.listName.input);
+        console.log("create list: " + $scope.listName.input);
         //passes list name service
-        newContactListData.postList(scope.listName.input);
+        newContactListData.postList($scope.listName.input);
 
         $scope.listName={};
     };
