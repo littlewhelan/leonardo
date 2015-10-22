@@ -1,13 +1,13 @@
-app.controller('popListController',['contactListData','$scope','$http', function(contactListData, $scope, $http) {
+app.controller('popListController',['newContactListData','$scope','$http', function(newContactListData, $scope, $http) {
     //data to create a new contact list
 
 
-    $scope.listname = {};
+    $scope.listName = {};
 
     $scope.populateList  = function () {
-        console.log("create list: " + scope.listname.input);
+        console.log("create list: " + scope.listName.input);
         //passes in search text to service
-        contactListData.popList();
+        newContactListData.popList();
         //var listEnd = {
         //    "lists": [listNum],
         //    "column_names": [
@@ -19,7 +19,7 @@ app.controller('popListController',['contactListData','$scope','$http', function
         //]}
 
 
-        $scope.listname={};
+        $scope.listName={};
     };
 }]);
 
