@@ -32,7 +32,8 @@ runQuery = function() {
             		 lastName:elem.lastName,
             		 email:elem.email,
             		 cell:elem.cell,
-            		 birthdate:elem.birthdate
+            		 birthdate:elem.birthdate,
+            		 school:elem.school
             		 };
                             childrenArray.push(child);
                             };
