@@ -29,9 +29,7 @@ runQuery = function() {
 
 					function formatDates (date) {
 						return moment(date).format(prettyDate)
-
 					}
-
 
 			con.query(getPeeps.companyTab, [id], function (err, rows) {
 				if(err) throw err;
