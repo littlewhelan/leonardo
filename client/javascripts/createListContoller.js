@@ -5,7 +5,7 @@ app.controller('createListSearch',['$scope', '$rootScope', 'ContactListDataServi
     $scope.searchListBtn = function () {
         //passes in search text to service
         ContactListDataService.makeDataCall($scope.listForm.data);
-        //emptys the search box
+        //empty the search box
         $scope.listForm={};
     };
 }]);

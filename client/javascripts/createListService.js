@@ -6,9 +6,9 @@ app.factory('ContactListDataService',['$http', function($http) {
     var allAdults = [];
 
     var makeDataCall = function (passedData) {
-        return http({
+        return $http({
             method: 'GET',
-            URL: '../createMailList',
+            URL: '/createMailList',
             params: {search: passedData}
         }).then(function (response) {
             results = response.data;
