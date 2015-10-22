@@ -109,15 +109,18 @@ legend{
 .adult{
   margin-top: 20px;
 }
+span{
+  height: 30px;
+  border: 1px solid black;
+}
 #create{
   position: relative;
   bottom: 5px;
   left: 5px;
 }
-span{
-   height: 30px;
-   border: 1px solid black;
- }
+.input-group span{
+  border: none;
+}
 .ng-scope{
 border: none;
 }
