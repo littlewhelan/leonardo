@@ -13,7 +13,7 @@ app.controller('editFamilyCtrl',['$scope', '$uibModal', '$log','ResultService', 
                 url: '../family',
                 params:{id:id}
             }).then(function (response) {
-                          //results = response.data;
+
               			$scope.family = response.data;
                           var modalInstance = $uibModal.open({
                               animation: $scope.animationsEnabled,
@@ -24,6 +24,7 @@ app.controller('editFamilyCtrl',['$scope', '$uibModal', '$log','ResultService', 
                               resolve: {
                                   items: function () {
                                       return $scope.family;
+                                      return $scope.family.children = children
                                   }
                               }
                           });

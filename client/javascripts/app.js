@@ -1,4 +1,3 @@
-
 var app = angular.module('leo', ['ngRoute', 'ngAnimate', 'ui.bootstrap']);
 
 app.config(['$routeProvider',

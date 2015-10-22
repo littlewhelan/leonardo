@@ -5,37 +5,27 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 
     $scope.animationsEnabled = true;
 
-//THINK THIS CAN BE DELETED
-   //scope.openCorp = function (size) {
-   //
-   //   var modalInstance = $uibModal.open({
-   //       animation: $scope.animationsEnabled,
-   //       templateUrl: 'private/editcorp.html',
-   //       controller: 'ModalInstanceCtrl',
-   //       size: size,
-   //       resolve: {
-   //           items: function () {
-   //               return $scope.items;
-   //           }
-   //       }
-   //   });
-
-    $scope.openCorp = function (size, id) {
+    $scope.open = function (size, id) {
         console.log('corp call', id);
         return $http({
             method: 'GET',
             url: '../corporation',
             params:{id:id}
         }).then(function (response) {
-            results = response.data;
 
+                $scope.company = response.data;
                 var modalInstance = $uibModal.open({
                     animation: $scope.animationsEnabled,
                     templateUrl: 'private/editcorp.html',
                     controller: 'ModalInstanceCtrl',
-                        size: size,
-            });
-
+                    size: size,
+                    scope: $scope,
+                    resolve: {
+                        items: function () {
+                            return $scope.company;
+                        }
+                    }
+                });
 
             modalInstance.result.then(function (selectedItem) {
                 $scope.selected = selectedItem;

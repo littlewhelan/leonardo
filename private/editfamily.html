@@ -155,26 +155,26 @@
     <uib-tab heading="Additional Members">
         <legend>Additional Members</legend>
         <div class="content-container">
-            <form>
+            <form ng-repeat="child in family.children">
                 <label for="KFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="KLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
                 ​
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Greg</span>
-                <input ng-model="additional.fName" id="KFN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">Brady</span>
-                <input ng-model="additional.lName" id="KLN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                <span  ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.firstName}}</span>
+                <input ng-model="child.firstName" id="KFN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.lastName}}</span>
+                <input ng-model = "child.lastName" id="KLN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
                 ​
                 <label for="KBD" class="col-md-6 col-sm-6 col-xs-6">Birthday</label>
                 <label for="KS" class="col-md-6 col-sm-6 col-xs-6">School</label>
                 ​
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">04/08/1988</span>
-                <input ng-model="additional.bDay" id="KBD" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="date" placeholder="Birthday">
-                <span ng-hide="edit"  class="col-md-6 col-sm-6 col-xs-6">Cool School</span>
-                <input ng-model="additional.school" id="KS" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School">
+                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.birthdate}}</span>
+                <input ng-model="child.birthdate" id="KBD" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="date" placeholder="Birthday">
+                <span ng-hide="edit"  class="col-md-6 col-sm-6 col-xs-6">{{child.school}}</span>
+                <input ng-model="child.school" id="KS" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School">
                 ​
                 <label for="KN" class="block-input">Notes</label>
-                <span ng-hide="edit" class="block-input">This is some more information about this person</span>
-                <textarea ng-model="additional.notes" id="KN" ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
+                <span ng-hide="edit" class="block-input">{{child.notes}}</span>
+                <textarea ng-model="child.notes" id="KN" ng-show="edit"  rows="4" class="form-control" placeholder="Notes"></textarea>
                 ​
                 <!--shows upon editing\/\/\/-->
                 ​
@@ -204,21 +204,12 @@
                     <th class="field-label col-xs-3 active">Notes</th>
                 </tr>
                 ​
-                <tr>
-                    <td class="field-label col-xs-3 active">10/03/15</td>
-                    <td class="field-label col-xs-3 active">$1,000</td>
-                    <td class="field-label col-xs-3 active">Something cool to note about</td>
+                <tr ng-repeat="donate in family.donations">
+                    <td class="field-label col-xs-3 active">{{donate.date}}</td>
+                    <td class="field-label col-xs-3 active">{{donate.amount}}</td>
+                    <td class="field-label col-xs-3 active">{{donate.notes}}</td>
                 </tr>
-                <tr>
-                    <td class="field-label col-xs-3 active">10/03/15</td>
-                    <td class="field-label col-xs-3 active">$1,000</td>
-                    <td class="field-label col-xs-3 active">Something cool to note about</td>
-                </tr>
-                <tr>
-                    <td class="field-label col-xs-3 active">10/03/15</td>
-                    <td class="field-label col-xs-3 active">$1,000</td>
-                    <td class="field-label col-xs-3 active">Something cool to note about</td>
-                </tr>
+
             </table>
         </div>
         <!--edit / close buttons -->
@@ -227,7 +218,7 @@
         <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancel</button>
         <!--shows when editable\/\/\/ -->
         ​
-        <label ng-show="edit" for="donation">Add Donation</label>
+        <label ng-show="edit">Add Donation</label>
         <button ng-show="edit" type="button" class="btn btn-danger">+</button>
         <input ng-show="edit" class="form-control" type="date" placeholder="Date">
         <input ng-show="edit" class="form-control" type="text" placeholder="Amount">
