@@ -26,7 +26,7 @@ runQuery = function() {
 
 			con.query(getPeeps.companyTab, [id], function (err, rows) {
 				if(err) throw err;
- 				var compDonationsArray = [];
+ 				var companyDonationsArray = [];
 
 				checkDonations = function(elem) {
 						 var donation = {
@@ -61,7 +61,7 @@ runQuery = function() {
         		var company = {
         		companyInfo: companyInfo,
         		contact: contact,
-        		donations: compDonationsArray
+        		donations: companyDonationsArray
         		};
 
 						con.query(getPeeps.companyDonationsTab, [id], function (err, rows) {
