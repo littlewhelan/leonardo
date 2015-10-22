@@ -3,6 +3,7 @@ var router = express.Router();
 var mysql = require('mysql');
 var db = require('../config/db.js');
 var getPeeps = require('../models/modalQ');
+var moment = require('moment');
 
 // get request for one family by id
 router.get('/*', function(req, res, next) {
@@ -23,6 +24,12 @@ router.get('/*', function(req, res, next) {
 
 runQuery = function() {
 
+					var prettyDate = "MM/DD/YYYY";
+					var fullDate = "MM/DD/YYYY h:mm:ss a";
+
+					function formatDates (date) {
+						return moment(date).format(prettyDate)
+					}
 
 			con.query(getPeeps.companyTab, [id], function (err, rows) {
 				if(err) throw err;
@@ -32,7 +39,7 @@ runQuery = function() {
 						 var donation = {
 						 amount:elem.amount,
 						 notes:elem.notes,
-						 date:elem.date
+						 date:formatDates(elem.date)
 						 };
 							companyDonationsArray.push(donation);
 					};
