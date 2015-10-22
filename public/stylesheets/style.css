@@ -114,3 +114,13 @@ legend{
   bottom: 5px;
   left: 5px;
 }
+span{
+   height: 30px;
+   border: 1px solid black;
+ }
+.ng-scope{
+border: none;
+}
+#notes {
+  height: 100px;
+}
