@@ -1,5 +1,4 @@
-
-    <div class="row">
+ <div class="row">
         <div  class="newContactList container-fluid">
 
             <form name="newListForm" ng-hide="add" ng-controller="newContactListController as newList"  ng-submit="createList();" novalidate>
@@ -13,62 +12,47 @@
             </form>
         </div>
     </div>
-    <div  class="search-container fluid-container">
+<div ng-controller="createListSearch">
+    <div class="search-container fluid-container">
         <div class="row">
-
-
-<div class="table">
-    <div class="table" ng-controller="createListSearch as results">
-        <table class="well well-sm">
-            <tr>
-                <th>Name/Main Contact</th>
-                <th>Email</th>
-                <th>add to contact list</th>
-            </tr>
-            <tr ng-repeat="result in results">
-                <td>{{result.AFN}} {{result.ALN}}</td>
-                <td>{{result.AE}}</td>
-                <td><input type="checkbox" id={{result.id}}></td>
-            </tr>
-
-            <tr ng-repeat="result in results">
-                <td>{{result.CFN}} {{result.CLN}}</td>
-                <td>{{result.CE}}</td>
-                <td><input type="checkbox" id={{result.id}}></td>
-            </tr>
-
-        </table>
-
-            <form ng-show="add" ng-controller="createListSearch" ng-submit="searchListBtn">
+            ​
+            <form id="listType" ng-submit="searchListBtn()" ng-model="match">
+                <fieldset>
                     <legend>List Name</legend>
-                    <input type="radio" id="Corporation" ng-model="content"  value="Corporation"> Corporation
-                    <input type="radio" id="Famlies" ng-model="content" value="Famlies"> Families
-                    <input type="radio" value="zip" id="zip" ng-model="content"  value="Zip"> Zip
-                    <input type="text"  ng-model="content" ng-show="content == 'zip'" placeholder="Zipcode">
-                    <input type="radio" id="age" value="age" ng-model="content" value="Age"> Age
-                    <input type="number" ng-model="content" ng-show="content == 'age'" placeholder="Age">
-    
-                <input class="btn btn-default" type="submit" value="Submit">
+                    <input name="type" type="radio" id="corp" ng-model="corp" ng-value="true">
+                    <label for="corp">Corporation</label>
+                    ​
+                    <input name="type" type="radio" id="fam" ng-model="fam" ng-value="true">
+                    <label for="fam">Families</label>
+                    ​
+                    <input name="type" type="radio" id="zip" ng-value="true" ng-model="zipCk">
+                    <label for="zip">Zip</label>
+                    <input type="text" placeholder="Zip Code" ng-model="zip.data">
+                    ​
+                    <input name="type" type="radio" id="age" ng-value="true" ng-model="ageCk">
+                    <label for="age">Age</label>
+                    <input type="text" placeholder="Age" ng-model="age.data">
+                    ​
+                    <input class="btn btn-default" type="submit" value="Submit">
+                </fieldset>
             </form>
         </div>
-
     </div>
-</div>
-
-<div id="adultSearchName" class="table">
-    <table class="table-hover table table-bordered" ng-controller="createListSearch as results" >
-        <tr>
-            <th class="field-label col-xs-3 active">Name</th>
-            <th class="field-label col-xs-4 active">Email</th>
-            <th class="field-label col-xs-2 active">City</th>
-            <th class="field-label col-xs-3 active">Company</th>
-        </tr>
-        <tr ng-repeat="result in results" ng-class="result.id">
-            <td>{{result.firstName + " " + result.lastName}}</td>
-            <td>{{result.email}}</td>
-            <td>{{result.city}}</td>
-            <td>{{result.company}}</td>
-            <td><input type="checkbox" id={{result.id}}></td>
-        </tr>
-    </table>
+    <div id="adultSearchName" class="table">
+        <table class="table-hover table table-bordered">
+            <tr>
+                <th class="field-label col-xs-3 active">Name</th>
+                <th class="field-label col-xs-4 active">Email</th>
+                <th class="field-label col-xs-2 active">City</th>
+                <th class="field-label col-xs-3 active">Company</th>
+            </tr>
+            <tr ng-repeat="result in emailList" id="{{result.email}}">
+                <td>{{result.firstName}} {{result.lastName}}</td>
+                <td>{{result.email}}</td>
+                <td>{{result.city}}</td>
+                <td>{{result.company}}</td>
+                <td><input type="checkbox"></td>
+            </tr>
+        </table>
+    </div>
 </div>

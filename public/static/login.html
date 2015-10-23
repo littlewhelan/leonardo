@@ -1,12 +1,16 @@
 
-<div class="login-container" ng-controller="loginCtrl">
-    <div class="input-group">
-        <legend>Leonardo's Basement Login</legend>
-        <form ng-submit="submit()" name="userlogin">
-            <input type="text" class="form-control" ng-model="form.username" placeholder="Username">
-            <input type="password" class="form-control" ng-model="form.password" placeholder="Password">
-            <input type="submit" class="form-control btn-primary" placehoder="login">
-            <a href="register.html">register</a>
-        </form>
+<div class="background">
+    <div class="login-container" ng-controller="loginCtrl">
+        <div class="header-logo">
+            <img src="/logo/Leonardo-Logo-300x163.jpg">
+        </div>
+        <div class="input-group">
+            <legend>Leonardo's Basement Login</legend>
+            <form ng-submit="submit()" name="userlogin">
+                <input type="text" class="form-control" ng-model="form.username" placeholder="Username">
+                <input type="password" class="form-control" ng-model="form.password" placeholder="Password">
+                <input type="submit" class="form-control btn-default" value="Login">
+            </form>
+        </div>
     </div>
 </div>

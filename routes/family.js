@@ -24,112 +24,112 @@ router.get('/*', function(req, res, next) {
 		}
 		console.log('Connection established');
 
-runQuery = function() {
+		var runQuery = function() {
 
-					var prettyDate = "MM/DD/YYYY";
-						var fullDate = "MM/DD/YYYY h:mm:ss a";
-						function formatDates (date) {
-							return moment(date).format(prettyDate)
-						}
+			var prettyDate = "MM/DD/YYYY";
+			function formatDates (date) {
+				return moment(date).format(prettyDate)
+			}
 
 			con.query(getPeeps.familyTab, [id], function (err, rows) {
 				if(err) throw err;
 
-			 checkChild = function(elem) {
-            		 var child = {
-            		 firstName:elem.firstName,
-            		 lastName:elem.lastName,
-            		 email:elem.email,
-            		 cell:elem.cell,
-            		 birthdate:formatDates(elem.birthdate),
-            		 school:elem.school
-            		 };
-                            childrenArray.push(child);
-                            };
-
-			checkDonations = function (elem) {
-					 var donation = {
-					 year:formatDates(elem.year),
-					 amount:element.amount
-					 };
-							donationsArray.push(donation);
-							};
-
-            		var childrenArray = [];
-            		var donationsArray =[];
-
-					var adultOne = {
-						firstName:rows[0].adultOneFirstName,
-						lastName:rows[0].adultOneLastName,
-						addressOne:rows[0].adultOneaddressOne,
-						addressTwo:rows[0].adultOneAddressTwo,
-						zip:rows[0].adultOneZip,
-						city:rows[0].adultOneCity,
-						state:rows[0].adultOneState,
-						company:rows[0].adultOneCompany,
-						work:rows[0].adultOneWork,
-						cell:rows[0].adultOneCell,
-						email:rows[0].adultOneEmail,
-						notes:rows[0].adultOneNotes,
+				var checkChild = function(elem) {
+					var child = {
+						firstName:elem.firstName,
+						lastName:elem.lastName,
+						email:elem.email,
+						cell:elem.cell,
+						birthdate:formatDates(elem.birthdate),
+						school:elem.school
 					};
+					childrenArray.push(child);
+				};
 
-					var adultTwo = {
-						firstName:rows[0].adultTwoFirstName,
-						lastName:rows[0].adultTwoLastName,
-						addressOne:rows[0].adultTwoAddressOne,
-						addressTwo:rows[0].adultTwoaddressTwo,
-						zip:rows[0].adultTwoZip,
-						city:rows[0].adultTwoCity,
-						state:rows[0].adultTwoState,
-						company:rows[0].adultTwoCompany,
-						work:rows[0].adultTwoWork,
-						cell:rows[0].adultTwoCell,
-						email:rows[0].adultTwoEmail,
-						notes:rows[0].adultTwoNotes,
+				var checkDonations = function (elem) {
+					var donation = {
+						date:formatDates(elem.date),
+						amount:elem.amount,
+						notes:elem.notes
 					};
+					donationsArray.push(donation);
+				};
 
-					var emergency = {
-						firstName:rows[0].emerFirstName,
-						lastName:rows[0].emerLastName,
-						addressOne:rows[0].emerAddressOne,
-						addressTwo:rows[0].emerAddressTwo,
-						zip:rows[0].emerZip,
-						city:rows[0].emerCity,
-						state:rows[0].emerState,
-						phone:rows[0].emerPhone,
-					};
+				var childrenArray = [];
+				var donationsArray =[];
+
+				var adultOne = {
+					firstName:rows[0].adultOneFirstName,
+					lastName:rows[0].adultOneLastName,
+					addressOne:rows[0].adultOneAddressOne,
+					addressTwo:rows[0].adultOneAddressTwo,
+					zip:rows[0].adultOneZip,
+					city:rows[0].adultOneCity,
+					state:rows[0].adultOneState,
+					company:rows[0].adultOneCompany,
+					work:rows[0].adultOneWork,
+					cell:rows[0].adultOneCell,
+					email:rows[0].adultOneEmail,
+					notes:rows[0].adultOneNotes,
+				};
+
+				var adultTwo = {
+					firstName:rows[0].adultTwoFirstName,
+					lastName:rows[0].adultTwoLastName,
+					addressOne:rows[0].adultTwoAddressOne,
+					addressTwo:rows[0].adultTwoAddressTwo,
+					zip:rows[0].adultTwoZip,
+					city:rows[0].adultTwoCity,
+					state:rows[0].adultTwoState,
+					company:rows[0].adultTwoCompany,
+					work:rows[0].adultTwoWork,
+					cell:rows[0].adultTwoCell,
+					email:rows[0].adultTwoEmail,
+					notes:rows[0].adultTwoNotes,
+				};
+
+				var emergency = {
+					firstName:rows[0].emerFirstName,
+					lastName:rows[0].emerLastName,
+					addressOne:rows[0].emerAddressOne,
+					addressTwo:rows[0].emerAddressTwo,
+					zip:rows[0].emerZip,
+					city:rows[0].emerCity,
+					state:rows[0].emerState,
+					phone:rows[0].emerPhone,
+				};
 
 				var family = {
-            		adultOne:adultOne,
-            		adultTwo:adultTwo,
-            		emergency:emergency,
-            		children:childrenArray,
-            		donations:donationsArray
-            		};
-						console.log('adultOne',adultOne);
+					adultOne:adultOne,
+					adultTwo:adultTwo,
+					emergency:emergency,
+					children:childrenArray,
+					donations:donationsArray
+				};
+				console.log('adultOne',adultOne);
 
 
-						con.query(getPeeps.childTab, [id], function (err, rows) {
-							if(err) throw err;
+				con.query(getPeeps.childTab, [id], function (err, rows) {
+					if(err) throw err;
 
-								rows.forEach(checkChild);
-
-
-								con.query(getPeeps.donateTab, [id], function (err, rows) {
-									if(err) throw err;
-
-										rows.forEach(checkDonations);
+					rows.forEach(checkChild);
 
 
-											con.end();
+					con.query(getPeeps.donateTab, [id], function (err, rows) {
+						if(err) throw err;
+
+						rows.forEach(checkDonations);
 
 
-											console.log('family object',family);
-											res.send(family);
+						con.end();
 
-								})
-						})
+
+						console.log('family object',family);
+						res.send(family);
+
+					})
 				})
+			})
 		};
 
 		runQuery();
@@ -154,84 +154,126 @@ router.post('/*', function (req, res, next) {
 			res.status(400);
 		}
 		console.log("Connection established");
+		insertFamily(family)
 	});
 
-	// format mainFam object
-	var mainFam = {
-		adultOneFirstName: family.adultOne.firstName,
-		adultOneLastName: family.adultOne.lastName,
-		adultOneAddressOne: family.adultOne.addressOne,
-		adultOneAddressTwo: family.adultOne.addressTwo,
-		adultOneZip: family.adultOne.zip,
-		adultOneCity: family.adultOne.city,
-		adultOneState: family.adultOne.state,
-		adultOneCompany: family.adultOne.company,
-		adultOneWork: family.adultOne.work,
-		adultOneCell: family.adultOne.cell,
-		adultOneEmail: family.adultOne.email,
-		adultOneNotes: family.adultOne.notes,
+	var insertFamily = function (family) {
 
-		adultTwoFirstName: family.adultTwo.firstName,
-		adultTwoLastName: family.adultTwo.lastName,
-		adultTwoAddressOne: family.adultTwo.addressOne,
-		adultTwoAddressTwo: family.adultTwo.addressTwo,
-		adultTwoZip: family.adultTwo.zip,
-		adultTwoCity: family.adultTwo.city,
-		adultTwoState: family.adultTwo.state,
-		adultTwoCompany: family.adultTwo.company,
-		adultTwoWork: family.adultTwo.work,
-		adultTwoCell: family.adultTwo.cell,
-		adultTwoEmail: family.adultTwo.email,
-		adultTwoNotes: family.adultTwo.notes,
+		// format mainFam object
+		var mainFam = {
+			adultOneFirstName: family.adultOne.firstName,
+			adultOneLastName: family.adultOne.lastName,
+			adultOneAddressOne: family.adultOne.addressOne,
+			adultOneAddressTwo: family.adultOne.addressTwo,
+			adultOneZip: family.adultOne.zip,
+			adultOneCity: family.adultOne.city,
+			adultOneState: family.adultOne.state,
+			adultOneCompany: family.adultOne.company,
+			adultOneWork: family.adultOne.work,
+			adultOneCell: family.adultOne.cell,
+			adultOneEmail: family.adultOne.email,
+			adultOneNotes: family.adultOne.notes,
 
-		emerFirstName: family.emergency.firstName,
-		emerLastName: family.emergency.lastName,
-		emerAddressOne: family.emergency.addressOne,
-		emerAddressTwo: family.emergency.addressTwo,
-		emerZip: family.emergency.zip,
-		emerCity: family.emergency.city,
-		emerState: family.emergency.state,
-		emerPhone: family.emergency.phone
+			adultTwoFirstName: family.adultTwo.firstName,
+			adultTwoLastName: family.adultTwo.lastName,
+			adultTwoAddressOne: family.adultTwo.addressOne,
+			adultTwoAddressTwo: family.adultTwo.addressTwo,
+			adultTwoZip: family.adultTwo.zip,
+			adultTwoCity: family.adultTwo.city,
+			adultTwoState: family.adultTwo.state,
+			adultTwoCompany: family.adultTwo.company,
+			adultTwoWork: family.adultTwo.work,
+			adultTwoCell: family.adultTwo.cell,
+			adultTwoEmail: family.adultTwo.email,
+			adultTwoNotes: family.adultTwo.notes,
+
+			emerFirstName: family.emergency.firstName,
+			emerLastName: family.emergency.lastName,
+			emerAddressOne: family.emergency.addressOne,
+			emerAddressTwo: family.emergency.addressTwo,
+			emerZip: family.emergency.zip,
+			emerCity: family.emergency.city,
+			emerState: family.emergency.state,
+			emerPhone: family.emergency.phone
+		};
+
+		// run query - 1st mainFam: get the base family info in (so children can reference)
+		con.query(insertFam.mainFam, [mainFam], function (err, res) {
+			if(err) {
+				throw err;
+			}
+			var familyID = res.insertId;
+			console.log("New family ID: ", familyID);
+
+			// make sure there's a family ID so we don't have any orphan kids or donations
+			if(familyID) {
+				// check if children before inserting, or will crash
+				if(family.children) {
+					checkChildren(family.children, family.children.length, 0);
+				}
+
+				// check if any donations before inserting, or will crash
+				if(family.donations) {
+					checkDonations(family.donations, family.donations.length, 0);
+				}
+				res.status(200).send("Ok");
+			}else {
+				// failed to insert and/or retrieve insert id
+				res.status(400);
+			}
+		});
 	};
 
-	// run query - 1st mainFam: get the base family info in (so children can reference)
-	con.query(insertFam.mainFam, [mainFam], function (err, res) {
-		if(err) {
-			throw err;
-		}
-		var familyID = res.insertId;
-		console.log("New family ID: ", familyID);
-
-		// make sure there's a family ID so we don't have any orphan kids or donations
-		if(familyID) {
-			// check if children before inserting, or will crash
-			if(family.children) {
-				family.children.forEach(function (v, i, a) {
-					v.familyID = familyID;
-					con.query(insertFam.kids, [v], function (err, res) {
-						if(err) {
-							throw err;
-						}
-
-					});
-				});
-			}
-
-			// check if any donations before inserting, or will crash
+	// gets called when there are children, is its own callback while there are children.
+	// takes in children array, length of array, index to grab
+	var checkChildren = function (children, length, index) {
+		console.log("in checkChildren ", children, length, index);
+		// if index is equal to length (zero-offset, so past array), then move on to donations
+		if(length == index) {
+			// if there are donations in the family object outside of these callbacks, then move on to donation
 			if(family.donations) {
-				family.donations.forEach(function (v, i, a) {
-					v.familyID = familyID;
-					con.query(insertFam.donations, [v], function (err, res) {
-						if(err) {
-							throw err;
-						}
-					});
-				});
-
+				checkDonations(family.donations, family.donations.length, 0);
+				// no donations, send res back
+			}else {
+				res.status(200).send("Ok");
 			}
-			res.status(200).send("Ok");
+		}else {
+			//console.log(children[index], " looking for index ", index);
+			insertChild(children[index], checkChildren, children, length, ++index);
 		}
-	});
+	};
+
+	// inserts new child record and runs callback
+	var insertChild = function (child, cb, children, length, index) {
+		child.familyID = family.id;
+		con.query(insertFam.kids, [child], function (err, res) {
+			if(err) {
+				throw err;
+			}
+			console.log("inserted child ", child);
+			cb(children, length, index);
+		});
+	};
+
+	var checkDonations = function (donations, length, index) {
+		// if length equal to length (zero-offset), send the response
+		if(length == index) {
+			res.status(200).send("Ok");
+		}else {
+			insertDonation(donations[index], checkDonations, donations, length, ++index);
+		}
+	};
+
+	var insertDonation = function (donation, cb, donations, length, index) {
+		// set the familyID of the donation
+		donation.familyID = family.id;
+		con.query(insertFam.donations, [donation], function (err, res) {
+			if(err) {
+				throw err;
+			}
+			cb(donations, length, index);
+		});
+	};
 });
 
 router.put('/*', function (req, res, next) {
@@ -252,7 +294,7 @@ router.put('/*', function (req, res, next) {
 			res.status(400);
 		}
 		console.log("Connection established");
-		console.log("pre updating family");
+
 		// first update the family - starts the process rolling
 		updateFamily(family);
 	});
@@ -360,12 +402,12 @@ router.put('/*', function (req, res, next) {
 			if(donations.id) {
 				checkDonations(donations, length, ++index);
 			}else {
-				insertDonations(donations[index], checkDonations, donations, length, ++index);
+				insertDonation(donations[index], checkDonations, donations, length, ++index);
 			}
 		}
 	};
 
-	var insertDonations = function (donation, cb, donations, length, index) {
+	var insertDonation = function (donation, cb, donations, length, index) {
 		// set the familyID of the donation
 		donation.familyID = family.id;
 		con.query(insertFam.donations, [donation], function (err, res) {
