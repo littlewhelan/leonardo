@@ -119,16 +119,16 @@ router.get('/*', function(req, res, next) {
 		});
 
 
-		//con.query(ser.ageList, [searchString], function (err, rows) {
-		//	console.log('You are in the query!');
-		//
-		//	if (err) throw err;
-		//	console.log('Data received from Db:\n');
-		//	console.log(rows);
-		//	con.end();
-		//	res.send(rows);
-		//
-		//});
+		con.query(ser.ageList, [parseInt(searchString) -.5, parseInt(searchString) +.5], function (err, rows) {
+			console.log('You are in the query!');
+
+			if (err) throw err;
+			console.log('Data received from Db:\n');
+			console.log(rows);
+			con.end();
+			res.send(rows);
+
+		});
 
 	});
 });

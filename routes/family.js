@@ -8,7 +8,7 @@ var insertFam = require('../models/insertFam');
 var updateFam = require('../models/updateFam');
 
 // get request for one family by id
-router.get('/*', function (req, res, next) {
+router.get('/', function (req, res, next) {
 	console.log("in get route");
 
 	var con = mysql.createConnection(db);
@@ -26,7 +26,7 @@ router.get('/*', function (req, res, next) {
 
 		runQuery = function () {
 
-			var prettyDate = "MM/DD/YYYY";
+			var prettyDate = "YYYY-MM-DD";
 			var fullDate = "MM/DD/YYYY h:mm:ss a";
 
 			function formatDates(date) {
@@ -165,6 +165,13 @@ router.post('/', function (req, res, next) {
 		insertFamily(family)
 	});
 
+	var prettyDate = "YYYY-MM-DD";
+	var fullDate = "MM/DD/YYYY h:mm:ss a";
+
+	function formatDates(date) {
+		return moment(date).format(prettyDate)
+	}
+
 	var insertFamily = function (family) {
 
 		// format mainFam object
@@ -227,7 +234,7 @@ router.post('/', function (req, res, next) {
 				} else {
 					console.log("going to return ok, nothing else");
 					con.end();
-					res.status(200).send("Ok");
+					res.status(200).json(family);
 				}
 			} else {
 				// failed to insert and/or retrieve insert id
@@ -249,11 +256,11 @@ router.post('/', function (req, res, next) {
 				// no donations, send res back
 			} else {
 				con.end();
-				res.status(200).send("Ok");
+				res.status(200).json(family);
 			}
 		} else {
 			//console.log(children[index], " looking for index ", index);
-			insertChild(children[index], checkChildren, children, length, ++index);
+			insertChild(children[index], checkChildren, children, length, index);
 		}
 	};
 
@@ -269,8 +276,9 @@ router.post('/', function (req, res, next) {
 				con.end();
 				console.log("error", err);
 			}
+			family.children[index].id = res.insertId;
 			console.log("inserted child ", child);
-			cb(children, length, index);
+			cb(children, length, ++index);
 		});
 	};
 
@@ -278,21 +286,24 @@ router.post('/', function (req, res, next) {
 		// if length equal to length (zero-offset), send the response
 		if (length == index) {
 			con.end();
-			res.status(200).send("Ok");
+			res.status(200).json(family);
 		} else {
-			insertDonation(donations[index], checkDonations, donations, length, ++index);
+			insertDonation(donations[index], checkDonations, donations, length, index);
 		}
 	};
 
 	var insertDonation = function (donation, cb, donations, length, index) {
 		// set the familyID of the donation
 		donation.familyID = family.id;
+		donation.date = formatDates(donation.date);
 		con.query(insertFam.donations, [donation], function (err, res) {
 			if (err) {
 				con.end();
 				throw err;
 			}
-			cb(donations, length, index);
+			family.donations[index].id = res.insertId;
+			family.donations[index].date = donation.date;
+			cb(donations, length, ++index);
 		});
 	};
 });
@@ -307,7 +318,10 @@ router.put('/', function (req, res, next) {
 	// stores the whole family unit (needs to be split for queries)
 	var family = req.body.family;
 	var con = mysql.createConnection(db);
-
+	var prettyDate = "YYYY-MM-DD";
+	function formatDates(date) {
+		return moment(date).format(prettyDate)
+	}
 	// connect to db
 	con.connect(function (err) {
 		if (err) {
@@ -362,7 +376,7 @@ router.put('/', function (req, res, next) {
 				// no children or donations: send res
 			} else {
 				con.end();
-				res.status(200).send("Ok");
+				res.status(200).json(family);
 			}
 		});
 	};
@@ -379,22 +393,23 @@ router.put('/', function (req, res, next) {
 				// no donations, send res back
 			} else {
 				con.end();
-				res.status(200).send("Ok");
+				res.status(200).json(family);
 			}
 		} else {
 			//console.log(children[index], " looking for index ", index);
 			// if child doesn't have an id at index, insert
 			if (!children[index].id) {
-				insertChild(children[index], checkChildren, children, length, ++index);
+				insertChild(children[index], checkChildren, children, length, index);
 			} else {
 				// else update child by id
-				updateChild(children[index], checkChildren, children, length, ++index);
+				updateChild(children[index], checkChildren, children, length, index);
 			}
 		}
 	};
 
 	// updates existing child records and runs callback
 	var updateChild = function (child, cb, children, length, index) {
+		child.birthdate = formatDates(child.birthdate);
 		con.query(updateFam.kids, [child.firstName, child.lastName,
 			child.school, child.birthdate, child.notes,
 			child.email, child.cell, child.id], function (err, res) {
@@ -402,21 +417,27 @@ router.put('/', function (req, res, next) {
 				con.end();
 				throw err;
 			}
+			family.children[index].birthdate = child.birthdate;
 			console.log("Updated child ", child);
-			cb(children, length, index);
+			cb(children, length, ++index);
 		});
 	};
 
 	// inserts new child record and runs callback
 	var insertChild = function (child, cb, children, length, index) {
 		child.familyID = family.id;
+		child.birthdate = formatDates(child.birthdate);
+		console.log("in insertChild", family, child, "len ", length, " index ", index, " of undef: ", family.children);
 		con.query(insertFam.kids, [child], function (err, res) {
 			if (err) {
 				con.end();
 				throw err;
 			}
+			// get back id of child, send back to dom
+			family.children[index].id = res.insertId;
+			family.children[index].birthdate = child.birthdate;
 			console.log("inserted child ", child);
-			cb(children, length, index);
+			cb(children, length, ++index);
 		});
 	};
 
@@ -424,26 +445,32 @@ router.put('/', function (req, res, next) {
 		// if length equal to length (zero-offset), send the response
 		if (length == index) {
 			con.end();
-			res.status(200).send("Ok");
+			res.status(200).json(family);
 		} else {
 			// if donation has id, skip it - no editing
-			if (donations.id) {
+			if (donations[index].id) {
 				checkDonations(donations, length, ++index);
 			} else {
-				insertDonation(donations[index], checkDonations, donations, length, ++index);
+				insertDonation(donations[index], checkDonations, donations, length, index);
 			}
 		}
 	};
 
 	var insertDonation = function (donation, cb, donations, length, index) {
 		// set the familyID of the donation
+		family.donations[index].familyID = family.id;
 		donation.familyID = family.id;
+		donation.date = formatDates(donation.date);
+		console.log("donations", donation, donations, length, index);
 		con.query(insertFam.donations, [donation], function (err, res) {
 			if (err) {
 				con.end();
 				throw err;
 			}
-			cb(donations, length, index);
+			// get back donation id, so doesn't re-insert when creating family
+			family.donations[index].id = res.insertId;
+			family.donations[index].date = donation.date;
+			cb(donations, length, ++index);
 		});
 	};
 

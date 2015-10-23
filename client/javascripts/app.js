@@ -26,7 +26,8 @@ app.config(['$routeProvider',
                 templateUrl: 'private/contactList.html'
             }).
             when('/addfamily', {
-                templateUrl: 'private/addfamily.html'
+                templateUrl: 'private/addfamily.html',
+				controller: 'editFamilyCtrl'
             }).
             when('/addcorp', {
                 templateUrl: 'private/addcorp.html'
