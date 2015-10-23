@@ -29,12 +29,11 @@ var corporation = require('./routes/corporation');
 
 var contactList = require('./routes/newContactList');
 var popList = require('./routes/populateContactList');
-<<<<<<< HEAD
-=======
+
 var moment = require('moment');
 
 
->>>>>>> master
+
 
 var app = express();
 

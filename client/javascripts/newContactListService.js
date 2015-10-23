@@ -4,23 +4,22 @@
 app.service('newContactListData', ['ContactListDataService', '$http',
     function (ContactListDataService, $http) {
 
+    this.newContactList = [];
+    this.listNum = "";
 
-
-    var newContactList = [];
-    var listNum = "1499523610";
-
-    this.postList = function () {
-        $http.post('/newContactList').then(function (data) {
+    this.postList = function (name) {
+        console.log("did the name make it to the service? " + name );
+        return $http.post('/newContactList', {name: name}).then(function (data) {
             console.log(data);
-            listNum = data.id
+            listNum = toString(data.id);
+            console.log("Id? ",data.id);
 
         }, function(data){
             console.log(data); //error
         });
-        console.log(options)
     };
 
-    var importDataArray = [
+    this.importDataArray = [
         {
             "email_addresses": [
                 "user1@example.com"
@@ -53,7 +52,7 @@ app.service('newContactListData', ['ContactListDataService', '$http',
 
     this.popList = function () {
         getChecked();
-        $http.post('/populateContactList.js', importDataArray, listNum).success(function (data, status, headers, config) {
+        $http.post('/populateContactList.js', importDataArray, listNum).then(function (data, status, headers, config) {
             console.log(data);
         });
         console.log(options);
