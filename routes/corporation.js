@@ -27,7 +27,6 @@ router.get('/*', function(req, res, next) {
 runQuery = function() {
 
 					var prettyDate = "MM/DD/YYYY";
-					var fullDate = "MM/DD/YYYY h:mm:ss a";
 
 					function formatDates (date) {
 						return moment(date).format(prettyDate)
@@ -37,7 +36,7 @@ runQuery = function() {
 				if(err) throw err;
  				var companyDonationsArray = [];
 
-				checkDonations = function(elem) {
+				var checkDonations = function(elem) {
 						 var donation = {
 						 amount:elem.amount,
 						 notes:elem.notes,
@@ -58,18 +57,17 @@ runQuery = function() {
 						email:rows[0].email
 					};
 
-					var contact = {
+					var contactInfo = {
 						firstName:rows[0].contactFirstName,
 						lastName:rows[0].contactLastName,
 						email:rows[0].contactEmail,
 						phone:rows[0].contactPhone,
-						ext:rows[0].ext,
-						notes:rows[0].contactNotes
+						ext:rows[0].contactExt
 					};
 
         		var company = {
         		companyInfo: companyInfo,
-        		contact: contact,
+        		contact: contactInfo,
         		donations: companyDonationsArray
         		};
 
