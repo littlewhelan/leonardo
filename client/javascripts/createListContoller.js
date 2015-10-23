@@ -5,11 +5,17 @@ app.controller('createListSearch',['$scope','$http', 'ContactListDataService', f
 	$scope.ageCk ={};
 	$scope.age ={};
 	$scope.zip={};
+console.log( 'Where is this',
+	$scope.corp,
+	$scope.fam,
+	$scope.zipCk,
+	$scope.ageCk
+);
 
 	$scope.searchListBtn = function () {
 
 		//THIS WORKS  -- will search by zip
-		if ($scope.zip == true) {
+		if ($scope.zipCk == true) {
 			var promise = ContactListDataService.makeDataCall('zip',$scope.zip.data);
 			promise.then(function (results) {
 				$scope.emailList = results.data;
@@ -17,7 +23,7 @@ app.controller('createListSearch',['$scope','$http', 'ContactListDataService', f
 		}
 
 		//THIS WORKS - will search by age
-		if ($scope.age == true) {
+		if ($scope.ageCk == true) {
 			var promise = ContactListDataService.makeDataCall('age',$scope.age.data);
 			promise.then(function (results) {
 				$scope.emailList = results.data;
@@ -41,7 +47,6 @@ app.controller('createListSearch',['$scope','$http', 'ContactListDataService', f
 				console.log(results.data);
 			});
 		}
-
 
 		//empty the search box
 		$scope.corp = {};
