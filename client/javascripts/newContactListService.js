@@ -5,14 +5,14 @@ app.service('newContactListData', ['ContactListDataService', '$http',
     function (ContactListDataService, $http) {
 
     this.newContactList = [];
-    this.listNum = "";
+    this.listNum = "0";
 
     this.postList = function (name) {
         console.log("did the name make it to the service? " + name );
-        return $http.post('/newContactList', {name: name}).then(function (data) {
-            console.log(data);
-            listNum = toString(data.id);
-            console.log("Id? ",data.id);
+        return $http.post('/newContactList', {name: name}).then(function (response) {
+            console.log(response.data);
+            listNum = response.data;
+            console.log("Id? ", listNum);
 
         }, function(data){
             console.log(data); //error
@@ -43,11 +43,6 @@ app.service('newContactListData', ['ContactListDataService', '$http',
             }]
         }
     ];
-
-    //var contactListObject =({
-    //    "Import Data" : importDataArray,
-    //    "list": [listNum],
-    //    "column_names":["EMAIL","FIRST NAME", "LAST NAME", "CITY","COMPANY NAME"]});
 
 
     this.popList = function () {
