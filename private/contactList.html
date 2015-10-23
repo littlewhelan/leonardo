@@ -1,36 +1,44 @@
+<!--<div id="mailList">-->
+<!--<div class="row">-->
+<!--<div  class="newContactList container-fluid">-->
 
-<div id="mailList">
+<!--<form name="newListForm" ng-hide="add" ng-controller="newContactListController as newList"  ng-click="createList()" novalidate>-->
+<!--<legend>Create New Contact List</legend>-->
+<!--<div class="row">-->
+<!--<div class="input-group">-->
+<!--<span class="input-group-btn"><input id="create"  class="btn btn-success"  ng-click="hide()" value="Create"></span>-->
+<!--<input type="text" class="form-control" ng-model="listname.input" placeholder="New Contact List">-->
+<!--</div>-->
+<!--</div>-->
+<!--</form>-->
+<!--</div>-->
+<!--</div>-->
+<div  class="search-container fluid-container">
     <div class="row">
-        <div  class="newContactList container-fluid">
 
-            <form name="newListForm" ng-hide="add" ng-controller="newContactListController as newList"  ng-submit="createList()" novalidate>
-                <legend>Create New Contact List</legend>
-                <div class="row">
-                    <div class="input-group">
-                        <span class="input-group-btn"><input id="create"  class="btn btn-success" type="submit" ng-click="hide()" value="Create"></span>
-                        <input type="text" class="form-control" ng-model="listname.input" placeholder="New Contact List">
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-    <div  class="search-container fluid-container">
-        <div class="row">
+        <form id="listType" ng-controller="createListSearch" ng-submit="searchListBtn()">
+            <fieldset>
+                <legend>List Name</legend>
+                <input name="type" type="radio" id="corp">
+                <label for="corp">Corporation</label>
 
-            <form ng-show="add" ng-controller="createListSearch" ng-submit="searchListBtn">
-                    <legend>List Name</legend>
-                    <input type="radio" id="Corporation" ng-model="content"  value="Corporation"> Corporation
-                    <input type="radio" id="Famlies" ng-model="content" value="Famlies"> Families
-                    <input type="radio" value="zip" id="zip" ng-model="content"  value="Zip"> Zip
-                    <input type="text"  ng-model="content" ng-show="content == 'zip'" placeholder="Zipcode">
-                    <input type="radio" id="age" value="age" ng-model="content" value="Age"> Age
-                    <input type="number" ng-model="content" ng-show="content == 'age'" placeholder="Age">
-    
+                <input name="type" type="radio" id="fam">
+                <label for="fam">Families</label>
+
+                <input class="js-extra" name="type" type="radio" id="zip">
+                <label for="zip">Zip</label>
+                <input class="js-value" type="text" placeholder="Zip Code">
+
+                <input class="js-extra" name="type" type="radio" id="age">
+                <label for="age">Age</label>
+                <input class="js-value" type="number" placeholder="Age">
+
                 <input class="btn btn-default" type="submit" value="Submit">
-            </form>
-        </div>
+            </fieldset>
+        </form>
     </div>
 </div>
+<!--</div>-->
 
 <div id="adultSearchName" class="table">
     <table class="table-hover table table-bordered" ng-controller="createListSearch as results" >
