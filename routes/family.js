@@ -266,6 +266,7 @@ router.post('/', function (req, res, next) {
 		con.query('INSERT INTO children SET ?', child, function (err, res) {
 			if (err) {
 				//throw err;
+				con.end();
 				console.log("error", err);
 			}
 			console.log("inserted child ", child);
@@ -288,6 +289,7 @@ router.post('/', function (req, res, next) {
 		donation.familyID = family.id;
 		con.query(insertFam.donations, [donation], function (err, res) {
 			if (err) {
+				con.end();
 				throw err;
 			}
 			cb(donations, length, index);
@@ -446,88 +448,5 @@ router.put('/', function (req, res, next) {
 	};
 
 });
-
-
-//// gets called when there are children, is its own callback while there are children.
-//// takes in children array, length of array, index to grab
-//function checkChildren (children, familyID, length, index) {
-//	console.log("in checkChildren ", children, length, index, "fam", familyID);
-//	// if index is equal to length (zero-offset, so past array), then move on to donations
-//	if (length == index) {
-//		// if there are donations in the family object outside of these callbacks, then move on to donation
-//		if (family.donations) {
-//			checkDonations(family.donations, familyID, family.donations.length, 0);
-//			// no donations, send res back
-//		} else {
-//			gCon.end();
-//			res.status(200).send("Ok");
-//		}
-//	} else {
-//		// if child doesn't have an id at index, insert
-//		if (!children[index].id) {
-//			console.log(children[index], " looking for index ", index);
-//			insertChild(children[index], familyID, checkChildren, children, length, index);
-//		} else {
-//			// else update child by id
-//			updateChild(children[index], familyID, checkChildren, children, length, ++index);
-//		}
-//	}
-//}
-//
-//// inserts new child record and runs callback
-//function insertChild  (child, familyID, cb, children, length, index) {
-//	//console.log("con", con);
-//	console.log("in insert child", child, length, index, " family ", familyID);
-//	child.familyID = familyID;
-//	console.log("inserting, new child info ", child);
-//	//console.log("connection: ", gCon);
-//	gCon.query(insertFam.kids, [child], function (err, res) {
-//		if (err) {
-//			console.log("insertFam.kids error", err);
-//			gCon.end();
-//			throw err;
-//		}
-//		console.log("inserted child ", child);
-//		cb(children, familyID, length, ++index);
-//	});
-//}
-//
-//// updates existing child records and runs callback
-//function updateChild (child, familyID, cb, children, length, index) {
-//	gCon.query(updateFam.kids, [child.firstName, child.lastName,
-//		child.school, child.birthdate, child.notes,
-//		child.email, child.cell, child.id], function (err, res) {
-//		if (err) {
-//			gCon.end();
-//			throw err;
-//		}
-//		console.log("Updated child ", child);
-//		cb(children, familyID, length, index);
-//	});
-//}
-//
-//// loops through donations until end, then sends response
-//function checkDonations (donations, familyID, length, index) {
-//	// if length equal to length (zero-offset), send the response
-//	if (length == index) {
-//		gCon.end();
-//		res.status(200).send("Ok");
-//	} else {
-//		insertDonation(donations[index], familyID, checkDonations, donations, length, index);
-//	}
-//}
-//
-//function insertDonation (donation, familyID, cb, donations, length, index) {
-//	// set the familyID of the donation
-//	donation.familyID = familyID;
-//	gCon.query(insertFam.donations, [donation], function (err, res) {
-//		if (err) {
-//			gCon.end();
-//			throw err;
-//		}
-//		cb(donations, familyID, length, ++index);
-//	});
-//}
-
 
 module.exports = router;
