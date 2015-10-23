@@ -27,7 +27,6 @@ router.get('/*', function(req, res, next) {
 runQuery = function() {
 
 					var prettyDate = "MM/DD/YYYY";
-						var fullDate = "MM/DD/YYYY h:mm:ss a";
 						function formatDates (date) {
 							return moment(date).format(prettyDate)
 						}
@@ -49,8 +48,9 @@ runQuery = function() {
 
 			checkDonations = function (elem) {
 					 var donation = {
-					 year:formatDates(elem.year),
-					 amount:element.amount
+					 date:formatDates(elem.date),
+					 amount:elem.amount,
+					notes:elem.notes
 					 };
 							donationsArray.push(donation);
 							};
@@ -61,7 +61,7 @@ runQuery = function() {
 					var adultOne = {
 						firstName:rows[0].adultOneFirstName,
 						lastName:rows[0].adultOneLastName,
-						addressOne:rows[0].adultOneaddressOne,
+						addressOne:rows[0].adultOneAddressOne,
 						addressTwo:rows[0].adultOneAddressTwo,
 						zip:rows[0].adultOneZip,
 						city:rows[0].adultOneCity,
@@ -70,14 +70,14 @@ runQuery = function() {
 						work:rows[0].adultOneWork,
 						cell:rows[0].adultOneCell,
 						email:rows[0].adultOneEmail,
-						notes:rows[0].adultOneNotes,
+						notes:rows[0].adultOneNotes
 					};
 
 					var adultTwo = {
 						firstName:rows[0].adultTwoFirstName,
 						lastName:rows[0].adultTwoLastName,
 						addressOne:rows[0].adultTwoAddressOne,
-						addressTwo:rows[0].adultTwoaddressTwo,
+						addressTwo:rows[0].adultTwoAddressTwo,
 						zip:rows[0].adultTwoZip,
 						city:rows[0].adultTwoCity,
 						state:rows[0].adultTwoState,
@@ -96,7 +96,7 @@ runQuery = function() {
 						zip:rows[0].emerZip,
 						city:rows[0].emerCity,
 						state:rows[0].emerState,
-						phone:rows[0].emerPhone,
+						phone:rows[0].emerPhone
 					};
 
 				var family = {
