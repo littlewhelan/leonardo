@@ -24,107 +24,99 @@ router.get('/', function (req, res, next) {
 		}
 		console.log('Connection established');
 
-		runQuery = function () {
+		var runQuery = function() {
 
-			var prettyDate = "YYYY-MM-DD";
-			var fullDate = "MM/DD/YYYY h:mm:ss a";
-
-			function formatDates(date) {
+			var prettyDate = "MM/DD/YYYY";
+			function formatDates (date) {
 				return moment(date).format(prettyDate)
 			}
 
 			con.query(getPeeps.familyTab, [id], function (err, rows) {
-				if (err) {
-					throw err;
-				}
+				if(err) throw err;
 
-				checkChild = function (elem) {
+				var checkChild = function(elem) {
 					var child = {
-						firstName: elem.firstName,
-						lastName: elem.lastName,
-						email: elem.email,
-						cell: elem.cell,
-						birthdate: formatDates(elem.birthdate),
-						school: elem.school
+						firstName:elem.firstName,
+						lastName:elem.lastName,
+						email:elem.email,
+						cell:elem.cell,
+						birthdate:formatDates(elem.birthdate),
+						school:elem.school
 					};
 					childrenArray.push(child);
 				};
 
-				checkDonations = function (elem) {
+				var checkDonations = function (elem) {
 					var donation = {
-						year: formatDates(elem.year),
-						amount: element.amount
+						date:formatDates(elem.date),
+						amount:elem.amount,
+						notes:elem.notes
 					};
 					donationsArray.push(donation);
 				};
 
 				var childrenArray = [];
-				var donationsArray = [];
+				var donationsArray =[];
 
 				var adultOne = {
-					firstName: rows[0].adultOneFirstName,
-					lastName: rows[0].adultOneLastName,
-					addressOne: rows[0].adultOneAddressOne,
-					addressTwo: rows[0].adultOneAddressTwo,
-					zip: rows[0].adultOneZip,
-					city: rows[0].adultOneCity,
-					state: rows[0].adultOneState,
-					company: rows[0].adultOneCompany,
-					work: rows[0].adultOneWork,
-					cell: rows[0].adultOneCell,
-					email: rows[0].adultOneEmail,
-					notes: rows[0].adultOneNotes,
+					firstName:rows[0].adultOneFirstName,
+					lastName:rows[0].adultOneLastName,
+					addressOne:rows[0].adultOneAddressOne,
+					addressTwo:rows[0].adultOneAddressTwo,
+					zip:rows[0].adultOneZip,
+					city:rows[0].adultOneCity,
+					state:rows[0].adultOneState,
+					company:rows[0].adultOneCompany,
+					work:rows[0].adultOneWork,
+					cell:rows[0].adultOneCell,
+					email:rows[0].adultOneEmail,
+					notes:rows[0].adultOneNotes,
 				};
 
 				var adultTwo = {
-					firstName: rows[0].adultTwoFirstName,
-					lastName: rows[0].adultTwoLastName,
-					addressOne: rows[0].adultTwoAddressOne,
-					addressTwo: rows[0].adultTwoAddressTwo,
-					zip: rows[0].adultTwoZip,
-					city: rows[0].adultTwoCity,
-					state: rows[0].adultTwoState,
-					company: rows[0].adultTwoCompany,
-					work: rows[0].adultTwoWork,
-					cell: rows[0].adultTwoCell,
-					email: rows[0].adultTwoEmail,
-					notes: rows[0].adultTwoNotes,
+					firstName:rows[0].adultTwoFirstName,
+					lastName:rows[0].adultTwoLastName,
+					addressOne:rows[0].adultTwoAddressOne,
+					addressTwo:rows[0].adultTwoAddressTwo,
+					zip:rows[0].adultTwoZip,
+					city:rows[0].adultTwoCity,
+					state:rows[0].adultTwoState,
+					company:rows[0].adultTwoCompany,
+					work:rows[0].adultTwoWork,
+					cell:rows[0].adultTwoCell,
+					email:rows[0].adultTwoEmail,
+					notes:rows[0].adultTwoNotes,
 				};
 
 				var emergency = {
-					firstName: rows[0].emerFirstName,
-					lastName: rows[0].emerLastName,
-					addressOne: rows[0].emerAddressOne,
-					addressTwo: rows[0].emerAddressTwo,
-					zip: rows[0].emerZip,
-					city: rows[0].emerCity,
-					state: rows[0].emerState,
-					phone: rows[0].emerPhone,
+					firstName:rows[0].emerFirstName,
+					lastName:rows[0].emerLastName,
+					addressOne:rows[0].emerAddressOne,
+					addressTwo:rows[0].emerAddressTwo,
+					zip:rows[0].emerZip,
+					city:rows[0].emerCity,
+					state:rows[0].emerState,
+					phone:rows[0].emerPhone,
 				};
 
 				var family = {
-					adultOne: adultOne,
-					adultTwo: adultTwo,
-					emergency: emergency,
-					children: childrenArray,
-					donations: donationsArray
+					adultOne:adultOne,
+					adultTwo:adultTwo,
+					emergency:emergency,
+					children:childrenArray,
+					donations:donationsArray
 				};
-				console.log('adultOne', adultOne);
+				console.log('adultOne',adultOne);
 
 
 				con.query(getPeeps.childTab, [id], function (err, rows) {
-					if (err) {
-						con.end();
-						throw err;
-					}
+					if(err) throw err;
 
 					rows.forEach(checkChild);
 
 
 					con.query(getPeeps.donateTab, [id], function (err, rows) {
-						if (err) {
-							throw err;
-						}
+						if(err) throw err;
 
 						rows.forEach(checkDonations);
 
@@ -132,7 +124,7 @@ router.get('/', function (req, res, next) {
 						con.end();
 
 
-						console.log('family object', family);
+						console.log('family object',family);
 						res.send(family);
 
 					})
@@ -145,9 +137,9 @@ router.get('/', function (req, res, next) {
 	});
 });
 
-router.post('/', function (req, res, next) {
+router.post('/*', function (req, res, next) {
 	console.log("in post route for families", req.body.family);
-	if (!req.body.family) {
+	if(!req.body.family) {
 		res.status(400).send("Family not sent");
 	}
 	// stores the whole family unit (needs to be split for queries)
@@ -157,7 +149,7 @@ router.post('/', function (req, res, next) {
 
 	// connect to db
 	con.connect(function (err) {
-		if (err) {
+		if(err) {
 			console.log("Error connecting to DB");
 			res.status(400);
 		}
@@ -214,31 +206,29 @@ router.post('/', function (req, res, next) {
 
 		// run query - 1st mainFam: get the base family info in (so children can reference)
 		con.query(insertFam.mainFam, [mainFam], function (err, res) {
-			if (err) {
-				con.end();
+			if(err) {
 				throw err;
 			}
-			family.id = res.insertId;
-			console.log("New family ID: ", family.id);
+			var familyID = res.insertId;
+			console.log("New family ID: ", familyID);
 
 			// make sure there's a family ID so we don't have any orphan kids or donations
-			if (family.id) {
-				console.log("id", family.id, " children ", family.children, " donations ", family.donations);
+			if(familyID) {
 				// check if children before inserting, or will crash
-				if (family.children) {
-					console.log("passed children test ", family.children);
+				if(family.children) {
 					checkChildren(family.children, family.children.length, 0);
-				} else if (family.donations) {
-					console.log("passed donation tet ", family.donations);
+				}
+
+				// check if any donations before inserting, or will crash
+				if(family.donations) {
 					checkDonations(family.donations, family.donations.length, 0);
 				} else {
 					console.log("going to return ok, nothing else");
 					con.end();
 					res.status(200).json(family);
 				}
-			} else {
+			}else {
 				// failed to insert and/or retrieve insert id
-				con.end();
 				res.status(400);
 			}
 		});
@@ -249,16 +239,16 @@ router.post('/', function (req, res, next) {
 	var checkChildren = function (children, length, index) {
 		console.log("in checkChildren ", children, length, index);
 		// if index is equal to length (zero-offset, so past array), then move on to donations
-		if (length == index) {
+		if(length == index) {
 			// if there are donations in the family object outside of these callbacks, then move on to donation
-			if (family.donations) {
+			if(family.donations) {
 				checkDonations(family.donations, family.donations.length, 0);
 				// no donations, send res back
 			} else {
 				con.end();
 				res.status(200).json(family);
 			}
-		} else {
+		}else {
 			//console.log(children[index], " looking for index ", index);
 			insertChild(children[index], checkChildren, children, length, index);
 		}
@@ -267,14 +257,9 @@ router.post('/', function (req, res, next) {
 	// inserts new child record and runs callback
 	var insertChild = function (child, cb, children, length, index) {
 		child.familyID = family.id;
-		console.log("child before insertion", child);
-		//var test = con.query('INSERT INTO children SET ?', child);
-		//console.log("test");
-		con.query('INSERT INTO children SET ?', child, function (err, res) {
-			if (err) {
-				//throw err;
-				con.end();
-				console.log("error", err);
+		con.query(insertFam.kids, [child], function (err, res) {
+			if(err) {
+				throw err;
 			}
 			family.children[index].id = res.insertId;
 			console.log("inserted child ", child);
@@ -297,8 +282,7 @@ router.post('/', function (req, res, next) {
 		donation.familyID = family.id;
 		donation.date = formatDates(donation.date);
 		con.query(insertFam.donations, [donation], function (err, res) {
-			if (err) {
-				con.end();
+			if(err) {
 				throw err;
 			}
 			family.donations[index].id = res.insertId;
@@ -308,11 +292,11 @@ router.post('/', function (req, res, next) {
 	};
 });
 
-router.put('/', function (req, res, next) {
+router.put('/*', function (req, res, next) {
 	console.log("in put route for families", req.body.family);
 
 	// kick out error if no id sent for update - new families should be posted
-	if (!req.body.family || !req.body.family.id) {
+	if(!req.body.family || !req.body.family.id) {
 		res.status(400).send("No family id");
 	}
 	// stores the whole family unit (needs to be split for queries)
@@ -324,7 +308,7 @@ router.put('/', function (req, res, next) {
 	}
 	// connect to db
 	con.connect(function (err) {
-		if (err) {
+		if(err) {
 			console.log("Error connecting to DB");
 			res.status(400);
 		}
@@ -338,18 +322,17 @@ router.put('/', function (req, res, next) {
 	var updateFamily = function (family) {
 		console.log("in update family", family);
 		// if there aren't any adults in family, reject it
-		if (!(family.adultOne && family.adultTwo)) {
-			con.end();
+		if(!(family.adultOne && family.adultTwo)) {
 			res.status(400).send("No adults in family");
 		}
 		// create empty objects for adultOne, adultTwo, emergency if they don't exist, so can insert fine
-		if (!family.adultOne) {
+		if(!family.adultOne) {
 			family.adultOne = {};
 		}
-		if (!family.adultTwo) {
+		if(!family.adultTwo) {
 			family.adultTwo = {};
 		}
-		if (!family.emergency) {
+		if(!family.emergency) {
 			family.emergecny = {};
 		}
 		con.query(updateFam.mainFam, [family.adultOne.firstName, family.adultOne.lastName, family.adultOne.cell,
@@ -363,15 +346,14 @@ router.put('/', function (req, res, next) {
 			family.mainPhone, family.id], function (err, res) {
 			if (err) {
 				console.log("error updating family");
-				con.end();
 				throw err;
 			}
 			console.log("Updated family");
 			// check if there are children. If there are, that function will carry forward checking for donations
-			if (family.children) {
+			if(family.children) {
 				checkChildren(family.children, family.children.length, 0);
 				// no children, else check if donations. This function will handle the res
-			} else if (family.donations) {
+			}else if(family.donations) {
 				checkDonations(family.donations, family.donations.length, 0);
 				// no children or donations: send res
 			} else {
@@ -386,16 +368,16 @@ router.put('/', function (req, res, next) {
 	var checkChildren = function (children, length, index) {
 		console.log("in checkChildren ", children, length, index);
 		// if index is equal to length (zero-offset, so past array), then move on to donations
-		if (length == index) {
+		if(length == index) {
 			//if there are donations in the family object outside of these callbacks
-			if (family.donations) {
+			if(family.donations) {
 				checkDonations(family.donations, family.donations.length, 0);
 				// no donations, send res back
 			} else {
 				con.end();
 				res.status(200).json(family);
 			}
-		} else {
+		}else {
 			//console.log(children[index], " looking for index ", index);
 			// if child doesn't have an id at index, insert
 			if (!children[index].id) {
@@ -413,8 +395,7 @@ router.put('/', function (req, res, next) {
 		con.query(updateFam.kids, [child.firstName, child.lastName,
 			child.school, child.birthdate, child.notes,
 			child.email, child.cell, child.id], function (err, res) {
-			if (err) {
-				con.end();
+			if(err) {
 				throw err;
 			}
 			family.children[index].birthdate = child.birthdate;
@@ -429,8 +410,7 @@ router.put('/', function (req, res, next) {
 		child.birthdate = formatDates(child.birthdate);
 		console.log("in insertChild", family, child, "len ", length, " index ", index, " of undef: ", family.children);
 		con.query(insertFam.kids, [child], function (err, res) {
-			if (err) {
-				con.end();
+			if(err) {
 				throw err;
 			}
 			// get back id of child, send back to dom
@@ -463,8 +443,7 @@ router.put('/', function (req, res, next) {
 		donation.date = formatDates(donation.date);
 		console.log("donations", donation, donations, length, index);
 		con.query(insertFam.donations, [donation], function (err, res) {
-			if (err) {
-				con.end();
+			if(err) {
 				throw err;
 			}
 			// get back donation id, so doesn't re-insert when creating family
