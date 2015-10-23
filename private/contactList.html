@@ -1,59 +1,60 @@
 <!--<div class="row">-->
-    <!--<div  class="newContactList container-fluid">-->
-        <!--<form name="newListForm" ng-controller="newContactListController as newList"  ng-submit="createList();" novalidate>-->
-            <!--<legend>Create New Contact List</legend>-->
-            <!--<div class="row">-->
-                <!--<div class="input-group">-->
-                    <!--<span class="input-group-btn"><input id="submit"  class="btn btn-success" type="submit"  value="Create"></span>-->
-                    <!--<input type="text" class="form-control" ng-model="listname.input" placeholder="New Contact List">-->
-                <!--</div>-->
-            <!--</div>-->
-        <!--</form>-->
-    <!--</div>-->
+<!--<div  class="newContactList container-fluid">-->
+<!--<form name="newListForm" ng-controller="newContactListController as newList"  ng-submit="createList();" novalidate>-->
+<!--<legend>Create New Contact List</legend>-->
+<!--<div class="row">-->
+<!--<div class="input-group">-->
+<!--<span class="input-group-btn"><input id="submit"  class="btn btn-success" type="submit"  value="Create"></span>-->
+<!--<input type="text" class="form-control" ng-model="listname.input" placeholder="New Contact List">-->
 <!--</div>-->
-<div  class="search-container fluid-container">
-    <div class="row">
-        ​
-        <form id="listType" ng-controller="createListSearch" ng-submit="searchListBtn()" ng-model="match" >
-            <fieldset>
-                <legend>List Name</legend>
-                <input name="type" type="radio" id="corp" ng-model="corp" ng-value="true">
-                <label for="corp">Corporation</label>
-                ​
-                <input name="type" type="radio" id="fam" ng-model="fam" ng-value="true">
-                <label for="fam">Families</label>
-                ​
-                <input name="type" type="radio" id="zip" ng-value="true" ng-model="zipCk">
-                <label for="zip">Zip</label>
-                <input type="text" placeholder="Zip Code" ng-model="zip.data">
-                ​
-                <input name="type" type="radio" id="age" ng-value="true" ng-model="ageCk">
-                <label for="age">Age</label>
-                <input  type="text" placeholder="Age" ng-model="age.data">
-                ​
-                <input class="btn btn-default" type="submit" value="Submit">
-            </fieldset>
-        </form>
+<!--</div>-->
+<!--</form>-->
+<!--</div>-->
+<!--</div>-->
+<div ng-controller="createListSearch">
+    <div class="search-container fluid-container">
+        <div class="row">
+            ​
+            <form id="listType" ng-submit="searchListBtn()" ng-model="match">
+                <fieldset>
+                    <legend>List Name</legend>
+                    <input name="type" type="radio" id="corp" ng-model="corp" ng-value="true">
+                    <label for="corp">Corporation</label>
+                    ​
+                    <input name="type" type="radio" id="fam" ng-model="fam" ng-value="true">
+                    <label for="fam">Families</label>
+                    ​
+                    <input name="type" type="radio" id="zip" ng-value="true" ng-model="zipCk">
+                    <label for="zip">Zip</label>
+                    <input type="text" placeholder="Zip Code" ng-model="zip.data">
+                    ​
+                    <input name="type" type="radio" id="age" ng-value="true" ng-model="ageCk">
+                    <label for="age">Age</label>
+                    <input type="text" placeholder="Age" ng-model="age.data">
+                    ​
+                    <input class="btn btn-default" type="submit" value="Submit">
+                </fieldset>
+            </form>
+        </div>
     </div>
-</div>
-<!--</div>-->
-​
-<div id="adultSearchName" class="table" ng-controller="createListSearch" >
+    <!--</div>-->
+    ​
+    <div id="adultSearchName" class="table">
 
-    {{emailList}}
-    <table class="table-hover table table-bordered" >
-        <tr>
-            <th class="field-label col-xs-3 active">Name</th>
-            <th class="field-label col-xs-4 active">Email</th>
-            <th class="field-label col-xs-2 active">City</th>
-            <th class="field-label col-xs-3 active">Company</th>
-        </tr>
-        <tr ng-repeat="result in emailList">
-            <td>{{result.firstName}} {{result.lastName}}</td>
-            <td>{{result.email}}</td>
-            <td>{{result.city}}</td>
-            <td>{{result.company}}</td>
-            <td><input type="checkbox"></td>
-        </tr>
-    </table>
+        <table class="table-hover table table-bordered">
+            <tr>
+                <th class="field-label col-xs-3 active">Name</th>
+                <th class="field-label col-xs-4 active">Email</th>
+                <th class="field-label col-xs-2 active">City</th>
+                <th class="field-label col-xs-3 active">Company</th>
+            </tr>
+            <tr ng-repeat="result in emailList" id="{{result.email}}">
+                <td>{{result.firstName}} {{result.lastName}}</td>
+                <td>{{result.email}}</td>
+                <td>{{result.city}}</td>
+                <td>{{result.company}}</td>
+                <td><input type="checkbox"></td>
+            </tr>
+        </table>
+    </div>
 </div>
