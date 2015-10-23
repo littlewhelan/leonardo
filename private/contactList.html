@@ -38,8 +38,10 @@
 </div>
 <!--</div>-->
 ​
-<div id="adultSearchName" class="table">
-    <table class="table-hover table table-bordered" ng-controller="createListSearch" >
+<div id="adultSearchName" class="table" ng-controller="createListSearch" >
+
+    {{emailList}}
+    <table class="table-hover table table-bordered" >
         <tr>
             <th class="field-label col-xs-3 active">Name</th>
             <th class="field-label col-xs-4 active">Email</th>
@@ -47,7 +49,6 @@
             <th class="field-label col-xs-3 active">Company</th>
         </tr>
         <tr ng-repeat="result in emailList">
-            {{emailList}}
             <td>{{result.firstName}} {{result.lastName}}</td>
             <td>{{result.email}}</td>
             <td>{{result.city}}</td>

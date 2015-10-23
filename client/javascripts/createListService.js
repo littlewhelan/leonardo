@@ -1,14 +1,23 @@
-app.factory('ContactListDataService', ['$http', function ($http) {
+app.factory('ContactListDataService', ['$http', '$q', function ($http, $q) {
 
-	return {
-		makeDataCall: function (type, passedData) {
-            console.log(type,passedData);
-			return $http({
-				method: 'GET',
-				url: '../createMailList',
-				params: {type: type, search: passedData}
-			});
-		}
-	}
+    function makeDataCall(type, passedData) {
+        var deferred = $q.defer();
+        console.log('this is in the make data call', type, passedData);
+        $http({
+            method: 'GET',
+            url: '../createMailList',
+            params: {type: type, search: passedData}
+        }).then(function (response) {
+            data = response.data;
+            deferred.resolve(response.data);
+        });
+        return deferred.promise;
+    }
+
+    return {
+        data: [],
+        makeDataCall: makeDataCall
+    };
+
 
 }]);
