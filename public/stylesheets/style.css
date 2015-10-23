@@ -24,6 +24,7 @@ td {
   padding: 10px;
   border: 1px solid black;
   margin: 40px auto 40px auto;
+  background-color: white;
 }
 
 table {
@@ -49,9 +50,7 @@ th {
 .header-logo{
   text-align: center;
 }
-.header-logo img{
-  width: auto;
-}
+
 .table{
   margin: 20px;
   width: 90%;
@@ -132,4 +131,28 @@ border: none;
 }
 .content-container{
   border: 2px solid black;
+}
+.background{
+  background-image: url("/logo/AnneUlku_LeonardosBasement_Identity-04.jpg");
+  min-height: 100%;
+  min-width: 1024px;
+  /* Set up proportionate scaling */
+  width: 100%;
+  height: auto;
+  /* Set up positioning */
+  position: fixed;
+  bottom: 0px;
+  right: 70px;
+}
+.btn-default{
+  background-color: #07aa9e !important;
+  color: white !important;
+}
+.btn-primary{
+  background-color: #07aa9e !important;
+  color: white !important;
+}
+.btn-danger{
+  background-color: #FEC343 !important;
+  color: white !important;
 }
