@@ -10,7 +10,7 @@ module.exports = {
 	zipList: 'SELECT null AS company,  id AS id,  adultOneCity AS city, adultOneFirstName AS firstName, adultOneLastName AS lastName, adultOneEmail AS email FROM families WHERE adultOneZip = ? UNION SELECT null AS company, id AS id,  adultTwoCity AS city, adultTwoFirstName AS firstName, adultTwoLastName AS lastName, adultTwoEmail AS email FROM families WHERE adultTwoZip = ? UNION SELECT name AS company, id AS id, city AS city, contactFirstName AS firstName, contactLastName AS lastName, contactEmail AS email FROM corpDonors WHERE Zip = ? ',
 
 //this should get all emails of families with kids that are a certain age
-	ageList: 'SELECT null AS company, id AS id, adultOneCity as city, adultOneEmail AS email FROM families AS f WHERE f.id IN ' +
+	ageList: 'SELECT null AS company,  adultOneCity as city, id AS id, adultOneFirstName as firstName,adultOneLastName AS lastName, adultOneEmail AS email FROM families AS f WHERE f.id IN ' +
 	'(SELECT familyID FROM children WHERE DATEDIFF(CURDATE(), birthdate) / 365.24 BETWEEN ? AND ?) ' +
 	'GROUP BY f.id'
 
