@@ -156,3 +156,7 @@ border: none;
   background-color: #FEC343 !important;
   color: white !important;
 }
+
+input.ng-invalid {
+    border: 1px solid red;
+}

@@ -142,11 +142,11 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		$scope.editingChild = false;
 	};
 
-	// adds donation to family object
-	$scope.addDonation = function () {
-		$scope.family.donations.push($scope.newDonation);
-		$scope.newDonation = {};
-	};
+		// adds donation to family object
+		$scope.addDonation = function () {
+			$scope.family.donations.push($scope.newDonation);
+			$scope.newDonation = {};
+		};
 
 	//// prevent accidental backs
 	//$scope.$on('$locationChangeSuccess', function( event, oldUrl ) {

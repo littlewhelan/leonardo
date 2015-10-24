@@ -69,6 +69,7 @@ router.get('/', function (req, res, next) {
 					company:rows[0].adultOneCompany,
 					work:rows[0].adultOneWork,
 					cell:rows[0].adultOneCell,
+					main:rows[0].adultOneMain,
 					email:rows[0].adultOneEmail,
 					notes:rows[0].adultOneNotes,
 				};
@@ -84,6 +85,7 @@ router.get('/', function (req, res, next) {
 					company:rows[0].adultTwoCompany,
 					work:rows[0].adultTwoWork,
 					cell:rows[0].adultTwoCell,
+					main:rows[0].adultTwoMain,
 					email:rows[0].adultTwoEmail,
 					notes:rows[0].adultTwoNotes,
 				};
@@ -137,7 +139,7 @@ router.get('/', function (req, res, next) {
 	});
 });
 
-router.post('/*', function (req, res, next) {
+router.post('/', function (req, res, next) {
 	console.log("in post route for families", req.body.family);
 	if(!req.body.family) {
 		res.status(400).send("Family not sent");
@@ -179,6 +181,7 @@ router.post('/*', function (req, res, next) {
 			adultOneWork: family.adultOne.work,
 			adultOneCell: family.adultOne.cell,
 			adultOneEmail: family.adultOne.email,
+			adultOneMain: family.adultOne.main,
 			adultOneNotes: family.adultOne.notes,
 
 			adultTwoFirstName: family.adultTwo.firstName,
@@ -191,6 +194,7 @@ router.post('/*', function (req, res, next) {
 			adultTwoCompany: family.adultTwo.company,
 			adultTwoWork: family.adultTwo.work,
 			adultTwoCell: family.adultTwo.cell,
+			adultTwoMain: family.adultTwo.main,
 			adultTwoEmail: family.adultTwo.email,
 			adultTwoNotes: family.adultTwo.notes,
 
@@ -205,29 +209,28 @@ router.post('/*', function (req, res, next) {
 		};
 
 		// run query - 1st mainFam: get the base family info in (so children can reference)
-		con.query(insertFam.mainFam, [mainFam], function (err, res) {
+		con.query(insertFam.mainFam, [mainFam], function (err, response) {
 			if(err) {
 				throw err;
 			}
-			var familyID = res.insertId;
-			console.log("New family ID: ", familyID);
+			family.id = response.insertId;
+			console.log("New family ID: ", family.id);
 
 			// make sure there's a family ID so we don't have any orphan kids or donations
-			if(familyID) {
+			if(family.id) {
 				// check if children before inserting, or will crash
-				if(family.children) {
+				if(family.children.length) {
 					checkChildren(family.children, family.children.length, 0);
-				}
-
+				}else if(family.donations.length) {
 				// check if any donations before inserting, or will crash
-				if(family.donations) {
 					checkDonations(family.donations, family.donations.length, 0);
 				} else {
-					console.log("going to return ok, nothing else");
+					console.log("going to return ok, nothing else", family);
 					con.end();
 					res.status(200).json(family);
 				}
 			}else {
+				con.end();
 				// failed to insert and/or retrieve insert id
 				res.status(400);
 			}
@@ -241,10 +244,11 @@ router.post('/*', function (req, res, next) {
 		// if index is equal to length (zero-offset, so past array), then move on to donations
 		if(length == index) {
 			// if there are donations in the family object outside of these callbacks, then move on to donation
-			if(family.donations) {
+			if(family.donations.length) {
 				checkDonations(family.donations, family.donations.length, 0);
 				// no donations, send res back
 			} else {
+				console.log("no more children");
 				con.end();
 				res.status(200).json(family);
 			}
@@ -292,7 +296,7 @@ router.post('/*', function (req, res, next) {
 	};
 });
 
-router.put('/*', function (req, res, next) {
+router.put('/', function (req, res, next) {
 	console.log("in put route for families", req.body.family);
 
 	// kick out error if no id sent for update - new families should be posted
@@ -370,7 +374,7 @@ router.put('/*', function (req, res, next) {
 		// if index is equal to length (zero-offset, so past array), then move on to donations
 		if(length == index) {
 			//if there are donations in the family object outside of these callbacks
-			if(family.donations) {
+			if(family.donations.length) {
 				checkDonations(family.donations, family.donations.length, 0);
 				// no donations, send res back
 			} else {

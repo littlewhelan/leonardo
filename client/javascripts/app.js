@@ -30,7 +30,8 @@ app.config(['$routeProvider',
 				controller: 'editFamilyCtrl'
             }).
             when('/addcorp', {
-                templateUrl: 'private/addcorp.html'
+                templateUrl: 'private/addcorp.html',
+				controller: 'editCorpCtrl'
             }).
             when('/contactlist', {
                 templateUrl: 'private/contactlist.html'

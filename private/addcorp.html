@@ -1,33 +1,33 @@
 <uib-tabset justified="true">
     <uib-tab heading="Corporate Information">
         <div class="well well-sm">
-            <form>
+            <form ng-submit="save();">
                 <legend>Corporate Information</legend>
-                <input name="corpName" class="form-control" type="text" placeholder="Corporation Name">
-                <input name="address1" class="form-control" type="text" placeholder="Address 1">
-                <input name="address2"class="form-control" type="text" placeholder="Address 2">
-                <input name="zip"class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
-                <input name="city"class="col-xs-6 col-sm-4" type="text" placeholder="City">
-                <input name="state"class="col-xs-6 col-sm-4" type="text" placeholder="State">
-                <input name="phone"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone">
-                <input name="email"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">
-                <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
+                <input ng-model="corp.info.name" name="corpName" class="form-control" type="text" placeholder="Corporation Name">
+                <input ng-model="corp.info.addressOne" name="address1" class="form-control" type="text" placeholder="Address 1">
+                <input ng-model="corp.info.addressTwo" name="address2"class="form-control" type="text" placeholder="Address 2">
+                <input ng-model="corp.info.zip" name="zip"class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
+                <input ng-model="corp.info.city" name="city"class="col-xs-6 col-sm-4" type="text" placeholder="City">
+                <input ng-model="corp.info.state" name="state"class="col-xs-6 col-sm-4" type="text" placeholder="State">
+                <input ng-model="corp.info.phone" name="phone"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone">
+                <input ng-model="corp.info.email" name="email"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">
+                <textarea ng-model="corp.info.notes" rows="4" class="form-control" placeholder="Notes"></textarea>
+                <!--edit button -->
+                <button class="btn btn-primary">Save</button>
+                <button class="btn btn-danger">Cancel</button>
             </form>
-            <!--edit button -->
-            <button class="btn btn-primary">Save</button>
-            <button class="btn btn-danger">Cancel</button>
         </div>
     </uib-tab>
     <uib-tab heading="Contact Information">
         <div class="well well-sm">
-            <form>
+            <form ng-submit="save();">
                 <legend>Contact Information</legend>
-                <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                <input class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="Phone Number">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="Ext">
-                <input class="col-xs-6 col-sm-4" type="text" placeholder="Email">
-                <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
+                <input ng-model="corp.contact.firstName" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
+                <input ng-model="corp.contact.lastName" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
+                <input ng-model="corp.contact.phone" class="col-xs-6 col-sm-4" type="text" placeholder="Phone Number">
+                <input ng-model="corp.contact.ext" class="col-xs-6 col-sm-4" type="text" placeholder="Ext">
+                <input ng-model="corp.contact.email" class="col-xs-6 col-sm-4" type="text" placeholder="Email">
+                <textarea ng-model="corp.contact.notes" rows="4" class="form-control" placeholder="Notes"></textarea>
                 <!--next buttons -->
                 <button class="btn btn-primary">Save</button>
                 <button class="btn btn-danger">Cancel</button>
@@ -37,27 +37,28 @@
     <uib-tab heading="Donations">
         <div class="well well-sm">
             <legend>Donations</legend>
-            <table class="table-hover table table-bordered" ng-controller="editFamilyCtrl" >
+            <table class="table-hover table table-bordered" >
                 <tr>
                     <th class="field-label col-xs-3 active">Date</th>
                     <th class="field-label col-xs-3 active">Amount</th>
                     <th class="field-label col-xs-3 active">Notes</th>
+                    <th class="field-label col-xs-3 active">Delete</th>
                 </tr>
-
-                <tr>
-                    <td class="field-label col-xs-3 active">10/03/15</td>
-                    <td class="field-label col-xs-3 active">$1,000</td>
-                    <td class="field-label col-xs-3 active">Something cool to note about</td>
+                <tr ng-repeat="donation in corp.donations">
+                    <td class="field-label col-xs-3 active">{{donation.date}}</td>
+                    <td class="field-label col-xs-3 active">{{donation.amount}}</td>
+                    <td class="field-label col-xs-3 active">{{donation.notes}}</td>
+                    <td class="field-label col-xs-3 active"><button ng-click="corp.donations.splice($index, 1);">X</button></td>
                 </tr>
             </table>
             <label for="addDonation">Add Donation</label>
-            <button id="addDonation" type="button" class="btn btn-danger">+</button>
-            <input class="form-control" type="date" placeholder="Date">
-            <input class="form-control" type="text" placeholder="Amount">
-            <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
+            <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
+            <input ng-model="newDonation.date" class="form-control" type="date" placeholder="Date (YYYY-MM-DD)" ng-pattern="^20[0-9]{2}[-](0[1-9]|1[0-2])[-]([0-2][0-9]|3[01])$">
+            <input ng-model="newDonation.amount" class="form-control" type="text" placeholder="Amount">
+            <textarea ng-model="newDonation.notes" rows="4" class="form-control" placeholder="Notes"></textarea>
             <!--save / close buttons -->
-            <button class="btn btn-primary">Save</button>
-            <button class="btn btn-danger">Cancel</button>
+            <button class="btn btn-primary" ng-click="console.log(corp);save();">Save</button>
+            <button class="btn btn-danger" ng-click="newDonation = {};">Clear</button>
         </div>
     </uib-tab>
 </uib-tabset>
