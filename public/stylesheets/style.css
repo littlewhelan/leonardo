@@ -1,5 +1,6 @@
 
 
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -90,7 +91,7 @@ label{
   padding: 5px;
 }
 #mailList{
-text-align: center;
+  text-align: center;
 }
 .table th{
   background-color: #07aa9e !important;
@@ -120,7 +121,7 @@ span{
   border: none;
 }
 .ng-scope{
-border: none;
+  border: none;
   /*display: none;*/
 }
 #notes {
@@ -156,7 +157,10 @@ border: none;
   background-color: #FEC343 !important;
   color: white !important;
 }
-
-input.ng-invalid {
-    border: 1px solid red;
+#submit {
+  background-color: #07aa9e;
+  color: white;
+  position: relative;
+  bottom: 5px;
+  left: 5px;
 }
