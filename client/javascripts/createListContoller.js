@@ -1,16 +1,8 @@
 app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService', function ($scope, $http, ContactListDataService) {
-    $scope.corp = {};
-    $scope.fam = {};
-    $scope.zipCk = {};
-    $scope.ageCk = {};
-    $scope.age = {};
-    $scope.zip = {};
-    console.log('Where is this',
-        $scope.corp,
-        $scope.fam,
-        $scope.zipCk,
-        $scope.ageCk
-    );
+    $scope.type ={};
+    $scope.age={};
+    $scope.zip={};
+
 
     $scope.emailList = [ ];
 
@@ -18,7 +10,7 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
 
 
         //THIS WORKS  -- will search by zip
-        if ($scope.zipCk == true) {
+        if ($scope.type == 'zipCk') {
 
             ContactListDataService.makeDataCall('zip', $scope.zip.data)
                 .then(function (data) {
@@ -29,7 +21,7 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
 
 
         //THIS WORKS - will search by age
-        if ($scope.ageCk == true) {
+        if ($scope.type == 'ageCk') {
             var age = ContactListDataService.makeDataCall('age', $scope.age.data);
             age.then(function (data) {
                 console.log(data);
@@ -38,7 +30,7 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
         }
 
         //THIS WORKS --get all families if fam is true
-        if ($scope.fam == true) {
+        if ($scope.type == 'fam') {
             var fam = ContactListDataService.makeDataCall('family', '');
             fam.then(function (data) {
                 $scope.emailList = data;
@@ -47,7 +39,7 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
         }
 
         //get all corp if corp is true
-        if ($scope.corp == true) {
+        if ($scope.type == 'corp') {
             var comp = ContactListDataService.makeDataCall('company', '');
             comp.then(function (data) {
                 $scope.emailList = data;
@@ -56,13 +48,9 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
         }
 
         //empty the search box
-        $scope.corp = {};
-        $scope.fam = {};
-        $scope.zipCk = {};
-        $scope.ageCk = {};
-        $scope.age = {};
-        $scope.zip = {};
-
+       $scope.type={};
+        $scope.age={};
+        $scope.zip={};
 
     };
 
