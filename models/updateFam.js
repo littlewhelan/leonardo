@@ -6,7 +6,7 @@ module.exports = {
 	'adultTwoCell = ?, adultTwoWork = ?, adultTwoEmail = ?, adultTwoCompany = ?,' +
 	'adultTwoAddressOne = ?, adultTwoAddressTwo = ?, adultTwoCity = ?, adultTwoState = ?,' +
 	'adultTwoZip = ?, adultTwoNotes = ?, emerFirstName = ?, emerLastName = ?, emerPhone = ?,' +
-	'emerAddressOne = ?, emerAddressTwo = ?, emerCity = ?, emerState = ?, emerZip = ?, mainPhone = ? ' +
+	'emerAddressOne = ?, emerAddressTwo = ?, emerCity = ?, emerState = ?, emerZip = ?, adultTwoMain = ?, adultOneMain = ? ' +
 	'WHERE id = ? ' +
 	'LIMIT 1',
 	kids: 'UPDATE children SET firstName = ?, lastName = ?, school = ?, birthdate = ?, notes = ?,' +

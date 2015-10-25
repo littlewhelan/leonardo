@@ -41,13 +41,24 @@ router.get('/*', function(req, res, next) {
 			break;
 
 			case 'age':
+				var searchResults =[];
+				checkArray = function(elem){
+					searchResults.push(elem);
+				};
 
 				//THIS WORKS --- will get people by age
 				con.query(ser.ageList, [parseInt(searchString) - .5, parseInt(searchString) + .5], function (err, rows) {
 					if (err) throw err;
+					rows.forEach(checkArray);
 					console.log('Data received from Db:\n BYAGE', rows);
-					con.end();
-					res.send(rows);
+					con.query(ser.ageList2, [parseInt(searchString) - .5, parseInt(searchString) + .5], function (err, rows) {
+						if (err) throw err;
+						console.log('Data received from Db:\n BYAGE', rows);
+						rows.forEach(checkArray);
+						console.log('Data received from Db:\n BYAGE', rows,searchResults);
+						con.end();
+						res.send(searchResults);
+					});
 
 				});
 			break;

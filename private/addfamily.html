@@ -32,7 +32,8 @@
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
                 <!--next button -->
                 <button class="btn btn-primary">Save</button>
-                <button class="btn btn-danger">Cancel</button>
+                <button class="btn btn-danger" ng-click="newDonation = {}; family={};newChild={};">Cancel</button>
+                <button class="btn btn-primary" ng-click="newDonation = {}; family={};newChild={};">New Family</button>
             </form>
         </div>
     </uib-tab>
@@ -47,11 +48,12 @@
                 <input ng-model="family.emergency.zip" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Zip Code">
                 <input ng-model="family.emergency.city" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="City">
                 <input ng-model="family.emergency.state" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="State">
-                <input ng-model="family.emergency.zip" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Phone Number">
+                <input ng-model="family.emergency.phone" class="col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Phone Number">
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
                 <!--next buttons -->
                 <button class="btn btn-primary">Save</button>
-                <button class="btn btn-danger">Cancel</button>
+                <button class="btn btn-danger" ng-click="newDonation = {}; family={};newChild={};">Cancel</button>
+                <button class="btn btn-primary" ng-click="newDonation = {}; family={};newChild={};">New Family</button>
             </form>
         </div>
     </uib-tab>
@@ -78,8 +80,7 @@
                         <td class="field-label col-xs-3 active"><button ng-click="removeChild($index);">X</button></td>
                     </tr>
                 </table>
-                <button id="addKid" type="button" class="btn btn-danger" ng-click="addChild()">+</button>
-                <hr/>
+
                 <input ng-model="newChild.firstName" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" />
                 <input ng-model="newChild.lastName" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" />
                 <input ng-model="newChild.birthdate" class="col-md-6 col-sm-6 col-xs-6" type="date" placeholder="Birthday (YYYY-MM-DD)" />
@@ -87,8 +88,14 @@
                 <textarea ng-model="newChild.notes" rows="4" class="form-control" placeholder="Notes"></textarea>
             </form>
             <!--next / close buttons -->
+
+            <div>
+            <label for="addKid">Next Child</label>
+            <button id="addKid" type="button" class="btn btn-danger" ng-click="addChild()">+</button>
+            </div>
             <button class="btn btn-primary" ng-click="save()">Save</button>
-            <button class="btn btn-danger" ng-click="clearChild()">Clear</button>
+            <button class="btn btn-danger" ng-click="clearChild()" ng-click="newDonation = {}; family={};newChild={};">Cancel</button>
+            <button class="btn btn-primary" ng-click="newDonation = {}; family={};newChild={};">New Family</button>
         </div>
     </uib-tab>
     <uib-tab heading="Donations">
@@ -108,14 +115,17 @@
                         <td class="field-label col-xs-3 active"><button ng-click="family.donations.splice($index, 1);">X</button></td>
                     </tr>
                 </table>
-            <label for="addDonation">Add Donation</label>
-            <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
             <input ng-model="newDonation.date" class="form-control" type="date" placeholder="Date (YYYY-MM-DD)">
             <input ng-model="newDonation.amount" class="form-control" type="text" placeholder="Amount">
             <textarea ng-model="newDonation.notes" rows="4" class="form-control" placeholder="Notes"></textarea>
             <!--save / close buttons -->
+            <div>
+            <label for="addDonation">Add Donation</label>
+            <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
+            </div>
             <button class="btn btn-primary" ng-click="console.log(family);save();">Save</button>
-            <button class="btn btn-danger" ng-click="newDonation = {};">Clear</button>
+            <button class="btn btn-danger" ng-click="newDonation = {}; family={};newChild={};">Cancel</button>
+            <button class="btn btn-primary" ng-click="newDonation = {}; family={};newChild={};">New Family </button>
         </div>
     </uib-tab>
 </uib-tabset>

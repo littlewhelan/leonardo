@@ -1,15 +1,15 @@
 <div class="row">
-<div  class="newContactList container-fluid">
-<form name="newListForm" ng-controller="newContactListController as newList"  ng-submit="createList();" novalidate>
-<legend>Create New Contact List</legend>
-<div class="row">
-<div class="input-group">
-<span class="input-group-btn"><input id="submit"  class="btn btn-success" type="submit"  value="Create"></span>
-<input type="text" class="form-control" ng-model="listname.input" placeholder="New Contact List">
-</div>
-</div>
-</form>
-</div>
+    <div  class="newContactList container-fluid">
+        <form name="newListForm" ng-controller="newContactListController as newList"  ng-submit="createList();" novalidate>
+            <legend>Create New Contact List</legend>
+                <div class="row">
+                    <div class="input-group">
+                        <span class="input-group-btn"><input id="submit"  class="btn btn-success" type="submit"  value="Create"></span>
+                        <input type="text" class="form-control" ng-model="listname.input" placeholder="New Contact List">
+                    </div>
+                </div>
+        </form>
+    </div>
 </div>
 <div ng-controller="createListSearch">
     <div class="search-container fluid-container">
@@ -18,20 +18,21 @@
             <form id="listType" ng-submit="searchListBtn()" ng-model="match">
                 <fieldset>
                     <legend>List Name</legend>
-                    <input name="type" type="radio" id="corp" ng-model="corp" ng-value="true">
+
+                    <input name="type" type="radio" id="corp" ng-model="type" ng-value="'corp'">
                     <label for="corp">Corporation</label>
                     ​
-                    <input name="type" type="radio" id="fam" ng-model="fam" ng-value="true">
+                    <input name="type" type="radio" id="fam" ng-model="type" ng-value="'fam'">
                     <label for="fam">Families</label>
                     ​
-                    <input name="type" type="radio" id="zip" ng-value="true" ng-model="zipCk">
+                    <input name="type" type="radio" id="zip" ng-value="'zipCk'" ng-model="type">
                     <label for="zip">Zip</label>
-                    <input type="text" placeholder="Zip Code" ng-model="zip.data">
+                    <input type="text" placeholder="Zip Code" ng-model="zip.data" ng-focus="type='zipCk'">
                     ​
-                    <input name="type" type="radio" id="age" ng-value="true" ng-model="ageCk">
+                    <input name="type" type="radio" id="age" ng-value="'ageCk'" ng-model="type">
                     <label for="age">Age</label>
-                    <input type="text" placeholder="Age" ng-model="age.data">
-                    ​
+                    <input type="text" placeholder="Age" ng-model="age.data" ng-focus="type='ageCk'">
+
                     <input class="btn btn-default" type="submit" value="Submit">
                 </fieldset>
             </form>
@@ -58,3 +59,4 @@
         </table>
     </div>
 </div>
+<button class="btn btn-primary">Add Emails To List</button>
