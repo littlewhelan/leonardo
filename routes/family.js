@@ -99,6 +99,8 @@ router.get('/', function (req, res, next) {
 					city:rows[0].emerCity,
 					state:rows[0].emerState,
 					phone:rows[0].emerPhone,
+					//notes:rows[0].emerNotes,
+
 				};
 
 				var family = {
@@ -205,7 +207,8 @@ router.post('/', function (req, res, next) {
 			emerZip: family.emergency.zip,
 			emerCity: family.emergency.city,
 			emerState: family.emergency.state,
-			emerPhone: family.emergency.phone
+			emerPhone: family.emergency.phone,
+			//emerNotes:family.emergecy.notes
 		};
 
 		// run query - 1st mainFam: get the base family info in (so children can reference)
