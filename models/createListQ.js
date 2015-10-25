@@ -13,6 +13,5 @@ module.exports = {
 	ageList: 'SELECT null AS company,  adultOneCity as city, id AS id, adultOneFirstName as firstName,adultOneLastName AS lastName, adultOneEmail AS email FROM families AS f WHERE f.id IN ' +
 	'(SELECT familyID FROM children WHERE DATEDIFF(CURDATE(), birthdate) / 365.24 BETWEEN ? AND ?) GROUP BY f.id ',
 
+	ageList2: 'SELECT null as company, f.adultOneCity as city, f.id AS id, c.firstName AS firstName, c.lastName AS lastName, c.email AS email FROM families AS f, children AS c WHERE f.id IN (SELECT familyID FROM children WHERE DATEDIFF(CURDATE(), birthdate) / 365.24 BETWEEN ? AND ?)'
 };
-
-//+'UNION SELECT null as company, f.adultOneCity as city, f.id AS id, c.firstName AS firstName, c.lastName AS lastName, c.email AS email FROM families AS f, children AS c WHERE f.id IN (SELECT familyID FROM children WHERE DATEDIFF(CURDATE(), birthdate) / 365.24 BETWEEN ? AND ?)'
