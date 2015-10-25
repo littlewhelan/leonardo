@@ -1,5 +1,7 @@
 //edit family modal template
-app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', function ($scope, $uibModal, $log, ResultService, $http) {
+app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', 'validService', function ($scope, $uibModal, $log, ResultService, $http, validService) {
+	// sets validation from service for dom calls
+	$scope.validateInput = validService.validateInput;
 	//sends the adults and kids after the results have been organized
 	$scope.adults = ResultService.adults;
 	$scope.kids = ResultService.kids;
@@ -73,7 +75,7 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 				$scope.family.donations = (res.data.donations) ? res.data.donations : [];
 			});
 		}else {
-		// insert family - has no id
+			// insert family - has no id
 			console.log("insert family", $scope.family);
 			$http({
 				method: 'PUT',
@@ -105,7 +107,7 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 			$scope.family.children[$scope.editingChild] = $scope.newChild;
 			$scope.editingChild = false;
 		}else {
-		// else push to array
+			// else push to array
 			$scope.family.children.push($scope.newChild);
 		}
 		$scope.newChild = {};
@@ -142,11 +144,11 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		$scope.editingChild = false;
 	};
 
-		// adds donation to family object
-		$scope.addDonation = function () {
-			$scope.family.donations.push($scope.newDonation);
-			$scope.newDonation = {};
-		};
+	// adds donation to family object
+	$scope.addDonation = function () {
+		$scope.family.donations.push($scope.newDonation);
+		$scope.newDonation = {};
+	};
 
 	//// prevent accidental backs
 	//$scope.$on('$locationChangeSuccess', function( event, oldUrl ) {

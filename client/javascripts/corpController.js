@@ -1,5 +1,8 @@
 //edit corporation modal template
-app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', function ($scope, $uibModal, $log, ResultService, $http) {
+app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', 'validService', function ($scope, $uibModal, $log, ResultService, $http, validService) {
+
+	// sets validation from service for dom calls
+	$scope.validateInput = validService.validateInput;
 	//sends the companies after the results have been organized
 	$scope.companies = ResultService.companies;
 	$scope.corp = {
@@ -92,4 +95,5 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 		$scope.corp.donations.push($scope.newDonation);
 		$scope.newDonation = {};
 	};
+
 }]);
