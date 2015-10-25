@@ -27,11 +27,11 @@
                     ​
                     <input name="type" type="radio" id="zip" ng-value="'zipCk'" ng-model="type">
                     <label for="zip">Zip</label>
-                    <input type="text" placeholder="Zip Code" ng-model="zip.data">
+                    <input type="text" placeholder="Zip Code" ng-model="zip.data" ng-focus="type='zipCk'">
                     ​
                     <input name="type" type="radio" id="age" ng-value="'ageCk'" ng-model="type">
                     <label for="age">Age</label>
-                    <input type="text" placeholder="Age" ng-model="age.data">
+                    <input type="text" placeholder="Age" ng-model="age.data" ng-focus="type='ageCk'">
 
                     <input class="btn btn-default" type="submit" value="Submit">
                 </fieldset>
