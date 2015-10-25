@@ -1,5 +1,7 @@
 //edit family modal template
-app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', function ($scope, $uibModal, $log, ResultService, $http) {
+app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', 'validService', function ($scope, $uibModal, $log, ResultService, $http, validService) {
+	// sets validation from service for dom calls
+	$scope.validateInput = validService.validateInput;
 	//sends the adults and kids after the results have been organized
 	$scope.adults = ResultService.adults;
 	$scope.kids = ResultService.kids;
