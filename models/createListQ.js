@@ -11,7 +11,8 @@ module.exports = {
 
 //this should get all emails of families with kids that are a certain age
 	ageList: 'SELECT null AS company,  adultOneCity as city, id AS id, adultOneFirstName as firstName,adultOneLastName AS lastName, adultOneEmail AS email FROM families AS f WHERE f.id IN ' +
-	'(SELECT familyID FROM children WHERE DATEDIFF(CURDATE(), birthdate) / 365.24 BETWEEN ? AND ?) ' +
-	'GROUP BY f.id'
+	'(SELECT familyID FROM children WHERE DATEDIFF(CURDATE(), birthdate) / 365.24 BETWEEN ? AND ?) GROUP BY f.id ',
 
 };
+
+//+'UNION SELECT null as company, f.adultOneCity as city, f.id AS id, c.firstName AS firstName, c.lastName AS lastName, c.email AS email FROM families AS f, children AS c WHERE f.id IN (SELECT familyID FROM children WHERE DATEDIFF(CURDATE(), birthdate) / 365.24 BETWEEN ? AND ?)'

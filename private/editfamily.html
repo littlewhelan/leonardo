@@ -46,7 +46,7 @@
                 ​
                 <label for="A1P" class="col-md-6 col-sm-6 col-xs-6">Main Phone</label>
                 <label for="A1C" class="col-md-6 col-sm-6 col-xs-6">Company</label>
-                <input ng-model="family.adultOne.company" id="A1C" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Main Phone">
+                <input ng-model="family.adultOne.main" id="A1C" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Main Phone">
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultOne.main}}</span>
                 <input ng-model="family.adultOne.company" id="A1C" ng-show="edit" class="fcol-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Company">
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultOne.company}}</span>
@@ -97,7 +97,7 @@
                 ​
                 <label for="A2C" class="col-md-6 col-sm-6 col-xs-6">Main Phone</label>
                 <label for="A2C" class="col-md-6 col-sm-6 col-xs-6">Company</label>
-                <input ng-model="family.adultTwo.company" id="A2C" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Main Phone">
+                <input ng-model="family.adultTwo.main" id="A2C" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Main Phone">
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultTwo.main}}</span>
                 <input ng-model="family.adultTwo.company" id="A2C" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Company">
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultTwo.company}}</span>​
@@ -174,7 +174,7 @@
                 <label for="KS" class="col-md-6 col-sm-6 col-xs-6">School</label>
                 ​
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.birthdate}}</span>
-                <input ng-model="child.birthdate" id="KBD" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Birthday  mm/dd/yyyy">
+                <input ng-model="child.birthdate" id="KBD" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Birthday mm/dd/yyyy">
                 <span ng-hide="edit"  class="col-md-6 col-sm-6 col-xs-6">{{child.school}}</span>
                 <input ng-model="child.school" id="KS" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School">
                 ​
@@ -182,9 +182,9 @@
                 <label for="KS" class="col-md-6 col-sm-6 col-xs-6">Email</label>
 
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.cell}}</span>
-                <input ng-model="child.birthdate" id="KBD" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Cell">
+                <input ng-model="child.cell" id="KBD" ng-show="edit" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Cell">
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.email}}</span>
-                <input ng-model="child.school" id="KS" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">
+                <input ng-model="child.email" id="KS" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">
 
                 <label for="KN" class="block-input">Notes</label>
                 <span ng-hide="edit" id="notes" class="block-input">{{child.notes}}</span>

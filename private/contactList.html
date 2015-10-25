@@ -18,6 +18,7 @@
             <form id="listType" ng-submit="searchListBtn()" ng-model="match">
                 <fieldset>
                     <legend>List Name</legend>
+                    <group>
                     <input name="type" type="radio" id="corp" ng-model="corp" ng-value="true">
                     <label for="corp">Corporation</label>
                     ​
@@ -26,11 +27,13 @@
                     ​
                     <input name="type" type="radio" id="zip" ng-value="true" ng-model="zipCk">
                     <label for="zip">Zip</label>
-                    <input type="text" placeholder="Zip Code" ng-model="zip.data">
+                    <input type="text" placeholder="Zip Code" ng-model="zip.data" ng-focus ="zipCk = true">
                     ​
                     <input name="type" type="radio" id="age" ng-value="true" ng-model="ageCk">
                     <label for="age">Age</label>
-                    <input type="text" placeholder="Age" ng-model="age.data">
+                    <input type="text" placeholder="Age" ng-model="age.data" ng-focus ="ageCk = true">
+                        </group>
+
                     ​
                     <input class="btn btn-default" type="submit" value="Submit">
                 </fieldset>
