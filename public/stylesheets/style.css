@@ -157,27 +157,6 @@ border: none;
   color: white !important;
 }
 
-/*input.ng-invalid {*/
-    /*border: 1px solid red;*/
-/*}*/
-
-.invalid.js-validate::-webkit-input-placeholder { /* WebKit, Blink, Edge */
-    color:    #FF0000;
-}
-.invalid.js-validate:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
-    color:    #FF0000;
-    opacity:  1;
-}
-.invalid.js-validate::-moz-placeholder { /* Mozilla Firefox 19+ */
-    color:    #FF0000;
-    opacity:  1;
-}
-.invalid.js-validate:-ms-input-placeholder { /* Internet Explorer 10-11 */
-    color:    #FF0000;
-}
-
-.invalid.js-validate {
-    border-radius: 5px;
-    border: #FF0000 2px solid;
-    color: #FF0000;
+input.ng-invalid {
+    border: 1px solid red;
 }
