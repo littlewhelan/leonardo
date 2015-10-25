@@ -33,6 +33,7 @@
                 <!--next button -->
                 <button class="btn btn-primary">Save</button>
                 <button class="btn btn-danger">Cancel</button>
+                <button class="btn btn-primary" ng-click="family = {};">New Family</button>
             </form>
         </div>
     </uib-tab>
@@ -52,6 +53,7 @@
                 <!--next buttons -->
                 <button class="btn btn-primary">Save</button>
                 <button class="btn btn-danger">Cancel</button>
+                <button class="btn btn-primary" ng-click="family = {};">New Family</button>
             </form>
         </div>
     </uib-tab>
@@ -88,7 +90,8 @@
             </form>
             <!--next / close buttons -->
             <button class="btn btn-primary" ng-click="save()">Save</button>
-            <button class="btn btn-danger" ng-click="clearChild()">Clear</button>
+            <button class="btn btn-danger" ng-click="clearChild()">Cancel</button>
+            <button class="btn btn-primary" ng-click="family = {};">New Family</button>
         </div>
     </uib-tab>
     <uib-tab heading="Donations">
@@ -115,7 +118,8 @@
             <textarea ng-model="newDonation.notes" rows="4" class="form-control" placeholder="Notes"></textarea>
             <!--save / close buttons -->
             <button class="btn btn-primary" ng-click="console.log(family);save();">Save</button>
-            <button class="btn btn-danger" ng-click="newDonation = {};">Clear</button>
+            <button class="btn btn-danger" ng-click="newDonation = {};">Cancel</button>
+            <button class="btn btn-primary" ng-click="family = {};">New Family </button>
         </div>
     </uib-tab>
 </uib-tabset>
