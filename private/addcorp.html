@@ -59,6 +59,11 @@
             <input ng-model="newDonation.amount" class="form-control" type="text" placeholder="Amount">
             <textarea ng-model="newDonation.notes" rows="4" class="form-control" placeholder="Notes"></textarea>
             <!--save / close buttons -->
+            <div>
+                <label for="addDonation">Add Donation</label>
+                <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
+            </div>
+
             <button class="btn btn-primary" ng-click="console.log(corp);save();">Save</button>
             <button class="btn btn-danger" ng-click="newDonation = {};">Clear</button>
             <button class="btn btn-primary" ng-click="corp = {};">New Corporation</button>
