@@ -53,9 +53,7 @@
                     <td class="field-label col-xs-3 active"><button ng-click="corp.donations.splice($index, 1);">X</button></td>
                 </tr>
             </table>
-            <label for="addDonation">Add Donation</label>
-            <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
-            <input ng-model="newDonation.date" class="form-control" type="date" placeholder="Date (YYYY-MM-DD)" ng-pattern="^20[0-9]{2}[-](0[1-9]|1[0-2])[-]([0-2][0-9]|3[01])$">
+            <input ng-model="newDonation.date" class="form-control" type="date" placeholder="Date (YYYY-MM-DD)">
             <input ng-model="newDonation.amount" class="form-control" type="text" placeholder="Amount">
             <textarea ng-model="newDonation.notes" rows="4" class="form-control" placeholder="Notes"></textarea>
             <!--save / close buttons -->
