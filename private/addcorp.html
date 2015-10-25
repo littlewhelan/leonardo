@@ -14,7 +14,7 @@
                 <textarea ng-model="corp.info.notes" rows="4" class="form-control" placeholder="Notes"></textarea>
                 <!--edit button -->
                 <button class="btn btn-primary">Save</button>
-                <button class="btn btn-danger">Cancel</button>
+                <button class="btn btn-danger" ng-click="newDonation = {}; corp={};">Cancel</button>
                 <button class="btn btn-primary" ng-click="corp = {};">New Corporation</button>
             </form>
         </div>
@@ -31,8 +31,8 @@
                 <textarea ng-model="corp.contact.notes" rows="4" class="form-control" placeholder="Notes"></textarea>
                 <!--next buttons -->
                 <button class="btn btn-primary">Save</button>
-                <button class="btn btn-danger">Cancel</button>
-                <button class="btn btn-primary" ng-click="corp = {};">New Corporation</button>
+                <button class="btn btn-danger" ng-click="newDonation = {}; corp={};">Cancel</button>
+                <button class="btn btn-primary"ng-click="newDonation = {}; corp={};">New Corporation</button>
             </form>
         </div>
     </uib-tab>
@@ -61,10 +61,11 @@
             <div>
                 <label for="addDonation">Add Donation</label>
                 <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
+
             </div>
             <button class="btn btn-primary" ng-click="console.log(corp);save();">Save</button>
-            <button class="btn btn-danger" ng-click="newDonation = {};">Clear</button>
-            <button class="btn btn-primary" ng-click="corp = {};">New Corporation</button>
+            <button class="btn btn-danger" ng-click="newDonation = {}; corp={};">Cancel</button>
+            <button class="btn btn-primary" ng-click="newDonation = {}; corp={};">New Corporation</button>
         </div>
     </uib-tab>
 </uib-tabset>

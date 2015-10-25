@@ -32,8 +32,8 @@
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
                 <!--next button -->
                 <button class="btn btn-primary">Save</button>
-                <button class="btn btn-danger">Cancel</button>
-                <button class="btn btn-primary" ng-click="family = {};">New Family</button>
+                <button class="btn btn-danger" ng-click="newDonation = {}; family={};newChild={};">Cancel</button>
+                <button class="btn btn-primary" ng-click="newDonation = {}; family={};newChild={};">New Family</button>
             </form>
         </div>
     </uib-tab>
@@ -52,8 +52,8 @@
                 <textarea rows="4" class="form-control" placeholder="Notes"></textarea>
                 <!--next buttons -->
                 <button class="btn btn-primary">Save</button>
-                <button class="btn btn-danger">Cancel</button>
-                <button class="btn btn-primary" ng-click="family = {};">New Family</button>
+                <button class="btn btn-danger" ng-click="newDonation = {}; family={};newChild={};">Cancel</button>
+                <button class="btn btn-primary" ng-click="newDonation = {}; family={};newChild={};">New Family</button>
             </form>
         </div>
     </uib-tab>
@@ -94,8 +94,8 @@
             <button id="addKid" type="button" class="btn btn-danger" ng-click="addChild()">+</button>
             </div>
             <button class="btn btn-primary" ng-click="save()">Save</button>
-            <button class="btn btn-danger" ng-click="clearChild()">Cancel</button>
-            <button class="btn btn-primary" ng-click="family = {};">New Family</button>
+            <button class="btn btn-danger" ng-click="clearChild()" ng-click="newDonation = {}; family={};newChild={};">Cancel</button>
+            <button class="btn btn-primary" ng-click="newDonation = {}; family={};newChild={};">New Family</button>
         </div>
     </uib-tab>
     <uib-tab heading="Donations">
@@ -124,8 +124,8 @@
             <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
             </div>
             <button class="btn btn-primary" ng-click="console.log(family);save();">Save</button>
-            <button class="btn btn-danger" ng-click="newDonation = {};">Cancel</button>
-            <button class="btn btn-primary" ng-click="family = {};">New Family </button>
+            <button class="btn btn-danger" ng-click="newDonation = {}; family={};newChild={};">Cancel</button>
+            <button class="btn btn-primary" ng-click="newDonation = {}; family={};newChild={};">New Family </button>
         </div>
     </uib-tab>
 </uib-tabset>
