@@ -13,7 +13,8 @@
                 <input id="A1P" ng-model="family.adultOne.main" name="mainPhone" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Main Phone" data-placeholder="Main Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A1P');">
                 <input id="A1CP" ng-model="family.adultOne.cell" name="cellPhone" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Cell Phone" data-placeholder="Cell Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A1CP');">
                 <input id="A1E" ng-model="family.adultOne.email" name="email" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'A1E');">
-                <input id="A1C" ng-model="family.adultOne.company" name="company" class="js-validate form-control" type="text" placeholder="Company" data-placeholder="Company" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'A1C');">
+                <input id="A1WP" ng-model="family.adultOne.work" name="cellPhone" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Work Phone" data-placeholder="Work Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A1WP');">
+                <input id="A1Co" ng-model="family.adultOne.company" name="company" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Company" data-placeholder="Company" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'A1Co');">
                 <textarea id="A1N" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'A1N');"></textarea>
                 <!--</form>-->
                 <!--<form ng-submit="save()">-->
@@ -28,7 +29,8 @@
                 <input id="A2M" ng-model="family.adultTwo.main" name="mainPhone" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Main Phone" data-placeholder="Main Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A2M');">
                 <input id="A2CP" ng-model="family.adultTwo.cell" name="cellPhone" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Cell Phone" data-placeholder="Cell Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A2CP');">
                 <input id="A2E" ng-model="family.adultTwo.email" name="email" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'A2E');">
-                <input id="A2C" ng-model="family.adultTwo.company" name="company" class="js-validate form-control" type="text" placeholder="Company" data-placeholder="Company" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'A2C');">
+                <input id="A2WP" ng-model="family.adultTwo.work" name="cellPhone" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Work Phone" data-placeholder="Work Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A2WP');">
+                <input id="A2Co" ng-model="family.adultTwo.company" name="company" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Company" data-placeholder="Company" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'A2Co');">
                 <textarea id="A2N" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'A2N');"></textarea>
                 <!--next button -->
                 <button class="btn btn-primary">Save</button>
@@ -66,6 +68,8 @@
                         <th class="field-label col-xs-3 active">Last Name</th>
                         <th class="field-label col-xs-3 active">Birthday</th>
                         <th class="field-label col-xs-3 active">School</th>
+                        <th class="field-label col-xs-3 active">Cell</th>
+                        <th class="field-label col-xs-3 active">Email</th>
                         <th class="field-label col-xs-3 active">Notes</th>
                         <th class="field-label col-xs-3 active">Del</th>
                     </tr>
@@ -74,6 +78,8 @@
                         <td class="field-label col-xs-3 active" ng-click="editChild($index)">{{child.lastName}}</td>
                         <td class="field-label col-xs-3 active" ng-click="editChild($index)">{{child.birthdate}}</td>
                         <td class="field-label col-xs-3 active" ng-click="editChild($index)">{{child.school}}</td>
+                        <td class="field-label col-xs-3 active" ng-click="editChild($index)">{{child.cell}}</td>
+                        <td class="field-label col-xs-3 active" ng-click="editChild($index)">{{child.email}}</td>
                         <td class="field-label col-xs-3 active" ng-click="editChild($index)">{{child.notes}}</td>
                         <td class="field-label col-xs-3 active"><button ng-click="removeChild($index);">X</button></td>
                     </tr>
@@ -84,6 +90,8 @@
                 <input ng-model="newChild.lastName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KLN');" />
                 <input ng-model="newChild.birthdate" class="js-validate col-md-6 col-sm-6 col-xs-6" type="date" placeholder="Birthday (YYYY-MM-DD)" data-placeholder="Birthday (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 1990 or later" data-type="date" ng-blur="validateInput('birthdate', 'KBD');" />
                 <input ng-model="newChild.school" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School" data-placeholder="Company" data-invalid="Valid school name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'KS');" />
+                <input ng-model="newChild.cell" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Cell Phone" data-placeholder="Cell Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'KC');">
+                <input ng-model="newChild.email" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'KE');">
                 <textarea ng-model="newChild.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'KN');"></textarea>
             </form>
             <!--next / close buttons -->

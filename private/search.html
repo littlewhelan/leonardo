@@ -6,7 +6,7 @@
                     <div class="input-group-btn">
                         <button type="submit" ng-submit="searchBtn()" class="btn btn-default" >Search</button>
                     </div>
-                    <input type="text" ng-model="formInput.data" id="search" class="form-control" aria-label="...">
+                    <input type="text" ng-model="formInput.data" id="search" class="form-control" aria-label="..." placeholder="Search" data-placeholder="Search" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'search');">
 
                 </div>
                 </form>

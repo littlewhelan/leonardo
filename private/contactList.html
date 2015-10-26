@@ -27,11 +27,11 @@
                     ​
                     <input name="type" type="radio" id="zip" ng-value="'zipCk'" ng-model="type">
                     <label for="zip">Zip</label>
-                    <input type="text" placeholder="Zip Code" ng-model="zip.data" ng-focus="type='zipCk'" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip">
+                    <input type="text" id="zipInput" placeholder="Zip Code" ng-model="zip.data" ng-focus="type='zipCk'" placeholder="Zip Code" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip" ng-blur="validateInput('zip', 'zipInput');">
                     ​
                     <input name="type" type="radio" id="age" ng-value="'ageCk'" ng-model="type">
                     <label for="age">Age</label>
-                    <input type="text" placeholder="Age" ng-model="age.data" ng-focus="type='ageCk'">
+                    <input type="text" id=""ageInput placeholder="Age" ng-model="age.data" ng-focus="type='ageCk'" placeholder="Age" data-placeholder="Age" data-invalid="Valid Age: #####" data-type="zip" ng-blur="validateInput('zip', 'ageInput');">
 
                     <input class="btn btn-default" type="submit" value="Submit">
                 </fieldset>
@@ -54,7 +54,7 @@
                 <td>{{result.email}}</td>
                 <td>{{result.city}}</td>
                 <td>{{result.company}}</td>
-                <td><input type="checkbox"></td>
+                <td><input type="checkbox" data-checklist-model="includedEmails" data-checklist-value="result"></td>
             </tr>
         </table>
     </div>
