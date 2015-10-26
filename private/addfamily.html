@@ -78,7 +78,7 @@
                         <td class="field-label col-xs-3 active"><button ng-click="removeChild($index);">X</button></td>
                     </tr>
                 </table>
-                <button id="addKid" type="button" class="btn btn-danger" ng-click="addChild()">+</button>
+
                 <hr/>
                 <input ng-model="newChild.firstName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KFN');" />
                 <input ng-model="newChild.lastName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KLN');" />
@@ -87,6 +87,12 @@
                 <textarea ng-model="newChild.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'KN');"></textarea>
             </form>
             <!--next / close buttons -->
+            <div>
+                <label for="addKid">Next Child</label>
+                <button id="addKid" type="button" class="btn btn-danger" ng-click="addChild()">+</button>
+
+            </div>
+
             <button class="btn btn-primary" ng-click="save()">Save</button>
             <button class="btn btn-danger" ng-click="clearChild()">Clear</button>
         </div>
@@ -108,12 +114,16 @@
                     <td class="field-label col-xs-3 active"><button ng-click="family.donations.splice($index, 1);">X</button></td>
                 </tr>
             </table>
-            <label for="addDonation">Add Donation</label>
-            <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
+
             <input id="FDD" ng-model="newDonation.date" class="js-validate form-control" type="date" placeholder="Date (YYYY-MM-DD)" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="date" ng-blur="validateInput('date', 'FDD');">
             <input id="FDA" ng-model="newDonation.amount" class="js-validate form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'FDA');">
             <textarea id="FDN" ng-model="newDonation.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'FDN');"></textarea>
             <!--save / close buttons -->
+
+            <div>
+                <label for="addDonation">Add Donation</label>
+                <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
+            </div>>
             <button class="btn btn-primary" ng-click="console.log(family);save();">Save</button>
             <button class="btn btn-danger" ng-click="newDonation = {};">Clear</button>
         </div>
