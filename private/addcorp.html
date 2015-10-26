@@ -3,41 +3,39 @@
         <div class="well well-sm">
             <form ng-submit="save();">
                 <legend>Corporate Information</legend>
-                <input ng-model="corp.info.name" name="corpName" class="form-control" type="text" placeholder="Corporation Name">
-                <input ng-model="corp.info.addressOne" name="address1" class="form-control" type="text" placeholder="Address 1">
-                <input ng-model="corp.info.addressTwo" name="address2"class="form-control" type="text" placeholder="Address 2">
-                <input ng-model="corp.info.zip" name="zip"class="col-xs-6 col-sm-4" type="text" placeholder="Zip Code">
-                <input ng-model="corp.info.city" name="city"class="col-xs-6 col-sm-4" type="text" placeholder="City">
-                <input ng-model="corp.info.state" name="state"class="col-xs-6 col-sm-4" type="text" placeholder="State">
-                <input ng-model="corp.info.phone" name="phone"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone">
-                <input ng-model="corp.info.email" name="email"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email">
-                <textarea ng-model="corp.info.notes" rows="4" class="form-control" placeholder="Notes"></textarea>
+                <input id="COMP" ng-model="corp.info.name" name="corpName" class="js-validate form-control" type="text" placeholder="Corporation Name" data-placeholder="Corporation Name" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'COMP');" required>
+                <input id="COA1" ng-model="corp.info.addressOne" name="address1" class="js-validate form-control" type="text" placeholder="Address 1" data-placeholder="Address 1" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'COA1');">
+                <input id="COA2" ng-model="corp.info.addressTwo" name="address2"class="js-validate form-control" type="text" placeholder="Address 2" data-placeholder="Address 2" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'COA2');">
+                <input id="COZ" ng-model="corp.info.zip" name="zip" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Zip Code" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip" ng-blur="validateInput('zip', 'COZ');">
+                <input id="COC" ng-model="corp.info.city" name="city" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="City" data-placeholder="City" data-invalid="Valid city: (a-z)" data-type="city" ng-blur="validateInput('city', 'COC');">
+                <input id="COS" ng-model="corp.info.state" name="state" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="State" data-placeholder="State" data-invalid="Valid state: (a-z)" data-type="state" ng-blur="validateInput('state', 'COS');">
+                <input id="COP" ng-model="corp.info.phone" name="phone" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone" data-placeholder="Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'COP');">
+                <input id=COE" ng-model="corp.info.email" name="email" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'COE');">
+                <textarea id="CON" ng-model="corp.info.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CON');"></textarea>
                 <!--edit button -->
                 <button class="btn btn-primary">Save</button>
-                <button class="btn btn-danger" ng-click="newDonation = {}; corp={};">Cancel</button>
-                <button class="btn btn-primary" ng-click="corp = {};">New Corporation</button>
+                <button class="btn btn-danger">Cancel</button>
             </form>
         </div>
     </uib-tab>
     <uib-tab heading="Contact Information">
         <div class="well well-sm">
-            <form ng-submit="save();">
+            <form id="CorpContactForm" ng-submit="save();">
                 <legend>Contact Information</legend>
-                <input ng-model="corp.contact.firstName" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name">
-                <input ng-model="corp.contact.lastName" class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name">
-                <input ng-model="corp.contact.phone" class="col-xs-6 col-sm-4" type="text" placeholder="Phone Number">
-                <input ng-model="corp.contact.ext" class="col-xs-6 col-sm-4" type="text" placeholder="Ext">
-                <input ng-model="corp.contact.email" class="col-xs-6 col-sm-4" type="text" placeholder="Email">
-                <textarea ng-model="corp.contact.notes" rows="4" class="form-control" placeholder="Notes"></textarea>
+                <input id="CFN" ng-model="corp.contact.firstName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'CFN');">
+                <input id="CLN" ng-model="corp.contact.lastName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name; (a-z , . - ')" ng-blur="validateInput('name', 'CLN');">
+                <input id="CP" ng-model="corp.contact.phone" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Phone Number" data-type="phone" data-placeholder="Phone Number" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" ng-blur="validateInput('phone', 'CP');">
+                <input id="CX" ng-model="corp.contact.ext" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Ext" data-type="ext" data-placeholder="Ext" data-invalid="Valid extension info: (a-z 0-9 : -)" ng-blur="validateInput('ext', 'CX');">
+                <input id="CE" ng-model="corp.contact.email" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Email" data-type="email" data-placeholder="Email" data-invalid="Valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" ng-blur="validateInput('email', 'CE');">
+                <textarea id="CN" ng-model="corp.contact.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-type="notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" ng-blur="validateInput('notes', 'CN');"></textarea>
                 <!--next buttons -->
                 <button class="btn btn-primary">Save</button>
-                <button class="btn btn-danger" ng-click="newDonation = {}; corp={};">Cancel</button>
-                <button class="btn btn-primary"ng-click="newDonation = {}; corp={};">New Corporation</button>
+                <button class="btn btn-danger">Cancel</button>
             </form>
         </div>
     </uib-tab>
     <uib-tab heading="Donations">
-        <div class="well well-sm">
+        <form name="donationForm" class="well well-sm">
             <legend>Donations</legend>
             <table class="table-hover table table-bordered" >
                 <tr>
@@ -53,19 +51,17 @@
                     <td class="field-label col-xs-3 active"><button ng-click="corp.donations.splice($index, 1);">X</button></td>
                 </tr>
             </table>
-
-            <input ng-model="newDonation.date" class="form-control" type="date" placeholder="Date (YYYY-MM-DD)">
-            <input ng-model="newDonation.amount" class="form-control" type="text" placeholder="Amount">
-            <textarea ng-model="newDonation.notes" rows="4" class="form-control" placeholder="Notes"></textarea>
+            <label for="addDonation">Add Donation</label>
+            <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
+            <input id="CDD" ng-model="newDonation.date" name="date" class="js-date form-control" type="date" placeholder="Date (YYYY-MM-DD)" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="date" ng-blur="validateInput('date', 'CDD');">
+            <span class="help-block" ng-show="donationForm.date.$error.required">Required</span>
+            <input id="CDA" ng-model="newDonation.amount" class="js-amount form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'CDA');">
+            <textarea id="CDN" ng-model="newDonation.notes" rows="4" class="js-notes form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CDN');"></textarea>
             <!--save / close buttons -->
-            <div>
-                <label for="addDonation">Add Donation</label>
-                <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
-
-            </div>
-            <button class="btn btn-primary" ng-click="console.log(corp);save();">Save</button>
-            <button class="btn btn-danger" ng-click="newDonation = {}; corp={};">Cancel</button>
-            <button class="btn btn-primary" ng-click="newDonation = {}; corp={};">New Corporation</button>
+            <button class="btn btn-primary" ng-click="console.log(corp);">Save</button>
+            <!--<button class="btn btn-primary" ng-click="console.log(corp);save();">Save</button>-->
+            <button class="btn btn-danger" ng-click="newDonation = {};">Clear</button>
+        </form>
         </div>
     </uib-tab>
 </uib-tabset>
