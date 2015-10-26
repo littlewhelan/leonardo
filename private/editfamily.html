@@ -3,7 +3,7 @@
         ​
         <!--span is information retrieved from DB-->
         <!--inputs are editable after click-->
-        <form>
+        <form ng-submit="save()">
             <legend class="adult">Adult1</legend>
             <div class="content-container">
                 <label for="A1FN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
@@ -116,7 +116,7 @@
     <uib-tab heading="Emergency Contact">
         <legend>Emergency Contact</legend>
         <div class="content-container">
-            <form>
+            <form ng-submit="save()">
                 <label for="EmFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="EmLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
                 ​
@@ -158,7 +158,7 @@
         <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancel</button>
         ​
     </uib-tab>
-    <uib-tab heading="Additional Members">
+    <uib-tab heading="Additional Members" >
         <legend>Additional Members</legend>
         <div class="content-container">
             <form ng-repeat="child in family.children">

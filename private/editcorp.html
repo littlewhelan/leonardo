@@ -2,7 +2,7 @@
     <uib-tab heading="Corporate Information">
         <legend>Corporate Information</legend>
         <div class="content-container">
-            <form>
+            <form ng-submit="save()">
                 <label for="CN" class="block-input">Company Name</label>
                 <input ng-model="company.companyInfo.name" ng-show="edit" id="CN" name="corpName"  class="js-validate form-control" type="text" placeholder="Corporation Name" data-placeholder="Corporation Name" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'CN');">
                 <span ng-hide="edit" class="block-input">{{company.companyInfo.name}}</span>
@@ -50,7 +50,7 @@
     <uib-tab heading="Contact Information">
         <legend>Contact Information</legend>
         <div class="content-container">
-            <form>
+            <form ng-submit="save()">
 
                 <label for="CCFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="CCLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>

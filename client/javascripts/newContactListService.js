@@ -2,7 +2,7 @@
 app.service('newContactListData', ['ContactListDataService', '$http',
     function (ContactListDataService, $http) {
         this.newContactList = [];
-        this.listNum = "2006066267";
+        this.listNum = "";
         var importDataArray =[];
         //this.importDataArray = [
         //    {
@@ -32,8 +32,8 @@ app.service('newContactListData', ['ContactListDataService', '$http',
             console.log("did the name make it to the service? " + name );
             return $http.post('/newContactList', {name: name}).then(function (response) {
                 console.log(response.data);
-                listNum = response.data;
-                console.log("Id? ", listNum);
+                this.listNum = response.data;
+                console.log("Id? ", this.listNum);
             }, function(data){
                 console.log(data); //error
             });
