@@ -64,7 +64,8 @@ router.get('/', function (req, res, next) {
 					lastName: rows[0].contactLastName,
 					email: rows[0].contactEmail,
 					phone: rows[0].contactPhone,
-					ext: rows[0].contactExt
+					ext: rows[0].contactExt,
+					notes: rows[0].contactNotes
 				};
 
 				var company = {
