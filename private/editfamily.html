@@ -166,7 +166,7 @@
                 <label for="KLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
                 ​
                 <span  ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.firstName}}</span>
-                <input ng-model="child.firstName" id="KFN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KFN');>
+                <input ng-model="child.firstName" id="KFN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KFN')";>
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.lastName}}</span>
                 <input ng-model = "child.lastName" id="KLN" ng-show="edit"  class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KLN');">
                 ​
