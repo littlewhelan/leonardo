@@ -4,15 +4,15 @@
         <div class="content-container">
             <form>
                 <label for="CN" class="block-input">Company Name</label>
-                <input ng-model="company.companyInfo.name" ng-show="edit" id="CN" name="corpName"  class="form-control" type="text" placeholder="Corporation Name" data-placeholder="Corporation Name" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'COMP');">
+                <input ng-model="company.companyInfo.name" ng-show="edit" id="CN" name="corpName"  class="js-validate form-control" type="text" placeholder="Corporation Name" data-placeholder="Corporation Name" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'CN');">
                 <span ng-hide="edit" class="block-input">{{company.companyInfo.name}}</span>
 
                 <label for="CAR1" class="block-input">Address1</label>
-                <input ng-model="company.companyInfo.addressOne" ng-show="edit" id="CAR1"  name="address1"  class="form-control" type="text" placeholder="Address 1"  data-placeholder="Address 1" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'COA1');">
+                <input ng-model="company.companyInfo.addressOne" ng-show="edit" id="CAR1"  name="address1"  class="js-validate form-control" type="text" placeholder="Address 1"  data-placeholder="Address 1" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'CAR1');">
                 <span ng-hide="edit" class="block-input ">{{company.companyInfo.addressOne}}</span>
 
                 <label for="CAR2" class="block-input">Address 2</label>
-                <input ng-model="company.companyInfo.addressTwo" ng-show="edit" id="CAR2" name="address2" class="form-control" type="text" placeholder="Address 2" data-placeholder="Address 2" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'COA2');">
+                <input ng-model="company.companyInfo.addressTwo" ng-show="edit" id="CAR2" name="address2" class="js-validate form-control" type="text" placeholder="Address 2" data-placeholder="Address 2" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'CAR2');">
                 <span ng-hide="edit" class="block-input">{{company.companyInfo.addressTwo}}</span>
 
                 <label for="CZ"  class="col-xs-6 col-sm-4">Zip</label>
@@ -20,26 +20,26 @@
                 <label for="CS" class="col-xs-6 col-sm-4">State</label>
 
 
-                <input ng-model="company.companyInfo.zip" ng-show="edit" id="CZ" name="zip" class="col-xs-6 col-sm-4"  type="text" placeholder="Zip Code" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip" ng-blur="validateInput('zip', 'COZ');">
+                <input ng-model="company.companyInfo.zip" ng-show="edit" id="CZ" name="zip" class="js-validate col-xs-6 col-sm-4"  type="text" placeholder="Zip Code" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip" ng-blur="validateInput('zip', 'CZ');">
                 <span ng-hide="edit" class="col-xs-6 col-sm-4">{{company.companyInfo.zip}}</span>
 
-                <input ng-model="company.companyInfo.city" ng-show="edit" id="CC" name="city"class="col-xs-6 col-sm-4"  type="text" placeholder="City" data-placeholder="City" data-invalid="Valid city: (a-z)" data-type="city" ng-blur="validateInput('city', 'COC');">
+                <input ng-model="company.companyInfo.city" ng-show="edit" id="CC" name="city"class="js-validate col-xs-6 col-sm-4"  type="text" placeholder="City" data-placeholder="City" data-invalid="Valid city: (a-z)" data-type="city" ng-blur="validateInput('city', 'CC');">
                 <span ng-hide="edit" class="col-xs-6 col-sm-4">{{company.companyInfo.city}}</span>
 
-                <input ng-model="company.companyInfo.state" ng-show="edit" id="CS" name="state"class="col-xs-6 col-sm-4" type="text" placeholder="State" data-placeholder="State" data-invalid="Valid state: (a-z)" data-type="state" ng-blur="validateInput('state', 'COS');">
+                <input ng-model="company.companyInfo.state" ng-show="edit" id="CS" name="state"class="js-validate col-xs-6 col-sm-4" type="text" placeholder="State" data-placeholder="State" data-invalid="Valid state: (a-z)" data-type="state" ng-blur="validateInput('state', 'CS');">
                 <span ng-hide="edit" class="col-xs-6 col-sm-4">{{company.companyInfo.state}}</span>
 
                 <label for="CP" class="col-md-6 col-sm-6 col-xs-6">Phone</label>
                 <label for="CE" class="col-md-6 col-sm-6 col-xs-6">Email</label>
 
-                <input ng-model="company.companyInfo.phone" ng-show="edit" id="CP"  name="phone"class="col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone" ata-placeholder="Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'COP');">
+                <input ng-model="company.companyInfo.phone" ng-show="edit" id="CP"  name="phone"class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone" ata-placeholder="Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'CP');">
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{company.companyInfo.phone}}</span>
-                <input ng-model="company.companyInfo.email" ng-show="edit" id="CE" name="email"class="col-md-6 col-sm-6 col-xs-6" type="text"  placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'COE');">
+                <input ng-model="company.companyInfo.email" ng-show="edit" id="CE" name="email"class="js-validate col-md-6 col-sm-6 col-xs-6" type="text"  placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'CE');">
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{company.companyInfo.email}}</span>
 
                 <label for="CNT" class="block-input">Notes</label>
-                <textarea ng-model="company.companyInfo.notes" ng-show="edit" id="CNT" rows="4" class="form-control"  placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CON');"></textarea>
-                <span ng-hide="edit" id="notes" class="block-input">{{company.companyInfo.notes}}</span>
+                <textarea ng-model="company.companyInfo.notes" ng-show="edit" id="CNT" rows="4" class="js-validate form-control"  placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CNT');"></textarea>
+                <span ng-hide="edit"  class="block-input">{{company.companyInfo.notes}}</span>
             </form>
             <!--edit button -->
             <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
@@ -55,25 +55,25 @@
                 <label for="CCFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="CCLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
 
-                <input ng-model="company.contact.firstName" ng-show="edit" id="CCFN" class="col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'CFN');">
+                <input ng-model="company.contact.firstName" ng-show="edit" id="CCFN" class="js-validate col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'CCFN');">
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6 ">{{company.contact.firstName}}</span>
-                <input ng-model="company.contact.lastName" ng-show="edit" id="CCLN" class="col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name; (a-z , . - ')" ng-blur="validateInput('name', 'CLN');">
+                <input ng-model="company.contact.lastName" ng-show="edit" id="CCLN" class="js-validate col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name; (a-z , . - ')" ng-blur="validateInput('name', 'CCLN');">
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6 ">{{company.contact.lastName}}</span>
 
                 <label for="CCP" class="col-xs-6 col-sm-4">Phone</label>
                 <label for="CCEX" class="col-xs-6 col-sm-4">Extension</label>
                 <label for="CCE" class="col-xs-6 col-sm-4">Email</label>
 
-                <input ng-model="company.contact.phone" ng-show="edit" id="CCP" class="col-xs-6 col-sm-4"  type="text" placeholder="Phone Number"  data-type="phone" data-placeholder="Phone Number" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" ng-blur="validateInput('phone', 'CP');">
+                <input ng-model="company.contact.phone" ng-show="edit" id="CCP" class="js-validate col-xs-6 col-sm-4"  type="text" placeholder="Phone Number"  data-type="phone" data-placeholder="Phone Number" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" ng-blur="validateInput('phone', 'CCP');">
                 <span ng-hide="edit" class="col-xs-6 col-sm-4">{{company.contact.phone}}</span>
-                <input ng-model="company.contact.ext" ng-show="edit" id="CCEX" name="extPhone"class="col-xs-6 col-sm-4"  type="text" placeholder="Ext" data-placeholder="Ext" data-invalid="Valid extension info: (a-z 0-9 : -)" ng-blur="validateInput('ext', 'CX');">
+                <input ng-model="company.contact.ext" ng-show="edit" id="CCEX" name="extPhone"class="js-validate col-xs-6 col-sm-4"  type="text" placeholder="Ext" data-placeholder="Ext" data-invalid="Valid extension info: (a-z 0-9 : -)" ng-blur="validateInput('ext', 'CCEX');">
                 <span ng-hide="edit" class="col-xs-6 col-sm-4">{{company.contact.ext}}</span>
-                <input ng-model="company.contact.email" ng-show="edit" id="CCE" class="col-xs-6 col-sm-4" type="text"  placeholder="Email" data-placeholder="Email" data-invalid="Valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" ng-blur="validateInput('email', 'CE');">
+                <input ng-model="company.contact.email" ng-show="edit" id="CCE" class="js-validate col-xs-6 col-sm-4" type="text"  placeholder="Email" data-placeholder="Email" data-invalid="Valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" ng-blur="validateInput('email', 'CCE');">
                 <span ng-hide="edit" class="col-xs-6 col-sm-4">{{company.contact.email}}</span>
 
                 <label for="CCN" class="block-input">Notes</label>
-                <textarea ng-model="company.contact.notes" ng-show="edit" id="CCN" rows="4" class="form-control"  placeholder="Notes" data-type="notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" ng-blur="validateInput('notes', 'CN');"></textarea>
-                <span ng-hide="edit" id="notes" class="block-input">{{company.contact.notes}}</span>
+                <textarea ng-model="company.contact.notes" ng-show="edit" id="CCN" rows="4" class="js-validate form-control"  placeholder="Notes" data-type="notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" ng-blur="validateInput('notes', 'CCN');"></textarea>
+                <span ng-hide="edit"  class="block-input">{{company.contact.notes}}</span>
             </form>
         </div>
                 <!--next buttons -->
@@ -103,9 +103,9 @@
         </div>
             <label ng-show="edit">Add Donation</label>
             <button ng-show="edit" type="button" class="btn btn-danger">+</button>
-            <input ng-show="edit" id="CDD" class="form-control" type="date" placeholder="Date" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="date" ng-blur="validateInput('date', 'CDD');">
-            <input ng-show="edit" id="CDA" class="form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'CDA');">
-            <textarea ng-show="edit" id="CDN" rows="4" class="form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CDN');"></textarea>
+            <input ng-show="edit" id="CDD" class="js-validate form-control" type="date" placeholder="Date" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="date" ng-blur="validateInput('date', 'CDD');">
+            <input ng-show="edit" id="CDA" class="js-validate form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'CDA');">
+            <textarea ng-show="edit" id="CDN" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CDN');"></textarea>
             <!--save / close buttons -->
             <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
             <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
