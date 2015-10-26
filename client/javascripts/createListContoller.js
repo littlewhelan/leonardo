@@ -1,4 +1,4 @@
-app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService', function ($scope, $http, ContactListDataService) {
+app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService', 'newContactListData', function ($scope, $http, ContactListDataService,newContactListData) {
     $scope.type ={};
     $scope.age={};
     $scope.zip={};
@@ -53,6 +53,15 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
         $scope.zip={};
 
     };
-
+    $scope.populateList  = function () {
+        alert('working');
+        newContactListData.popList($scope.emailList)
+            .then(function() {
+                $(".search").hide();
+                $(".endMessage").append("<h2>sent</h2>");
+            });
+  };
 
 }]);
+
+

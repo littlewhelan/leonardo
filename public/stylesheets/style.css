@@ -188,6 +188,6 @@ span{
   border: #FF0000 2px solid;
   color: #FF0000;
 }
-
-
-
+.input-group {
+  margin: 90px auto 0 auto;
+}
