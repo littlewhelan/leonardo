@@ -34,7 +34,7 @@
                 <textarea id="A2N" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'A2N');"></textarea>
                 <!--next button -->
                 <button class="btn btn-primary">Save</button>
-                <button class="btn btn-danger">Cancel</button>
+                <button class="btn btn-danger" ng-click="$event.preventDefault();newChild = {}; newDonation={};console.log('cleared', family, newDonation,newChild);">Clear/New Family</button>
             </form>
         </div>
     </uib-tab>
@@ -53,14 +53,14 @@
                 <textarea id="EmN" rows="4" ng-model="family.emergency.notes" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'EmN');"></textarea>
                 <!--next buttons -->
                 <button class="btn btn-primary">Save</button>
-                <button class="btn btn-danger">Cancel</button>
+                <button class="btn btn-danger" ng-click="$event.preventDefault();family = {};newDonation={}; newChild = {};">Clear/New Family</button>
             </form>
         </div>
     </uib-tab>
     <uib-tab heading="Additional Members">
         <div class="well well-sm">
             <!--addition members tab-->
-            <form>
+            <form ng-submit="save()">
                 <legend>Children</legend>
                 <table class="table-hover table table-bordered" >
                     <tr>
@@ -86,14 +86,14 @@
                 </table>
 
                 <hr/>
-                <input ng-model="newChild.firstName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KFN');" />
-                <input ng-model="newChild.lastName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KLN');" />
-                <input ng-model="newChild.birthdate" class="js-validate col-md-6 col-sm-6 col-xs-6" type="date" placeholder="Birthday (YYYY-MM-DD)" data-placeholder="Birthday (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 1990 or later" data-type="date" ng-blur="validateInput('birthdate', 'KBD');" />
-                <input ng-model="newChild.school" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School" data-placeholder="Company" data-invalid="Valid school name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'KS');" />
-                <input ng-model="newChild.cell" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Cell Phone" data-placeholder="Cell Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'KC');">
-                <input ng-model="newChild.email" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'KE');">
-                <textarea ng-model="newChild.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'KN');"></textarea>
-            </form>
+                <input ng-model="newChild.firstName" id="KFN" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KFN');" />
+                <input ng-model="newChild.lastName" id="KlN" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KLN');" />
+                <input ng-model="newChild.birthdate" id="KDB" class="js-validate col-md-6 col-sm-6 col-xs-6" type="date" placeholder="Birthday (YYYY-MM-DD)" data-placeholder="Birthday (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 1990 or later" data-type="date" ng-blur="validateInput('birthdate', 'KBD');" />
+                <input ng-model="newChild.school" id="KS" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School" data-placeholder="Company" data-invalid="Valid school name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'KS');" />
+                <input ng-model="newChild.cell" id="KC" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Cell Phone" data-placeholder="Cell Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'KC');">
+                <input ng-model="newChild.email" id="KE" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'KE');">
+                <textarea ng-model="newChild.notes" id="KN" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'KN');"></textarea>
+
             <!--next / close buttons -->
             <div>
                 <label for="addKid">Next Child</label>
@@ -101,13 +101,15 @@
 
             </div>
 
-            <button class="btn btn-primary" ng-click="save()">Save</button>
-            <button class="btn btn-danger" ng-click="clearChild()">Clear</button>
+            <button class="btn btn-primary" >Save</button>
+            <button class="btn btn-danger" ng-click="$event.preventDefault(); family = {};newChild = {};newDonation={};">Clear/New Family</button>
+            </form>
         </div>
     </uib-tab>
     <uib-tab heading="Donations">
         <div class="well well-sm">
-            <legend>Donations</legend>
+            <form ng-click="save()">
+             <legend>Donations</legend>
             <table class="table-hover table table-bordered" >
                 <tr>
                     <th class="field-label col-xs-3 active">Date</th>
@@ -133,7 +135,8 @@
                 <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
             </div>
             <button class="btn btn-primary" ng-click="console.log(family);save();">Save</button>
-            <button class="btn btn-danger" ng-click="newDonation = {};">Clear</button>
+            <button class="btn btn-danger" ng-click="$event.preventDefault(); family = {};newChild = {};newDonation={};">Clear/New Family</button>
+       </form>>
         </div>
     </uib-tab>
 </uib-tabset>

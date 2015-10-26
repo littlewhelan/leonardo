@@ -99,7 +99,7 @@ router.get('/', function (req, res, next) {
 					city:rows[0].emerCity,
 					state:rows[0].emerState,
 					phone:rows[0].emerPhone,
-					//notes:rows[0].emerNotes,
+					notes:rows[0].emerNotes
 
 				};
 
@@ -343,14 +343,13 @@ router.put('/', function (req, res, next) {
 			family.emergecny = {};
 		}
 		con.query(updateFam.mainFam, [family.adultOne.firstName, family.adultOne.lastName, family.adultOne.cell,
-			family.adultOne.work, family.adultOne.email, family.adultOne.company, family.adultOne.addressOne,
+			family.adultOne.work,family.adultOneMain, family.adultOne.email, family.adultOne.company, family.adultOne.addressOne,
 			family.adultOne.addressTwo, family.adultOne.city, family.adultOne.state, family.adultOne.zip, family.adultOne.notes,
-			family.adultTwo.firstName, family.adultTwo.lastName, family.adultTwo.cell, family.adultTwo.work, family.adultTwo.email,
+			family.adultTwo.firstName, family.adultTwo.lastName, family.adultTwo.cell, family.adultTwo.work, family.adultTwoMain, family.adultTwo.email,
 			family.adultTwo.company, family.adultTwo.addressOne, family.adultTwo.addressTwo, family.adultTwo.city,
 			family.adultTwo.state, family.adultTwo.zip, family.adultTwo.notes,
 			family.emergency.firstName, family.emergency.lastName, family.emergency.phone, family.emergency.addressOne,
-			family.emergency.addressTwo, family.emergency.city, family.emergency.state, family.emergency.zip,
-			family.mainPhone, family.id], function (err, res) {
+			family.emergency.addressTwo, family.emergency.city, family.emergency.state, family.emergency.zip, family.emergency.notes, family.id], function (err, res) {
 			if (err) {
 				console.log("error updating family");
 				throw err;
