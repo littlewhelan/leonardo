@@ -138,7 +138,7 @@
                 <label for="EmS" class="col-xs-6 col-sm-3">State</label>
                 <label for="EmP" class="col-xs-6 col-sm-3">Phone</label>
                 ​
-                <input ng-model="family.emergency.zip" id="EmZ" ng-show="edit" class="js-validatecol-md-3 col-sm-4 col-xs-6"  type="text" placeholder="Zip Code" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip" ng-blur="validateInput('zip', 'EmZ');">
+                <input ng-model="family.emergency.zip" id="EmZ" ng-show="edit" class="js-validate col-md-3 col-sm-4 col-xs-6"  type="text" placeholder="Zip Code" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip" ng-blur="validateInput('zip', 'EmZ');">
                 <span ng-hide="edit" class="col-xs-6 col-sm-3">{{family.emergency.zip}}</span>
                 <input ng-model="family.emergency.city" id="EmCty" ng-show="edit" class="js-validate col-md-3 col-sm-4 col-xs-6" type="text" placeholder="City" data-placeholder="City" data-invalid="Valid city: (a-z)" data-type="city" ng-blur="validateInput('city', 'EmCty');">
                 <span ng-hide="edit" class="col-xs-6 col-sm-3">{{family.emergency.city}}</span>
