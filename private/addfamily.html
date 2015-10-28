@@ -64,27 +64,25 @@
                 <legend>Children</legend>
                 <table class="table-hover table table-bordered" >
                     <tr>
-                        <th class="field-label col-xs-3 active">First Name</th>
-                        <th class="field-label col-xs-3 active">Last Name</th>
-                        <th class="field-label col-xs-3 active">Birthday</th>
-                        <th class="field-label col-xs-3 active">School</th>
-                        <th class="field-label col-xs-3 active">Cell</th>
-                        <th class="field-label col-xs-3 active">Email</th>
-                        <th class="field-label col-xs-3 active">Notes</th>
-                        <th class="field-label col-xs-3 active">Del</th>
+                        <th class="field-label col-xs-2 active">First Name</th>
+                        <th class="field-label col-xs-2 active">Last Name</th>
+                        <th class="field-label col-xs-2 active">Birthday</th>
+                        <th class="field-label col-xs-2 active">School</th>
+                        <th class="field-label col-xs-2 active">Cell</th>
+                        <th class="field-label col-xs-2 active">Email</th>
+                        <th class="field-label col-xs-2 active">Del</th>
                     </tr>
                     <tr ng-repeat="child in family.children">
-                        <td class="field-label col-xs-3 active" ng-click="editChild($index)">{{child.firstName}}</td>
-                        <td class="field-label col-xs-3 active" ng-click="editChild($index)">{{child.lastName}}</td>
-                        <td class="field-label col-xs-3 active" ng-click="editChild($index)">{{child.birthdate}}</td>
-                        <td class="field-label col-xs-3 active" ng-click="editChild($index)">{{child.school}}</td>
-                        <td class="field-label col-xs-3 active" ng-click="editChild($index)">{{child.cell}}</td>
-                        <td class="field-label col-xs-3 active" ng-click="editChild($index)">{{child.email}}</td>
-                        <td class="field-label col-xs-3 active" ng-click="editChild($index)">{{child.notes}}</td>
-                        <td class="field-label col-xs-3 active"><button ng-click="removeChild($index);">X</button></td>
+                        <td class="field-label col-xs-2 active" ng-click="editChild($index)">{{child.firstName}}</td>
+                        <td class="field-label col-xs-2 active" ng-click="editChild($index)">{{child.lastName}}</td>
+                        <td class="field-label col-xs-2 active" ng-click="editChild($index)">{{child.birthdate|date:'MM/dd/yyyy'}}</td>
+                        <td class="field-label col-xs-2 active" ng-click="editChild($index)">{{child.school}}</td>
+                        <td class="field-label col-xs-2 active" ng-click="editChild($index)">{{child.cell}}</td>
+                        <td class="field-label col-xs-2 active" ng-click="editChild($index)">{{child.email}}</td>
+                        <td class="field-label col-xs-2 active"><button ng-click="removeChild($index);">X</button></td>
                     </tr>
                 </table>
-
+                ​
                 <hr/>
                 <input ng-model="newChild.firstName" id="KFN" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KFN');" />
                 <input ng-model="newChild.lastName" id="KlN" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KLN');" />
@@ -93,50 +91,50 @@
                 <input ng-model="newChild.cell" id="KC" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Cell Phone" data-placeholder="Cell Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'KC');">
                 <input ng-model="newChild.email" id="KE" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'KE');">
                 <textarea ng-model="newChild.notes" id="KN" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'KN');"></textarea>
-
-            <!--next / close buttons -->
-            <div>
-                <label for="addKid">Next Child</label>
-                <button id="addKid" type="button" class="btn btn-danger" ng-click="addChild()">+</button>
-
-            </div>
-
-            <button class="btn btn-primary" >Save</button>
-            <button class="btn btn-danger" ng-click="$event.preventDefault(); family = {};newChild = {};newDonation={};">Clear/New Family</button>
+                ​
+                <!--next / close buttons -->
+                <div>
+                    <label for="addKid">Next Child</label>
+                    <button id="addKid" type="button" class="btn btn-danger" ng-click="addChild()">+</button>
+                    ​
+                </div>
+                ​
+                <button class="btn btn-primary" >Save</button>
+                <button class="btn btn-danger" ng-click="$event.preventDefault(); family = {};newChild = {};newDonation={};">Clear/New Family</button>
             </form>
         </div>
     </uib-tab>
     <uib-tab heading="Donations">
         <div class="well well-sm">
             <form ng-click="save()">
-             <legend>Donations</legend>
-            <table class="table-hover table table-bordered" >
-                <tr>
-                    <th class="field-label col-xs-3 active">Date</th>
-                    <th class="field-label col-xs-3 active">Amount</th>
-                    <th class="field-label col-xs-3 active">Notes</th>
-                    <th class="field-label col-xs-3 active">Delete</th>
-                </tr>
-                <tr ng-repeat="donation in family.donations">
-                    <td class="field-label col-xs-3 active">{{donation.date}}</td>
-                    <td class="field-label col-xs-3 active">{{donation.amount}}</td>
-                    <td class="field-label col-xs-3 active">{{donation.notes}}</td>
-                    <td class="field-label col-xs-3 active"><button ng-click="family.donations.splice($index, 1);">X</button></td>
-                </tr>
-            </table>
-
-            <input id="FDD" ng-model="newDonation.date" class="js-validate form-control" type="date" placeholder="Date (YYYY-MM-DD)" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="date" ng-blur="validateInput('date', 'FDD');">
-            <input id="FDA" ng-model="newDonation.amount" class="js-validate form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'FDA');">
-            <textarea id="FDN" ng-model="newDonation.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'FDN');"></textarea>
-            <!--save / close buttons -->
-
-            <div>
-                <label for="addDonation">Add Donation</label>
-                <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
-            </div>
-            <button class="btn btn-primary" ng-click="console.log(family);save();">Save</button>
-            <button class="btn btn-danger" ng-click="$event.preventDefault(); family = {};newChild = {};newDonation={};">Clear/New Family</button>
-       </form>>
+                <legend>Donations</legend>
+                <table class="table-hover table table-bordered" >
+                    <tr>
+                        <th class="field-label col-xs-3 active">Date</th>
+                        <th class="field-label col-xs-3 active">Amount</th>
+                        <th class="field-label col-xs-3 active">Notes</th>
+                        <th class="field-label col-xs-3 active">Delete</th>
+                    </tr>
+                    <tr ng-repeat="donation in family.donations">
+                        <td class="field-label col-xs-3 active">{{donation.date|date:'MM/dd/yyyy'}}</td>
+                        <td class="field-label col-xs-3 active">{{donation.amount}}</td>
+                        <td class="field-label col-xs-3 active">{{donation.notes}}</td>
+                        <td class="field-label col-xs-3 active"><button ng-click="family.donations.splice($index, 1);">X</button></td>
+                    </tr>
+                </table>
+                ​
+                <input id="FDD" ng-model="newDonation.date" class="js-validate form-control" type="date" placeholder="Date (YYYY-MM-DD)" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="date" ng-blur="validateInput('date', 'FDD');">
+                <input id="FDA" ng-model="newDonation.amount" class="js-validate form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'FDA');">
+                <textarea id="FDN" ng-model="newDonation.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'FDN');"></textarea>
+                <!--save / close buttons -->
+                ​
+                <div>
+                    <label for="addDonation">Add Donation</label>
+                    <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
+                </div>
+                <button class="btn btn-primary" ng-click="console.log(family);save();">Save</button>
+                <button class="btn btn-danger" ng-click="$event.preventDefault(); family = {};newChild = {};newDonation={};">Clear/New Family</button>
+            </form>>
         </div>
     </uib-tab>
 </uib-tabset>
