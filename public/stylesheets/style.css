@@ -42,6 +42,13 @@ th {
 }
 .header-logo{
   text-align: center;
+
+}
+
+.header-logo img {
+  height: 160px;
+  width: auto;
+
 }
 .table{
   margin: 20px;
