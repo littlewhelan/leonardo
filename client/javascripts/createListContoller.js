@@ -1,8 +1,11 @@
-app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService', 'newContactListData', function ($scope, $http, ContactListDataService,newContactListData) {
+app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService', 'newContactListData', 'toastr', function ($scope, $http, ContactListDataService,newContactListData, toastr) {
     $scope.type ={};
     $scope.age={};
     $scope.zip={};
-    $scope.includedEmails =[];
+	// include list needs to be within an object due to the checkboxes being in a table
+	$scope.emails = {};
+    $scope.emails.includedEmails = [];
+	$scope.includedEmails = [];
 	$scope.totalDisplayed = 50;
 	$scope.totalResults = 0;
 
@@ -20,7 +23,10 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
                     $scope.emailList = data;
 					$scope.totalResults = data.length;
                     console.log($scope.emailList);
-                })
+					toastr.success('Loaded '+ $scope.totalResults +' results');
+                }).catch(function () {
+					toastr.error('Failed to load results');
+				});
         }
 
 
@@ -62,8 +68,8 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
     };
     $scope.populateList  = function () {
         //alert('working');
-        console.log($scope.includedEmails);
-        newContactListData.popList($scope.includedEmails);
+        console.log($scope.emails.includedEmails);
+        newContactListData.popList($scope.emails.includedEmails);
             //.then(function() {
             //    $(".search").hide();
             //    $(".endMessage").append("<h2>sent</h2>");
@@ -80,15 +86,13 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
 
 	$scope.checkAll = function(event) {
 		var $button = angular.element(event.target);
-		if($scope.includedEmails.length == $scope.totalResults) {
-			$scope.includedEmails = [];
-			$('#createResults input[type="checkbox"]').attr('checked', false);
+		if($scope.emails.includedEmails.length == $scope.totalResults) {
+			$scope.emails.includedEmails = [];
 			$button.val("Check All");
 		}else{
-			$scope.includedEmails = angular.copy($scope.emailList);
+			$scope.emails.includedEmails = angular.copy($scope.emailList);
 			$button.val("Uncheck All");
 		}
-
 	};
 }]);
 

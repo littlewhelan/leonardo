@@ -1,4 +1,4 @@
-var app = angular.module('leo', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'checklist-model']);
+var app = angular.module('leo', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'checklist-model', 'toastr']);
 
 var prettyDate = "MM/DD/YYgYY";
 var fullDate = "MM/DD/YYYY h:mm:ss a";

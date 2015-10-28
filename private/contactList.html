@@ -54,15 +54,15 @@
                 <td>{{result.email}}</td>
                 <td>{{result.city}}</td>
                 <td>{{result.company}}</td>
-                <td><input type="checkbox" data-checklist-model="includedEmails" data-checklist-value="result"></td>
+                <td><input type="checkbox" data-checklist-model="emails.includedEmails" data-checklist-value="result"></td>
             </tr>
         </table>
     </div>
 
     <row>
-        <input type="button" class="btn btn-default" ng-click="loadMore()" value="Add 50" ng-disabled="totalResults < totalDisplayed || totalResults == 0">
-        <input type="button" class="btn btn-default" ng-click="showAll()" value="Show All {{totalResults}}" ng-disabled="totalResults < totalDisplayed || totalResults == 0">
-        <input type="button" class="btn btn-default" ng-click="populateList()" value="Finalize List" ng-disabled="includedEmails.length == 0">
+        <input type="button" class="btn btn-default" ng-click="loadMore()" value="Add 50" ng-disabled="totalResults == totalDisplayed || totalResults == 0">
+        <input type="button" class="btn btn-default" ng-click="showAll()" value="Show All {{totalResults}}" ng-disabled="totalResults == totalDisplayed || totalResults == 0">
+        <input type="button" class="btn btn-default" ng-click="populateList()" value="Finalize List" ng-disabled="emails.includedEmails.length == 0">
         <input type="button" class="btn btn-default" ng-click="checkAll($event)" value="Check All" ng-disabled="totalResults == 0">
     </row>
 <div id="endMessage"></div>
