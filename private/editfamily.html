@@ -160,8 +160,8 @@
     </uib-tab>
     <uib-tab heading="Additional Members" >
         <legend>Additional Members</legend>
-        <div class="content-container">
-            <form ng-repeat="child in family.children">
+        <div class="content-container" ng-repeat="child in family.children">
+            <form  ng-submit="save()">
                 <label for="KFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="KLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
                 ​
