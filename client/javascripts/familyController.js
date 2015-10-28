@@ -51,6 +51,7 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 
 	// save family
 	$scope.save = function () {
+		alert('this is the save button ');
 		console.log("Save submitted", $scope.family);
 		//alert("Submitted");
 		// if has id, then put
@@ -77,6 +78,7 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		}else {
 			// insert family - has no id
 			console.log("insert family", $scope.family);
+			alert('this is the save else button ');
 			$http({
 				method: 'PUT',
 				url: '/family',
@@ -99,6 +101,23 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		}
 	};
 
+
+	$scope.clear = function() {
+		alert('this is the clear button ');
+
+		$scope.adult = {};
+
+
+
+
+
+	};
+
+
+
+
+
+	;
 	// for appending children to model before saving new family
 	$scope.addChild = function () {
 		console.log("child added", $scope.newChild, $scope.family.children);
@@ -143,6 +162,7 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		};
 		$scope.editingChild = false;
 	};
+
 
 	// adds donation to family object
 	$scope.addDonation = function () {
