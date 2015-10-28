@@ -42,14 +42,14 @@
     ​
     <div id="adultSearchName" class="table">
 
-        <table class="table-hover table table-bordered">
+        <table id="createResults" class="table-hover table table-bordered">
             <tr>
                 <th class="field-label col-xs-3 active">Name</th>
                 <th class="field-label col-xs-4 active">Email</th>
                 <th class="field-label col-xs-2 active">City</th>
                 <th class="field-label col-xs-3 active">Company</th>
             </tr>
-            <tr ng-repeat="result in emailList" id="{{result.email}}">
+            <tr ng-repeat="result in emailList | limitTo:totalDisplayed" id="{{result.email}}">
                 <td>{{result.firstName}} {{result.lastName}}</td>
                 <td>{{result.email}}</td>
                 <td>{{result.city}}</td>
@@ -59,7 +59,12 @@
         </table>
     </div>
 
-<input type="button" class="btn btn-default" ng-click="populateList()" value="Add Emails To List">
+    <row>
+        <input type="button" class="btn btn-default" ng-click="loadMore()" value="Add 50" ng-disabled="totalResults < totalDisplayed || totalResults == 0">
+        <input type="button" class="btn btn-default" ng-click="showAll()" value="Show All {{totalResults}}" ng-disabled="totalResults < totalDisplayed || totalResults == 0">
+        <input type="button" class="btn btn-default" ng-click="populateList()" value="Finalize List" ng-disabled="includedEmails.length == 0">
+        <input type="button" class="btn btn-default" ng-click="checkAll($event)" value="Check All" ng-disabled="totalResults == 0">
+    </row>
 <div id="endMessage"></div>
 
 </div>

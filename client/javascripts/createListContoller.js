@@ -3,11 +3,13 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
     $scope.age={};
     $scope.zip={};
     $scope.includedEmails =[];
-
+	$scope.totalDisplayed = 50;
+	$scope.totalResults = 0;
 
     $scope.emailList = [ ];
 
     $scope.searchListBtn = function () {
+		$scope.emailList = [];
 
 
         //THIS WORKS  -- will search by zip
@@ -16,6 +18,7 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
             ContactListDataService.makeDataCall('zip', $scope.zip.data)
                 .then(function (data) {
                     $scope.emailList = data;
+					$scope.totalResults = data.length;
                     console.log($scope.emailList);
                 })
         }
@@ -27,6 +30,7 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
             age.then(function (data) {
                 console.log(data);
                 $scope.emailList = data;
+				$scope.totalResults = data.length;
             });
         }
 
@@ -35,6 +39,7 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
             var fam = ContactListDataService.makeDataCall('family', '');
             fam.then(function (data) {
                 $scope.emailList = data;
+				$scope.totalResults = data.length;
                 console.log(data);
             });
         }
@@ -44,6 +49,7 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
             var comp = ContactListDataService.makeDataCall('company', '');
             comp.then(function (data) {
                 $scope.emailList = data;
+				$scope.totalResults = data.length;
                 console.log(data);
             });
         }
@@ -64,6 +70,26 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
             //});
   };
 
+	$scope.loadMore = function () {
+		$scope.totalDisplayed += 50;
+	};
+
+	$scope.showAll = function () {
+		$scope.totalDisplayed = $scope.totalResults;
+	};
+
+	$scope.checkAll = function(event) {
+		var $button = angular.element(event.target);
+		if($scope.includedEmails.length == $scope.totalResults) {
+			$scope.includedEmails = [];
+			$('#createResults input[type="checkbox"]').attr('checked', false);
+			$button.val("Check All");
+		}else{
+			$scope.includedEmails = angular.copy($scope.emailList);
+			$button.val("Uncheck All");
+		}
+
+	};
 }]);
 
 
