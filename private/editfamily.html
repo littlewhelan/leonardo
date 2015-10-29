@@ -3,7 +3,7 @@
         ​
         <!--span is information retrieved from DB-->
         <!--inputs are editable after click-->
-        <form ng-submit="save();edit = !edit" id="EditFamInfoForm">
+        <form id="EditFamInfoForm">
             <legend class="adult">Adult1</legend>
             <div class="content-container">
                 <label for="A1FN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
@@ -108,7 +108,7 @@
                 <!--edit / close buttons -->
             </div>
             <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-            <button ng-show="edit" class="btn btn-primary">Save</button>
+            <button ng-click="save();edit = !edit" ng-show="edit" class="btn btn-primary">Save</button>
             <button type="reset" ng-show="edit" ng-click="edit = !edit;clearFamily(['EditFamInfoForm', 'EditFamEmerForm', 'EditFamChildrenForm', 'EditFamDonationsForm'])" class="btn btn-danger">Cancel</button>
         </form>
         ​
@@ -116,7 +116,7 @@
     <uib-tab heading="Emergency Contact">
         <legend>Emergency Contact</legend>
         <div class="content-container">
-            <form ng-submit="save();edit = !edit" id="EditFamEmerForm">
+            <form id="EditFamEmerForm">
                 <label for="EmFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="EmLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
                 ​
@@ -154,14 +154,14 @@
             </form>
         </div>
         <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
+        <button ng-show="edit"  ng-click="save();edit = !edit"  class="btn btn-primary">Save</button>
         <button type="reset" ng-show="edit" ng-click="edit = !edit;clearFamily(['EditFamInfoForm', 'EditFamEmerForm', 'EditFamChildrenForm', 'EditFamDonationsForm'])" class="btn btn-danger">Cancel</button>
         ​
     </uib-tab>
     <uib-tab heading="Additional Members" >
         <legend>Additional Members</legend>
         <div class="content-container" ng-repeat="child in family.children">
-            <form  ng-submit="save();edit = !edit">
+            <form>
                 <label for="KFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="KLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
                 ​
@@ -210,7 +210,7 @@
 
         <!--edit / close buttons -->
         <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
+        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary" ng-click="save();edit = !edit">Save</button>
         <button type="reset" ng-show="edit" ng-click="edit = !edit;clearFamily(['EditFamInfoForm', 'EditFamEmerForm', 'EditFamChildrenForm', 'EditFamDonationsForm'])" class="btn btn-danger">Cancel</button>
         ​
     </uib-tab>
@@ -235,7 +235,7 @@
             </div>
             <!--edit / close buttons -->
             <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-            <button ng-show="edit" class="btn btn-primary">Save</button>
+            <button ng-show="edit" class="btn btn-primary" ng-click="save();edit = !edit">Save</button>
             <button type="reset" ng-show="edit" ng-click="edit = !edit;clearFamily(['EditFamInfoForm', 'EditFamEmerForm', 'EditFamChildrenForm', 'EditFamDonationsForm'])" class="btn btn-danger">Cancel</button>
             <!--shows when editable\/\/\/ -->
             ​
