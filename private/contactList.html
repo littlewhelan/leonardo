@@ -1,11 +1,10 @@
 <div class="row">
-    <div  class="newContactList container-fluid">
+    <div  class="newContactList container-fluid" ng-hide="hide">
         <form name="newListForm" ng-controller="newContactListController as newList"  ng-submit="createList(); hide()" novalidate>
-            <legend>Create New Contact List</legend>
                 <div class="row">
-                    <div class="input-group">
+                    <div class="input-group" >
                         <span class="input-group-btn"><input id="submit" class="btn btn-success" type="submit"  value="Create"></span>
-                        <input type="text" class="form-control" ng-model="listname.input" placeholder="New Contact List">
+                        <input type="text" class="form-control" ng-model="listname.input" placeholder="New Contact List Name">
                     </div>
                 </div>
         </form>
@@ -17,8 +16,6 @@
             ​
             <form id="listType" ng-submit="searchListBtn()" ng-model="match">
                 <fieldset>
-                    <legend>List Name</legend>
-
                     <input name="type" type="radio" id="corp" ng-model="type" ng-value="'corp'">
                     <label for="corp">Corporation</label>
                     ​
