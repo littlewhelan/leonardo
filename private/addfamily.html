@@ -33,11 +33,9 @@
                 <input id="A2Co" ng-model="family.adultTwo.company" name="company" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Company" data-placeholder="Company" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'A2Co');">
                 <textarea id="A2N" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'A2N');"></textarea>
                 <!--next button -->
-                <button class="btn btn-primary" type = "submit" id ="submit" ng-click="save()">Save</button>
-                <button class="btn btn-danger" ng-click="$event.preventDefault();$scope.family = {};newDonation={}; newChild = {};">Clear/New Family</button>
-                <!--<button class="btn btn-primary" type="submit" id="submit">Save</button>-->
-                <!--<button class="btn btn-danger" ng-click="clear()" >Clear/New Family</button>-->
-                <!--<button class="btn btn-danger" ng-click="$event.preventDefault();newChild = {}; newDonation={};console.log('cleared', family, newDonation,newChild);">Clear/New Family</button>-->
+                <button class="btn btn-primary" type = "submit"  ng-click="save()">Save</button>
+                <button class="btn btn-danger" ng-click="$event.preventDefault(); $scope.family = {};newDonation={}; newChild = {}; family={};">Clear/New Family</button>
+
             </form>
         </div>
     </uib-tab>
@@ -55,8 +53,8 @@
                 <input id="EmP" ng-model="family.emergency.phone" class="js-validate col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Phone Number" data-placeholder="Phone Number" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'EmP');">
                 <textarea id="EmN" rows="4" ng-model="family.emergency.notes" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'EmN');"></textarea>
                 <!--next buttons -->
-                <button class="btn btn-primary" type = "submit" id ="submit" ng-click="save()">Save</button>
-                <button class="btn btn-danger" ng-click="$event.preventDefault();$scope.family = {};newDonation={}; newChild = {};">Clear/New Family</button>
+                <button class="btn btn-primary" type = "submit" ng-click="save()">Save</button>
+                <button class="btn btn-danger" ng-click="$event.preventDefault(); $scope.family = {};newDonation={}; newChild = {};family={};">Clear/New Family</button>
             </form>
         </div>
     </uib-tab>
@@ -102,8 +100,8 @@
                     ​
                 </div>
                 ​
-                <button class="btn btn-primary" type = "submit" id ="submit" ng-click="save()">Save</button>
-                <button class="btn btn-danger" ng-click="$event.preventDefault();$scope.family = {};newDonation={}; newChild = {};">Clear/New Family</button>
+                <button class="btn btn-primary" type = "submit" ng-click="save()">Save</button>
+                <button class="btn btn-danger" ng-click="$event.preventDefault(); $scope.family = {};newDonation={}; newChild = {};family={};">Clear/New Family</button>
                 <!--​-->
                 <!--<button class="btn btn-primary" >Save</button>-->
                 <!--<button class="btn btn-danger" ng-click="$event.preventDefault(); family = {};newChild = {};newDonation={};">Clear/New Family</button>-->
@@ -139,7 +137,7 @@
                     <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
                 </div>
                 <button class="btn btn-primary" type = "submit"  ng-click="save()">Save</button>
-                <button class="btn btn-danger" ng-click="$event.preventDefault();$scope.family = {};newDonation={}; newChild = {};">Clear/New Family</button>
+                <button class="btn btn-danger" ng-click="$event.preventDefault();$scope.family = {};newDonation={}; newChild = {};family={};">Clear/New Family</button>
             </form>
         </div>
     </uib-tab>

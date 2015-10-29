@@ -101,23 +101,6 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		}
 	};
 
-
-	$scope.clear = function() {
-		alert('this is the clear button ');
-
-		$scope.adult = {};
-
-
-
-
-
-	};
-
-
-
-
-
-	;
 	// for appending children to model before saving new family
 	$scope.addChild = function () {
 		console.log("child added", $scope.newChild, $scope.family.children);
