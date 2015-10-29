@@ -57,7 +57,7 @@
 
                 <input ng-model="corp.contact.firstName" ng-show="edit" id="CCFN" class="js-validate col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'CCFN');">
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6 ">{{corp.contact.firstName}}</span>
-                <input ng-model="corp.contact.lastName" ng-show="edit" id="CCLN" class="js-validate col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name; (a-z , . - ')" ng-blur="validateInput('name', 'CCLN');">
+                <input ng-model="corp.contact.lastName" ng-show="edit" id="CCLN" class="js-validate col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name; (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'CCLN');">
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6 ">{{corp.contact.lastName}}</span>
 
                 <label for="CCP" class="col-xs-6 col-sm-4">Phone</label>
@@ -66,13 +66,13 @@
 
                 <input ng-model="corp.contact.phone" ng-show="edit" id="CCP" class="js-validate col-xs-6 col-sm-4"  type="text" placeholder="Phone Number"  data-type="phone" data-placeholder="Phone Number" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" ng-blur="validateInput('phone', 'CCP');">
                 <span ng-hide="edit" class="col-xs-6 col-sm-4">{{corp.contact.phone}}</span>
-                <input ng-model="corp.contact.ext" ng-show="edit" id="CCEX" name="extPhone"class="js-validate col-xs-6 col-sm-4"  type="text" placeholder="Ext" data-placeholder="Ext" data-invalid="Valid extension info: (a-z 0-9 : -)" ng-blur="validateInput('ext', 'CCEX');">
+                <input ng-model="corp.contact.ext" ng-show="edit" id="CCEX" name="extPhone"class="js-validate col-xs-6 col-sm-4"  type="text" placeholder="Ext" data-placeholder="Ext" data-invalid="Valid extension info: (a-z 0-9 : -)" data-type="ext" ng-blur="validateInput('ext', 'CCEX');">
                 <span ng-hide="edit" class="col-xs-6 col-sm-4">{{corp.contact.ext}}</span>
-                <input ng-model="corp.contact.email" ng-show="edit" id="CCE" class="js-validate col-xs-6 col-sm-4" type="text"  placeholder="Email" data-placeholder="Email" data-invalid="Valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" ng-blur="validateInput('email', 'CCE');">
+                <input ng-model="corp.contact.email" ng-show="edit" id="CCE" class="js-validate col-xs-6 col-sm-4" type="text"  placeholder="Email" data-placeholder="Email" data-invalid="Valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'CCE');">
                 <span ng-hide="edit" class="col-xs-6 col-sm-4">{{corp.contact.email}}</span>
 
                 <label for="CCN" class="block-input">Notes</label>
-                <textarea ng-model="corp.contact.notes" ng-show="edit" id="CCN" rows="4" class="js-validate form-control"  placeholder="Notes" data-type="notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" ng-blur="validateInput('notes', 'CCN');"></textarea>
+                <textarea ng-model="corp.contact.notes" ng-show="edit" id="CCN" rows="4" class="js-validate form-control"  placeholder="Notes"  data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CCN');"></textarea>
                 <span ng-hide="edit"  class="block-input">{{corp.contact.notes}}</span>
                 <!--next buttons -->
                 <button type="button" ng-hide="edit" ng-click="edit = !edit" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
