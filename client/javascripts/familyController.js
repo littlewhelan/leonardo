@@ -1,5 +1,5 @@
 //edit family modal template
-app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', 'validService', function ($scope, $uibModal, $log, ResultService, $http, validService) {
+app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', 'validService', 'toastr','dateService', function ($scope, $uibModal, $log, ResultService, $http, validService, toastr, dateService) {
 	// sets validation from service for dom calls
 	$scope.validateInput = validService.validateInput;
 	//sends the adults and kids after the results have been organized
@@ -71,9 +71,12 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 	// save family
 	$scope.save = function () {
 		console.log("Save submitted", $scope.family);
-		//alert("Submitted");
-		// if has id, then put
+		toastr.success('Information saved!');
+		alert("Submitted");
+		// if has id, then post
+
 		if(!$scope.family.id) {
+
 			if(validService.validateForm(["AddFamInfoForm", "AddFamEmerForm"])) {
 				$http({
 					method: 'POST',
@@ -99,8 +102,8 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 			}
 		}else {
 			if(validService.validateForm(["EditFamInfoForm", "EditFamEmerForm"])) {
-				// insert family - has no id
-				console.log("insert family", $scope.family);
+				// update family - has no id
+				console.log("update family", $scope.family);
 				$http({
 					method: 'PUT',
 					url: '/family',
@@ -133,9 +136,11 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		if($scope.editingChild) {
 			$scope.family.children[$scope.editingChild] = $scope.newChild;
 			$scope.editingChild = false;
+			toastr.success('Child updated!');
 		}else {
 			// else push to array
 			$scope.family.children.push($scope.newChild);
+			toastr.success('Child added!');
 		}
 		$scope.newChild = {};
 	};
@@ -173,10 +178,15 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 
 
 	// adds donation to family object
+
 	$scope.addDonation = function () {
+		var temp = $scope.newDonation;
+		temp.date = dateService.toDB(temp.date);
 		$scope.family.donations.push($scope.newDonation);
 		$scope.newDonation = {};
+		console.log("added donation", temp, $scope.family.donations);
 	};
+
 
 	//// prevent accidental backs
 	//$scope.$on('$locationChangeSuccess', function( event, oldUrl ) {

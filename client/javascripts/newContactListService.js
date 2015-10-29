@@ -36,23 +36,20 @@ app.service('newContactListData', ['ContactListDataService', '$http',
             console.log('getChecked is running');
             l.forEach(
                 function (object) {
+                    this.contactObject =
                     {
-                         this.contactObject =
-                        {
-                            "email_addresses": [
-                                object.email
-                            ],
-                            "first_name":object.firstName,
-                            "last_name": object.lastName,
-                            "company_name": object.company,
-                            "addresses": [{
-                                city: object.city
-                            }]
-                        };
-
-                        console.log(this.contactObject);
-                        importDataArray.push(this.contactObject);
-                    }
+                        "email_addresses": [
+                            object.email || ''
+                        ],
+                        "first_name":object.firstName || '',
+                        "last_name": object.lastName || '',
+                        "company_name": object.company || '',
+                        "addresses": [{
+                            city: object.city || ''
+                        }]
+                    };
+                    console.log(this.contactObject);
+                    importDataArray.push(this.contactObject);
                 }
             );
         }
