@@ -76,7 +76,6 @@ app.service('validService', [function () {
 				}
 			});
 		});
-		console.log($('#CORP').val());
 		return pass;
 	};
 
