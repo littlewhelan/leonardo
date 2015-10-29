@@ -69,6 +69,7 @@ router.get('/', function (req, res, next) {
 				};
 
 				var company = {
+					id: id,
 					info: info,
 					contact: contact,
 					donations: companyDonationsArray

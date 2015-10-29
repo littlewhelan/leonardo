@@ -50,21 +50,38 @@ app.service('validService', [function () {
         }
 
         // if required or trimmed length is not 0, then validate info
-        if($obj.attr('required') || $obj.val().trim().length > 0) {
+        if($obj.attr('required') || $obj.val()) {
             // checks if value matches regex for field type
-            if(!pattern.test($obj.val().trim())) {
+            if(!pattern.test($obj.val().trim()) || $obj.val().trim().length == 0 && $obj.attr('required')) {
                 // if fails, adds invalid class (highlighting), changes placeholder to what should be entered
                 $obj.addClass('invalid').attr('placeholder', $obj.data('invalid')).val('');
                 console.log(type, ' failed test', pattern);
+				return false;
             } else {
                 // if passes, removes invalid class, resets placeholder to default
                 $obj.removeClass('invalid').attr('placeholder', $obj.data('placeholder'));
                 console.log(type, ' passed test', pattern);
+				return true;
             }
         }
     };
 
+	var validateForm = function (forms) {
+		var pass = true;
+		forms.forEach(function (v, i, a) {
+			$('#'+ v +' .js-validate').each(function () {
+				if(validateInput($(this).data('type'), $(this).attr('id')) == false) {
+					console.log($(this).attr('id') +" failed the test "+ $(this).data('type') +" entered info: "+ $(this).val());
+					pass = false;
+				}
+			});
+		});
+		console.log($('#CORP').val());
+		return pass;
+	};
+
     return {
-        validateInput: validateInput
+        validateInput: validateInput,
+		validateForm: validateForm
     };
 }]);

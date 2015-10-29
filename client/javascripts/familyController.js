@@ -15,7 +15,7 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 	$scope.newChild = {};
 	$scope.newDonation = {};
 
-	$scope.clearFamily = function () {
+	$scope.clearFamily = function (formsArray) {
 		$scope.family = {
 			adultOne: {},
 			adultTwo: {},
@@ -25,6 +25,11 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		};
 		$scope.newChild = {};
 		$scope.newDonation = {};
+		formsArray.forEach(function (v) {
+			$('#'+ v +' .js-validate').each(function () {
+				$(this).removeClass('invalid').attr('placeholder', $(this).data('placeholder'));
+			});
+		});
 	};
 
 
@@ -69,47 +74,55 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		//alert("Submitted");
 		// if has id, then put
 		if(!$scope.family.id) {
-			$http({
-				method: 'POST',
-				url: '/family',
-				data: {family: $scope.family}
-			}).then(function (res) {
-				console.log("Posted family, got id ", res.data);
-				$scope.family.id = res.data.id;
-				$scope.family.adultOne = (res.data.adultOne) ? res.data.adultOne : {};
-				$scope.family.adultTwo = (res.data.adultTwo) ? res.data.adultTwo : {};
-				$scope.family.emergency = (res.data.emergency) ? res.data.emergency : {};
-				if($scope.family.children.length) {
-					$scope.family.children = [];
-				}
-				$scope.family.children = (res.data.children) ? res.data.children : [];
-				if($scope.family.donations.length) {
-					$scope.family.donations = [];
-				}
-				$scope.family.donations = (res.data.donations) ? res.data.donations : [];
-			});
+			if(validService.validateForm(["AddFamInfoForm", "AddFamEmerForm"])) {
+				$http({
+					method: 'POST',
+					url: '/family',
+					data: {family: $scope.family}
+				}).then(function (res) {
+					console.log("Posted family, got id ", res.data);
+					$scope.family.id = res.data.id;
+					$scope.family.adultOne = (res.data.adultOne) ? res.data.adultOne : {};
+					$scope.family.adultTwo = (res.data.adultTwo) ? res.data.adultTwo : {};
+					$scope.family.emergency = (res.data.emergency) ? res.data.emergency : {};
+					if ($scope.family.children.length) {
+						$scope.family.children = [];
+					}
+					$scope.family.children = (res.data.children) ? res.data.children : [];
+					if ($scope.family.donations.length) {
+						$scope.family.donations = [];
+					}
+					$scope.family.donations = (res.data.donations) ? res.data.donations : [];
+				});
+			}else {
+				console.log("Add family failed input tests");
+			}
 		}else {
-			// insert family - has no id
-			console.log("insert family", $scope.family);
-			$http({
-				method: 'PUT',
-				url: '/family',
-				data: {family: $scope.family}
-			}).then(function (res) {
-				console.log("Put family, got id ", res.data);
-				$scope.family.id = res.data.id;
-				$scope.family.adultOne = (res.data.adultOne) ? res.data.adultOne : {};
-				$scope.family.adultTwo = (res.data.adultTwo) ? res.data.adultTwo : {};
-				$scope.family.emergency = (res.data.emergency) ? res.data.emergency : {};
-				if($scope.family.children.length) {
-					$scope.family.children = [];
-				}
-				$scope.family.children = (res.data.children) ? res.data.children : [];
-				if($scope.family.donations.length) {
-					$scope.family.donations = [];
-				}
-				$scope.family.donations = (res.data.donations) ? res.data.donations : [];
-			});
+			if(validService.validateForm(["EditFamInfoForm", "EditFamEmerForm"])) {
+				// insert family - has no id
+				console.log("insert family", $scope.family);
+				$http({
+					method: 'PUT',
+					url: '/family',
+					data: {family: $scope.family}
+				}).then(function (res) {
+					console.log("Put family, got id ", res.data);
+					$scope.family.id = res.data.id;
+					$scope.family.adultOne = (res.data.adultOne) ? res.data.adultOne : {};
+					$scope.family.adultTwo = (res.data.adultTwo) ? res.data.adultTwo : {};
+					$scope.family.emergency = (res.data.emergency) ? res.data.emergency : {};
+					if ($scope.family.children.length) {
+						$scope.family.children = [];
+					}
+					$scope.family.children = (res.data.children) ? res.data.children : [];
+					if ($scope.family.donations.length) {
+						$scope.family.donations = [];
+					}
+					$scope.family.donations = (res.data.donations) ? res.data.donations : [];
+				});
+			}else {
+				console.log("Edit family failed input tests");
+			}
 		}
 	};
 

@@ -13,13 +13,18 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 	$scope.newDonation = {};
 	$scope.animationsEnabled = true;
 
-	$scope.clearCorp = function () {
+	$scope.clearCorp = function (formsArray) {
 		$scope.corp = {
 			info:{},
 			contact:{},
 			donations:[]
 		};
 		$scope.newDonation = {};
+		formsArray.forEach(function (v) {
+			$('#'+ v +' .js-validate').each(function () {
+				$(this).removeClass('invalid').attr('placeholder', $(this).data('placeholder'));
+			});
+		});
 	};
 
 	$scope.open = function (size, id) {
@@ -62,40 +67,48 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 		//alert("Submitted");
 		// if has id, then put
 		if(!$scope.corp.id) {
-			$http({
-				method: 'POST',
-				url: '/corporation',
-				data: {corp: $scope.corp}
-			}).then(function (res) {
-				console.log("Posted corp, got id ", res.data);
-				$scope.corp.id = res.data.id;
-				$scope.corp.info = (res.data.info) ? res.data.info : {};
-				$scope.contact = (res.data.contact) ? res.data.contact : {};
-				// initialize donations if there are any
-				if($scope.corp.donations.length) {
-					$scope.corp.donations = [];
-				}
-				$scope.donations = (res.data.donations) ? res.data.donations : {};
-			});
+			if(validService.validateForm(["AddCorpInfoForm", "AddCorpContactForm"])) {
+				$http({
+					method: 'POST',
+					url: '/corporation',
+					data: {corp: $scope.corp}
+				}).then(function (res) {
+					console.log("Posted corp, got id ", res.data);
+					$scope.corp.id = res.data.id;
+					$scope.corp.info = (res.data.info) ? res.data.info : {};
+					$scope.contact = (res.data.contact) ? res.data.contact : {};
+					// initialize donations if there are any
+					if ($scope.corp.donations.length) {
+						$scope.corp.donations = [];
+					}
+					$scope.donations = (res.data.donations) ? res.data.donations : {};
+				});
+			}else {
+				console.log("Add corp input tests failed");
+			}
 		}else {
-			// insert corp - has no id
-			console.log("update corp", $scope.corp);
-			$http({
-				method: 'PUT',
-				url: '/corporation',
-				data: {corp: $scope.corp}
-			}).then(function (res) {
-				console.log("Put corp, got id ", res.data);
+			if(validService.validateForm(["EditCorpInfoForm", "EditCorpContactForm"])) {
+				// insert corp - has no id
+				console.log("update corp", $scope.corp);
+				$http({
+					method: 'PUT',
+					url: '/corporation',
+					data: {corp: $scope.corp}
+				}).then(function (res) {
+					console.log("Put corp, got id ", res.data);
 
-				$scope.corp.id = res.data.id;
-				$scope.corp.info = (res.data.info) ? res.data.info : {};
-				$scope.contact = (res.data.contact) ? res.data.contact : {};
-				// initialize donations if there are any
-				if($scope.corp.donations.length) {
-					$scope.corp.donations = [];
-				}
-				$scope.donations = (res.data.donations) ? res.data.donations : {};
-			});
+					$scope.corp.id = res.data.id;
+					$scope.corp.info = (res.data.info) ? res.data.info : {};
+					$scope.contact = (res.data.contact) ? res.data.contact : {};
+					// initialize donations if there are any
+					if ($scope.corp.donations.length) {
+						$scope.corp.donations = [];
+					}
+					$scope.donations = (res.data.donations) ? res.data.donations : {};
+				});
+			}else {
+				console.log("Edit corp input tests failed");
+			}
 		}
 	};
 

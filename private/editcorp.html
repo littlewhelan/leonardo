@@ -1,9 +1,9 @@
 <uib-tabset justified="true">
     <uib-tab heading="Corporate Information">
-        <legend>Corporate Information</legend>
         <div class="content-container">
-            <form ng-submit="save()">
-                <label for="CN" class="block-input">corp Name</label>
+            <form ng-submit="save();edit = !edit" id="EditCorpInfoForm">
+                <legend>Corporate Information</legend>
+                <label for="CN" class="block-input">Corporation Name</label>
                 <input ng-model="corp.info.name" ng-show="edit" id="CN" name="corpName"  class="js-validate form-control" type="text" placeholder="Corporation Name" data-placeholder="Corporation Name" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'CN');">
                 <span ng-hide="edit" class="block-input">{{corp.info.name}}</span>
 
@@ -40,17 +40,17 @@
                 <label for="CNT" class="block-input">Notes</label>
                 <textarea ng-model="corp.info.notes" ng-show="edit" id="CNT" rows="4" class="js-validate form-control"  placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CNT');"></textarea>
                 <span ng-hide="edit"  class="block-input">{{corp.info.notes}}</span>
-            <!--edit button -->
-            <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
-            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancel</button>
+                <!--edit button -->
+                <button type="button" ng-hide="edit" ng-click="edit = !edit" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
+                <button ng-show="edit" class="btn btn-primary">Save</button>
+                <button type="reset" ng-show="edit" ng-click="edit = !edit;clearCorp(['EditCorpInfoForm', 'EditCorpContactForm', 'EditCorpDonationForm'])" class="btn btn-danger">Cancel</button>
             </form>
         </div>
     </uib-tab>
     <uib-tab heading="Contact Information">
-        <legend>Contact Information</legend>
         <div class="content-container">
-            <form ng-submit="save()">
+            <form ng-submit="save();edit = !edit" id="EditCorpContactForm">
+                <legend>Contact Information</legend>
 
                 <label for="CCFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="CCLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
@@ -75,41 +75,42 @@
                 <textarea ng-model="corp.contact.notes" ng-show="edit" id="CCN" rows="4" class="js-validate form-control"  placeholder="Notes" data-type="notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" ng-blur="validateInput('notes', 'CCN');"></textarea>
                 <span ng-hide="edit"  class="block-input">{{corp.contact.notes}}</span>
                 <!--next buttons -->
-                <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-                <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
-                <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancel</button>
-        </form>
+                <button type="button" ng-hide="edit" ng-click="edit = !edit" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
+                <button ng-show="edit" class="btn btn-primary">Save</button>
+                <button type="reset" ng-show="edit" ng-click="edit = !edit;clearCorp(['EditCorpInfoForm', 'EditCorpContactForm', 'EditCorpDonationForm'])" class="btn btn-danger">Cancel</button>
+            </form>
         </div>
 
 
     </uib-tab>
     <uib-tab heading="Donations">
-        <legend>Donations</legend>
-        <div class="content-container">
-            <table class="table-hover table table-bordered">
-                <tr>
-                    <th class="field-label col-xs-3 active">Date</th>
-                    <th class="field-label col-xs-3 active">Amount</th>
-                    <th class="field-label col-xs-3 active">Notes</th>
-                </tr>
+        <form id="EditCorpDonationsForm" ng-submit="save();edit = !edit">
+            <legend>Donations</legend>
+            <div class="content-container">
+                <table class="table-hover table table-bordered">
+                    <tr>
+                        <th class="field-label col-xs-3 active">Date</th>
+                        <th class="field-label col-xs-3 active">Amount</th>
+                        <th class="field-label col-xs-3 active">Notes</th>
+                    </tr>
 
-                <tr ng-repeat="comp in corp.donations">
-                    <td class="field-label col-xs-3 active">{{comp.date}}</td>
-                    <td class="field-label col-xs-3 active">{{comp.amount}}</td>
-                    <td class="field-label col-xs-3 active">{{comp.notes}}</td>
-                </tr>
+                    <tr ng-repeat="comp in corp.donations">
+                        <td class="field-label col-xs-3 active">{{comp.date}}</td>
+                        <td class="field-label col-xs-3 active">{{comp.amount}}</td>
+                        <td class="field-label col-xs-3 active">{{comp.notes}}</td>
+                    </tr>
 
-            </table>
-        </div>
+                </table>
+            </div>
             <label ng-show="edit">Add Donation</label>
             <button ng-show="edit" type="button" class="btn btn-danger">+</button>
             <input ng-show="edit" id="CDD" class="js-validate form-control" type="date" placeholder="Date" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="date" ng-blur="validateInput('date', 'CDD');">
             <input ng-show="edit" id="CDA" class="js-validate form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'CDA');">
             <textarea ng-show="edit" id="CDN" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CDN');"></textarea>
             <!--save / close buttons -->
-            <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
-            <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancel</button>
-        </div>
+            <button type="button" ng-hide="edit" ng-click="edit = !edit" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
+            <button ng-show="edit" class="btn btn-primary">Save</button>
+            <button type="reset" ng-show="edit" ng-click="edit = !edit;clearCorp(['EditCorpInfoForm', 'EditCorpContactForm', 'EditCorpDonationForm'])" class="btn btn-danger">Cancel</button>
+        </form>
     </uib-tab>
 </uib-tabset>
