@@ -49,6 +49,7 @@ app.service('validService', [function () {
                 break;
         }
 
+		// TODO: if cursor in box and click to add, it throws error saying .val() is undefined
         // if required or trimmed length is not 0, then validate info
         if($obj.attr('required') || $obj.val().trim().length > 0) {
             // checks if value matches regex for field type

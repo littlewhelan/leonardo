@@ -54,49 +54,49 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		console.log("Save submitted", $scope.family);
 		//alert("Submitted");
 		// if has id, then put
-		if(!$scope.family.id) {
-			$http({
-				method: 'POST',
-				url: '/family',
-				data: {family: $scope.family}
-			}).then(function (res) {
-				console.log("Posted family, got id ", res.data);
-				$scope.family.id = res.data.id;
-				$scope.family.adultOne = (res.data.adultOne) ? res.data.adultOne : {};
-				$scope.family.adultTwo = (res.data.adultTwo) ? res.data.adultTwo : {};
-				$scope.family.emergency = (res.data.emergency) ? res.data.emergency : {};
-				if($scope.family.children.length) {
-					$scope.family.children = [];
-				}
-				$scope.family.children = (res.data.children) ? res.data.children : [];
-				if($scope.family.donations.length) {
-					$scope.family.donations = [];
-				}
-				$scope.family.donations = (res.data.donations) ? res.data.donations : [];
-			});
-		}else {
-			// insert family - has no id
-			console.log("insert family", $scope.family);
-			$http({
-				method: 'PUT',
-				url: '/family',
-				data: {family: $scope.family}
-			}).then(function (res) {
-				console.log("Put family, got id ", res.data);
-				$scope.family.id = res.data.id;
-				$scope.family.adultOne = (res.data.adultOne) ? res.data.adultOne : {};
-				$scope.family.adultTwo = (res.data.adultTwo) ? res.data.adultTwo : {};
-				$scope.family.emergency = (res.data.emergency) ? res.data.emergency : {};
-				if($scope.family.children.length) {
-					$scope.family.children = [];
-				}
-				$scope.family.children = (res.data.children) ? res.data.children : [];
-				if($scope.family.donations.length) {
-					$scope.family.donations = [];
-				}
-				$scope.family.donations = (res.data.donations) ? res.data.donations : [];
-			});
-		}
+		//if(!$scope.family.id) {
+		//	$http({
+		//		method: 'POST',
+		//		url: '/family',
+		//		data: {family: $scope.family}
+		//	}).then(function (res) {
+		//		console.log("Posted family, got id ", res.data);
+		//		$scope.family.id = res.data.id;
+		//		$scope.family.adultOne = (res.data.adultOne) ? res.data.adultOne : {};
+		//		$scope.family.adultTwo = (res.data.adultTwo) ? res.data.adultTwo : {};
+		//		$scope.family.emergency = (res.data.emergency) ? res.data.emergency : {};
+		//		if($scope.family.children.length) {
+		//			$scope.family.children = [];
+		//		}
+		//		$scope.family.children = (res.data.children) ? res.data.children : [];
+		//		if($scope.family.donations.length) {
+		//			$scope.family.donations = [];
+		//		}
+		//		$scope.family.donations = (res.data.donations) ? res.data.donations : [];
+		//	});
+		//}else {
+		//	// insert family - has no id
+		//	console.log("insert family", $scope.family);
+		//	$http({
+		//		method: 'PUT',
+		//		url: '/family',
+		//		data: {family: $scope.family}
+		//	}).then(function (res) {
+		//		console.log("Put family, got id ", res.data);
+		//		$scope.family.id = res.data.id;
+		//		$scope.family.adultOne = (res.data.adultOne) ? res.data.adultOne : {};
+		//		$scope.family.adultTwo = (res.data.adultTwo) ? res.data.adultTwo : {};
+		//		$scope.family.emergency = (res.data.emergency) ? res.data.emergency : {};
+		//		if($scope.family.children.length) {
+		//			$scope.family.children = [];
+		//		}
+		//		$scope.family.children = (res.data.children) ? res.data.children : [];
+		//		if($scope.family.donations.length) {
+		//			$scope.family.donations = [];
+		//		}
+		//		$scope.family.donations = (res.data.donations) ? res.data.donations : [];
+		//	});
+		//}
 	};
 
 	// for appending children to model before saving new family
@@ -150,6 +150,18 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		$scope.newDonation = {};
 	};
 
+
+	$scope.clearFamily = function () {
+		$scope.family = {
+			adultOne: {},
+			adultTwo: {},
+			emergency: {},
+			children: [],
+			donations: []
+		};
+		$scope.newChild = {};
+		$scope.newDonation = {};
+	};
 	//// prevent accidental backs
 	//$scope.$on('$locationChangeSuccess', function( event, oldUrl ) {
 	//	console.log("old url: ", oldUrl);

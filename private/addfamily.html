@@ -34,7 +34,7 @@
                 <textarea id="A2N" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'A2N');"></textarea>
                 <!--next button -->
                 <button class="btn btn-primary">Save</button>
-                <button class="btn btn-danger" ng-click="$event.preventDefault();newChild = {}; newDonation={};console.log('cleared', family, newDonation,newChild);">Clear/New Family</button>
+                <button class="btn btn-danger" ng-click="$event.preventDefault();clearFamily();">Clear/New Family</button>
             </form>
         </div>
     </uib-tab>
@@ -85,7 +85,7 @@
                 ​
                 <hr/>
                 <input ng-model="newChild.firstName" id="KFN" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KFN');" />
-                <input ng-model="newChild.lastName" id="KlN" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KLN');" />
+                <input ng-model="newChild.lastName" id="KLN" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KLN');" />
                 <input ng-model="newChild.birthdate" id="KDB" class="js-validate col-md-6 col-sm-6 col-xs-6" type="date" placeholder="Birthday (YYYY-MM-DD)" data-placeholder="Birthday (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 1990 or later" data-type="date" ng-blur="validateInput('birthdate', 'KBD');" />
                 <input ng-model="newChild.school" id="KS" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School" data-placeholder="Company" data-invalid="Valid school name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'KS');" />
                 <input ng-model="newChild.cell" id="KC" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Cell Phone" data-placeholder="Cell Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'KC');">
