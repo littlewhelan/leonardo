@@ -3,7 +3,7 @@
         ​
         <!--span is information retrieved from DB-->
         <!--inputs are editable after click-->
-        <form ng-submit="save()">
+        <form ng-submit="save();edit = !edit" id="EditFamInfoForm">
             <legend class="adult">Adult1</legend>
             <div class="content-container">
                 <label for="A1FN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
@@ -106,17 +106,17 @@
                 <textarea ng-model="family.adultTwo.notes" id="A2N" ng-show="edit" rows="4" class="js-validate form-control"  placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'A2N');" ></textarea>
                 <span ng-hide="edit" class="block-input">{{family.adultTwo.notes}}</span>
                 <!--edit / close buttons -->
+            </div>
+            <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
+            <button ng-show="edit" class="btn btn-primary">Save</button>
+            <button type="reset" ng-show="edit" ng-click="edit = !edit;clearFamily(['EditFamInfoForm', 'EditFamEmerForm', 'EditFamChildrenForm', 'EditFamDonationsForm'])" class="btn btn-danger">Cancel</button>
         </form>
-        </div>
-        <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
-        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancel</button>
         ​
     </uib-tab>
     <uib-tab heading="Emergency Contact">
         <legend>Emergency Contact</legend>
         <div class="content-container">
-            <form ng-submit="save()">
+            <form ng-submit="save();edit = !edit" id="EditFamEmerForm">
                 <label for="EmFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="EmLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
                 ​
@@ -155,13 +155,13 @@
         </div>
         <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
         <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
-        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancel</button>
+        <button type="reset" ng-show="edit" ng-click="edit = !edit;clearFamily(['EditFamInfoForm', 'EditFamEmerForm', 'EditFamChildrenForm', 'EditFamDonationsForm'])" class="btn btn-danger">Cancel</button>
         ​
     </uib-tab>
     <uib-tab heading="Additional Members" >
         <legend>Additional Members</legend>
         <div class="content-container" ng-repeat="child in family.children">
-            <form  ng-submit="save()">
+            <form  ng-submit="save();edit = !edit">
                 <label for="KFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
                 <label for="KLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
                 ​
@@ -211,38 +211,39 @@
         <!--edit / close buttons -->
         <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
         <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
-        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancel</button>
+        <button type="reset" ng-show="edit" ng-click="edit = !edit;clearFamily(['EditFamInfoForm', 'EditFamEmerForm', 'EditFamChildrenForm', 'EditFamDonationsForm'])" class="btn btn-danger">Cancel</button>
         ​
     </uib-tab>
     <uib-tab heading="Donations">
-        <legend>Donations</legend>
-        <div class="content-container">
-            <table class="table-hover table table-bordered">
-                <tr>
-                    <th class="field-label col-xs-3 active">Date</th>
-                    <th class="field-label col-xs-3 active">Amount</th>
-                    <th class="field-label col-xs-3 active">Notes</th>
-                </tr>
-                ​
-                <tr ng-repeat="donate in family.donations">
-                    <td class="field-label col-xs-3 active">{{donate.date}}</td>
-                    <td class="field-label col-xs-3 active">{{donate.amount}}</td>
-                    <td class="field-label col-xs-3 active">{{donate.notes}}</td>
-                </tr>
+        <form id="EditFamDonationsForm" ng-submit="save();edit = !edit">
+            <legend>Donations</legend>
+            <div class="content-container">
+                <table class="table-hover table table-bordered">
+                    <tr>
+                        <th class="field-label col-xs-3 active">Date</th>
+                        <th class="field-label col-xs-3 active">Amount</th>
+                        <th class="field-label col-xs-3 active">Notes</th>
+                    </tr>
+                    ​
+                    <tr ng-repeat="donate in family.donations">
+                        <td class="field-label col-xs-3 active">{{donate.date}}</td>
+                        <td class="field-label col-xs-3 active">{{donate.amount}}</td>
+                        <td class="field-label col-xs-3 active">{{donate.notes}}</td>
+                    </tr>
 
-            </table>
-        </div>
-        <!--edit / close buttons -->
-        <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary">Save</button>
-        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-danger">Cancel</button>
-        <!--shows when editable\/\/\/ -->
-        ​
-        <label ng-show="edit">Add Donation</label>
-        <button ng-show="edit" type="button" class="btn btn-danger">+</button>
-        <input ng-show="edit" class="js-validate form-control" type="date" placeholder="Date" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="date" ng-blur="validateInput('date', 'FDD');">
-        <input ng-show="edit" class="js-validate form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'FDA');">
-        <textarea ng-show="edit" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'FDN');"></textarea>
-        ​
+                </table>
+            </div>
+            <!--edit / close buttons -->
+            <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
+            <button ng-show="edit" class="btn btn-primary">Save</button>
+            <button type="reset" ng-show="edit" ng-click="edit = !edit;clearFamily(['EditFamInfoForm', 'EditFamEmerForm', 'EditFamChildrenForm', 'EditFamDonationsForm'])" class="btn btn-danger">Cancel</button>
+            <!--shows when editable\/\/\/ -->
+            ​
+            <label ng-show="edit">Add Donation</label>
+            <button ng-show="edit" type="button" class="btn btn-danger">+</button>
+            <input ng-show="edit" class="js-validate form-control" type="date" placeholder="Date" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="date" ng-blur="validateInput('date', 'FDD');">
+            <input ng-show="edit" class="js-validate form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'FDA');">
+            <textarea ng-show="edit" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'FDN');"></textarea>
+        ​</form>
     </uib-tab>
 </uib-tabset>

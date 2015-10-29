@@ -1,41 +1,41 @@
 <uib-tabset justified="true">
     <uib-tab heading="Corporate Information">
         <div class="well well-sm">
-            <form>
+            <form id="AddCorpInfoForm">
                 <legend>Corporate Information</legend>
-                <input id="COMP" ng-model="corp.info.name" name="corpName" class="js-validate form-control" type="text" placeholder="Corporation Name" data-placeholder="Corporation Name" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'CN');" required>
+                <input id="COMP" ng-model="corp.info.name" name="corpName" class="js-validate form-control" type="text" placeholder="Corporation Name" data-placeholder="Corporation Name" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'COMP');" required>
                 <input id="CRA1" ng-model="corp.info.addressOne" name="address1" class="js-validate form-control" type="text" placeholder="Address 1" data-placeholder="Address 1" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'CAR1');">
                 <input id="CRA2" ng-model="corp.info.addressTwo" name="address2"class="js-validate form-control" type="text" placeholder="Address 2" data-placeholder="Address 2" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'CAR2');">
                 <input id="CZ" ng-model="corp.info.zip" name="zip" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Zip Code" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip" ng-blur="validateInput('zip', 'CZ');">
                 <input id="CC" ng-model="corp.info.city" name="city" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="City" data-placeholder="City" data-invalid="Valid city: (a-z)" data-type="city" ng-blur="validateInput('city', 'CC');">
                 <input id="CS" ng-model="corp.info.state" name="state" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="State" data-placeholder="State" data-invalid="Valid state: (a-z)" data-type="state" ng-blur="validateInput('state', 'CS');">
                 <input id="CP" ng-model="corp.info.phone" name="phone" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone" data-placeholder="Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'CP');">
-                <input id=CE" ng-model="corp.info.email" name="email" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'CE');">
+                <input id="CE" ng-model="corp.info.email" name="email" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'CE');">
                 <textarea id="CNT" ng-model="corp.info.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CNT');"></textarea>
                 <!--edit button -->
                 <button class="btn btn-primary" ng-click="save();">Save</button>
-                <button class="btn btn-danger" ng-click="clearCorp();">Clear/New Corporation</button>
+                <button type="reset" class="btn btn-danger" ng-click="clearCorp(['AddCorpInfoForm', 'AddCorpContactForm', 'AddCorpDonationForm']);">Clear/New Corporation</button>
             </form>
         </div>
     </uib-tab>
     <uib-tab heading="Contact Information">
         <div class="well well-sm">
-            <form id="CorpContactForm" >
+            <form id="AddCorpContactForm" >
                 <legend>Contact Information</legend>
                 <input id="CCFN" ng-model="corp.contact.firstName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'CCFN');">
-                <input id="CCLN" ng-model="corp.contact.lastName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name; (a-z , . - ')" ng-blur="validateInput('name', 'CCLN');">
+                <input id="CCLN" ng-model="corp.contact.lastName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name; (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'CCLN');">
                 <input id="CCP" ng-model="corp.contact.phone" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Phone Number" data-type="phone" data-placeholder="Phone Number" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" ng-blur="validateInput('phone', 'CCP');">
                 <input id="CCEX" ng-model="corp.contact.ext" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Ext" data-type="ext" data-placeholder="Ext" data-invalid="Valid extension info: (a-z 0-9 : -)" ng-blur="validateInput('ext', 'CCEX');">
-                <input id="CE" ng-model="corp.contact.email" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Email" data-type="email" data-placeholder="Email" data-invalid="Valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" ng-blur="validateInput('email', 'CCE');">
-                <textarea id="CN" ng-model="corp.contact.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-type="notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" ng-blur="validateInput('notes', 'CCN');"></textarea>
+                <input id="CCE" ng-model="corp.contact.email" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Email" data-type="email" data-placeholder="Email" data-invalid="Valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" ng-blur="validateInput('email', 'CCE');">
+                <textarea id="CCN" ng-model="corp.contact.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-type="notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" ng-blur="validateInput('notes', 'CCN');"></textarea>
                 <!--next buttons -->
-                <button class="btn btn-primary" ng-click="save();";>Save</button>
-                <button class="btn btn-danger" ng-click="clearCorp();">Clear/New Corporation</button>
+                <button class="btn btn-primary" ng-click="save();">Save</button>
+                <button type="reset" class="btn btn-danger" ng-click="clearCorp(['AddCorpInfoForm', 'AddCorpContactForm', 'AddCorpDonationForm']);">Clear/New Corporation</button>
             </form>
         </div>
     </uib-tab>
     <uib-tab heading="Donations">
-        <form name="donationForm" class="well well-sm">
+        <form name="AddCorpDonationForm" class="well well-sm">
             <legend>Donations</legend>
             <table class="table-hover table table-bordered" >
                 <tr>
@@ -53,7 +53,6 @@
             </table>
 
             <input id="CDD" ng-model="newDonation.date" name="date" class="js-date form-control" type="date" placeholder="Date (YYYY-MM-DD)" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="date" ng-blur="validateInput('date', 'CDD');">
-            <span class="help-block" ng-show="donationForm.date.$error.required">Required</span>
             <input id="CDA" ng-model="newDonation.amount" class="js-amount form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'CDA');">
             <textarea id="CDN" ng-model="newDonation.notes" rows="4" class="js-notes form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CDN');"></textarea>
             <!--save / close buttons -->
@@ -63,8 +62,7 @@
             </div>
             <button class="btn btn-primary" ng-click="save();">Save</button>
             <!--<button class="btn btn-primary" ng-click="console.log(corp);save();">Save</button>-->
-            <button class="btn btn-danger" ng-click="clearCorp();">Clear/New Corporation</button>
+            <button type="reset" class="btn btn-danger" ng-click="clearCorp(['AddCorpInfoForm', 'AddCorpContactForm', 'AddCorpDonationForm']);">Clear/New Corporation</button>
         </form>
-        </div>
     </uib-tab>
 </uib-tabset>
