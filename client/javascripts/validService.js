@@ -11,13 +11,13 @@ app.service('validService', [function () {
             case "city":
             case "state":
                 // allows and alpha chars, as well as white space and a few extra chars
-                pattern = /^[a-zA-z\s,.'-]+$/;
+                pattern = /^[a-zA-z\s,.'-]{0,28}/;
                 break;
             case "corpName":
-                pattern = /^[a-zA-Z0-9\s,.?@!#'~*_;+-]+$/;
+                pattern = /^[a-zA-Z0-9\s,.?@!#'~*_;+-]{0,75}/;
                 break;
             case "address":
-                pattern = /^[a-zA-Z0-9\s,.?@!#'~*_;+:()%&-]+$/;
+                pattern = /^[a-zA-Z0-9\s,.?@!#'~*_;+:()%&-]{0,50}/;
                 break;
             case "zip":
                 pattern = /^[0-9]{5}$/;
@@ -29,7 +29,7 @@ app.service('validService', [function () {
                 pattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
                 break;
             case "notes":
-                pattern = /^[a-zA-Z0-9\s,.?@!#'~*_;+:()%&<>\[\]{}\-="|`\\\/]+$/;
+                pattern = /^[a-zA-Z0-9\s,.?@!#'~*_;+:()%&<>\[\]{}\-="|`\\\/]{0,250}/;
                 break;
             case "ext":
                 pattern = /^[a-zA-Z0-9\s:-]+$/;
