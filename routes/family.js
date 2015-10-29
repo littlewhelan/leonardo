@@ -10,7 +10,7 @@ var validator = require('node-validator');
 var regex = require('../modules/validation');
 
 
-var adultCheck = validator.isObject()
+var adultOneCheck = validator.isObject()
 	.withRequired('firstName', validator.isString({ regex: regex.name }))
 	.withOptional('lastName', validator.isString({ regex: regex.name}))
 	.withOptional('addressOne', validator.isString({ regex: regex.address }))
@@ -25,8 +25,23 @@ var adultCheck = validator.isObject()
 	.withOptional('email', validator.isString({ regex: regex.email }))
 	.withOptional('notes', validator.isString({ regex: regex.notes }));
 
+var adultTwoCheck = validator.isObject()
+	.withOptional('firstName', validator.isStringOrNull({ regex: regex.name }))
+	.withOptional('lastName', validator.isString({ regex: regex.name}))
+	.withOptional('addressOne', validator.isString({ regex: regex.address }))
+	.withOptional('addressTwo', validator.isString({ regex: regex.address }))
+	.withOptional('zip', validator.isString({ regex: regex.zip }))
+	.withOptional('city', validator.isString({ regex: regex.city }))
+	.withOptional('state', validator.isString({ regex: regex.state }))
+	.withOptional('company', validator.isString({regex: regex.corpName}))
+	.withOptional('work', validator.isString({ regex: regex.phone }))
+	.withOptional('cell', validator.isString({ regex: regex.phone }))
+	.withOptional('main', validator.isString({ regex: regex.phone }))
+	.withOptional('email', validator.isString({ regex: regex.email }))
+	.withOptional('notes', validator.isString({ regex: regex.notes }));
+
 var emergencyCheck = validator.isObject()
-	.withRequired('firstName', validator.isString({ regex: regex.name }))
+	.withOptional('firstName', validator.isStringOrNull({ regex: regex.name }))
 	.withOptional('lastName', validator.isString({ regex: regex.name}))
 	.withOptional('addressOne', validator.isString({ regex: regex.address }))
 	.withOptional('addressTwo', validator.isString({ regex: regex.address }))
@@ -37,16 +52,18 @@ var emergencyCheck = validator.isObject()
 	.withOptional('notes', validator.isString({ regex: regex.notes }));
 
 var childrenCheck = validator.isObject()
-	.withRequired('firstName', validator.isString({ regex: regex.name}))
+	.withRequired('firstName', validator.isStringOrNull({ regex: regex.name}))
 	.withOptional('lastName', validator.isString({ regex: regex.name}))
 	.withOptional('email', validator.isString({ regex: regex.email }))
 	.withOptional('cell', validator.isString({ regex: regex.phone }))
 	.withOptional('birthdate', validator.isString({ regex: regex.birthdate }))
-	.withOptional('notes', validator.isString({ regex: regex.notes }));
+	.withOptional('notes', validator.isString({ regex: regex.notes }))
+	.withOptional('school', validator.isString({ regex: regex.corpName }));
 
 var baseFamCheck = validator.isObject()
-	.withRequired('adultOne', adultCheck)
-	.withOptional('adultTwo', adultCheck)
+	.withOptional('id', validator.isString({regex: /^[0-9]+$/ }))
+	.withRequired('adultOne', adultOneCheck)
+	.withOptional('adultTwo', adultTwoCheck)
 	.withOptional('emergency', emergencyCheck)
 	.withOptional('children', validator.isArray(childrenCheck))
 	.withOptional('donations', validator.isArray(donationsCheck));
@@ -56,22 +73,20 @@ var donationsCheck = validator.isObject()
 	.withRequired('date', validator.isString({ regex: regex.date }))
 	.withOptional('notes', validator.isString({ regex: regex.notes }));
 
-var idCheck = validator.isInteger();
+var idCheck = validator.isString({regex: /^[0-9]+$/ });
 
 // get request for one family by id
 router.get('/', function (req, res, next) {
+	var id = req.query.id;
 	// check the id to make sure it's ok
-	validator.run(idCheck, req.body.id, function (errCount, err) {
-		if(err) {
+	validator.run(idCheck, id, function (errCount, err) {
+		if(errCount > 0) {
 			return res.sendStatus(400);
 		}
 	});
-	console.log("in get route");
+	console.log("in get route for family", id);
 
 	var con = mysql.createConnection(db);
-
-	var id = req.query.id;
-	console.log("received family id", id);
 
 	con.connect(function (err) {
 
@@ -188,8 +203,8 @@ router.get('/', function (req, res, next) {
 						con.end();
 
 
-						console.log('family object',family);
-						res.send(family);
+						console.log('family object', family, " FINAL SEND");
+						res.status(200).send(family);
 
 					})
 				})
@@ -202,7 +217,7 @@ router.get('/', function (req, res, next) {
 });
 
 router.post('/', function (req, res, next) {
-	var family = req.body.family
+	var family = req.body.family;
 	console.log("in post route for families", family);
 	// check all
 	validator.run(baseFamCheck, family, function (errCount, err) {
@@ -359,6 +374,7 @@ router.post('/', function (req, res, next) {
 router.put('/', function (req, res, next) {
 	var family = req.body.family;
 	console.log("In put route for families ", family);
+	console.log("checking if name is null", family.adultTwo.firstName == null);
 
 	// check all
 	validator.run(baseFamCheck, family, function (errCount, err) {

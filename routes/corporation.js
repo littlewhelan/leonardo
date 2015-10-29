@@ -45,7 +45,7 @@ var idCheck = validator.isInteger();
 router.get('/', function (req, res, next) {
 	// check the id to make sure it's ok
 	validator.run(idCheck, req.body.id, function (errCount, err) {
-		if(err) {
+		if(errCount > 0) {
 			return res.sendStatus(400);
 		}
 	});
