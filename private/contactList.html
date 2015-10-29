@@ -1,17 +1,17 @@
 <div class="row">
     <div  class="newContactList container-fluid">
-        <form name="newListForm" ng-controller="newContactListController as newList"  ng-submit="createList();" novalidate>
+        <form name="newListForm" ng-controller="newContactListController as newList"  ng-submit="createList(); hide()" novalidate>
             <legend>Create New Contact List</legend>
                 <div class="row">
                     <div class="input-group">
-                        <span class="input-group-btn"><input id="submit"  class="btn btn-success" type="submit"  value="Create"></span>
+                        <span class="input-group-btn"><input id="submit" class="btn btn-success" type="submit"  value="Create"></span>
                         <input type="text" class="form-control" ng-model="listname.input" placeholder="New Contact List">
                     </div>
                 </div>
         </form>
     </div>
 </div>
-<div ng-controller="createListSearch">
+<div ng-show="hide" ng-controller="createListSearch">
     <div class="search-container fluid-container">
         <div class="row">
             ​
@@ -36,11 +36,15 @@
                     <input class="btn btn-default" type="submit" value="Submit">
                 </fieldset>
             </form>
+            <row>
+                <input type="button" class="btn btn-default" ng-click="populateList()" value="Finalize List" ng-disabled="emails.includedEmails.length == 0">
+                <input type="button" class="btn btn-default" ng-click="checkAll($event)" value="Check All" ng-disabled="totalResults == 0">
+            </row>
         </div>
     </div>
     <!--</div>-->
     ​
-    <div id="adultSearchName" class="table">
+    <div ng-show="hide" id="adultSearchName" class="table">
 
         <table id="createResults" class="table-hover table table-bordered">
             <tr>
@@ -59,11 +63,9 @@
         </table>
     </div>
 
-    <row>
+    <row ng-show="hide">
         <input type="button" class="btn btn-default" ng-click="loadMore()" value="Add 50" ng-disabled="totalResults == totalDisplayed || totalResults == 0">
         <input type="button" class="btn btn-default" ng-click="showAll()" value="Show All {{totalResults}}" ng-disabled="totalResults == totalDisplayed || totalResults == 0">
-        <input type="button" class="btn btn-default" ng-click="populateList()" value="Finalize List" ng-disabled="emails.includedEmails.length == 0">
-        <input type="button" class="btn btn-default" ng-click="checkAll($event)" value="Check All" ng-disabled="totalResults == 0">
     </row>
 <div id="endMessage"></div>
 
