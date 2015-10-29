@@ -1,7 +1,7 @@
 <uib-tabset justified="true">
     <uib-tab heading="Corporate Information">
         <div class="well well-sm">
-            <form ng-submit="save();">
+            <form>
                 <legend>Corporate Information</legend>
                 <input id="COMP" ng-model="corp.info.name" name="corpName" class="js-validate form-control" type="text" placeholder="Corporation Name" data-placeholder="Corporation Name" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'CN');" required>
                 <input id="CRA1" ng-model="corp.info.addressOne" name="address1" class="js-validate form-control" type="text" placeholder="Address 1" data-placeholder="Address 1" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'CAR1');">
@@ -13,14 +13,14 @@
                 <input id=CE" ng-model="corp.info.email" name="email" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'CE');">
                 <textarea id="CNT" ng-model="corp.info.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CNT');"></textarea>
                 <!--edit button -->
-                <button class="btn btn-primary">Save</button>
-                <button class="btn btn-danger" ng-click="$event.preventDefault();corp={}; newDonation={};">Clear/New Corporation</button>
+                <button class="btn btn-primary" ng-click="save();">Save</button>
+                <button class="btn btn-danger" ng-click="clearCorp();">Clear/New Corporation</button>
             </form>
         </div>
     </uib-tab>
     <uib-tab heading="Contact Information">
         <div class="well well-sm">
-            <form id="CorpContactForm" ng-submit="save();">
+            <form id="CorpContactForm" >
                 <legend>Contact Information</legend>
                 <input id="CCFN" ng-model="corp.contact.firstName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'CCFN');">
                 <input id="CCLN" ng-model="corp.contact.lastName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name; (a-z , . - ')" ng-blur="validateInput('name', 'CCLN');">
@@ -29,13 +29,13 @@
                 <input id="CE" ng-model="corp.contact.email" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Email" data-type="email" data-placeholder="Email" data-invalid="Valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" ng-blur="validateInput('email', 'CCE');">
                 <textarea id="CN" ng-model="corp.contact.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-type="notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" ng-blur="validateInput('notes', 'CCN');"></textarea>
                 <!--next buttons -->
-                <button class="btn btn-primary">Save</button>
-                <button class="btn btn-danger" ng-click="$event.preventDefault();corp={}; newDontation={};">Clear/New Corporation</button>
+                <button class="btn btn-primary" ng-click="save();";>Save</button>
+                <button class="btn btn-danger" ng-click="clearCorp();">Clear/New Corporation</button>
             </form>
         </div>
     </uib-tab>
     <uib-tab heading="Donations">
-        <form name="donationForm" class="well well-sm" ng-submit="save()">
+        <form name="donationForm" class="well well-sm">
             <legend>Donations</legend>
             <table class="table-hover table table-bordered" >
                 <tr>
@@ -61,9 +61,9 @@
                 <label for="addDonation">Add Donation</label>
                 <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
             </div>
-            <button class="btn btn-primary" ng-click="console.log(corp);">Save</button>
+            <button class="btn btn-primary" ng-click="save();">Save</button>
             <!--<button class="btn btn-primary" ng-click="console.log(corp);save();">Save</button>-->
-            <button class="btn btn-danger" ng-click="$event.preventDefault();corp={}; newDonation = {};">Clear/New Corporation</button>
+            <button class="btn btn-danger" ng-click="clearCorp();">Clear/New Corporation</button>
         </form>
         </div>
     </uib-tab>

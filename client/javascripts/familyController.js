@@ -15,6 +15,20 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 	$scope.newChild = {};
 	$scope.newDonation = {};
 
+	$scope.clearFamily = function () {
+		$scope.family = {
+			adultOne: {},
+			adultTwo: {},
+			emergency: {},
+			children: [],
+			donations: []
+		};
+		$scope.newChild = {};
+		$scope.newDonation = {};
+	};
+
+
+
 	$scope.animationsEnabled = true;
 	$scope.open = function (size, id) {
 		console.log('family call', id);

@@ -12,6 +12,11 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 	$scope.newDonation = {};
 	$scope.animationsEnabled = true;
 
+	$scope.clearCorp = function () {
+		$scope.corp = {};
+		$scope.newDonation = {};
+	};
+
 	$scope.open = function (size, id) {
 		console.log('corp call', id);
 		return $http({
