@@ -72,7 +72,7 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 	$scope.save = function () {
 		console.log("Save submitted", $scope.family);
 		toastr.success('Information saved!');
-		alert("Submitted");
+
 		// if has id, then post
 
 		if(!$scope.family.id) {
