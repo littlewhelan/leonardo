@@ -1,7 +1,11 @@
 // Ajax for creating the contact list in constant contact
-app.controller('newContactListController',['newContactListData','$scope', function(newContactListData, $scope) {
+app.controller('newContactListController',['newContactListData','$scope', '$rootScope', function(newContactListData, $scope, $rootScope) {
     //data to create a new contact list
 
+    $scope.hide = function(){
+        console.log('hide');
+        $rootScope.hide = true;
+    };
 
     $scope.listname = {};
 

@@ -1,4 +1,4 @@
-app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService', 'newContactListData', 'toastr', function ($scope, $http, ContactListDataService,newContactListData, toastr) {
+app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService', 'newContactListData', 'toastr', '$rootScope', function ($scope, $http, ContactListDataService,newContactListData, toastr, $rootScope) {
     $scope.type ={};
     $scope.age={};
     $scope.zip={};
@@ -8,9 +8,11 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
 	$scope.includedEmails = [];
 	$scope.totalDisplayed = 50;
 	$scope.totalResults = 0;
+    //$rootScope.hide = true;
+
+
 
     $scope.emailList = [ ];
-
     $scope.searchListBtn = function () {
 		$scope.emailList = [];
 
