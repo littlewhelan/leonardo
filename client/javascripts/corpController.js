@@ -1,5 +1,5 @@
 //edit corporation modal template
-app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', 'validService', function ($scope, $uibModal, $log, ResultService, $http, validService) {
+app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', 'validService', 'dateService', function ($scope, $uibModal, $log, ResultService, $http, validService, dateService) {
 
 	// sets validation from service for dom calls
 	$scope.validateInput = validService.validateInput;
@@ -114,9 +114,11 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 
 	// adds donation to family object
 	$scope.addDonation = function () {
-		console.log("added donation", $scope.newDonation, $scope.corp.donations);
+		var temp = $scope.newDonation;
+		temp.date = dateService.toDB(temp.date);
 		$scope.corp.donations.push($scope.newDonation);
 		$scope.newDonation = {};
+		console.log("added donation", temp, $scope.corp.donations);
 	};
 
 }]);

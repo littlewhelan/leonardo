@@ -103,10 +103,10 @@
                 </table>
             </div>
             <label ng-show="edit">Add Donation</label>
-            <button ng-show="edit" type="button" class="btn btn-danger">+</button>
-            <input ng-show="edit" id="CDD" class="js-validate form-control" type="date" placeholder="Date" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="date" ng-blur="validateInput('date', 'CDD');">
-            <input ng-show="edit" id="CDA" class="js-validate form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'CDA');">
-            <textarea ng-show="edit" id="CDN" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CDN');"></textarea>
+            <button ng-show="edit" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
+            <input ng-show="edit" ng-model="newDonation.date" id="CDD" class="js-validate form-control" type="date" placeholder="Date" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="date" ng-blur="validateInput('date', 'CDD');">
+            <input ng-show="edit" ng-model="newDonation.amount" id="CDA" class="js-validate form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'CDA');">
+            <textarea ng-show="edit" ng-model="newDonation.notes" id="CDN" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CDN');"></textarea>
             <!--save / close buttons -->
             <button type="button" ng-hide="edit" ng-click="edit = !edit" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
             <button ng-show="edit" class="btn btn-primary">Save</button>
