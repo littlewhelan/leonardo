@@ -24,7 +24,7 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
                 .then(function (data) {
                     $scope.emailList = data;
 					$scope.totalResults = data.length;
-                    console.log($scope.emailList);
+                    //console.log($scope.emailList);
 					toastr.success('Loaded '+ $scope.totalResults +' results');
                 }).catch(function () {
 					toastr.error('Failed to load results');
@@ -36,10 +36,13 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
         if ($scope.type == 'ageCk') {
             var age = ContactListDataService.makeDataCall('age', $scope.age.data);
             age.then(function (data) {
-                console.log(data);
+                //console.log(data);
                 $scope.emailList = data;
 				$scope.totalResults = data.length;
-            });
+				toastr.success('Loaded '+ $scope.totalResults +' results');
+            }).catch(function () {
+				toastr.error('Failed to load results');
+			});
         }
 
         //THIS WORKS --get all families if fam is true
@@ -48,8 +51,11 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
             fam.then(function (data) {
                 $scope.emailList = data;
 				$scope.totalResults = data.length;
-                console.log(data);
-            });
+                //console.log(data);
+				toastr.success('Loaded '+ $scope.totalResults +' results');
+            }).catch(function () {
+				toastr.error('Failed to load results');
+			});
         }
 
         //get all corp if corp is true
@@ -58,8 +64,11 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
             comp.then(function (data) {
                 $scope.emailList = data;
 				$scope.totalResults = data.length;
-                console.log(data);
-            });
+                //console.log(data);
+				toastr.success('Loaded '+ $scope.totalResults +' results');
+            }).catch(function () {
+				toastr.error('Failed to load results');
+			});
         }
 
         //empty the search box
@@ -71,11 +80,11 @@ app.controller('createListSearch', ['$scope', '$http', 'ContactListDataService',
     $scope.populateList  = function () {
         //alert('working');
         console.log($scope.emails.includedEmails);
-        newContactListData.popList($scope.emails.includedEmails);
-            //.then(function() {
-            //    $(".search").hide();
-            //    $(".endMessage").append("<h2>sent</h2>");
-            //});
+        if(newContactListData.popList($scope.emails.includedEmails)) {
+			toastr.success('Successfully deployed contact list.');
+		}else {
+			toastr.error('Failed to deploy contact list.');
+		}
   };
 
 	$scope.loadMore = function () {

@@ -26,7 +26,10 @@ app.service('newContactListData', ['ContactListDataService', '$http',
                 console.log('posted');
                 console.log(data);
                 console.log('importDataArray: ',this.importDataArray, '\ntype: ', typeof this.importDataArray);
-            });
+				return true;
+            }).catch(function () {
+				return false;
+			});
         };
         //get all the checked elements and stuff them in an array
         var getChecked = function (l) {
