@@ -6,6 +6,7 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 	//sends the companies after the results have been organized
 	$scope.companies = ResultService.companies;
 	$scope.corp = {
+		info: {},
 		contact: {},
 		donations: []
 	};
@@ -13,7 +14,11 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 	$scope.animationsEnabled = true;
 
 	$scope.clearCorp = function () {
-		$scope.corp = {};
+		$scope.corp = {
+			info:{},
+			contact:{},
+			donations:[]
+		};
 		$scope.newDonation = {};
 	};
 
@@ -25,7 +30,7 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 			params: {id: id}
 		}).then(function (response) {
 
-			$scope.company = response.data;
+			$scope.corp = response.data;
 			var modalInstance = $uibModal.open({
 				animation: $scope.animationsEnabled,
 				templateUrl: 'private/editcorp.html',
@@ -34,7 +39,7 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 				scope: $scope,
 				resolve: {
 					items: function () {
-						return $scope.company;
+						return $scope.corp;
 					}
 				}
 			});
@@ -74,7 +79,7 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 			});
 		}else {
 			// insert corp - has no id
-			console.log("insert corp", $scope.corp);
+			console.log("update corp", $scope.corp);
 			$http({
 				method: 'PUT',
 				url: '/corporation',

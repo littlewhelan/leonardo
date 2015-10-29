@@ -47,7 +47,7 @@ router.get('/', function (req, res, next) {
 					companyDonationsArray.push(donation);
 				};
 
-				var companyInfo = {
+				var info = {
 					name: rows[0].name,
 					addressOne: rows[0].addressOne,
 					addressTwo: rows[0].addressTwo,
@@ -59,7 +59,7 @@ router.get('/', function (req, res, next) {
 					email: rows[0].email
 				};
 
-				var contactInfo = {
+				var contact = {
 					firstName: rows[0].contactFirstName,
 					lastName: rows[0].contactLastName,
 					email: rows[0].contactEmail,
@@ -69,8 +69,8 @@ router.get('/', function (req, res, next) {
 				};
 
 				var company = {
-					companyInfo: companyInfo,
-					contact: contactInfo,
+					info: info,
+					contact: contact,
 					donations: companyDonationsArray
 				};
 
@@ -132,12 +132,12 @@ router.post('/', function (req, res, next) {
 			contactNotes: corp.contact.notes
 		};
 		console.log("insertCorporation ", newCorp);
-		con.query(insertCorp.corp, newCorp, function (err, res) {
+		con.query(insertCorp.corp, newCorp, function (err, result) {
 			if(err) {
 				con.end();
 				throw err;
 			}
-			corp.id = res.insertId;
+			corp.id = result.insertId;
 			console.log("New corp ID: ", corp.id);
 
 			// make sure there's a corp id, so no orphan donations
@@ -176,12 +176,12 @@ router.post('/', function (req, res, next) {
 
 	var insertDonation = function (donation, cb, donations, length, index) {
 		donation.donorID = corp.id;
-		con.query(insertCorp.donations, [donation], function (err, res) {
+		con.query(insertCorp.donations, [donation], function (err, result) {
 			if (err) {
 				con.end();
 				throw err;
 			}
-			donations[index].id = res.insertId;
+			donations[index].id = result.insertId;
 			cb(donations, length, ++index);
 		});
 	};
@@ -215,7 +215,7 @@ router.put('/', function (req, res, next) {
 		con.query(updateCorp.corp, [corp.info.name, corp.info.addressOne, corp.info.addressTwo,
 			corp.info.city, corp.info.state, corp.info.zip, corp.info.phone, corp.info.notes, corp.contact.firstName,
 			corp.contact.lastName, corp.contact.phone, corp.contact.email,
-			corp.contact.ext, corp.contact.notes, corp.id], function (err, res) {
+			corp.contact.ext, corp.contact.notes, corp.id], function (err, result) {
 			if (err) {
 				con.end();
 				console.log("error updating corp");
@@ -251,11 +251,12 @@ router.put('/', function (req, res, next) {
 
 	var insertDonation = function (donation, cb, donations, length, index) {
 		donation.donorID = corp.id;
-		con.query(insertCorp.donations, [donation], function (err, res) {
+		con.query(insertCorp.donations, [donation], function (err, result) {
 			if (err) {
 				con.end();
 				throw err;
 			}
+			donations[index].id = result.insertId;
 			cb(donations, length, ++index);
 		});
 	};
