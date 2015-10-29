@@ -65,7 +65,6 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 
 	// save family
 	$scope.save = function () {
-		alert('this is the save button ');
 		console.log("Save submitted", $scope.family);
 		//alert("Submitted");
 		// if has id, then put
@@ -92,7 +91,6 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		}else {
 			// insert family - has no id
 			console.log("insert family", $scope.family);
-			alert('this is the save else button ');
 			$http({
 				method: 'PUT',
 				url: '/family',
