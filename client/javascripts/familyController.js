@@ -1,5 +1,5 @@
 //edit family modal template
-app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', 'validService', 'toastr', function ($scope, $uibModal, $log, ResultService, $http, validService, toastr) {
+app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', 'validService', 'toastr','dateService', function ($scope, $uibModal, $log, ResultService, $http, validService, toastr, dateService) {
 	// sets validation from service for dom calls
 	$scope.validateInput = validService.validateInput;
 	//sends the adults and kids after the results have been organized
@@ -178,10 +178,15 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 
 
 	// adds donation to family object
+
 	$scope.addDonation = function () {
-		$scope.family.donations.push($scope.newDonation);
+		var temp = $scope.newDonation;
+		temp.date = dateService.toDB(temp.date);
+		$scope.corp.donations.push($scope.newDonation);
 		$scope.newDonation = {};
+		console.log("added donation", temp, $scope.family.donations);
 	};
+
 
 	//// prevent accidental backs
 	//$scope.$on('$locationChangeSuccess', function( event, oldUrl ) {
