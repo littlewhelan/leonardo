@@ -174,7 +174,7 @@
                 <label for="KS" class="col-md-6 col-sm-6 col-xs-6">School</label>
                 ​
                 <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{child.birthdate}}</span>
-                <input ng-model="child.birthdate" id="KBD" ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Birthday mm/dd/yyyy" data-placeholder="Birthday (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 1990 or later" data-type="birthdate" ng-blur="validateInput('birthdate', 'KBD');">
+                <input ng-model="child.birthdate" id="KBD" ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder=" YYYY/MM/DD" data-placeholder="Birthday (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 1990 or later" data-type="birthdate" ng-blur="validateInput('birthdate', 'KBD');">
                 <span ng-hide="edit"  class="col-md-6 col-sm-6 col-xs-6">{{child.school}}</span>
                 <input ng-model="child.school" id="KS" ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School" data-placeholder="School" data-invalid="Valid school name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'KS');">
                 ​
@@ -200,7 +200,7 @@
                 ​
                 <input ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KFN');">
                 <input ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KLN');">
-                <input ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Birthday" data-placeholder="Birthday (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 1990 or later" data-type="birthdate" ng-blur="validateInput('birthdate', 'KBD');">
+                <input ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="YYYY/MM/DD" data-placeholder="Birthday (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 1990 or later" data-type="birthdate" ng-blur="validateInput('birthdate', 'KBD');">
                 <input ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School" data-placeholder="School" data-invalid="Valid school name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'KS');">
                 <input ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone Number" data-placeholder="Phone Number" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'KC');">
                 <input ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text"  placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'KE');">
@@ -241,7 +241,7 @@
             ​
             <label ng-show="edit">Add Donation</label>
             <button ng-show="edit" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
-            <input ng-show="edit" id="FDD" class="js-validate form-control" type="text" placeholder="Date YYYY-MM-DD" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="text" ng-blur="validateInput('date', 'FDD');">
+            <input ng-show="edit" id="FDD" class="js-validate form-control" type="text" placeholder="YYYY/MM/DD" data-placeholder="Date (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 2000 or later" data-type="text" ng-blur="validateInput('date', 'FDD');">
             <input ng-show="edit" id="FDA" class="js-validate form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'FDA');">
             <textarea ng-show="edit" id="FDN" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'FDN');"></textarea>
         ​</form>
