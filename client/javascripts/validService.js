@@ -46,6 +46,13 @@ app.service('validService', [function () {
 			case "username":
 			case "password":
 				pattern = /^([a-z]+[A-Z]+[0-9]+){8,20}$/;
+				break;
+			case "search":
+				pattern = /^[a-zA-Z0-9\s,.?@!#'~*_;+-]{0,75}$/;
+				break;
+			case "age":
+				pattern = /^[0-9]{1,2}$/
+				break;
             default:
                 console.log("invalid class search");
                 return false;

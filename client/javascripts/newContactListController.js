@@ -12,15 +12,18 @@ app.controller('newContactListController',['newContactListData','$scope', '$root
     $scope.createList  = function () {
         console.log("create list: " + $scope.listname.input);
         //passes list name service
-        if(newContactListData.postList($scope.listname.input)) {
-			console.log('list #',newContactListData.listNum);
-			$scope.listname={};
-			toastr.success('Successfully created list');
-			hide();
-		}else {
-			console.log("failed to create list");
-			toastr.error('Failed to create list');
-		}
+        newContactListData.postList($scope.listname.input, function (status) {
+			if(status === true) {
+				//console.log('list #',newContactListData.listNum);
+				$scope.listname={};
+				toastr.success('Successfully created list');
+				$scope.hide();
+			}else {
+				console.log("failed to create list");
+				toastr.error('Failed to create list');
+			}
+		});
+
 
     };
 }]);

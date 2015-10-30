@@ -13,13 +13,11 @@ var request = require('request');
 var dbURI = require('./config/mongoose');
 
 var index = require('./routes/index');
-var users = require('./routes/users');
 var search = require('./routes/search');
 var createMailList = require ('./routes/createMailList');
 var family = require ('./routes/family');
 
 var routes = require('./routes/index');
-var user = require('./routes/user');
 var login = require('./routes/login');
 var register = require('./routes/register');
 var admin = require('./routes/admin');
@@ -51,7 +49,6 @@ app.use(express.static(path.join(__dirname, 'public/static')));
 app.use('/private', express.static( path.join(__dirname, 'private')));
 
 
-app.use('/users', users);
 app.use('/createMailList', createMailList);
 app.use('/search', search );
 app.use('/admin', admin);
@@ -59,7 +56,6 @@ app.use('/family',family);
 
 app.use('/private/*', jwt);
 app.use('/', routes);
-app.use('/user', user);
 app.use('/login', login);
 app.use('/register', register);
 app.use('/corporation', corporation);

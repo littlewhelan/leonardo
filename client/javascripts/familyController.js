@@ -43,7 +43,10 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 			url: '../family',
 			params: {id: id}
 		}).then(function (response) {
-
+			console.log(response.data);
+			response.data.children.forEach(function (v, i, a) {
+				console.log("reformatted", dateService.fromDB(a[i].birthdate));
+			});
 			$scope.family = response.data;
 			var modalInstance = $uibModal.open({
 				animation: $scope.animationsEnabled,

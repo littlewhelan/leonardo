@@ -1,19 +1,23 @@
 
-app.service('newContactListData', ['ContactListDataService', '$http',
-    function (ContactListDataService, $http) {
+app.service('newContactListData', ['ContactListDataService', '$http', '$timeout',
+    function (ContactListDataService, $http, $timeout) {
         var listNum = "";
         var importDataArray =[];
 
-        this.postList = function (name) {
+        this.postList = function (name, cb) {
             console.log("did the name make it to the service? " + name );
+
+			//$timeout(function () { return true;}, 5000);
+			//return true;
             $http.post('/newContactList', {name: name}).then(function (response) {
                 console.log(response.data);
                 listNum = response.data;
                 console.log("Id? ", listNum);
-				return true;
+				cb(true);
             }, function(data){
-                console.log(data); //error
-				return false;
+                console.log("failed to create", data); //error
+				//return false;
+				cb(false);
             });
         };
         this.popList = function (list) {

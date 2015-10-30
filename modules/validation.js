@@ -15,5 +15,9 @@ module.exports = {
 		username: /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9-_+.]{8,20}$/,
 		password: /^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])[a-zA-Z0-9-_+.]{8,20}$/,
 		mongo: /^[a-fA-Z\d]{24}$/,
-		int: /^[0-9]+$/
+		int: /^[0-9]+$/,
+		search: /^[a-zA-Z0-9\s,.?@!#'~*_;+-]{0,75}$/,
+		listTypes: /^(company|family|zip|age)$/,
+		/* zip code or age: */
+		listSearch: /^([0-9]{5}|[0-9]{1,2})$/
 };
