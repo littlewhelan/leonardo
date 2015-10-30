@@ -14,7 +14,6 @@ var dbURI = require('./config/mongoose');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-var createAdmin = require('./routes/createAdmin');
 var search = require('./routes/search');
 var createMailList = require ('./routes/createMailList');
 var family = require ('./routes/family');
@@ -53,7 +52,6 @@ app.use('/private', express.static( path.join(__dirname, 'private')));
 
 
 app.use('/users', users);
-app.use('/createAdmin', createAdmin);
 app.use('/createMailList', createMailList);
 app.use('/search', search );
 app.use('/admin', admin);
