@@ -32,7 +32,7 @@ app.service('validService', [function () {
                 pattern = /^[a-zA-Z0-9\s,.?@!#'~*_;+:()%&<>\[\]{}\-="|`\\\/]{0,250}/;
                 break;
             case "ext":
-                pattern = /^[a-zA-Z0-9\s:-]+$/;
+                pattern = /^[a-zA-Z0-9\s:-]{0,15}$/;
                 break;
             case "date":
                 pattern = /^20[0-9]{2}[-](0[1-9]|1[0-2])[-](0[1-9]|[1-2][0-9]|3[01])$/;
@@ -41,8 +41,11 @@ app.service('validService', [function () {
                 pattern = /^(199[0-9]|20[0-9]{2})[-](0[1-9]|1[0-2])[-](0[1-9]|[1-2][0-9]|3[01])$/;
                 break;
             case "amount":
-                pattern = /^[\$]?[\d]+([.][\d]{2})?$/;
+                pattern = /^([\$]?[\d]+([.][\d]{2})?){1,10}$/;
                 break;
+			case "username":
+			case "password":
+				pattern = /^([a-z]+[A-Z]+[0-9]+){8,20}$/;
             default:
                 console.log("invalid class search");
                 return false;
