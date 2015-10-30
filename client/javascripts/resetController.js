@@ -1,4 +1,4 @@
-app.controller('resetCtrl', [ '$scope', '$http', '$location', 'authService', function ($scope, $http, $location, authService) {
+app.controller('resetCtrl', [ '$scope', '$http', '$location', 'authService', 'toastr', function ($scope, $http, $location, authService, toastr) {
     $scope.submit = function () {
         console.log('edit password:', $scope.form);
 		var tempUser = authService.getUser();
@@ -11,7 +11,11 @@ app.controller('resetCtrl', [ '$scope', '$http', '$location', 'authService', fun
         $http.put('/admin', user)
             .then(function (response) {
                 console.log(response);
-                $location.path("/index")
-            });
+                toastr.success('password changed');
+                $location.path("/index");
+            },function(){
+            toastr.error('failed to update password');
+            }
+        );
     }
 }]);
