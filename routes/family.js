@@ -225,7 +225,7 @@ router.post('/', function (req, res, next) {
 			console.log("failed base validation", errCount, err);
 			return res.sendStatus(400);
 		}
-		console.log("passed base check", corp);
+		console.log("passed base check", family);
 
 		var con = mysql.createConnection(db);
 

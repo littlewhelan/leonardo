@@ -1,5 +1,5 @@
 //edit corporation modal template
-app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', 'validService', 'dateService', function ($scope, $uibModal, $log, ResultService, $http, validService, dateService) {
+app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', '$http', 'validService', 'dateService', 'toastr', function ($scope, $uibModal, $log, ResultService, $http, validService, dateService, toastr) {
 
 	// sets validation from service for dom calls
 	$scope.validateInput = validService.validateInput;
@@ -14,6 +14,7 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 	$scope.animationsEnabled = true;
 
 	$scope.clearCorp = function (formsArray) {
+		toastr.error('Cancelled');
 		$scope.corp = {
 			info:{},
 			contact:{},
@@ -82,8 +83,12 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 						$scope.corp.donations = [];
 					}
 					$scope.donations = (res.data.donations) ? res.data.donations : {};
+					toastr.success('Corporation added!');
+				}, function () {
+					toastr.error('Failed to add corporation');
 				});
 			}else {
+				toastr.error('Unauthorized character');
 				console.log("Add corp input tests failed");
 			}
 		}else {

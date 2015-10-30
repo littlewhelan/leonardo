@@ -21,8 +21,8 @@ var infoCheck = validator.isObject()
 	.withOptional('email', validator.isString({ regex: regex.email }));
 
 var contactCheck = validator.isObject()
-	.withRequired('firstName', validator.isString({ regex: regex.name }))
-	.withRequired('lastName', validator.isString({ regex: regex.name }))
+	.withOptional('firstName', validator.isString({ regex: regex.name }))
+	.withOptional('lastName', validator.isString({ regex: regex.name }))
 	.withOptional('email', validator.isString({ regex: regex.email }))
 	.withOptional('phone', validator.isString({ regex: regex.phone }))
 	.withOptional('ext', validator.isString({ regex: regex.ext }))
@@ -34,26 +34,28 @@ var donationsCheck = validator.isObject()
 	.withOptional('notes', validator.isString({ regex: regex.notes }));
 
 var baseCorpCheck = validator.isObject()
-	.withOptional('id', validator.isString({ regex: /^[0-9]+$/ }))
+	.withOptional('id', validator.isInteger())
 	.withRequired('info', infoCheck)
 	.withOptional('contact', contactCheck)
 	.withOptional('donations', validator.isArray(donationsCheck));
 
-var idCheck = validator.isInteger();
+var idCheck = validator.isString({regex: /^[0-9]+$/ });
 
 // get request for one family by id
-router.get('/', function (req, res, next) {
-	// check the id to make sure it's ok
-	validator.run(idCheck, req.body.id, function (errCount, err) {
-		if(errCount > 0) {
-			return res.sendStatus(400);
-		}
-	});
-	console.log("in get route");
+	router.get('/', function (req, res, next) {
+		var id = req.query.id;
+		console.log('id', id, typeof id);
+		// check the id to make sure it's ok
+		validator.run(idCheck, id, function (errCount, err) {
+			if(errCount > 0) {
+				console.log(errCount, err);
+				return res.sendStatus(400);
+			}
+		});
+		console.log("in get route");
 
 	var con = mysql.createConnection(db);
 
-	var id = req.query.id;
 	console.log("received company id", id);
 
 	con.connect(function (err) {

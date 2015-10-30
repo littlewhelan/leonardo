@@ -38,6 +38,25 @@ UserSchema.methods.comparePassword = function (candidatePassword, callback) {
     });
 };
 
+UserSchema.statics.updatePassword = function (user, callback) {
+	console.log("updatePassword received ", user);
+	// generate a salt
+	bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
+		if (err) return next(err);
+
+		// hash the password along with our new salt
+		bcrypt.hash(user.password, salt, function (err, hash) {
+			if (err) return next(err);
+
+			// override the clear-text password with the hashed one
+			user.password = hash;
+			//next();
+			console.log("user after hashing", user);
+			callback(user);
+		});
+	});
+};
+
 UserSchema.statics.getAuthenticated = function (user, callback) {
     console.log('getAuthenticated', user);
     this.findOne({username: user.username}, function (err, doc) {
@@ -61,6 +80,7 @@ UserSchema.statics.getAuthenticated = function (user, callback) {
                 // check if the password was a match
                 if (isMatch) {
                     var user = {
+						id: doc._id,
                         username: doc.username
                     };
 

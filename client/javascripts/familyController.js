@@ -16,6 +16,7 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 	$scope.newDonation = {};
 
 	$scope.clearFamily = function (formsArray) {
+		toastr.error('Cancelled');
 		$scope.family = {
 			adultOne: {},
 			adultTwo: {},
@@ -71,7 +72,6 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 	// save family
 	$scope.save = function () {
 		console.log("Save submitted", $scope.family);
-		toastr.success('Information saved!');
 
 		// if has id, then post
 
@@ -96,8 +96,12 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 						$scope.family.donations = [];
 					}
 					$scope.family.donations = (res.data.donations) ? res.data.donations : [];
+					toastr.success('Family saved!');
+				}, function () {
+					toastr.error('Failed to add family');
 				});
 			}else {
+				toastr.error('Unauthorized character');
 				console.log("Add family failed input tests");
 			}
 		}else {
