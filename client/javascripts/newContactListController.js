@@ -1,5 +1,5 @@
 // Ajax for creating the contact list in constant contact
-app.controller('newContactListController',['newContactListData','$scope', '$rootScope', function(newContactListData, $scope, $rootScope) {
+app.controller('newContactListController',['newContactListData','$scope', '$rootScope', 'toastr', function(newContactListData, $scope, $rootScope, toastr) {
     //data to create a new contact list
 
     $scope.hide = function(){
@@ -12,11 +12,16 @@ app.controller('newContactListController',['newContactListData','$scope', '$root
     $scope.createList  = function () {
         console.log("create list: " + $scope.listname.input);
         //passes list name service
-        newContactListData.postList($scope.listname.input);
+        if(newContactListData.postList($scope.listname.input)) {
+			console.log('list #',newContactListData.listNum);
+			$scope.listname={};
+			toastr.success('Successfully created list');
+			hide();
+		}else {
+			console.log("failed to create list");
+			toastr.error('Failed to create list');
+		}
 
-        console.log('list #',newContactListData.listNum);
-
-        $scope.listname={};
     };
 }]);
 

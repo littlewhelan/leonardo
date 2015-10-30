@@ -6,12 +6,14 @@ app.service('newContactListData', ['ContactListDataService', '$http',
 
         this.postList = function (name) {
             console.log("did the name make it to the service? " + name );
-            return $http.post('/newContactList', {name: name}).then(function (response) {
+            $http.post('/newContactList', {name: name}).then(function (response) {
                 console.log(response.data);
                 listNum = response.data;
                 console.log("Id? ", listNum);
+				return true;
             }, function(data){
                 console.log(data); //error
+				return false;
             });
         };
         this.popList = function (list) {
@@ -27,7 +29,7 @@ app.service('newContactListData', ['ContactListDataService', '$http',
                 console.log(data);
                 console.log('importDataArray: ',this.importDataArray, '\ntype: ', typeof this.importDataArray);
 				return true;
-            }).catch(function () {
+            }, function () {
 				return false;
 			});
         };
