@@ -52,6 +52,7 @@ var emergencyCheck = validator.isObject()
 	.withOptional('notes', validator.isString({ regex: regex.notes }));
 
 var childrenCheck = validator.isObject()
+	.withOptional('id', validator.isNumber())
 	.withRequired('firstName', validator.isStringOrNull({ regex: regex.name}))
 	.withOptional('lastName', validator.isString({ regex: regex.name}))
 	.withOptional('email', validator.isString({ regex: regex.email }))
@@ -69,6 +70,7 @@ var baseFamCheck = validator.isObject()
 	.withOptional('donations', validator.isArray(donationsCheck));
 
 var donationsCheck = validator.isObject()
+	.withOptional('id', validator.isNumber())
 	.withRequired('amount', validator.isString({ regex: regex.amount }))
 	.withRequired('date', validator.isString({ regex: regex.date }))
 	.withOptional('notes', validator.isString({ regex: regex.notes }));

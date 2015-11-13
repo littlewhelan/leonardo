@@ -29,6 +29,7 @@ var contactCheck = validator.isObject()
 	.withOptional('notes', validator.isString({ regex: regex.notes }));
 
 var donationsCheck = validator.isObject()
+	.withOptional('id', validator.isNumber())
 	.withRequired('amount', validator.isString({ regex: regex.amount }))
 	.withRequired('date', validator.isString({ regex: regex.date }))
 	.withOptional('notes', validator.isString({ regex: regex.notes }));
