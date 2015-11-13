@@ -52,7 +52,7 @@
                 </tr>
             </table>
 
-            <input id="CDD" ng-model="newDonation.date" name="date" class="js-date form-control" type="date" placeholder="Date (M/D/YYYY)" data-placeholder="Date (M/D/YYYY)" data-invalid="Valid date: M/D/YYYY, 2000 or later" data-type="date" ng-blur="validateInput('date', 'CDD');">
+            <input id="CDD" ng-model="newDonation.date" name="date" class="js-date form-control" type="text" placeholder="Date (M/D/YYYY)" data-placeholder="Date (M/D/YYYY)" data-invalid="Valid date: M/D/YYYY, 2000 or later" data-type="date" ng-blur="validateInput('date', 'CDD');">
             <input id="CDA" ng-model="newDonation.amount" class="js-amount form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'CDA');">
             <textarea id="CDN" ng-model="newDonation.notes" rows="4" class="js-notes form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'CDN');"></textarea>
             <!--save / close buttons -->

@@ -87,7 +87,7 @@
                 <hr/>
                 <input ng-model="newChild.firstName" id="KFN" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KFN');" />
                 <input ng-model="newChild.lastName" id="KLN" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KLN');" />
-                <input ng-model="newChild.birthdate" id="KDB" class="js-validate col-md-6 col-sm-6 col-xs-6" type="date" placeholder="Birthday (M/D/YYYY)" data-placeholder="Birthday (M/D/YYYY)" data-invalid="Valid date: M/D/YYYY, 1990 or later" data-type="date" ng-blur="validateInput('birthdate', 'KBD');" />
+                <input ng-model="newChild.birthdate" id="KDB" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Birthday (M/D/YYYY)" data-placeholder="Birthday (M/D/YYYY)" data-invalid="Valid date: M/D/YYYY, 1990 or later" data-type="date" ng-blur="validateInput('birthdate', 'KBD');" />
                 <input ng-model="newChild.school" id="KS" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School" data-placeholder="Company" data-invalid="Valid school name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'KS');" />
                 <input ng-model="newChild.cell" id="KC" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Cell Phone" data-placeholder="Cell Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'KC');">
                 <input ng-model="newChild.email" id="KE" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'KE');">
@@ -127,7 +127,7 @@
                     </tr>
                 </table>
                 ​
-                <input id="FDD" ng-model="newDonation.date" class="js-validate form-control" type="date" placeholder="Date (M/D/YYYY)" data-placeholder="Date (M/D/YYYY)" data-invalid="Valid date: M/D/YYYY, 2000 or later" data-type="date" ng-blur="validateInput('date', 'FDD');">
+                <input id="FDD" ng-model="newDonation.date" class="js-validate form-control" type="text" placeholder="Date (M/D/YYYY)" data-placeholder="Date (M/D/YYYY)" data-invalid="Valid date: M/D/YYYY, 2000 or later" data-type="date" ng-blur="validateInput('date', 'FDD');">
                 <input id="FDA" ng-model="newDonation.amount" class="js-validate form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'FDA');">
                 <textarea id="FDN" ng-model="newDonation.notes" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'FDN');"></textarea>
                 <!--save / close buttons -->
