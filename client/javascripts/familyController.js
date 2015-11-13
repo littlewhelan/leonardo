@@ -48,6 +48,9 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 				console.log("reformatted", dateService.fromDB(a[i].birthdate));
 				a[i].birthdate = dateService.fromDB(v.birthdate);
 			});
+			response.data.donations.forEach(function (v, i, a) {
+				a[i].date = dateService.fromDB(v.date);
+			});
 			$scope.family = response.data;
 			var modalInstance = $uibModal.open({
 				animation: $scope.animationsEnabled,
@@ -81,6 +84,13 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		if($scope.family.children.length) {
 			$scope.family.children.forEach(function (v, i, a) {
 				a[i].birthdate = dateService.toDB(v.birthdate);
+			});
+		}
+
+		// check for donation, run toDB formatting before sending
+		if($scope.family.donations.length) {
+			$scope.family.donations.forEach(function (v, i, a) {
+				a[i].date = dateService.toDB(v.date);
 			});
 		}
 

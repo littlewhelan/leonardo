@@ -36,6 +36,10 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 			params: {id: id}
 		}).then(function (response) {
 
+			response.data.donations.forEach(function (v, i, a) {
+				a[i].date = dateService.fromDB(v.date);
+			});
+
 			$scope.corp = response.data;
 			var modalInstance = $uibModal.open({
 				animation: $scope.animationsEnabled,
@@ -66,6 +70,14 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 	$scope.save = function () {
 		console.log("Save submitted", $scope.corp);
 		//alert("Submitted");
+
+		// check for donation, run toDB formatting before sending
+		if($scope.corp.donations.length) {
+			$scope.corp.donations.forEach(function (v, i, a) {
+				a[i].date = dateService.toDB(v.date);
+			});
+		}
+
 		// if has id, then put
 		if(!$scope.corp.id) {
 			if(validService.validateForm(["AddCorpInfoForm", "AddCorpContactForm"])) {
