@@ -76,7 +76,7 @@
                     <tr ng-repeat="child in family.children">
                         <td class="field-label col-xs-2 active" ng-click="editChild($index)">{{child.firstName}}</td>
                         <td class="field-label col-xs-2 active" ng-click="editChild($index)">{{child.lastName}}</td>
-                        <td class="field-label col-xs-2 active" ng-click="editChild($index)">{{child.birthdate|date:'MM/dd/yyyy'}}</td>
+                        <td class="field-label col-xs-2 active" ng-click="editChild($index)">{{child.birthdate}}</td>
                         <td class="field-label col-xs-2 active" ng-click="editChild($index)">{{child.school}}</td>
                         <td class="field-label col-xs-2 active" ng-click="editChild($index)">{{child.cell}}</td>
                         <td class="field-label col-xs-2 active" ng-click="editChild($index)">{{child.email}}</td>
@@ -120,7 +120,7 @@
                         <th class="field-label col-xs-3 active">Delete</th>
                     </tr>
                     <tr ng-repeat="donation in family.donations">
-                        <td class="field-label col-xs-3 active">{{donation.date|date:'MM/dd/yyyy'}}</td>
+                        <td class="field-label col-xs-3 active">{{donation.date}}</td>
                         <td class="field-label col-xs-3 active">{{donation.amount}}</td>
                         <td class="field-label col-xs-3 active">{{donation.notes}}</td>
                         <td class="field-label col-xs-3 active"><button ng-click="family.donations.splice($index, 1);">X</button></td>
@@ -134,9 +134,9 @@
                 ​
                 <div>
                     <label for="addDonation">Add Donation</label>
-                    <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
+                    <button id="addDonation" type="button" class="btn btn-danger" ng-click="console.log('donation in add button', newDonation);addDonation()">+</button>
                 </div>
-                <button class="btn btn-primary" type = "submit"  ng-click="addDonation();save()">Save</button>
+                <button class="btn btn-primary" type = "submit"  ng-click="console.log('donation in save button', newDonation);addDonation();save()">Save</button>
                 <button type="reset" class="btn btn-danger" ng-click="clearFamily();">Clear/New Family</button>
             </form>
         </div>

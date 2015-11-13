@@ -158,8 +158,8 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 
 	// for appending children to model before saving new family
 	$scope.addChild = function () {
-		// length check needed for auto add if click save instead of add first
-		if($scope.newChild.firstName.length > 0) {
+		// exists check needed for auto add if click save instead of add first
+		if($scope.newChild.firstName) {
 			console.log("child added", $scope.newChild, $scope.family.children);
 			// if true, then update that index
 			if($scope.editingChild) {
@@ -211,8 +211,9 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 
 // adds donation to family object
 	$scope.addDonation = function () {
-		// length check needed for auto add if click save instead of add first
-		if($scope.newDonation.amount.length > 0) {
+		//console.log("add donation", $scope.newDonation);
+		// regex check needed for auto add if click save instead of add first
+		if(/^[0-9]+(.[0-9]{0,2})?$/.test($scope.newDonation.amount)) {
 			//var temp = $scope.newDonation;
 			//temp.date = dateService.toDB(temp.date);
 			console.log("add donation", $scope.newDonation);

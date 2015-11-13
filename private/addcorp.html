@@ -45,7 +45,7 @@
                     <th class="field-label col-xs-3 active">Delete</th>
                 </tr>
                 <tr ng-repeat="donation in corp.donations">
-                    <td class="field-label col-xs-3 active">{{donation.date| date:'MM/dd/yyyy'}}</td>
+                    <td class="field-label col-xs-3 active">{{donation.date}}</td>
                     <td class="field-label col-xs-3 active">{{donation.amount}}</td>
                     <td class="field-label col-xs-3 active">{{donation.notes}}</td>
                     <td class="field-label col-xs-3 active"><button ng-click="corp.donations.splice($index, 1);">X</button></td>
