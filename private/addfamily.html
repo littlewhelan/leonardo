@@ -1,165 +1,67 @@
 <uib-tabset justified="true">
     <uib-tab heading="Contact Info">
-        ​
-        <!--span is information retrieved from DB-->
-        <!--inputs are editable after click-->
-        <form id="EditFamInfoForm">
-            <legend class="adult">Adult1</legend>
-            <div class="content-container">
-                <label for="A1FN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
-                <label for="A1LN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
-                ​
-                <input ng-model="family.adultOne.firstName"  id="A1FN" ng-show="edit" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'A1FN');">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultOne.firstName}}</span>
-                <input ng-model="family.adultOne.lastName" id="A1LN" ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'A1LN');">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultOne.lastName}}</span>
-                ​
-                <label for="A1AR1" class="block-input">Address 1</label>
-                <input ng-model="family.adultOne.addressOne" id="A1AR1" ng-show="edit"  class="js-validate form-control" type="text" placeholder="Address 1" data-placeholder="Address 1" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'A1AR1');">
-                <span ng-hide="edit" class="block-input">{{family.adultOne.addressOne}}</span>
-                ​
-                <label for="A1AR2" class="block-input">Address 2</label>
-                <input ng-model="family.adultOne.addressTwo" id="A1AR2" ng-show="edit"  class="js-validate form-control" type="text" placeholder="Address 2" data-placeholder="Address 2" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'A1AR2');">
-                <span ng-hide="edit" class="block-input">{{family.adultOne.addressTwo}}</span>
-                ​
-                <label for="A1Z" class="col-xs-6 col-sm-4">Zip</label>
-                <label for="A1Cty" class="col-xs-6 col-sm-4">City</label>
-                <label for="A1S" class="col-xs-6 col-sm-4">State</label>
-                ​
-                <input ng-model="family.adultOne.zip" id="A1Z" ng-show="edit"  class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Zip Code" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip" ng-blur="validateInput('zip', 'A1Z');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultOne.zip}}</span>
-                <input ng-model="family.adultOne.city" id="A1Cty"  ng-show="edit"  class="js-validate col-xs-6 col-sm-4" type="text" placeholder="City" data-placeholder="City" data-invalid="Valid city: (a-z)" data-type="city" ng-blur="validateInput('city', 'A1Cty');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultOne.city}}</span>
-                <input ng-model="family.adultOne.state" id="A1S" ng-show="edit"  class="js-validate col-xs-6 col-sm-4" type="text" placeholder="State" data-placeholder="State" data-invalid="Valid state: (a-z)" data-type="state" ng-blur="validateInput('state', 'A1S');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultOne.state}}</span>
-                ​
-                <label for="A1WP" class="col-xs-6 col-sm-4">Work Phone</label>
-                <label for="A1CP" class="col-xs-6 col-sm-4">Cell Phone</label>
-                <label for="A1E" class="col-xs-6 col-sm-4">Email</label>
-                ​
-                <input ng-model="family.adultOne.work" id="A1WP" ng-show="edit" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Work Phone" data-placeholder="Work Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A1WP');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultOne.work}}</span>
-                <input ng-model="family.adultOne.cell" id="A1CP" ng-show="edit" class="js-validate col-xs-6 col-sm-4"  type="text" placeholder="Cell Phone" data-placeholder="Cell Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A1CP');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultOne.cell}}</span>
-                <input ng-model="family.adultOne.email" id="A1E" ng-show="edit" class="js-validate col-xs-6 col-sm-4"  type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'A1E');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultOne.email}}</span>
-                ​
-                <label for="A1MP" class="col-md-6 col-sm-6 col-xs-6">Main Phone</label>
-                <label for="A1Co" class="col-md-6 col-sm-6 col-xs-6">Company</label>
-                <input ng-model="family.adultOne.main" id="A1MP" ng-show="edit" class="js-validate col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Main Phone" data-placeholder="Main Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A1MP');">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultOne.main}}</span>
-                <input ng-model="family.adultOne.company" id="A1Co" ng-show="edit" class="js-validate col-md-6 col-sm-6 col-xs-6"  type="text" placeholder="Company"  data-placeholder="Company" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'A1Co');">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultOne.company}}</span>
-                ​
-                <label for="A1N" class="block-input">Notes</label>
-                <textarea ng-model="family.adultOne.notes" id="A1N" ng-show="edit" rows="4" class="js-validate form-control"  placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'A1N');"></textarea>
-                <span ng-hide="edit" class="block-input">{{family.adultOne.notes}}</span>
-            </div>
-            <legend class="adult">Adult2</legend>
-            <div class="content-container">
-                <label for="A2FN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
-                <label for="A2LN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
-                ​
-                <input ng-model="family.adultTwo.firstName" id="A2FN" ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'A2FN');">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultTwo.firstName}}</span>
-                <input ng-model="family.adultTwo.lastName" id="A2LN" ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'A2LN');">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultTwo.lastName}}</span>
-                ​
-                <label for="A2AR1" class="block-input">Address 1</label>
-                <input ng-model="family.adultTwo.addressOne" id="A2AR1" ng-show="edit"  class="js-validate form-control" type="text" placeholder="Address 1" data-placeholder="Address 1" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'A2AR1');">
-                <span ng-hide="edit" class="block-input">{{family.adultTwo.addressOne}}</span>
-                ​
-                <label for="A2AR2" class="block-input">Address 2</label>
-                <input ng-model="family.adultTwo.addressTwo" id="A2AR2" ng-show="edit" class="js-validate form-control"  type="text" placeholder="Address 2" data-placeholder="Address 2" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'A2AR2');">
-                <span ng-hide="edit" class="block-input">{{family.adultTwo.addressTwo}}</span>
-                ​
-                <label for="A2Z" class="col-xs-6 col-sm-4">Zip</label>
-                <label for="A2Cty" class="col-xs-6 col-sm-4">City</label>
-                <label for="A2S" class="col-xs-6 col-sm-4">State</label>
-                ​
-                <input ng-model="family.adultTwo.zip" id="A2Z" ng-show="edit" class="js-validate col-xs-6 col-sm-4"  type="text" placeholder="Zip Code" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip" ng-blur="validateInput('zip', 'A2Z');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultTwo.zip}}</span>
-                <input ng-model="family.adultTwo.city" id="A2Cty" ng-show="edit" class="js-validate col-xs-6 col-sm-4"  type="text" placeholder="City" data-placeholder="City" data-invalid="Valid city: (a-z)" data-type="city" ng-blur="validateInput('city', 'A2Cty');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultTwo.city}}</span>
-                <input ng-model="family.adultTwo.state" id="A2S" ng-show="edit" class="js-validate col-xs-6 col-sm-4"  type="text" placeholder="State" data-placeholder="State" data-invalid="Valid state: (a-z)" data-type="state" ng-blur="validateInput('state', 'A2S');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultTwo.state}}</span>
-                ​
-                <label for="A2WP" class="col-xs-6 col-sm-4">Work Phone</label>
-                <label for="A2CP" class="col-xs-6 col-sm-4">Cell Phone</label>
-                <label for="A2E" class="col-xs-6 col-sm-4">Email</label>
-                ​
-                <input ng-model="family.adultTwo.work" id="A2WP" ng-show="edit" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Work Phone" data-placeholder="Work Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A2WP');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultTwo.work}}</span>
-                <input ng-model="family.adultTwo.cell" id="A2CP" ng-show="edit" class="js-validate col-xs-6 col-sm-4" type="text"  placeholder="Cell Phone" data-placeholder="Cell Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A2CP');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultTwo.cell}}</span>
-                <input ng-model="family.adultTwo.email" id="A2E" ng-show="edit" class="js-validate col-xs-6 col-sm-4" type="text"  placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'A2E');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-4">{{family.adultTwo.email}}</span>
-                ​
-                <label for="A2MP" class="col-md-6 col-sm-6 col-xs-6">Main Phone</label>
-                <label for="A2Co" class="col-md-6 col-sm-6 col-xs-6">Company</label>
-                <input ng-model="family.adultTwo.main" id="A2MP" ng-show="edit" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Main Phone" data-placeholder="Main Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A2MP');">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultTwo.main}}</span>
-                <input ng-model="family.adultTwo.company" id="A2Co" ng-show="edit" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Company" data-placeholder="Company" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'A2Co');">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.adultTwo.company}}</span>​
-                <label for="A2N" class="block-input">Notes</label>
-                <textarea ng-model="family.adultTwo.notes" id="A2N" ng-show="edit" rows="4" class="js-validate form-control"  placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'A2N');" ></textarea>
-                <span ng-hide="edit" class="block-input">{{family.adultTwo.notes}}</span>
-                <!--edit / close buttons -->
-            </div>
-            <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-            <button ng-click="save();edit = !edit" ng-show="edit" class="btn btn-primary">Save</button>
-            <button type="reset" ng-show="edit" ng-click="edit = !edit;clearFamily(['EditFamInfoForm', 'EditFamEmerForm', 'EditFamChildrenForm', 'EditFamDonationsForm'])" class="btn btn-danger">Cancel</button>
-        </form>
-        ​
-    </uib-tab>
-    <uib-tab heading="Emergency Contact">
-        <legend>Emergency Contact</legend>
-        <div class="content-container">
-            <form id="EditFamEmerForm">
-                <label for="EmFN" class="col-md-6 col-sm-6 col-xs-6">First Name</label>
-                <label for="EmLN" class="col-md-6 col-sm-6 col-xs-6">Last Name</label>
-                ​
-                <input ng-model="family.emergency.firstName" id="EmFN" ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'EmFN');">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.emergency.firstName}}</span>
-                <input ng-model="family.emergency.lastName" id="EmLN" ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'EmLN');">
-                <span ng-hide="edit" class="col-md-6 col-sm-6 col-xs-6">{{family.emergency.lastName}}</span>
-                ​
-                <label for="EmAR1" class="block-input">Address 1</label>
-                <input ng-model="family.emergency.addressOne" id="EmAR1" ng-show="edit" class="js-validate form-control" type="text" placeholder="Address 1" data-placeholder="Address 1" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'EmAR1');">
-                <span ng-hide="edit" class="block-input">{{family.emergency.addressOne}}</span>
-                ​
-                <label for="EmAR2" class="block-input">Address 2</label>
-                <input ng-model="family.emergency.addressTwo" id="EmAR2" ng-show="edit" class="js-validate form-control"  type="text" placeholder="Address 2" data-placeholder="Address 2" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'EmAR2');">
-                <span ng-hide="edit" class="block-input">{{family.emergency.addressTwo}}</span>
-                ​
-                <label for="EmZ" class="col-xs-6 col-sm-3">Zip</label>
-                <label for="EmCty" class="col-xs-6 col-sm-3">City</label>
-                <label for="EmS" class="col-xs-6 col-sm-3">State</label>
-                <label for="EmP" class="col-xs-6 col-sm-3">Phone</label>
-                ​
-                <input ng-model="family.emergency.zip" id="EmZ" ng-show="edit" class="js-validate col-md-3 col-sm-4 col-xs-6"  type="text" placeholder="Zip Code" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip" ng-blur="validateInput('zip', 'EmZ');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-3">{{family.emergency.zip}}</span>
-                <input ng-model="family.emergency.city" id="EmCty" ng-show="edit" class="js-validate col-md-3 col-sm-4 col-xs-6" type="text" placeholder="City" data-placeholder="City" data-invalid="Valid city: (a-z)" data-type="city" ng-blur="validateInput('city', 'EmCty');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-3">{{family.emergency.city}}</span>
-                <input ng-model="family.emergency.state" id="EmS" ng-show="edit" class="js-validate col-md-3 col-sm-4 col-xs-6" type="text"  placeholder="State" data-placeholder="State" data-invalid="Valid state: (a-z)" data-type="state" ng-blur="validateInput('state', 'EmS');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-3">{{family.emergency.state}}</span>
-                <input ng-model="family.emergency.phone" id="EmP" ng-show="edit" class="js-validate col-md-3 col-sm-4 col-xs-6" type="text"  placeholder="Phone Number" data-placeholder="Phone Number" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'EmP');">
-                <span ng-hide="edit" class="col-xs-6 col-sm-3">{{family.emergency.phone}}</span>
-                ​
-                <label for="EmN" class="block-input">Notes</label>
-                <textarea ng-model="family.emergency.notes" id="EmN" ng-show="edit" rows="4" class="js-validate form-control"  placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'EmN');"></textarea>
-                <span ng-hide="edit" class="block-input">{{family.emergency.notes}}</span>
-                <!--edit / close buttons -->
+        <div class="well well-sm">
+            <form id="AddFamInfoForm">
+                <legend>Adult 1</legend>
+                <input id="A1FN" ng-model="family.adultOne.firstName" name="firstName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'A1FN');">
+                <input id="A1LN" ng-model="family.adultOne.lastName" name="lastName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'A1LN');">
+                <input id="A1AR1" ng-model="family.adultOne.addressOne" name="address1" class="js-validate form-control" type="text" placeholder="Address 1" data-placeholder="Address 1" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'A1AR1');">
+                <input id="A1AR2" ng-model="family.adultOne.addressTwo" name="address2" class="js-validate form-control" type="text" placeholder="Address 2" data-placeholder="Address 2" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'A1AR2');">
+                <input id="A1Z" ng-model="family.adultOne.zip" name="zip" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Zip Code" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip" ng-blur="validateInput('zip', 'A1Z');">
+                <input id="A1Cty" ng-model="family.adultOne.city" name="city" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="City" data-placeholder="City" data-invalid="Valid city: (a-z)" data-type="city" ng-blur="validateInput('city', 'A1Cty');">
+                <input id="A1S" ng-model="family.adultOne.state" name="state" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="State" data-placeholder="State" data-invalid="Valid state: (a-z)" data-type="state" ng-blur="validateInput('state', 'A1S');">
+                <input id="A1P" ng-model="family.adultOne.main" name="mainPhone" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Main Phone" data-placeholder="Main Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A1P');">
+                <input id="A1CP" ng-model="family.adultOne.cell" name="cellPhone" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Cell Phone" data-placeholder="Cell Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A1CP');">
+                <input id="A1E" ng-model="family.adultOne.email" name="email" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'A1E');">
+                <input id="A1WP" ng-model="family.adultOne.work" name="cellPhone" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Work Phone" data-placeholder="Work Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A1WP');">
+                <input id="A1Co" ng-model="family.adultOne.company" name="company" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Company" data-placeholder="Company" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'A1Co');">
+                <textarea id="A1N" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'A1N');"></textarea>
+                <!--</form>-->
+                <!--<form >-->
+                <legend>Adult 2</legend>
+                <input id="A2FN" ng-model="family.adultTwo.firstName" name="firstName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'A2FN');">
+                <input id="A2LN" ng-model="family.adultTwo.lastName" name="lastName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'A2LN');">
+                <input id="A2AR1" ng-model="family.adultTwo.addressOne" name="address1" class="js-validate form-control" type="text" placeholder="Address 1" data-placeholder="Address 1" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'A2AR1');">
+                <input id="A2AR2" ng-model="family.adultTwo.addressTwo" name="address2" class="js-validate form-control" type="text" placeholder="Address 2" data-placeholder="Address 2" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'A2AR2');">
+                <input id="A2Z" ng-model="family.adultTwo.zip" name="zip" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Zip Code" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip" ng-blur="validateInput('zip', 'A2Z');">
+                <input id="A2Cty" ng-model="family.adultTwo.city" name="city" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="City" data-placeholder="City" data-invalid="Valid city: (a-z)" data-type="city" ng-blur="validateInput('city', 'A2Cty');">
+                <input id="A2S" ng-model="family.adultTwo.state" name="state" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="State" data-placeholder="State" data-invalid="Valid state: (a-z)" data-type="state" ng-blur="validateInput('state', 'A2S');">
+                <input id="A2M" ng-model="family.adultTwo.main" name="mainPhone" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Main Phone" data-placeholder="Main Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A2M');">
+                <input id="A2CP" ng-model="family.adultTwo.cell" name="cellPhone" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Cell Phone" data-placeholder="Cell Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A2CP');">
+                <input id="A2E" ng-model="family.adultTwo.email" name="email" class="js-validate col-xs-6 col-sm-4" type="text" placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'A2E');">
+                <input id="A2WP" ng-model="family.adultTwo.work" name="cellPhone" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Work Phone" data-placeholder="Work Phone" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'A2WP');">
+                <input id="A2Co" ng-model="family.adultTwo.company" name="company" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Company" data-placeholder="Company" data-invalid="Valid corp name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'A2Co');">
+                <textarea id="A2N" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'A2N');"></textarea>
+                <!--next button -->
+                <button class="btn btn-primary" type = "submit"  ng-click="save()">Save</button>
+                <button type="reset" class="btn btn-danger" ng-click="clearFamily();">Clear/New Family</button>
+
             </form>
         </div>
-        <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-        <button ng-show="edit"  ng-click="save();edit = !edit"  class="btn btn-primary">Save</button>
-        <button type="reset" ng-show="edit" ng-click="edit = !edit;clearFamily(['EditFamInfoForm', 'EditFamEmerForm', 'EditFamChildrenForm', 'EditFamDonationsForm'])" class="btn btn-danger">Cancel</button>
-        ​
     </uib-tab>
-    <uib-tab heading="Additional Members" >
+    <uib-tab heading="Emergency Contact">
+        <div class="well well-sm">
+            <form id="AddFamEmerForm">
+                <legend>Emergency Contact Information</legend>
+                <input id="EmFN" ng-model="family.emergency.firstName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'EmFN');">
+                <input id="EmLN" ng-model="family.emergency.lastName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'EmLN');">
+                <input id="EmAR1" ng-model="family.emergency.addressOne" class="js-validate form-control" type="text" placeholder="Address 1" data-placeholder="Address 1" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'EmAR1');">
+                <input id="EmAR2" ng-model="family.emergency.addressTwo" class="js-validate form-control" type="text" placeholder="Address 2" data-placeholder="Address 2" data-invalid="Valid address: (a-z 0-9 regular punctuation/special characters)" data-type="address" ng-blur="validateInput('address', 'EmAR2');">
+                <input id="EmZ" ng-model="family.emergency.zip" class="js-validate col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Zip Code" data-placeholder="Zip Code" data-invalid="Valid zip: #####" data-type="zip" ng-blur="validateInput('zip', 'EmZ');">
+                <input id="EmC" ng-model="family.emergency.city" class="js-validate col-md-3 col-sm-4 col-xs-6" type="text" placeholder="City" data-placeholder="City" data-invalid="Valid city: (a-z)" data-type="city" ng-blur="validateInput('city', 'EmCty');">
+                <input id="EmS" ng-model="family.emergency.state" class="js-validate col-md-3 col-sm-4 col-xs-6" type="text" placeholder="State" data-placeholder="State" data-invalid="Valid state: (a-z)" data-type="state" ng-blur="validateInput('state', 'EmS');">
+                <input id="EmP" ng-model="family.emergency.phone" class="js-validate col-md-3 col-sm-4 col-xs-6" type="text" placeholder="Phone Number" data-placeholder="Phone Number" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'EmP');">
+                <textarea id="EmN" rows="4" ng-model="family.emergency.notes" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'EmN');"></textarea>
+                <!--next buttons -->
+                <button class="btn btn-primary" type = "submit" ng-click="save()">Save</button>
+                <button type="reset" class="btn btn-danger" ng-click="clearFamily();">Clear/New Family</button>
+            </form>
+        </div>
+    </uib-tab>
+    <uib-tab heading="Additional Members">
+        <div class="well well-sm">
             <!--addition members tab-->
-            <form id="AddFamChildrenForm">
+            <form>
                 <legend>Children</legend>
                 <table class="table-hover table table-bordered" >
                     <tr>
@@ -199,7 +101,7 @@
                 </div>
                 ​
                 <button class="btn btn-primary" type = "submit" ng-click="save()">Save</button>
-                <button type="reset" class="btn btn-danger" ng-click="clearFamily(['AddFamInfoForm', 'AddFamEmerForm', 'AddFamChildrenForm', 'AddFamDonationsForm']);">Clear/New Family</button>
+                <button type="reset" class="btn btn-danger" ng-click="clearFamily();">Clear/New Family</button>
                 <!--​-->
                 <!--<button class="btn btn-primary" >Save</button>-->
                 <!--<button class="btn btn-danger" ng-click="$event.preventDefault(); family = {};newChild = {};newDonation={};">Clear/New Family</button>-->
@@ -208,7 +110,7 @@
     </uib-tab>
     <uib-tab heading="Donations">
         <div class="well well-sm">
-            <form id="AddFamDonationsForm">
+            <form>
                 <legend>Donations</legend>
                 <table class="table-hover table table-bordered">
                     <tr>
@@ -234,8 +136,8 @@
                     <label for="addDonation">Add Donation</label>
                     <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
                 </div>
-                <button class="btn btn-primary" type="submit"  ng-click="save()">Save</button>
-                <button type="reset" class="btn btn-danger" ng-click="clearFamily(['AddFamInfoForm', 'AddFamEmerForm', 'AddFamChildrenForm', 'AddFamDonationsForm']);">Clear/New Family</button>
+                <button class="btn btn-primary" type = "submit"  ng-click="save()">Save</button>
+                <button type="reset" class="btn btn-danger" ng-click="clearFamily();">Clear/New Family</button>
             </form>
         </div>
     </uib-tab>
