@@ -3,7 +3,6 @@ var router = express.Router();
 var mysql = require('mysql');
 var db = require('../config/db.js');
 var getPeeps = require('../models/modalQ');
-var moment = require('moment');
 var insertFam = require('../models/insertFam');
 var updateFam = require('../models/updateFam');
 var validator = require('node-validator');
