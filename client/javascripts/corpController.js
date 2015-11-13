@@ -131,8 +131,8 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 
 	// adds donation to family object
 	$scope.addDonation = function () {
-		var temp = $scope.newDonation;
-		temp.date = dateService.toDB(temp.date);
+		//var temp = $scope.newDonation;
+		//temp.date = dateService.toDB(temp.date);
 		$scope.corp.donations.push($scope.newDonation);
 		$scope.newDonation = {};
 		console.log("added donation", temp, $scope.corp.donations);
