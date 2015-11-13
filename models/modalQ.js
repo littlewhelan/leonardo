@@ -7,7 +7,7 @@ module.exports = {
     childTab:'SELECT * FROM children WHERE familyID = ?',
 
     //select all info on families based on id
-    donateTab: 'SELECT * FROM individualDonations WHERE id = ?',
+    donateTab: 'SELECT * FROM individualDonations WHERE familyID = ?',
 
     //select all info on a corporation based on id
     companyTab: 'SELECT * FROM corpDonors WHERE id = ? LIMIT 1',
