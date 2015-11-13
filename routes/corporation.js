@@ -9,7 +9,7 @@ var validator = require('node-validator');
 var regex = require('../modules/validation');
 
 var infoCheck = validator.isObject()
-	.withRequired('name', validator.isString({ regex: regex.name }))
+	.withRequired('name', validator.isString({ regex: regex.corpName }))
 	.withOptional('addressOne', validator.isString({ regex: regex.address }))
 	.withOptional('addressTwo', validator.isString({ regex: regex.address }))
 	.withOptional('zip', validator.isString({ regex: regex.zip }))
@@ -165,6 +165,7 @@ router.post('/', function (req, res, next) {
 				city: corp.info.city,
 				state: corp.info.state,
 				zip: corp.info.phone,
+				email: corp.info.email,
 				contactFirstName: corp.contact.firstName,
 				contactLastName: corp.contact.lastName,
 				contactPhone: corp.contact.phone,
