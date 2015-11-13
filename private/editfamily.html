@@ -195,27 +195,27 @@
             <form>​
                 <!--shows upon editing\/\/\/-->
                 ​
-                <button ng-show="edit" type="button" class="btn btn-danger">+</button>
+                <button ng-show="edit" type="button" class="btn btn-danger" ng-click="addChild();">+</button>
                 <hr/>
                 ​
-                <input ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KFN');">
-                <input ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KLN');">
-                <input ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Birthday" data-placeholder="Birthday (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 1990 or later" data-type="birthdate" ng-blur="validateInput('birthdate', 'KBD');">
-                <input ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School" data-placeholder="School" data-invalid="Valid school name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'KS');">
-                <input ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone Number" data-placeholder="Phone Number" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'KC');">
-                <input ng-show="edit"  class="js-validate col-md-6 col-sm-6 col-xs-6" type="text"  placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'KE');">
-                <textarea ng-show="edit"  rows="4" class="form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'KN');"></textarea>
+                <input ng-show="edit" ng-model="newChild.firstName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="First Name" data-placeholder="First Name" data-invalid="Valid first name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KFN');">
+                <input ng-show="edit" ng-model="newChild.lastName" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Last Name" data-placeholder="Last Name" data-invalid="Valid last name: (a-z , . - ')" data-type="name" ng-blur="validateInput('name', 'KLN');">
+                <input ng-show="edit" ng-model="newChild.birthdate" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Birthday" data-placeholder="Birthday (YYYY-MM-DD)" data-invalid="Valid date: YYYY-MM-DD 1990 or later" data-type="birthdate" ng-blur="validateInput('birthdate', 'KBD');">
+                <input ng-show="edit" ng-model="newChild.school" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="School" data-placeholder="School" data-invalid="Valid school name: (a-z 0-9 regular punctuation/special characters)" data-type="corpName" ng-blur="validateInput('corpName', 'KS');">
+                <input ng-show="edit" ng-model="newChild.cell" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text" placeholder="Phone Number" data-placeholder="Phone Number" data-invalid="Valid phone: (### ### #### spacers: (- . / space)" data-type="phone" ng-blur="validateInput('phone', 'KC');">
+                <input ng-show="edit" ng-model="newChild.email" class="js-validate col-md-6 col-sm-6 col-xs-6" type="text"  placeholder="Email" data-placeholder="Email" data-invalid="valid email: (a-z 0-9 . _ % + -)@(a-z 0-9 . -).(a-z)" data-type="email" ng-blur="validateInput('email', 'KE');">
+                <textarea ng-show="edit" ng-model="newChild.notes" rows="4" class="form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'KN');"></textarea>
             </form>​
 
 
         <!--edit / close buttons -->
         <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-        <button ng-show="edit" ng-click="edit = !edit" class="btn btn-primary" ng-click="save();edit = !edit">Save</button>
+        <button ng-show="edit" ng-click="save();console.log('save in button');edit = !edit" class="btn btn-primary">Save</button>
         <button type="reset" ng-show="edit" ng-click="edit = !edit;clearFamily(['EditFamInfoForm', 'EditFamEmerForm', 'EditFamChildrenForm', 'EditFamDonationsForm'])" class="btn btn-danger">Cancel</button>
         ​
     </uib-tab>
     <uib-tab heading="Donations">
-        <form id="EditFamDonationsForm" ng-submit="save();edit = !edit">
+        <form id="EditFamDonationsForm">
             <legend>Donations</legend>
             <div class="content-container">
                 <table class="table-hover table table-bordered">

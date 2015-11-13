@@ -108,6 +108,7 @@ router.get('/', function (req, res, next) {
 
 				var checkChild = function(elem) {
 					var child = {
+						id:elem.id,
 						firstName:elem.firstName,
 						lastName:elem.lastName,
 						email:elem.email,
@@ -121,6 +122,7 @@ router.get('/', function (req, res, next) {
 
 				var checkDonations = function (elem) {
 					var donation = {
+						id:elem.id,
 						date:formatDates(elem.date),
 						amount:elem.amount,
 						notes:elem.notes
@@ -373,9 +375,10 @@ router.post('/', function (req, res, next) {
 
 router.put('/', function (req, res, next) {
 	var family = req.body.family;
+	// need to force id to string to pass validation, allowing either number or string var type for family id
+	family.id = family.id.toString();
 	console.log("In put route for families ", family);
 	console.log("checking if name is null", family.adultTwo.firstName == null);
-
 	// check all
 	validator.run(baseFamCheck, family, function (errCount, err) {
 		if (errCount != 0) {

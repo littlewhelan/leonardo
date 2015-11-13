@@ -46,6 +46,7 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 			console.log(response.data);
 			response.data.children.forEach(function (v, i, a) {
 				console.log("reformatted", dateService.fromDB(a[i].birthdate));
+				a[i].birthdate = dateService.fromDB(v.birthdate);
 			});
 			$scope.family = response.data;
 			var modalInstance = $uibModal.open({
@@ -75,6 +76,15 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 	// save family
 	$scope.save = function () {
 		console.log("Save submitted", $scope.family);
+
+		// check for children, run toDB formatting before sending
+		if($scope.family.children.length) {
+			$scope.family.children.forEach(function (v, i, a) {
+				a[i].birthdate = dateService.toDB(v.birthdate);
+			});
+		}
+
+		console.log("Saving family, after toDB birthdates", $scope.family);
 
 		// if has id, then post
 
@@ -186,14 +196,14 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 
 	// adds donation to family object
 
+// adds donation to family object
 	$scope.addDonation = function () {
 		var temp = $scope.newDonation;
 		temp.date = dateService.toDB(temp.date);
-		$scope.family.donations.push($scope.newDonation);
+		$scope.corp.donations.push($scope.newDonation);
 		$scope.newDonation = {};
-		console.log("added donation", temp, $scope.family.donations);
+		console.log("added donation", temp, $scope.corp.donations);
 	};
-
 
 	//// prevent accidental backs
 	//$scope.$on('$locationChangeSuccess', function( event, oldUrl ) {

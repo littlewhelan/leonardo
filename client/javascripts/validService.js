@@ -38,7 +38,8 @@ app.service('validService', [function () {
                 pattern = /^20[0-9]{2}[-](0[1-9]|1[0-2])[-](0[1-9]|[1-2][0-9]|3[01])$/;
                 break;
             case "birthdate":
-                pattern = /^(199[0-9]|20[0-9]{2})[-](0[1-9]|1[0-2])[-](0[1-9]|[1-2][0-9]|3[01])$/;
+                pattern = /^(0?[1-9]|1[0-2])\/(0?[1-9]|[1-2][0-9]|3[01])\/((199[0-9]|20)[0-9]{2})$/;
+                //pattern = /^(199[0-9]|20[0-9]{2})[-](0[1-9]|1[0-2])[-](0[1-9]|[1-2][0-9]|3[01])$/;
                 break;
             case "amount":
                 pattern = /^([\$]?[\d]+([.][\d]{2})?){1,10}$/;
@@ -51,7 +52,7 @@ app.service('validService', [function () {
 				pattern = /^[a-zA-Z0-9\s,.?@!#'~*_;+-]{0,75}$/;
 				break;
 			case "age":
-				pattern = /^[0-9]{1,2}$/
+				pattern = /^[0-9]{1,2}$/;
 				break;
             default:
                 console.log("invalid class search");

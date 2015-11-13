@@ -82,6 +82,7 @@ var idCheck = validator.isString({regex: /^[0-9]+$/ });
 
 				var checkDonations = function (elem) {
 					var donation = {
+						id:id,
 						amount: elem.amount,
 						notes: elem.notes,
 						date: formatDates(elem.date)
