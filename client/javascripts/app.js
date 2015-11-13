@@ -1,14 +1,5 @@
 var app = angular.module('leo', ['ngRoute', 'ngAnimate', 'ui.bootstrap', 'checklist-model', 'toastr', 'angular-momentjs']);
 
-var prettyDate = "MM/DD/YYgYY";
-var fullDate = "MM/DD/YYYY h:mm:ss a";
-
-function formatDates (date) {
-	return {
-		full: moment(date).format(fullDate),
-		pretty: moment(date).format(prettyDate)
-	};
-}
 
 app.config(['$routeProvider',
     function($routeProvider) {
