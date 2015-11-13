@@ -34,7 +34,7 @@ var donationsCheck = validator.isObject()
 	.withOptional('notes', validator.isString({ regex: regex.notes }));
 
 var baseCorpCheck = validator.isObject()
-	.withOptional('id', validator.isInteger())
+	.withOptional('id', validator.isString({regex: regex.int}))
 	.withRequired('info', infoCheck)
 	.withOptional('contact', contactCheck)
 	.withOptional('donations', validator.isArray(donationsCheck));
