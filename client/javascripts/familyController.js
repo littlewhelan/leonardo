@@ -158,18 +158,21 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 
 	// for appending children to model before saving new family
 	$scope.addChild = function () {
-		console.log("child added", $scope.newChild, $scope.family.children);
-		// if true, then update that index
-		if($scope.editingChild) {
-			$scope.family.children[$scope.editingChild] = $scope.newChild;
-			$scope.editingChild = false;
-			toastr.success('Child updated!');
-		}else {
-			// else push to array
-			$scope.family.children.push($scope.newChild);
-			toastr.success('Child added!');
+		// length check needed for auto add if click save instead of add first
+		if($scope.newChild.firstName.length > 0) {
+			console.log("child added", $scope.newChild, $scope.family.children);
+			// if true, then update that index
+			if($scope.editingChild) {
+				$scope.family.children[$scope.editingChild] = $scope.newChild;
+				$scope.editingChild = false;
+				toastr.success('Child updated!');
+			}else {
+				// else push to array
+				$scope.family.children.push($scope.newChild);
+				toastr.success('Child added!');
+			}
+			$scope.newChild = {};
 		}
-		$scope.newChild = {};
 	};
 
 	// edit child on the add children tab of add family
@@ -208,11 +211,15 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 
 // adds donation to family object
 	$scope.addDonation = function () {
-		//var temp = $scope.newDonation;
-		//temp.date = dateService.toDB(temp.date);
-		$scope.family.donations.push($scope.newDonation);
-		$scope.newDonation = {};
-		console.log("added donation", temp, $scope.family.donations);
+		// length check needed for auto add if click save instead of add first
+		if($scope.newDonation.amount.length > 0) {
+			//var temp = $scope.newDonation;
+			//temp.date = dateService.toDB(temp.date);
+			console.log("add donation", $scope.newDonation);
+			$scope.family.donations.push($scope.newDonation);
+			$scope.newDonation = {};
+			console.log("added donation", $scope.family.donations);
+		}
 	};
 
 	//// prevent accidental backs

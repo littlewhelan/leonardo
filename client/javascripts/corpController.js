@@ -131,11 +131,15 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 
 	// adds donation to family object
 	$scope.addDonation = function () {
-		//var temp = $scope.newDonation;
-		//temp.date = dateService.toDB(temp.date);
-		$scope.corp.donations.push($scope.newDonation);
-		$scope.newDonation = {};
-		console.log("added donation", temp, $scope.corp.donations);
+		// length check needed for auto add if click save instead of add first
+		if($scope.newDonation.length > 0) {
+			//var temp = $scope.newDonation;
+			//temp.date = dateService.toDB(temp.date);
+			console.log("donation", $scope.newDonation);
+			$scope.corp.donations.push($scope.newDonation);
+			$scope.newDonation = {};
+			console.log("added donation", $scope.corp.donations);
+		}
 	};
 
 }]);

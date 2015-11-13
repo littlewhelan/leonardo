@@ -241,9 +241,9 @@
             ​
             <label ng-show="edit">Add Donation</label>
             <button ng-show="edit" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
-            <input ng-show="edit" id="FDD" class="js-validate form-control" type="text" placeholder="Date (M/D/YYYY)" data-placeholder="Date (M/D/YYYY)" data-invalid="Valid date: M/D/YYYY, 2000 or later" data-type="text" ng-blur="validateInput('date', 'FDD');">
-            <input ng-show="edit" id="FDA" class="js-validate form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'FDA');">
-            <textarea ng-show="edit" id="FDN" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'FDN');"></textarea>
+            <input ng-show="edit" ng-model="newDonation.date" id="FDD" class="js-validate form-control" type="text" placeholder="Date (M/D/YYYY)" data-placeholder="Date (M/D/YYYY)" data-invalid="Valid date: M/D/YYYY, 2000 or later" data-type="text" ng-blur="validateInput('date', 'FDD');">
+            <input ng-show="edit" ng-model="newDonation.amount" id="FDA" class="js-validate form-control" type="text" placeholder="Amount" data-placeholder="Amount" data-invalid="Valid amount: (opt $) #'s (opt decimal)" data-type="amount" ng-blur="validateInput('amount', 'FDA');">
+            <textarea ng-show="edit" ng-model="newDonation.notes" id="FDN" rows="4" class="js-validate form-control" placeholder="Notes" data-placeholder="Notes" data-invalid="Valid note: (a-z 0-9 regular punctuation, special characters)" data-type="notes" ng-blur="validateInput('notes', 'FDN');"></textarea>
         ​</form>
     </uib-tab>
 </uib-tabset>
