@@ -210,9 +210,9 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 	$scope.addDonation = function () {
 		var temp = $scope.newDonation;
 		temp.date = dateService.toDB(temp.date);
-		$scope.corp.donations.push($scope.newDonation);
+		$scope.family.donations.push($scope.newDonation);
 		$scope.newDonation = {};
-		console.log("added donation", temp, $scope.corp.donations);
+		console.log("added donation", temp, $scope.family.donations);
 	};
 
 	//// prevent accidental backs
