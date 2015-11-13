@@ -60,7 +60,7 @@
                 <label for="addDonation">Add Donation</label>
                 <button id="addDonation" type="button" class="btn btn-danger" ng-click="addDonation()">+</button>
             </div>
-            <button class="btn btn-primary" ng-click="save();">Save</button>
+            <button class="btn btn-primary" ng-click="addDonation();save();">Save</button>
             <!--<button class="btn btn-primary" ng-click="console.log(corp);save();">Save</button>-->
             <button type="reset" class="btn btn-danger" ng-click="clearCorp(['AddCorpInfoForm', 'AddCorpContactForm', 'AddCorpDonationForm']);">Clear/New Corporation</button>
         </form>

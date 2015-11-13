@@ -210,7 +210,7 @@
 
         <!--edit / close buttons -->
         <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-        <button ng-show="edit" ng-click="save();console.log('save in button');edit = !edit" class="btn btn-primary">Save</button>
+        <button ng-show="edit" ng-click="addChild();save();edit = !edit" class="btn btn-primary">Save</button>
         <button type="reset" ng-show="edit" ng-click="edit = !edit;clearFamily(['EditFamInfoForm', 'EditFamEmerForm', 'EditFamChildrenForm', 'EditFamDonationsForm'])" class="btn btn-danger">Cancel</button>
         ​
     </uib-tab>
@@ -235,7 +235,7 @@
             </div>
             <!--edit / close buttons -->
             <button ng-hide="edit" ng-click="edit = !edit" type="button" aria-label="Toggle ngHide" class="btn btn-danger">Edit</button>
-            <button ng-show="edit" class="btn btn-primary" ng-click="save();edit = !edit">Save</button>
+            <button ng-show="edit" class="btn btn-primary" ng-click="addDonation();save();edit = !edit">Save</button>
             <button type="reset" ng-show="edit" ng-click="edit = !edit;clearFamily(['EditFamInfoForm', 'EditFamEmerForm', 'EditFamChildrenForm', 'EditFamDonationsForm'])" class="btn btn-danger">Cancel</button>
             <!--shows when editable\/\/\/ -->
             ​
