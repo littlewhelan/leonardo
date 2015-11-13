@@ -19,5 +19,5 @@ module.exports = {
 		search: /^[a-zA-Z0-9\s,.?@!#'~*_;+-]{0,75}$/,
 		listTypes: /^(company|family|zip|age)$/,
 		/* zip code or age: */
-		listSearch: /^([0-9]{5}|[0-9]{1,2})$/
+		listSearch: /^([0-9]{4,5}|[0-9]{1,2}|[^\s]*)$/
 };
