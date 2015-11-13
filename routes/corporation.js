@@ -166,6 +166,7 @@ router.post('/', function (req, res, next) {
 				state: corp.info.state,
 				zip: corp.info.phone,
 				email: corp.info.email,
+				notes: corp.info.notes,
 				contactFirstName: corp.contact.firstName,
 				contactLastName: corp.contact.lastName,
 				contactPhone: corp.contact.phone,
