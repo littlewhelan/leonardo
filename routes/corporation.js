@@ -68,13 +68,6 @@ var idCheck = validator.isString({regex: /^[0-9]+$/ });
 		console.log('Connection established');
 
 		runQuery = function () {
-
-			var prettyDate = "MM/DD/YYYY";
-
-			function formatDates(date) {
-				return moment(date).format(prettyDate)
-			}
-
 			con.query(getPeeps.companyTab, [id], function (err, rows) {
 				if (err) {
 					throw err;
@@ -86,7 +79,7 @@ var idCheck = validator.isString({regex: /^[0-9]+$/ });
 						id:id,
 						amount: elem.amount,
 						notes: elem.notes,
-						date: formatDates(elem.date)
+						date: elem.date
 					};
 					companyDonationsArray.push(donation);
 				};

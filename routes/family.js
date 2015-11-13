@@ -99,12 +99,6 @@ router.get('/', function (req, res, next) {
 		console.log('Connection established');
 
 		var runQuery = function() {
-
-			var prettyDate = "MM/DD/YYYY";
-			function formatDates (date) {
-				return moment(date).format(prettyDate)
-			}
-
 			con.query(getPeeps.familyTab, [id], function (err, rows) {
 				if(err) throw err;
 
@@ -115,7 +109,7 @@ router.get('/', function (req, res, next) {
 						lastName:elem.lastName,
 						email:elem.email,
 						cell:elem.cell,
-						birthdate:formatDates(elem.birthdate),
+						birthdate:elem.birthdate,
 						school:elem.school,
 						notes:elem.notes
 					};
@@ -125,7 +119,7 @@ router.get('/', function (req, res, next) {
 				var checkDonations = function (elem) {
 					var donation = {
 						id:elem.id,
-						date:formatDates(elem.date),
+						date:elem.date,
 						amount:elem.amount,
 						notes:elem.notes
 					};
@@ -362,7 +356,6 @@ router.post('/', function (req, res, next) {
 		var insertDonation = function (donation, cb, donations, length, index) {
 			// set the familyID of the donation
 			donation.familyID = family.id;
-			donation.date = formatDates(donation.date);
 			con.query(insertFam.donations, [donation], function (err, res) {
 				if (err) {
 					throw err;
@@ -389,11 +382,6 @@ router.put('/', function (req, res, next) {
 		}
 
 		var con = mysql.createConnection(db);
-		var prettyDate = "YYYY-MM-DD";
-
-		function formatDates(date) {
-			return moment(date).format(prettyDate)
-		}
 		// connect to db
 		con.connect(function (err) {
 			if (err) {
@@ -474,7 +462,6 @@ router.put('/', function (req, res, next) {
 
 		// updates existing child records and runs callback
 		var updateChild = function (child, cb, children, length, index) {
-			child.birthdate = formatDates(child.birthdate);
 			con.query(updateFam.kids, [child.firstName, child.lastName,
 				child.school, child.birthdate, child.notes,
 				child.email, child.cell, child.id], function (err, res) {
@@ -490,7 +477,6 @@ router.put('/', function (req, res, next) {
 		// inserts new child record and runs callback
 		var insertChild = function (child, cb, children, length, index) {
 			child.familyID = family.id;
-			child.birthdate = formatDates(child.birthdate);
 			console.log("in insertChild", family, child, "len ", length, " index ", index, " of undef: ", family.children);
 			con.query(insertFam.kids, [child], function (err, res) {
 				if (err) {
@@ -523,7 +509,6 @@ router.put('/', function (req, res, next) {
 			// set the familyID of the donation
 			family.donations[index].familyID = family.id;
 			donation.familyID = family.id;
-			donation.date = formatDates(donation.date);
 			console.log("donations", donation, donations, length, index);
 			con.query(insertFam.donations, [donation], function (err, res) {
 				if (err) {
