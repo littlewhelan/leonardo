@@ -2,9 +2,9 @@
     <div class="col-lg-6 register-container">
         <form ng-submit="submit()" ng-controller="registerCtrl" name="user-register">
             <legend>Create Admin</legend>
-            <input class="js-validate form-control" type="text" ng-model="form.username" ng-trim="false" name="username" ng-minlength="8" ng-maxlength="20" placeholder="Username" data-placeholder="Username" ng-pattern="/^[a-zA-Z0-9_ ]*$/" ng-blur="validateInput('username', 'UN');" required>
-            <input class="js-validate form-control" type="password" ng-model="form.password" name="password" placeholder="Password" data-placeholder="Password" ng-minlength="8" ng-maxlength="20" ng-blur="validateInput('password', 'Pass');" required>
-            <input class="js-validate form-control" type="password" ng-model="form.confirm" name="confirm" placeholder="Confirm Password" data-placeholder="Confirm Password" ng-minlength="6" ng-maxlength="15" ng-blur="validateInput('Confirm', 'Confirm');" required>
+            <input class="js-validate form-control" type="text" ng-model="form.username" ng-trim="false" id="UN" ng-minlength="8" ng-maxlength="20" placeholder="Username" data-placeholder="Username" data-invalid="Each: lower, upper. Also can use: numbers - _ 8-20 characters" data-type="username" ng-blur="validateInput('username', 'UN');" required>
+            <input class="js-validate form-control" type="password" ng-model="form.password" id="NP" placeholder="Password" data-placeholder="Password" data-invalid="Each: lower, upper, number. Can use - _ 8-20 characters" data-type="password" ng-minlength="8" ng-maxlength="20" ng-blur="validateInput('password', 'NP');" required>
+            <input class="js-validate form-control" type="password" ng-model="form.confirm" id="NC" placeholder="Confirm Password" data-placeholder="Confirm Password" data-invalid="Each: lower, upper, number. Can use - _ 8-20 characters" data-type="password" ng-minlength="8" ng-maxlength="20" ng-blur="validateInput('password', 'NC');" required>
             <input type="submit" class="btn-primary form-control" value="Create Admin">
         </form>
     </div>

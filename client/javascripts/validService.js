@@ -5,7 +5,7 @@ app.service('validService', [function () {
         // stores the form being called on
         var pattern;
         var $obj = (id) ? $('#'+ id) : false;
-        console.log("object is ", $obj, type, id);
+        //console.log("object is ", $obj, type, id);
         switch (type) {
             case "name":
             case "city":
@@ -46,8 +46,11 @@ app.service('validService', [function () {
                 pattern = /^([\$]?[\d]+([.][\d]{2})?){1,10}$/;
                 break;
 			case "username":
+				pattern = /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d_\-]{8,20}$/;
+				break;
 			case "password":
-				pattern = /^([a-z]+[A-Z]+[0-9]+){8,20}$/;
+				//pattern = /^([a-z]+[A-Z]+[0-9]+[-_]?){8,20}$/;
+				pattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,20}$/;
 				break;
 			case "search":
 				pattern = /^[a-zA-Z0-9\s,.?@!#'~*_;+-]{0,75}$/;
@@ -56,7 +59,7 @@ app.service('validService', [function () {
 				pattern = /^[0-9]{1,2}$/;
 				break;
             default:
-                console.log("invalid class search");
+                //console.log("invalid class search");
                 return false;
                 break;
         }
@@ -67,12 +70,12 @@ app.service('validService', [function () {
             if(!pattern.test($obj.val().trim()) || $obj.val().trim().length == 0 && $obj.attr('required')) {
                 // if fails, adds invalid class (highlighting), changes placeholder to what should be entered
                 $obj.addClass('invalid').attr('placeholder', $obj.data('invalid')).val('');
-                console.log(type, ' failed test', pattern);
+                //console.log(type, ' failed test', pattern);
 				return false;
             } else {
                 // if passes, removes invalid class, resets placeholder to default
                 $obj.removeClass('invalid').attr('placeholder', $obj.data('placeholder'));
-                console.log(type, ' passed test', pattern);
+                //console.log(type, ' passed test', pattern);
 				return true;
             }
         }
@@ -83,7 +86,7 @@ app.service('validService', [function () {
 		forms.forEach(function (v, i, a) {
 			$('#'+ v +' .js-validate').each(function () {
 				if(validateInput($(this).data('type'), $(this).attr('id')) == false) {
-					console.log($(this).attr('id') +" failed the test "+ $(this).data('type') +" entered info: "+ $(this).val());
+					//console.log($(this).attr('id') +" failed the test "+ $(this).data('type') +" entered info: "+ $(this).val());
 					pass = false;
 				}
 			});
