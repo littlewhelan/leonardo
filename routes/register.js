@@ -15,14 +15,14 @@ router.post('/', function(req, res, next) {
 	console.log("/register req.body:", temp);
 	validator.run(adminCheck, temp, function (errCount, err) {
 		if(errCount > 0) {
-			res.sendStatus(400);
+			return res.sendStatus(400);
 		}
 
 		User.Create(req.body, function(err, user){
 			if(err){
-				res.status(400).send(err.message);
+				return res.status(400).send(err.message);
 			} else{
-				res.sendStatus(200);
+				return res.sendStatus(200);
 			}
 		});
 	});
