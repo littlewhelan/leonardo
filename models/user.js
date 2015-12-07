@@ -66,7 +66,7 @@ UserSchema.statics.getAuthenticated = function (user, callback) {
         }
         // make sure the user exists
         else if (!doc) {
-            console.log('No user found,');
+            console.log('No user found', doc);
             return callback(new Error('Invalid username or password.', 401), null);
         }
         else {
