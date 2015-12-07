@@ -17,13 +17,14 @@ router.post('/', function (req, res, next) {
 			console.log(errCount, err);
 			return res.sendStatus(400);
 		}
+		console.log("passed validation");
 		User.getAuthenticated(req.body, function (err, token) {
 			if (err) {
 				console.log("routes",err.message);
-				res.status(400).send(err.message);
+				return res.status(400).send(err.message);
 			} else {
 				console.log("token", token);
-				res.send(token);
+				return res.send(token);
 			}
 		});
 	});
