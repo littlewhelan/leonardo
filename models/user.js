@@ -59,6 +59,13 @@ UserSchema.statics.updatePassword = function (user, callback) {
 
 UserSchema.statics.getAuthenticated = function (user, callback) {
     console.log('getAuthenticated', user);
+	this.find({}, function (err, testdoc) {
+		if(err) {
+			console.log("error on find all", err);
+		}else {
+			console.log(testdoc);
+		}
+	});
     this.findOne({username: user.username}, function (err, doc) {
         if (err) {
             console.log(err);
