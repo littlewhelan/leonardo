@@ -63,7 +63,7 @@ UserSchema.statics.getAuthenticated = function (user, callback) {
 		if(err) {
 			console.log("error on find all", err);
 		}else {
-			console.log(testdoc);
+			console.log("users", testdoc);
 		}
 	});
     this.findOne({username: user.username}, function (err, doc) {
