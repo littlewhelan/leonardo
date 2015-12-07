@@ -75,6 +75,14 @@ mongoose.connect(dbURI.conn);
 
 mongoose.connection.on('connected', function () {
   console.log('Mongoose default connection open');
+	mongoose.connection.db.listCollections().toArray(function(err, names) {
+		if (err) {
+			console.log(err);
+		}
+		else {
+			console.log('Mongoose collections', names);
+		}
+	});
 });
 
 // If the connection throws an error
