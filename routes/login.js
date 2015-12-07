@@ -12,6 +12,7 @@ var loginCheck = validator.isObject()
 router.post('/', function (req, res, next) {
 	var login = req.body;
 	console.log("post received, checking ", login);
+	console.log("testing", regex.username.test(login.username), regex.password.test(login.password));
 	validator.run(loginCheck, login, function (errCount, err) {
 		if(errCount > 0) {
 			console.log("error - validator: ", errCount, err);
