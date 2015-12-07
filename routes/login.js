@@ -14,6 +14,7 @@ router.post('/', function (req, res, next) {
 	console.log("post received, checking ", login);
 	console.log("testing", regex.username.test(login.username), regex.password.test(login.password));
 	validator.run(loginCheck, login, function (errCount, err) {
+		console.log("inside validator");
 		if(errCount > 0) {
 			console.log("error - validator: ", errCount, err);
 			return res.sendStatus(400);
