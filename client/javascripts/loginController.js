@@ -1,6 +1,7 @@
 //controllers for login
 app.controller('loginCtrl', ['$scope', '$http', 'authService', '$location', '$rootScope', 'toastr', function($scope, $http, authService, $location, $rootScope, toastr){
     $scope.submit = function(){
+		console.log("login submitted", $scope.form);
         $http.post('/login', $scope.form)
             .then(function (response) {
                 authService.saveToken(response.data);
