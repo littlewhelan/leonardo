@@ -14,11 +14,11 @@ router.post('/', function (req, res, next) {
 	console.log("post received, checking ", login);
 	validator.run(loginCheck, login, function (errCount, err) {
 		if(errCount > 0) {
-			console.log(errCount, err);
+			console.log("error - validator: ", errCount, err);
 			return res.sendStatus(400);
 		}
 		console.log("passed validation");
-		User.getAuthenticated(req.body, function (err, token) {
+		User.getAuthenticated(login, function (err, token) {
 			if (err) {
 				console.log("routes",err.message);
 				return res.status(400).send(err.message);
@@ -28,7 +28,6 @@ router.post('/', function (req, res, next) {
 			}
 		});
 	});
-
 });
 
 
