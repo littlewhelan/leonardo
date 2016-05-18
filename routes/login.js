@@ -22,6 +22,7 @@ router.post('/', function (req, res, next) {
 			console.log(errCount, err);
 			return res.sendStatus(400);
 		}
+		console.log("passed validator check for login");
 		User.getAuthenticated(req.body, function (err, token) {
 			if (err) {
 				console.log("routes",err.message);
