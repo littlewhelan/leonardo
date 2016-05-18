@@ -44,7 +44,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public/static')));
+app.use('/static', express.static(path.join(__dirname, 'public/static')));
 app.use('/private', express.static( path.join(__dirname, 'private')));
 
 
