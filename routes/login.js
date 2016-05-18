@@ -16,6 +16,7 @@ router.get('/', function (req, res, next) {
 /* POST /api/register/ */
 router.post('/', function (req, res, next) {
 	var login = req.body;
+	console.log("In login post route", login);
 	validator.run(loginCheck, login, function (errCount, err) {
 		if(errCount > 0) {
 			console.log(errCount, err);
