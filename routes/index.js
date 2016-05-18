@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
 
   res.send('This is the index route');
 	// res.sendFile('./public/static/index.html');
+	res.sendFile()
 });
 
 module.exports = router;

@@ -53,7 +53,7 @@ app.use('/admin', admin);
 app.use('/family',family);
 
 app.use('/private/*', jwt);
-app.use('/', index);
+app.use('/', express.static(path.join(__dirname, 'public/static/index.html')));
 app.use('/login', login);
 app.use('/register', register);
 app.use('/corporation', corporation);
