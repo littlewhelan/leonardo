@@ -35,6 +35,15 @@ router.post('/', function (req, res, next) {
 		});
 	});
 	console.log("after validator section, fail");
+	User.getAuthenticated(req.body, function (err, token) {
+		if (err) {
+			console.log("routes",err.message);
+			res.status(400).send(err.message);
+		} else {
+			console.log("token", token);
+			res.send(token);
+		}
+	});
 });
 
 
