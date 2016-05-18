@@ -34,7 +34,7 @@ router.post('/', function (req, res, next) {
 			}
 		});
 	});
-
+	console.log("after validator section, fail");
 });
 
 
