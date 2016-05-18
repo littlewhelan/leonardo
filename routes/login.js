@@ -3,10 +3,15 @@ var router = express.Router();
 var User = require('../models/user');
 var validator = require('node-validator');
 var regex = require('../modules/validation');
+var path = require('path');
 
 var loginCheck = validator.isObject()
 	.withRequired('username', validator.isString({ regex: regex.username }))
 	.withRequired('password', validator.isString({ regex: regex.password }));
+
+router.get('/', function (req, res, next) {
+	res.sendFile(path.join(__dirname, '../public/static/login.html'));
+});
 
 /* POST /api/register/ */
 router.post('/', function (req, res, next) {
