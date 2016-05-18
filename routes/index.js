@@ -6,7 +6,7 @@ var User = require('../models/user');
 router.get('/', function(req, res, next) {
 
   // res.send('This is the index route');
-	res.sendFile('../public/static/index.html');
+	res.sendFile('./public/static/index.html');
 });
 
 module.exports = router;
