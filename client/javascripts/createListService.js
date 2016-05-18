@@ -5,7 +5,7 @@ app.factory('ContactListDataService', ['$http', '$q', function ($http, $q) {
         console.log('this is in the make data call', type, passedData);
         $http({
             method: 'GET',
-            url: '../createMailList',
+            url: 'leo/createMailList',
             params: {type: type, search: passedData}
         }).then(function (response) {
             data = response.data;

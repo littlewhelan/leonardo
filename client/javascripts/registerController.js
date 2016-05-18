@@ -6,7 +6,7 @@ app.controller('registerCtrl', [ '$scope', '$http', '$location', 'toastr', 'vali
     $scope.submit = function () {
         //console.log("registerCtrl");
         //console.log('registerController submit:', $scope.form, $scope.form.username);
-        $http.post('/register', $scope.form)
+        $http.post('/leo/register', $scope.form)
             .then(function (response) {
                 //console.log(response);
                 $location.path("/index");

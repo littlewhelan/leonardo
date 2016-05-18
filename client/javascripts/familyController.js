@@ -40,7 +40,7 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 		console.log('family call', id);
 		return $http({
 			method: 'GET',
-			url: '../family',
+			url: '../leo/family',
 			params: {id: id}
 		}).then(function (response) {
 			console.log(response.data);
@@ -54,7 +54,7 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 			$scope.family = response.data;
 			var modalInstance = $uibModal.open({
 				animation: $scope.animationsEnabled,
-				templateUrl: 'private/editfamily.html',
+				templateUrl: 'leo/private/editfamily.html',
 				controller: 'ModalInstanceCtrl',
 				size: size,
 				scope: $scope,
@@ -103,7 +103,7 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 			if(validService.validateForm(["AddFamInfoForm", "AddFamEmerForm"])) {
 				$http({
 					method: 'POST',
-					url: '/family',
+					url: '/leo/family',
 					data: {family: $scope.family}
 				}).then(function (res) {
 					console.log("Posted family, got id ", res.data);
@@ -133,7 +133,7 @@ app.controller('editFamilyCtrl', ['$scope', '$uibModal', '$log', 'ResultService'
 				console.log("update family", $scope.family);
 				$http({
 					method: 'PUT',
-					url: '/family',
+					url: '/leo/family',
 					data: {family: $scope.family}
 				}).then(function (res) {
 					console.log("Put family, got id ", res.data);

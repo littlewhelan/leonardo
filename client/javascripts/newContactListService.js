@@ -9,7 +9,7 @@ app.service('newContactListData', ['ContactListDataService', '$http', '$timeout'
 
 			//$timeout(function () { return true;}, 5000);
 			//return true;
-            $http.post('/newContactList', {name: name}).then(function (response) {
+            $http.post('/leo/newContactList', {name: name}).then(function (response) {
                 console.log(response.data);
                 listNum = response.data;
                 console.log("Id? ", listNum);
@@ -28,7 +28,7 @@ app.service('newContactListData', ['ContactListDataService', '$http', '$timeout'
             console.log('got to popList');
             console.log('importDataArray: ',this.importDataArray, '\ntype: ', typeof this.importDataArray);
             getChecked(list);
-            $http.post('/populateContactList', this.dataObject).then(function (data, status, headers, config) {
+            $http.post('/leo/populateContactList', this.dataObject).then(function (data, status, headers, config) {
                 console.log('posted');
                 console.log(data);
                 console.log('importDataArray: ',this.importDataArray, '\ntype: ', typeof this.importDataArray);

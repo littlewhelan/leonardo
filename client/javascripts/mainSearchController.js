@@ -7,7 +7,7 @@ app.controller('searchFunction', ['$scope', '$http', 'ResultService', function (
         //passes in search text to service
        ResultService.makeDataCall($scope.formInput.data);
         console.log('this is the input text', $scope.formInput);
-        //emptys the search box
+        //empties the search box
         $scope.formInput={};
     };
 

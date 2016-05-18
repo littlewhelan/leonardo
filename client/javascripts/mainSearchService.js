@@ -8,7 +8,7 @@ app.factory('ResultService', ['$http',function($http) {
     var makeDataCall = function(passedData) {
         return $http({
             method: 'GET',
-            url: '../search',
+            url: 'leo/search',
             params:{search:passedData}
         }).then(function (response) {
             results = response.data;

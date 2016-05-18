@@ -32,7 +32,7 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 		console.log('corp call', id);
 		return $http({
 			method: 'GET',
-			url: '../corporation',
+			url: 'leo/corporation',
 			params: {id: id}
 		}).then(function (response) {
 
@@ -43,7 +43,7 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 			$scope.corp = response.data;
 			var modalInstance = $uibModal.open({
 				animation: $scope.animationsEnabled,
-				templateUrl: 'private/editcorp.html',
+				templateUrl: 'leo/private/editcorp.html',
 				controller: 'ModalInstanceCtrl',
 				size: size,
 				scope: $scope,
@@ -83,7 +83,7 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 			if(validService.validateForm(["AddCorpInfoForm", "AddCorpContactForm"])) {
 				$http({
 					method: 'POST',
-					url: '/corporation',
+					url: '/leo/corporation',
 					data: {corp: $scope.corp}
 				}).then(function (res) {
 					console.log("Posted corp, got id ", res.data);
@@ -109,7 +109,7 @@ app.controller('editCorpCtrl', ['$scope', '$uibModal', '$log', 'ResultService', 
 				console.log("update corp", $scope.corp);
 				$http({
 					method: 'PUT',
-					url: '/corporation',
+					url: '/leo/corporation',
 					data: {corp: $scope.corp}
 				}).then(function (res) {
 					console.log("Put corp, got id ", res.data);
