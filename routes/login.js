@@ -18,6 +18,7 @@ router.post('/', function (req, res, next) {
 	var login = req.body;
 	console.log("In login post route", login);
 	validator.run(loginCheck, login, function (errCount, err) {
+		console.log("after validator check", errCount, err);
 		if(errCount > 0) {
 			console.log(errCount, err);
 			return res.sendStatus(400);
