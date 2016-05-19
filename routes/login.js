@@ -32,7 +32,7 @@ router.post('/', function (req, res, next) {
 	validator.run(loginCheck, login, function (errCount, err) {
 		console.log("after validator check", errCount, err);
 		if(errCount > 0) {
-			console.log(errCount, err);
+			console.log("validator found errors in request", errCount, err);
 			return res.sendStatus(400);
 		}
 		console.log("passed validator check for login");
