@@ -5,12 +5,12 @@ var validator = require('node-validator');
 var regex = require('../modules/validation');
 var path = require('path');
 
-var loginCheck = validator.isObject()
-	.withRequired('username', validator.isString())
-	.withRequired('password', validator.isString());
 // var loginCheck = validator.isObject()
-// 	.withRequired('username', validator.isString({ regex: regex.username }))
-// 	.withRequired('password', validator.isString({ regex: regex.password }));
+// 	.withRequired('username', validator.isString())
+// 	.withRequired('password', validator.isString());
+var loginCheck = validator.isObject()
+	.withRequired('username', validator.isString({ regex: regex.username }))
+	.withRequired('password', validator.isString({ regex: regex.password }));
 
 router.get('/', function (req, res, next) {
 	res.sendFile(path.join(__dirname, '../public/static/login.html'));
