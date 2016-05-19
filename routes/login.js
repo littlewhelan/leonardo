@@ -46,7 +46,7 @@ router.post('/', function (req, res, next) {
 		// 	}
 		// });
 	});
-	console.log("after validator section", res.headersSent, res);
+	console.log("after validator section", res.headersSent);
 	if(!res.headersSent) {
 		console.log("headers haven't been sent");
 		User.getAuthenticated(req.body, function (err, token) {
