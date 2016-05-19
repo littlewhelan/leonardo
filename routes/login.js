@@ -34,8 +34,10 @@ router.post('/', function (req, res, next) {
 		if(errCount > 0) {
 			console.log("validator found errors in request", errCount, err);
 			return res.sendStatus(400);
+		}else {
+			console.log("passed validator check for login");
+			return true;
 		}
-		console.log("passed validator check for login");
 		// User.getAuthenticated(req.body, function (err, token) {
 		// 	if (err) {
 		// 		console.log("routes",err.message);
