@@ -30,10 +30,12 @@ router.post('/', function (req, res, next) {
 	// });
 	console.log("In login post route", login, loginCheck);
 	validator.run(loginCheck, login, function (errCount, err) {
-		console.log("after validator check", errCount, err);
+		// console.log("after validator check", errCount, err);
 		if(errCount > 0) {
 			console.log("validator found errors in request", errCount, err);
 			return res.sendStatus(400);
+		}else {
+			console.log("No errors found in login request");
 		}
 		console.log("passed validator check for login");
 		User.getAuthenticated(req.body, function (err, token) {
@@ -47,15 +49,15 @@ router.post('/', function (req, res, next) {
 		});
 	});
 	console.log("after validator section, fail");
-	// User.getAuthenticated(req.body, function (err, token) {
-	// 	if (err) {
-	// 		console.log("routes",err.message);
-	// 		res.status(400).send(err.message);
-	// 	} else {
-	// 		console.log("token", token);
-	// 		res.send(token);
-	// 	}
-	// });
+	User.getAuthenticated(req.body, function (err, token) {
+		if (err) {
+			console.log("routes",err.message);
+			res.status(400).send(err.message);
+		} else {
+			console.log("token", token);
+			res.send(token);
+		}
+	});
 });
 
 
