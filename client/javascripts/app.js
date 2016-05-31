@@ -13,7 +13,7 @@ app.config(['$routeProvider',
             when('/register', {
                 templateUrl: 'leo/static/register.html'
             }).
-            when('/contactList', {
+            when('/contactlist', {
                 templateUrl: 'leo/private/contactlist.html'
             }).
             when('/addfamily', {
@@ -23,9 +23,6 @@ app.config(['$routeProvider',
             when('/addcorp', {
                 templateUrl: 'leo/private/addcorp.html',
 				controller: 'editCorpCtrl'
-            }).
-            when('/contactlist', {
-                templateUrl: 'leo/private/contactlist.html'
             }).
             otherwise({
                 redirectTo: '/search'
