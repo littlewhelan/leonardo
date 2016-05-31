@@ -14,7 +14,7 @@ app.config(['$routeProvider',
                 templateUrl: 'leo/static/register.html'
             }).
             when('/contactList', {
-                templateUrl: 'leo/private/contactList.html'
+                templateUrl: 'leo/private/contactlist.html'
             }).
             when('/addfamily', {
                 templateUrl: 'leo/private/addfamily.html',
