@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-    , bcrypt = require('bcrypt')
+    , bcrypt = require('bcryptjs')
     , jsonwebtoken = require('jsonwebtoken')
     , SALT_WORK_FACTOR = 12;
 var secret = require('../config/user');
