@@ -4,29 +4,29 @@
 		<head>
 			<meta charset="utf-8" />
 			<title></title>
-			<link rel="stylesheet" href="/leo/stylesheets/style.css" />
-			<link rel="stylesheet" href="/leo/stylesheets/bootstrap-theme.min.css">
-			<link rel="stylesheet" href="/leo/stylesheets/bootstrap.min.css">
-			<link rel="stylesheet" href="/leo/stylesheets/angular-toastr.min.css">
-			<script src="/leo/js/jquery-2.1.4.min.js"></script>
-			<script src="/leo/js/angular.min.js"></script>
-            <script src="/leo/js/angular-toastr.min.js"></script>
-            <script src="/leo/js/angular-toastr.tpls.min.js"></script>
-			<script src="/leo/js/angular-route.min.js"></script>
-			<script src="/leo/js/angular-momentjs-service.min.js"></script>
-			<script src="/leo/js/app.min.js"></script>
-			<script src="/leo/js/bootstrap.min.js"></script>
-			<script src="/leo/js/ui-bootstrap.min.js"></script>
-			<script src="/leo/js/angular-animate.min.js"></script>
-			<script src="/leo/js/ui-bootstrap-tpls.min.js"></script>
-			<script type="text/javascript" src="/leo/js/checklist-model.js"></script>
-			<base href="/">
+			<link rel="stylesheet" href="/stylesheets/style.css" />
+			<link rel="stylesheet" href="/stylesheets/bootstrap-theme.min.css">
+			<link rel="stylesheet" href="/stylesheets/bootstrap.min.css">
+			<link rel="stylesheet" href="/stylesheets/angular-toastr.min.css">
+			<script src="/js/jquery-2.1.4.min.js"></script>
+			<script src="/js/angular.min.js"></script>
+            <script src="/js/angular-toastr.min.js"></script>
+            <script src="/js/angular-toastr.tpls.min.js"></script>
+			<script src="/js/angular-route.min.js"></script>
+			<script src="/js/angular-momentjs-service.min.js"></script>
+			<script src="/js/app.min.js"></script>
+			<script src="/js/bootstrap.min.js"></script>
+			<script src="/js/ui-bootstrap.min.js"></script>
+			<script src="/js/angular-animate.min.js"></script>
+			<script src="/js/ui-bootstrap-tpls.min.js"></script>
+			<script type="text/javascript" src="/js/checklist-model.js"></script>
+			<base href="/leo">
 		</head>
 		<body>
 		<header>
 			<div class="header-logo">
 				<a href="#/search">
-					<img src="/leo/logo/Leonardo_Logo_small.jpg">
+					<img src="/logo/Leonardo_Logo_small.jpg">
 				</a>
 			</div>
 			<nav class="navbar navbar-default" ng-show="user.username">
@@ -34,19 +34,19 @@
 					<div class="navbar-header">
 						<ul class="nav navbar-nav navbar-center">
 							<li>
-								<a ng-href="/leo/#/search">Main Search</a>
+								<a ng-href="/#/search">Main Search</a>
 							</li>
 							<li>
-								<a href="/leo/#/contactlist">Create Contact List</a>
+								<a href="/#/contactlist">Create Contact List</a>
 							</li>
 							<li>
-								<a href="/leo/#/addfamily">Add Family</a>
+								<a href="/#/addfamily">Add Family</a>
 							</li>
 							<li>
-								<a href="/leo/#/addcorp">Add Corporation</a>
+								<a href="/#/addcorp">Add Corporation</a>
 							</li>
 							<li>
-								<a ng-href="leo/#/register">Create Admin</a>
+								<a ng-href="/#/register">Create Admin</a>
 							</li>
 							<li id="logout" ng-controller="navCtrl">
 								<a ng-click="logout()">Logout</a>
