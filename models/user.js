@@ -139,7 +139,7 @@ UserSchema.statics.Create = function (user, callback) {
     });
 };
 module.exports = mongoose.model('User', UserSchema);*/
-var bcrypt = require('bcryptjs');
+var bcrypt = require('bcrypt-nodejs');
 var jsonwebtoken = require('jsonwebtoken');
 const SALT_WORK_FACTOR = 12;
 var secret = require('../config/user');
