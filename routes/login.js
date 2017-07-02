@@ -70,6 +70,9 @@ router.post('/', function (req, res, next) {
 					if(err) return next(err);
 					return res.status(200).send(results);
 				};
+				if(rows.length === 0) {
+					return res.status(400).send('Invalid username or password');
+				}
 				// add user id from db for generating token
 				login.id = rows[0].id;
 				// sample hash: $2a$12$YrxPGKURkOh8iad.JDmkCOhPPFbo0qrMMIypKaso8N6HytGB0cfSu
