@@ -46,7 +46,7 @@ app.service('validService', [function () {
                 pattern = /^([\$]?[\d]+([.][\d]{2})?){1,10}$/;
                 break;
 			case "username":
-				pattern = /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d_\-]{8,20}$/;
+				pattern = /^(?=.*[a-z])(?=.*[A-Z])[a-zA-Z\d_\-]{4,20}$/;
 				break;
 			case "password":
 				//pattern = /^([a-z]+[A-Z]+[0-9]+[-_]?){8,20}$/;
