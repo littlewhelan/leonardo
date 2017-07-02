@@ -24,8 +24,10 @@ var admin = require('./routes/admin');
 
 var corporation = require('./routes/corporation');
 
-var contactList = require('./routes/newContactList');
-var popList = require('./routes/populateContactList');
+// TODO: No route
+// var contactList = require('./routes/newContactList');
+// TODO: No route
+// var popList = require('./routes/populateContactList');
 
 
 
@@ -44,7 +46,8 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(path.join(__dirname, 'public/static')));
+app.use('/static', express.static(path.join(__dirname, 'public/static')));
+app.use('/components', express.static(path.join(__dirname, 'node_modules')));
 app.use('/private', express.static( path.join(__dirname, 'private')));
 
 
@@ -59,8 +62,10 @@ app.use('/login', login);
 app.use('/register', register);
 app.use('/corporation', corporation);
 
-app.use('/newContactList',contactList);
-app.use('/populateContactList', popList);
+// TODO: No route
+// app.use('/newContactList',contactList);
+// TODO: No route
+// app.use('/populateContactList', popList);
 
 
 
@@ -70,26 +75,30 @@ app.use(function (err, req, res, next) {
   }
 });
 
-// Create the database connection
-mongoose.connect(dbURI.conn);
-
-mongoose.connection.on('connected', function () {
-  console.log('Mongoose default connection open');
-});
-
-// If the connection throws an error
-mongoose.connection.on('error',function (err) {
-  console.log('Mongoose default connection error: ' + err);
-});
-
-// When the connection is disconnected
-mongoose.connection.on('disconnected', function () {
-  console.log('Mongoose default connection disconnected');
-});
+// // Create the database connection
+// mongoose.connect(dbURI.conn);
+//
+// mongoose.connection.on('connected', function () {
+//   console.log('Mongoose default connection open');
+// });
+//
+// // If the connection throws an error
+// mongoose.connection.on('error',function (err) {
+//   console.log('Mongoose default connection error: ' + err);
+// });
+//
+// // When the connection is disconnected
+// mongoose.connection.on('disconnected', function () {
+//   console.log('Mongoose default connection disconnected');
+// });
 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
+	if(/.min.js.map$/.test(req.url)) {
+		console.log("map file requested");
+		return res.sendStatus(404);
+	}
   var err = new Error('Not Found');
   err.status = 404;
   next(err);

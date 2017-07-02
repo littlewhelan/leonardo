@@ -1,5 +1,6 @@
+/*
 var mongoose = require('mongoose')
-    , bcrypt = require('bcrypt')
+    , bcrypt = require('bcryptjs')
     , jsonwebtoken = require('jsonwebtoken')
     , SALT_WORK_FACTOR = 12;
 var secret = require('../config/user');
@@ -137,5 +138,40 @@ UserSchema.statics.Create = function (user, callback) {
         }
     });
 };
+module.exports = mongoose.model('User', UserSchema);*/
+var bcrypt = require('bcryptjs');
+var jsonwebtoken = require('jsonwebtoken');
+const SALT_WORK_FACTOR = 12;
+var secret = require('../config/user');
 
-module.exports = mongoose.model('User', UserSchema);
+var hashPass = function (uiPass) {
+	// generate a salt
+	bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt) {
+		if (err) return false;
+
+		// hash the password along with our new salt
+		bcrypt.hash(uiPass, salt, function (err, hash) {
+			if (err) return false;
+
+			// override the clear-text password with the hashed one
+			return hash;
+		});
+	});
+};
+
+var validateUser = function (user, dbHash, cb) {
+	bcrypt.compare(user.password, dbHash, function (err, isMatch) {
+		if (err || !isMatch) cb(err || 'Invalid username or password');
+		var token = jsonwebtoken.sign({id: user.id, username: user.username}, secret, {
+			expiresIn: 86400 // expires in 24 hours
+		});
+		cb(null, token);
+	});
+};
+
+module.exports = {
+	insert: 'INSERT INTO users SET ?',
+	select: 'SELECT id, username, password FROM users WHERE username = ? LIMIT 1',
+	validateUser: validateUser,
+	hashPass: hashPass
+};

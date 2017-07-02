@@ -5,23 +5,23 @@ app.config(['$routeProvider',
     function($routeProvider) {
         $routeProvider.
             when('/', {
-                templateUrl: 'static/login.html'
+                templateUrl: '/static/login.html'
             }).
             when('/search', {
-                templateUrl: 'private/search.html'
+                templateUrl: '/private/search.html'
             }).
             when('/register', {
-                templateUrl: 'static/register.html'
+                templateUrl: '/static/register.html'
             }).
-            when('/contactList', {
-                templateUrl: 'private/contactList.html'
+            when('/contactlist', {
+                templateUrl: '/private/contactlist.html'
             }).
             when('/addfamily', {
-                templateUrl: 'private/addfamily.html',
+                templateUrl: '/private/addfamily.html',
 				controller: 'editFamilyCtrl'
             }).
             when('/addcorp', {
-                templateUrl: 'private/addcorp.html',
+                templateUrl: '/private/addcorp.html',
 				controller: 'editCorpCtrl'
             }).
             when('/contactlist', {
