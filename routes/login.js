@@ -58,7 +58,8 @@ router.post('/', function (req, res, next) {
 
 			if (err) {
 				console.log('Error connecting to Db');
-				return;
+				console.error(err);
+				return res.status(500).send('Error connecting to database');
 			}
 			console.log('Connection established');
 
